@@ -6,10 +6,11 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-		<div id="pageTitle"><h1>Guess That Friend API</h1></div>
+		<div id="pageTitle">Guess That Friend API</div>
+		<div id="subtitle"><a href="https://github.com/bmish/GuessThatFriend">github</a></div>
 	</div>
 	<div id="body">
-		<br />
+		<br /><br />
 		<?php include_once("view/apiCommandTables/getQuiz.php"); ?>
 		<br /><br /><br />
 		<?php include_once("view/apiCommandTables/submitQuiz.php"); ?>
