@@ -5,6 +5,7 @@ function getQuiz() {
 }
 
 function submitQuiz() {
-	echo 'TODO: 1. Save quiz. 2. Output JSON response.';
+	header('Content-type: application/json');
+	require_once("examples/json/submitQuiz.json");
 }
 ?>
