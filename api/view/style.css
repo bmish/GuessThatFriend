@@ -1,0 +1,27 @@
+#pageTitle {
+	text-align: center;
+}
+
+.apiCommandTable {
+	width: 1000px;
+	margin-left:auto; 
+	margin-right:auto;
+	font-size: 13px;
+}
+
+.apiCommandTable, .apiCommandTable th, .apiCommandTable td {
+	border-color: #CCCCCC;
+	border-width: 1px;
+	padding: 7px;
+	border-style: solid;
+	border-collapse: collapse;
+	vertical-align: top;
+}
+th {
+	text-align: left;
+	
+}
+
+#wrapper {
+	font-family: "Helvetica Neue";
+}

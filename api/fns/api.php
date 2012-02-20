@@ -1,11 +1,10 @@
 <?php
 function getQuiz() {
-	echo '1. Generate quiz. 2. Show quiz json';
-	$quiz = new Quiz();
-	json_encode($quiz);
+	header('Content-type: application/json');
+	require_once("examples/json/getQuiz.json");
 }
 
 function submitQuiz() {
-	echo '1. Save quiz. 2. Show json response';
+	echo 'TODO: 1. Save quiz. 2. Output JSON response.';
 }
 ?>
