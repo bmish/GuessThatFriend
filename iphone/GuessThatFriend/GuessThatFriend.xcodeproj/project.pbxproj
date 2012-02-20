@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* GuessThatFriendAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* GuessThatFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* GuessThatFriendViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* GuessThatFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* GuessThatFriendViewController.m */; };
+		4D1A373914DB28B000BEB8B8 /* ho-oh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A373814DB28B000BEB8B8 /* ho-oh.gif */; };
+		4D1A377614DB345D00BEB8B8 /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A377414DB345D00BEB8B8 /* FBLoginViewController.m */; };
+		4D1A377714DB345D00BEB8B8 /* FBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A377514DB345D00BEB8B8 /* FBLoginViewController.xib */; };
+		4D1A37F014DB683E00BEB8B8 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */; };
+		4D1A37F114DB683E00BEB8B8 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A37EF14DB683E00BEB8B8 /* AboutViewController.xib */; };
+		4D1E2E7F14E33FC700FA9B1B /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */; };
+		4D1E2E8014E33FC700FA9B1B /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E2E7E14E33FC700FA9B1B /* MainMenuViewController.xib */; };
+		4D8D796314EB90C800CAA606 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D796214EB90C800CAA606 /* background.png */; };
+		4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797914EB91FA00CAA606 /* whiteButton.png */; };
+		4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797B14EB91FE00CAA606 /* blueButton.png */; };
+		4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */; };
+		4D8D79BD14EB994100CAA606 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D79BC14EB994100CAA606 /* Notes */; };
+		4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */; };
+		4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */; };
+		4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */; };
+		4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */; };
+		4D8D7A2E14EBABC800CAA606 /* QuizFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */; };
+		4D8D7A2F14EBABC800CAA606 /* QuizFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */; };
+		4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */; };
+		4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */; };
+		4D8D7A6114EBB8BC00CAA606 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A6014EBB8BC00CAA606 /* Friend.m */; };
+		4D8D7AAD14EC5C9300CAA606 /* MultipleChoiceQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */; };
+		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
+		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
+		4D8D7ADB14EC65BD00CAA606 /* colin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD714EC65BD00CAA606 /* colin.jpg */; };
+		4D8D7ADC14EC65BD00CAA606 /* jason.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD814EC65BD00CAA606 /* jason.jpg */; };
+		4D8D7ADD14EC65BD00CAA606 /* mike.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD914EC65BD00CAA606 /* mike.jpg */; };
+		4D8D7ADE14EC65BD00CAA606 /* tian.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7ADA14EC65BD00CAA606 /* tian.jpg */; };
+		4D8D7AE314EC65C500CAA606 /* arjan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7ADF14EC65C500CAA606 /* arjan.jpg */; };
+		4D8D7AE414EC65C500CAA606 /* bryan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE014EC65C500CAA606 /* bryan.jpg */; };
+		4D8D7AE514EC65C500CAA606 /* grace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE114EC65C500CAA606 /* grace.jpg */; };
+		4D8D7AE614EC65C500CAA606 /* ken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE214EC65C500CAA606 /* ken.jpg */; };
+		4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */; };
+		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
+		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* GuessThatFriendAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuessThatFriendAppDelegate.h; path = Classes/GuessThatFriendAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuessThatFriendAppDelegate.m; path = Classes/GuessThatFriendAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* GuessThatFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessThatFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* GuessThatFriendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuessThatFriendViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* GuessThatFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessThatFriendViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* GuessThatFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessThatFriendViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessThatFriend_Prefix.pch; sourceTree = "<group>"; };
+		4D1A373814DB28B000BEB8B8 /* ho-oh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ho-oh.gif"; sourceTree = "<group>"; };
+		4D1A377314DB345D00BEB8B8 /* FBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginViewController.h; sourceTree = "<group>"; };
+		4D1A377414DB345D00BEB8B8 /* FBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginViewController.m; sourceTree = "<group>"; };
+		4D1A377514DB345D00BEB8B8 /* FBLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FBLoginViewController.xib; path = Classes/FBLoginViewController.xib; sourceTree = "<group>"; };
+		4D1A37ED14DB683E00BEB8B8 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		4D1A37EF14DB683E00BEB8B8 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AboutViewController.xib; path = Classes/AboutViewController.xib; sourceTree = "<group>"; };
+		4D1E2E7C14E33FC700FA9B1B /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		4D1E2E7E14E33FC700FA9B1B /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenuViewController.xib; path = Classes/MainMenuViewController.xib; sourceTree = "<group>"; };
+		4D8D796214EB90C800CAA606 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4D8D797914EB91FA00CAA606 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
+		4D8D797B14EB91FE00CAA606 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
+		4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCustomCell.h; sourceTree = "<group>"; };
+		4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCustomCell.m; sourceTree = "<group>"; };
+		4D8D79BC14EB994100CAA606 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBFriendCustomCell.xib; sourceTree = "<group>"; };
+		4D8D79D414EBA10A00CAA606 /* MultipleChoiceQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleChoiceQuizViewController.h; sourceTree = "<group>"; };
+		4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleChoiceQuizViewController.m; sourceTree = "<group>"; };
+		4D8D79E314EBA35300CAA606 /* FillInBlankQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillInBlankQuizViewController.h; sourceTree = "<group>"; };
+		4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillInBlankQuizViewController.m; sourceTree = "<group>"; };
+		4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizBaseViewController.h; sourceTree = "<group>"; };
+		4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizBaseViewController.m; sourceTree = "<group>"; };
+		4D8D7A2B14EBABC800CAA606 /* QuizFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizFeedbackViewController.h; sourceTree = "<group>"; };
+		4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizFeedbackViewController.m; sourceTree = "<group>"; };
+		4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuizFeedbackViewController.xib; path = Classes/QuizFeedbackViewController.xib; sourceTree = "<group>"; };
+		4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleChoiceQuizViewController.xib; sourceTree = "<group>"; };
+		4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
+		4D8D7A5F14EBB8BC00CAA606 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		4D8D7A6014EBB8BC00CAA606 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleChoiceQuestion.h; sourceTree = "<group>"; };
+		4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleChoiceQuestion.m; sourceTree = "<group>"; };
+		4D8D7AB014EC5CF400CAA606 /* QuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizManager.h; sourceTree = "<group>"; };
+		4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizManager.m; sourceTree = "<group>"; };
+		4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSettings.h; sourceTree = "<group>"; };
+		4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizSettings.m; sourceTree = "<group>"; };
+		4D8D7AD714EC65BD00CAA606 /* colin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = colin.jpg; sourceTree = "<group>"; };
+		4D8D7AD814EC65BD00CAA606 /* jason.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jason.jpg; sourceTree = "<group>"; };
+		4D8D7AD914EC65BD00CAA606 /* mike.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mike.jpg; sourceTree = "<group>"; };
+		4D8D7ADA14EC65BD00CAA606 /* tian.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tian.jpg; sourceTree = "<group>"; };
+		4D8D7ADF14EC65C500CAA606 /* arjan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arjan.jpg; sourceTree = "<group>"; };
+		4D8D7AE014EC65C500CAA606 /* bryan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bryan.jpg; sourceTree = "<group>"; };
+		4D8D7AE114EC65C500CAA606 /* grace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grace.jpg; sourceTree = "<group>"; };
+		4D8D7AE214EC65C500CAA606 /* ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ken.jpg; sourceTree = "<group>"; };
+		4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerSubmittingSubsystem.h; sourceTree = "<group>"; };
+		4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerSubmittingSubsystem.m; sourceTree = "<group>"; };
+		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GuessThatFriend-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4D1A375414DB2A7900BEB8B8 /* ViewControllers */,
+				4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */,
+				4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */,
+				4D8D7AB014EC5CF400CAA606 /* QuizManager.h */,
+				4D8D7AB114EC5CF400CAA606 /* QuizManager.m */,
+				4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */,
+				4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */,
+				4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */,
+				4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */,
+				4D8D7A5F14EBB8BC00CAA606 /* Friend.h */,
+				4D8D7A6014EBB8BC00CAA606 /* Friend.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* GuessThatFriend.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D79BB14EB993300CAA606 /* Documentation */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				1D3623240D0F684500981E51 /* GuessThatFriendAppDelegate.h */,
+				1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D7AC814EC650F00CAA606 /* Testing Resources */,
+				4D8D797314EB91C900CAA606 /* Images */,
+				4D8D797214EB91B500CAA606 /* Nibs */,
+				4D1A373114DB289F00BEB8B8 /* Icon */,
+				8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D1A373114DB289F00BEB8B8 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				4D1A373814DB28B000BEB8B8 /* ho-oh.gif */,
+			);
+			name = Icon;
+			sourceTree = "<group>";
+		};
+		4D1A375414DB2A7900BEB8B8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D7A0214EBA5EB00CAA606 /* QuizViewControllers */,
+				4D8D7A0A14EBA63300CAA606 /* CommonViewControllers */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4D8D797214EB91B500CAA606 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D7A1014EBA67700CAA606 /* Common Nibs */,
+				4D8D7A1114EBA68800CAA606 /* Quiz Nibs */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
+		4D8D797314EB91C900CAA606 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D796214EB90C800CAA606 /* background.png */,
+				4D8D797914EB91FA00CAA606 /* whiteButton.png */,
+				4D8D797B14EB91FE00CAA606 /* blueButton.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		4D8D79BB14EB993300CAA606 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D79BC14EB994100CAA606 /* Notes */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		4D8D7A0214EBA5EB00CAA606 /* QuizViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */,
+				4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */,
+				4D8D79D414EBA10A00CAA606 /* MultipleChoiceQuizViewController.h */,
+				4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */,
+				4D8D79E314EBA35300CAA606 /* FillInBlankQuizViewController.h */,
+				4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */,
+				4D8D7A2B14EBABC800CAA606 /* QuizFeedbackViewController.h */,
+				4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */,
+				4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */,
+				4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */,
+			);
+			name = QuizViewControllers;
+			sourceTree = "<group>";
+		};
+		4D8D7A0A14EBA63300CAA606 /* CommonViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				28D7ACF60DDB3853001CB0EB /* GuessThatFriendViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* GuessThatFriendViewController.m */,
+				4D1A377314DB345D00BEB8B8 /* FBLoginViewController.h */,
+				4D1A377414DB345D00BEB8B8 /* FBLoginViewController.m */,
+				4D1A37ED14DB683E00BEB8B8 /* AboutViewController.h */,
+				4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */,
+				4D1E2E7C14E33FC700FA9B1B /* MainMenuViewController.h */,
+				4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */,
+				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
+				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
+			);
+			name = CommonViewControllers;
+			sourceTree = "<group>";
+		};
+		4D8D7A1014EBA67700CAA606 /* Common Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				2899E5210DE3E06400AC0155 /* GuessThatFriendViewController.xib */,
+				4D1A377514DB345D00BEB8B8 /* FBLoginViewController.xib */,
+				4D1A37EF14DB683E00BEB8B8 /* AboutViewController.xib */,
+				4D1E2E7E14E33FC700FA9B1B /* MainMenuViewController.xib */,
+				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
+			);
+			name = "Common Nibs";
+			sourceTree = "<group>";
+		};
+		4D8D7A1114EBA68800CAA606 /* Quiz Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */,
+				4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */,
+				4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */,
+				4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */,
+			);
+			name = "Quiz Nibs";
+			sourceTree = "<group>";
+		};
+		4D8D7AC814EC650F00CAA606 /* Testing Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D7ADF14EC65C500CAA606 /* arjan.jpg */,
+				4D8D7AE014EC65C500CAA606 /* bryan.jpg */,
+				4D8D7AD714EC65BD00CAA606 /* colin.jpg */,
+				4D8D7AE114EC65C500CAA606 /* grace.jpg */,
+				4D8D7AD814EC65BD00CAA606 /* jason.jpg */,
+				4D8D7AE214EC65C500CAA606 /* ken.jpg */,
+				4D8D7AD914EC65BD00CAA606 /* mike.jpg */,
+				4D8D7ADA14EC65BD00CAA606 /* tian.jpg */,
+			);
+			name = "Testing Resources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* GuessThatFriend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "GuessThatFriend" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GuessThatFriend;
+			productName = GuessThatFriend;
+			productReference = 1D6058910D05DD3D006BFB54 /* GuessThatFriend.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GuessThatFriend" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* GuessThatFriend */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* GuessThatFriendViewController.xib in Resources */,
+				4D1A373914DB28B000BEB8B8 /* ho-oh.gif in Resources */,
+				4D1A377714DB345D00BEB8B8 /* FBLoginViewController.xib in Resources */,
+				4D1A37F114DB683E00BEB8B8 /* AboutViewController.xib in Resources */,
+				4D1E2E8014E33FC700FA9B1B /* MainMenuViewController.xib in Resources */,
+				4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */,
+				4D8D796314EB90C800CAA606 /* background.png in Resources */,
+				4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */,
+				4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */,
+				4D8D79BD14EB994100CAA606 /* Notes in Resources */,
+				4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */,
+				4D8D7A2F14EBABC800CAA606 /* QuizFeedbackViewController.xib in Resources */,
+				4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */,
+				4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */,
+				4D8D7ADB14EC65BD00CAA606 /* colin.jpg in Resources */,
+				4D8D7ADC14EC65BD00CAA606 /* jason.jpg in Resources */,
+				4D8D7ADD14EC65BD00CAA606 /* mike.jpg in Resources */,
+				4D8D7ADE14EC65BD00CAA606 /* tian.jpg in Resources */,
+				4D8D7AE314EC65C500CAA606 /* arjan.jpg in Resources */,
+				4D8D7AE414EC65C500CAA606 /* bryan.jpg in Resources */,
+				4D8D7AE514EC65C500CAA606 /* grace.jpg in Resources */,
+				4D8D7AE614EC65C500CAA606 /* ken.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* GuessThatFriendAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* GuessThatFriendViewController.m in Sources */,
+				4D1A377614DB345D00BEB8B8 /* FBLoginViewController.m in Sources */,
+				4D1A37F014DB683E00BEB8B8 /* AboutViewController.m in Sources */,
+				4D1E2E7F14E33FC700FA9B1B /* MainMenuViewController.m in Sources */,
+				4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */,
+				4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */,
+				4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */,
+				4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */,
+				4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */,
+				4D8D7A2E14EBABC800CAA606 /* QuizFeedbackViewController.m in Sources */,
+				4D8D7A6114EBB8BC00CAA606 /* Friend.m in Sources */,
+				4D8D7AAD14EC5C9300CAA606 /* MultipleChoiceQuestion.m in Sources */,
+				4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */,
+				4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */,
+				4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;
+				INFOPLIST_FILE = "GuessThatFriend-Info.plist";
+				PRODUCT_NAME = GuessThatFriend;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;
+				INFOPLIST_FILE = "GuessThatFriend-Info.plist";
+				PRODUCT_NAME = GuessThatFriend;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "GuessThatFriend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GuessThatFriend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

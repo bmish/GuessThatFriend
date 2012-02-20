@@ -1,0 +1,256 @@
+TGuessThatFriend
+v7
+r0
+t349906923.880978
+cCheck dependencies
+cProcessInfoPlistFile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/Info.plist GuessThatFriend-Info.plist
+cCompileXIB /Users/tianyiwang/School/CS429/Project/GuessThatFriend/MainWindow.xib
+cCompileXIB /Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriendViewController.xib
+cProcessPCH /var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch.gch GuessThatFriend_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/main.o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendAppDelegate.o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendViewController.o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend normal i386
+cGenerateDSYMFile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app.dSYM /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend
+cTouch /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004CC128950000000000000110
+t1287727253
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.h
+c000000004F2AF05C000000000000020D
+t1328214108
+s525
+i<UIKit/UIKit.h>
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m
+c000000004F2AF05C0000000000000ABB
+t1328214108
+s2747
+i"GuessThatFriendAppDelegate.h"
+i"GuessThatFriendViewController.h"
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.h
+c000000004F2AF05C0000000000000104
+t1328214108
+s260
+i<UIKit/UIKit.h>
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m
+c000000004F2AF05C00000000000005DF
+t1328214108
+s1503
+i"GuessThatFriendViewController.h"
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriendViewController.xib
+c000000004F2AF05C0000000000001A65
+t1328214108
+s6757
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriend_Prefix.pch
+c000000004F2AF05C00000000000000C7
+t1328214108
+s199
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/MainWindow.xib
+c000000004F2AF05C0000000000004E89
+t1328214108
+s20105
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app
+t1328214123
+s238
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app.dSYM
+t1328214123
+s102
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend
+t1328214123
+s17580
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriendViewController.nib
+t1328214121
+s795
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/Info.plist
+t1328214120
+s629
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/MainWindow.nib
+t1328214121
+s1139
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/PkgInfo
+t1328214120
+s8
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriend.LinkFileList
+c000000004F2AF06800000000000001FD
+t1328214120
+s509
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendAppDelegate.o
+t1328214123
+s51384
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendViewController.o
+t1328214123
+s37700
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/main.o
+t1328214123
+s6336
+
+N/Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m
+c000000004F2AF05C000000000000016F
+t1328214108
+s367
+i<UIKit/UIKit.h>
+
+N/var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch.gch
+t1328214123
+s15453392
+
+NGuessThatFriend-Info.plist
+c000000004F2AF05C000000000000038D
+t1328214108
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies349906920#349906920#0(0"0(0#1#0"31244212048494624#0"0#
+
+CCompileC build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendAppDelegate.o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s349906923.277848
+e349906923.461887
+r1
+xCompileC
+xbuild/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendAppDelegate.o
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@99"Compile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m349906923#349906923#0(0"0(0#0#91"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m8601535072#2302"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-generated-files.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-own-target-headers.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-all-target-headers.hmap -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-project-headers.hmap -F/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/include -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources/i386 -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources -include /var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch -c /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendAppDelegate.m -o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendAppDelegate.o0#
+
+CCompileC build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendViewController.o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s349906923.440139
+e349906923.504596
+r1
+xCompileC
+xbuild/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendViewController.o
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@102"Compile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m349906923#349906923#0(0"0(0#0#94"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m8599091392#2308"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-generated-files.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-own-target-headers.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-all-target-headers.hmap -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-project-headers.hmap -F/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/include -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources/i386 -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources -include /var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch -c /Users/tianyiwang/School/CS429/Project/GuessThatFriend/Classes/GuessThatFriendViewController.m -o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriendViewController.o0#
+
+CCompileC build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/main.o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s349906923.276267
+e349906923.440042
+r1
+xCompileC
+xbuild/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/main.o
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@69"Compile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m349906923#349906923#0(0"0(0#0#61"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m8601774112#2250"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-generated-files.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-own-target-headers.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-all-target-headers.hmap -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-project-headers.hmap -F/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/include -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources/i386 -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources -include /var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch -c /Users/tianyiwang/School/CS429/Project/GuessThatFriend/main.m -o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriendViewController.xib
+s349906920.713730
+e349906921.953699
+r1
+xCompileXIB
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriendViewController.xib
+lSLF07#2@44"CompileXIB GuessThatFriendViewController.xib349906920#349906921#0(0"0(0#0#88"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriendViewController.xib8604286432#664"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriendViewController.nib /Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriendViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CCompileXIB /Users/tianyiwang/School/CS429/Project/GuessThatFriend/MainWindow.xib
+s349906920.679379
+e349906921.953518
+r1
+xCompileXIB
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib349906920#349906921#0(0"0(0#0#69"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/MainWindow.xib8601256608#626"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/MainWindow.nib /Users/tianyiwang/School/CS429/Project/GuessThatFriend/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+
+CGenerateDSYMFile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app.dSYM /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend
+s349906923.767346
+e349906923.839730
+r1
+xGenerateDSYMFile
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app.dSYM
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend
+lSLF07#2@133"GenerateDSYMFile build/Debug-iphonesimulator/GuessThatFriend.app.dSYM build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend349906923#349906923#0(0"0(0#0#118"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend8600837600#455"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend -o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app.dSYM0#
+
+CLd /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend normal i386
+s349906923.504692
+e349906923.767240
+r1
+xLd
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend
+xnormal
+xi386
+lSLF07#2@123"Link /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend349906923#349906923#0(0"0(0#0#0"8604410336#1020"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator -F/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator -filelist /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/Objects-normal/i386/GuessThatFriend.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/GuessThatFriend0#
+
+CProcessInfoPlistFile /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/Info.plist GuessThatFriend-Info.plist
+s349906920.641834
+e349906920.679287
+r1
+xProcessInfoPlistFile
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/Info.plist
+xGuessThatFriend-Info.plist
+lSLF07#2@34"Process GuessThatFriend-Info.plist349906920#349906920#0(0"0(0#0#81"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriend-Info.plist32370056121090120#551"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility GuessThatFriend-Info.plist -genpkginfo /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app/Info.plist0#
+
+CProcessPCH /var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch.gch GuessThatFriend_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s349906921.953843
+e349906923.275778
+r1
+xProcessPCH
+x/var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch.gch
+xGuessThatFriend_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@37"Precompile GuessThatFriend_Prefix.pch349906921#349906923#0(0"0(0#0#81"/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriend_Prefix.pch8600239840#2118"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-generated-files.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-own-target-headers.hmap -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-all-target-headers.hmap -iquote /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/GuessThatFriend-project-headers.hmap -F/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/include -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources/i386 -I/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/GuessThatFriend.build/Debug-iphonesimulator/GuessThatFriend.build/DerivedSources -c /Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriend_Prefix.pch -o /var/folders/-V/-V2zd1jaEhW1trRc2CZIbk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GuessThatFriend_Prefix-adfrvhdvkvncamalhanpdnnnbkgl/GuessThatFriend_Prefix.pch.gch0#
+
+CTouch /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app
+s349906923.839813
+e349906923.880916
+r1
+xTouch
+x/Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app
+lSLF07#2@108"Touch /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app349906923#349906923#0(0"0(0#0#0"8604279520#318"    cd /Users/tianyiwang/School/CS429/Project/GuessThatFriend    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/tianyiwang/School/CS429/Project/GuessThatFriend/build/Debug-iphonesimulator/GuessThatFriend.app0#
+
