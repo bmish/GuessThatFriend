@@ -1,0 +1,958 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* GuessThatFriendAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1196, 809}}";
+			sepNavSelRange = "{373, 0}";
+			sepNavVisRange = "{0, 525}";
+		};
+	};
+	1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {3035.5, 1890}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 821}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* GuessThatFriend */ = {
+		activeExec = 0;
+		executables = (
+			4D1A371614DB27DC00BEB8B8 /* GuessThatFriend */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* GuessThatFriendViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1196, 809}}";
+			sepNavSelRange = "{450, 0}";
+			sepNavVisRange = "{0, 816}";
+			sepNavWindowFrame = "{{649, 371}, {1271, 687}}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* GuessThatFriendViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1453.31, 2226}}";
+			sepNavSelRange = "{1300, 0}";
+			sepNavVisRange = "{1380, 1471}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 4D1A371614DB27DC00BEB8B8 /* GuessThatFriend */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* GuessThatFriend */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* GuessThatFriend */,
+		);
+		breakpoints = (
+			4D1A37C614DB675200BEB8B8 /* FBLoginViewController.m:56 */,
+			4D8D7B3414EC6E0C00CAA606 /* MultipleChoiceQuizViewController.m:45 */,
+			4D8D7B4114EC6E4800CAA606 /* MultipleChoiceQuizViewController.m:96 */,
+			4D8D7B4314EC6E4A00CAA606 /* MultipleChoiceQuizViewController.m:100 */,
+			4D8D7C4514EC8F1100CAA606 /* FBFriendCustomCell.m:19 */,
+			4D8D7C8614EC92CC00CAA606 /* MainMenuViewController.m:73 */,
+		);
+		codeSenseManager = 4D1A372F14DB27EC00BEB8B8 /* Code sense */;
+		executables = (
+			4D1A371614DB27DC00BEB8B8 /* GuessThatFriend */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					779,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 351115403;
+			PBXWorkspaceStateSaveDate = 351115403;
+		};
+		perUserProjectItems = {
+			4D1A375714DB2A8F00BEB8B8 /* PlistBookmark */ = 4D1A375714DB2A8F00BEB8B8 /* PlistBookmark */;
+			4D1A375814DB2A8F00BEB8B8 /* PBXBookmark */ = 4D1A375814DB2A8F00BEB8B8 /* PBXBookmark */;
+			4D1A375A14DB2A8F00BEB8B8 /* PBXTextBookmark */ = 4D1A375A14DB2A8F00BEB8B8 /* PBXTextBookmark */;
+			4D1A375B14DB2A8F00BEB8B8 /* PBXTextBookmark */ = 4D1A375B14DB2A8F00BEB8B8 /* PBXTextBookmark */;
+			4D1C978114ED989C000069F7 /* PBXTextBookmark */ = 4D1C978114ED989C000069F7 /* PBXTextBookmark */;
+			4D1C979A14EDD0EB000069F7 /* PBXTextBookmark */ = 4D1C979A14EDD0EB000069F7 /* PBXTextBookmark */;
+			4D1C979B14EDD0EB000069F7 /* PBXBookmark */ = 4D1C979B14EDD0EB000069F7 /* PBXBookmark */;
+			4D1C979C14EDD0EB000069F7 /* PBXBookmark */ = 4D1C979C14EDD0EB000069F7 /* PBXBookmark */;
+			4D1C979D14EDD0EB000069F7 /* PBXBookmark */ = 4D1C979D14EDD0EB000069F7 /* PBXBookmark */;
+			4D1C979E14EDD0EB000069F7 /* PBXBookmark */ = 4D1C979E14EDD0EB000069F7 /* PBXBookmark */;
+			4D1C979F14EDD0EB000069F7 /* PBXBookmark */ = 4D1C979F14EDD0EB000069F7 /* PBXBookmark */;
+			4D1C97A014EDD0EB000069F7 /* PBXBookmark */ = 4D1C97A014EDD0EB000069F7 /* PBXBookmark */;
+			4D1C97A114EDD0EB000069F7 /* PBXBookmark */ = 4D1C97A114EDD0EB000069F7 /* PBXBookmark */;
+			4D1C97A214EDD0EB000069F7 /* PBXBookmark */ = 4D1C97A214EDD0EB000069F7 /* PBXBookmark */;
+			4D1C97A314EDD0EB000069F7 /* PBXTextBookmark */ = 4D1C97A314EDD0EB000069F7 /* PBXTextBookmark */;
+			4D1C97A414EDD0EB000069F7 /* PBXTextBookmark */ = 4D1C97A414EDD0EB000069F7 /* PBXTextBookmark */;
+			4D8D799C14EB962A00CAA606 /* PBXBookmark */ = 4D8D799C14EB962A00CAA606 /* PBXBookmark */;
+			4D8D799D14EB962A00CAA606 /* PBXBookmark */ = 4D8D799D14EB962A00CAA606 /* PBXBookmark */;
+			4D8D799E14EB962A00CAA606 /* PBXBookmark */ = 4D8D799E14EB962A00CAA606 /* PBXBookmark */;
+			4D8D799F14EB962A00CAA606 /* PBXTextBookmark */ = 4D8D799F14EB962A00CAA606 /* PBXTextBookmark */;
+			4D8D79A314EB962A00CAA606 /* PBXTextBookmark */ = 4D8D79A314EB962A00CAA606 /* PBXTextBookmark */;
+			4D8D7A1C14EBA99000CAA606 /* PBXTextBookmark */ = 4D8D7A1C14EBA99000CAA606 /* PBXTextBookmark */;
+			4D8D7A8C14EC56DA00CAA606 /* PBXTextBookmark */ = 4D8D7A8C14EC56DA00CAA606 /* PBXTextBookmark */;
+			4D8D7A9514EC589D00CAA606 /* PBXTextBookmark */ = 4D8D7A9514EC589D00CAA606 /* PBXTextBookmark */;
+			4D8D7A9614EC589D00CAA606 /* PBXTextBookmark */ = 4D8D7A9614EC589D00CAA606 /* PBXTextBookmark */;
+			4D8D7AA714EC5C4E00CAA606 /* PBXTextBookmark */ = 4D8D7AA714EC5C4E00CAA606 /* PBXTextBookmark */;
+			4D8D7BED14EC7E9000CAA606 /* PBXTextBookmark */ = 4D8D7BED14EC7E9000CAA606 /* PBXTextBookmark */;
+			4D8D7BEE14EC7E9000CAA606 /* PBXTextBookmark */ = 4D8D7BEE14EC7E9000CAA606 /* PBXTextBookmark */;
+			4D8D7BEF14EC7E9000CAA606 /* PBXTextBookmark */ = 4D8D7BEF14EC7E9000CAA606 /* PBXTextBookmark */;
+			4D8D7BF114EC7E9000CAA606 /* PBXTextBookmark */ = 4D8D7BF114EC7E9000CAA606 /* PBXTextBookmark */;
+			4D8D7C3314EC8DE000CAA606 /* PBXTextBookmark */ = 4D8D7C3314EC8DE000CAA606 /* PBXTextBookmark */;
+			4D8D7C3614EC8DE000CAA606 /* PBXTextBookmark */ = 4D8D7C3614EC8DE000CAA606 /* PBXTextBookmark */;
+			4D8D7C3F14EC8ED600CAA606 /* PBXTextBookmark */ = 4D8D7C3F14EC8ED600CAA606 /* PBXTextBookmark */;
+			4D8D7C5D14EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C5D14EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C5E14EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C5E14EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C5F14EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C5F14EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C6014EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C6014EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C6114EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C6114EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C6214EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C6214EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C6514EC90D200CAA606 /* PBXTextBookmark */ = 4D8D7C6514EC90D200CAA606 /* PBXTextBookmark */;
+			4D8D7C8014EC929500CAA606 /* PBXTextBookmark */ = 4D8D7C8014EC929500CAA606 /* PBXTextBookmark */;
+			4D8D7C8B14EC92CD00CAA606 /* PBXTextBookmark */ = 4D8D7C8B14EC92CD00CAA606 /* PBXTextBookmark */;
+			4D8D7C9214EC94A600CAA606 /* PBXTextBookmark */ = 4D8D7C9214EC94A600CAA606 /* PBXTextBookmark */;
+			4D8D7CC014EC955C00CAA606 /* PBXTextBookmark */ = 4D8D7CC014EC955C00CAA606 /* PBXTextBookmark */;
+			4D8D7CC114EC955C00CAA606 /* PBXTextBookmark */ = 4D8D7CC114EC955C00CAA606 /* PBXTextBookmark */;
+			4D8D7CC214EC955C00CAA606 /* PBXTextBookmark */ = 4D8D7CC214EC955C00CAA606 /* PBXTextBookmark */;
+			4D8D7CC314EC955C00CAA606 /* PBXTextBookmark */ = 4D8D7CC314EC955C00CAA606 /* PBXTextBookmark */;
+			4D8D7CC414EC955C00CAA606 /* PBXTextBookmark */ = 4D8D7CC414EC955C00CAA606 /* PBXTextBookmark */;
+			4DB36AFE14E8E61200E2A563 /* PBXTextBookmark */ = 4DB36AFE14E8E61200E2A563 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 4D1A372E14DB27EC00BEB8B8 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {915, 378}}";
+			sepNavSelRange = "{285, 17}";
+			sepNavVisRange = "{0, 367}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1117.37, 373}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 199}";
+		};
+	};
+	4D1A371614DB27DC00BEB8B8 /* GuessThatFriend */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = GuessThatFriend;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	4D1A372E14DB27EC00BEB8B8 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	4D1A372F14DB27EC00BEB8B8 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	4D1A375714DB2A8F00BEB8B8 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/tianyiwang/School/CS429/Project/GuessThatFriend/GuessThatFriend-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	4D1A375814DB2A8F00BEB8B8 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D1A373814DB28B000BEB8B8 /* ho-oh.gif */;
+	};
+	4D1A375A14DB2A8F00BEB8B8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */;
+		name = "GuessThatFriend_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 199;
+		vrLoc = 0;
+	};
+	4D1A375B14DB2A8F00BEB8B8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 14";
+		rLen = 17;
+		rLoc = 285;
+		rType = 0;
+		vrLen = 367;
+		vrLoc = 0;
+	};
+	4D1A377314DB345D00BEB8B8 /* FBLoginViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1398, 809}}";
+			sepNavSelRange = "{513, 0}";
+			sepNavVisRange = "{0, 891}";
+		};
+	};
+	4D1A377414DB345D00BEB8B8 /* FBLoginViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 2079}}";
+			sepNavSelRange = "{1674, 0}";
+			sepNavVisRange = "{720, 1528}";
+		};
+	};
+	4D1A37C614DB675200BEB8B8 /* FBLoginViewController.m:56 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 4D1A377414DB345D00BEB8B8 /* FBLoginViewController.m */;
+		functionName = "-textFieldDoneEditing:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 56;
+		location = GuessThatFriend;
+		modificationTime = 351048399.0821589;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	4D1A37ED14DB683E00BEB8B8 /* AboutViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1252, 686}}";
+			sepNavSelRange = "{367, 0}";
+			sepNavVisRange = "{0, 367}";
+			sepNavWindowFrame = "{{1929, 388}, {1271, 687}}";
+		};
+	};
+	4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1428}}";
+			sepNavSelRange = "{51, 0}";
+			sepNavVisRange = "{0, 1112}";
+			sepNavWindowFrame = "{{1929, 388}, {1271, 687}}";
+		};
+	};
+	4D1C978114ED989C000069F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */;
+		name = "AnswerSubmittingSubsystem.m: 20";
+		rLen = 0;
+		rLoc = 296;
+		rType = 0;
+		vrLen = 296;
+		vrLoc = 0;
+	};
+	4D1C979A14EDD0EB000069F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7A2B14EBABC800CAA606 /* QuizFeedbackViewController.h */;
+		name = "QuizFeedbackViewController.h: 8";
+		rLen = 0;
+		rLoc = 160;
+		rType = 0;
+		vrLen = 472;
+		vrLoc = 0;
+	};
+	4D1C979B14EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7AE014EC65C500CAA606 /* bryan.jpg */;
+	};
+	4D1C979C14EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7AD714EC65BD00CAA606 /* colin.jpg */;
+	};
+	4D1C979D14EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7AE114EC65C500CAA606 /* grace.jpg */;
+	};
+	4D1C979E14EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7AD814EC65BD00CAA606 /* jason.jpg */;
+	};
+	4D1C979F14EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7AE214EC65C500CAA606 /* ken.jpg */;
+	};
+	4D1C97A014EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7AD914EC65BD00CAA606 /* mike.jpg */;
+	};
+	4D1C97A114EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7ADA14EC65BD00CAA606 /* tian.jpg */;
+	};
+	4D1C97A214EDD0EB000069F7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D7ADF14EC65C500CAA606 /* arjan.jpg */;
+	};
+	4D1C97A314EDD0EB000069F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */;
+		name = "QuizBaseViewController.h: 19";
+		rLen = 0;
+		rLoc = 409;
+		rType = 0;
+		vrLen = 518;
+		vrLoc = 0;
+	};
+	4D1C97A414EDD0EB000069F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */;
+		name = "QuizBaseViewController.h: 12";
+		rLen = 0;
+		rLoc = 253;
+		rType = 0;
+		vrLen = 518;
+		vrLoc = 0;
+	};
+	4D1E2E7C14E33FC700FA9B1B /* MainMenuViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 840}}";
+			sepNavSelRange = "{972, 0}";
+			sepNavVisRange = "{0, 1167}";
+		};
+	};
+	4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 2541}}";
+			sepNavSelRange = "{2836, 0}";
+			sepNavVisRange = "{2467, 1093}";
+			sepNavWindowFrame = "{{1929, 388}, {1271, 687}}";
+		};
+	};
+	4D8D799C14EB962A00CAA606 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D797B14EB91FE00CAA606 /* blueButton.png */;
+	};
+	4D8D799D14EB962A00CAA606 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D796214EB90C800CAA606 /* background.png */;
+	};
+	4D8D799E14EB962A00CAA606 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4D8D797914EB91FA00CAA606 /* whiteButton.png */;
+	};
+	4D8D799F14EB962A00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */;
+		name = "AboutViewController.m: 4";
+		rLen = 0;
+		rLoc = 51;
+		rType = 0;
+		vrLen = 1112;
+		vrLoc = 0;
+	};
+	4D8D79A314EB962A00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D1A37ED14DB683E00BEB8B8 /* AboutViewController.h */;
+		name = "AboutViewController.h: 20";
+		rLen = 0;
+		rLoc = 367;
+		rType = 0;
+		vrLen = 367;
+		vrLoc = 0;
+	};
+	4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{229, 11}";
+			sepNavVisRange = "{0, 487}";
+		};
+	};
+	4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 882}}";
+			sepNavSelRange = "{719, 0}";
+			sepNavVisRange = "{51, 756}";
+		};
+	};
+	4D8D79BC14EB994100CAA606 /* Notes */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {976.485, 686}}";
+			sepNavSelRange = "{247, 0}";
+			sepNavVisRange = "{0, 247}";
+			sepNavWindowFrame = "{{1929, 388}, {1271, 687}}";
+		};
+	};
+	4D8D79D414EBA10A00CAA606 /* MultipleChoiceQuizViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1269.08, 786}}";
+			sepNavSelRange = "{430, 0}";
+			sepNavVisRange = "{0, 615}";
+		};
+	};
+	4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 2751}}";
+			sepNavSelRange = "{1420, 0}";
+			sepNavVisRange = "{1023, 397}";
+		};
+	};
+	4D8D79E314EBA35300CAA606 /* FillInBlankQuizViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1398, 809}}";
+			sepNavSelRange = "{327, 0}";
+			sepNavVisRange = "{0, 402}";
+		};
+	};
+	4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1554}}";
+			sepNavSelRange = "{335, 0}";
+			sepNavVisRange = "{0, 1028}";
+		};
+	};
+	4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {957, 554}}";
+			sepNavSelRange = "{253, 0}";
+			sepNavVisRange = "{0, 518}";
+		};
+	};
+	4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1743}}";
+			sepNavSelRange = "{2396, 0}";
+			sepNavVisRange = "{157, 1363}";
+		};
+	};
+	4D8D7A1C14EBA99000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79BC14EB994100CAA606 /* Notes */;
+		name = "Notes: 8";
+		rLen = 0;
+		rLoc = 247;
+		rType = 0;
+		vrLen = 247;
+		vrLoc = 0;
+	};
+	4D8D7A2B14EBABC800CAA606 /* QuizFeedbackViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {957, 531}}";
+			sepNavSelRange = "{160, 0}";
+			sepNavVisRange = "{0, 472}";
+		};
+	};
+	4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1449}}";
+			sepNavSelRange = "{1252, 0}";
+			sepNavVisRange = "{160, 795}";
+		};
+	};
+	4D8D7A5F14EBB8BC00CAA606 /* Friend.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{388, 0}";
+			sepNavVisRange = "{0, 474}";
+		};
+	};
+	4D8D7A6014EBB8BC00CAA606 /* Friend.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 798}}";
+			sepNavSelRange = "{547, 0}";
+			sepNavVisRange = "{0, 656}";
+			sepNavWindowFrame = "{{1929, 388}, {1271, 687}}";
+		};
+	};
+	4D8D7A8C14EC56DA00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */;
+		name = "QuizFeedbackViewController.m: 38";
+		rLen = 0;
+		rLoc = 1252;
+		rType = 0;
+		vrLen = 795;
+		vrLoc = 160;
+	};
+	4D8D7A9514EC589D00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* GuessThatFriendAppDelegate.h */;
+		name = "GuessThatFriendAppDelegate.h: 16";
+		rLen = 0;
+		rLoc = 373;
+		rType = 0;
+		vrLen = 525;
+		vrLoc = 0;
+	};
+	4D8D7A9614EC589D00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* GuessThatFriendViewController.h */;
+		name = "GuessThatFriendViewController.h: 20";
+		rLen = 0;
+		rLoc = 450;
+		rType = 0;
+		vrLen = 816;
+		vrLoc = 0;
+	};
+	4D8D7AA714EC5C4E00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */;
+		name = "SettingsViewController.h: 15";
+		rLen = 0;
+		rLoc = 287;
+		rType = 0;
+		vrLen = 506;
+		vrLoc = 0;
+	};
+	4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{393, 0}";
+			sepNavVisRange = "{0, 443}";
+		};
+	};
+	4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1182.39, 1260}}";
+			sepNavSelRange = "{1645, 0}";
+			sepNavVisRange = "{252, 1330}";
+		};
+	};
+	4D8D7AB014EC5CF400CAA606 /* QuizManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{481, 0}";
+			sepNavVisRange = "{0, 546}";
+		};
+	};
+	4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 966}}";
+			sepNavSelRange = "{285, 0}";
+			sepNavVisRange = "{146, 671}";
+		};
+	};
+	4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{181, 0}";
+			sepNavVisRange = "{0, 228}";
+		};
+	};
+	4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{208, 0}";
+			sepNavVisRange = "{0, 208}";
+		};
+	};
+	4D8D7B3414EC6E0C00CAA606 /* MultipleChoiceQuizViewController.m:45 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */;
+		functionName = "-viewDidLoad";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 45;
+		location = GuessThatFriend;
+		modificationTime = 351048399.085554;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	4D8D7B4114EC6E4800CAA606 /* MultipleChoiceQuizViewController.m:96 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */;
+		functionName = "-tableView:numberOfRowsInSection:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 96;
+		location = GuessThatFriend;
+		modificationTime = 351048399.089295;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	4D8D7B4314EC6E4A00CAA606 /* MultipleChoiceQuizViewController.m:100 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */;
+		functionName = "-tableView:cellForRowAtIndexPath:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 100;
+		location = GuessThatFriend;
+		modificationTime = 351048399.105141;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	4D8D7BED14EC7E9000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79E314EBA35300CAA606 /* FillInBlankQuizViewController.h */;
+		name = "FillInBlankQuizViewController.h: 16";
+		rLen = 0;
+		rLoc = 327;
+		rType = 0;
+		vrLen = 402;
+		vrLoc = 0;
+	};
+	4D8D7BEE14EC7E9000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */;
+		name = "FillInBlankQuizViewController.m: 16";
+		rLen = 0;
+		rLoc = 335;
+		rType = 0;
+		vrLen = 1028;
+		vrLoc = 0;
+	};
+	4D8D7BEF14EC7E9000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */;
+		name = "QuizBaseViewController.m: 76";
+		rLen = 0;
+		rLoc = 2396;
+		rType = 0;
+		vrLen = 1363;
+		vrLoc = 157;
+	};
+	4D8D7BF114EC7E9000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D1A377314DB345D00BEB8B8 /* FBLoginViewController.h */;
+		name = "FBLoginViewController.h: 23";
+		rLen = 0;
+		rLoc = 513;
+		rType = 0;
+		vrLen = 891;
+		vrLoc = 0;
+	};
+	4D8D7C3314EC8DE000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D1A377414DB345D00BEB8B8 /* FBLoginViewController.m */;
+		name = "FBLoginViewController.m: 42";
+		rLen = 0;
+		rLoc = 1674;
+		rType = 0;
+		vrLen = 1528;
+		vrLoc = 720;
+	};
+	4D8D7C3614EC8DE000CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* GuessThatFriendViewController.m */;
+		name = "GuessThatFriendViewController.m: 42";
+		rLen = 0;
+		rLoc = 1300;
+		rType = 0;
+		vrLen = 1471;
+		vrLoc = 1380;
+	};
+	4D8D7C3F14EC8ED600CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */;
+		name = "FBFriendCustomCell.h: 12";
+		rLen = 11;
+		rLoc = 229;
+		rType = 0;
+		vrLen = 487;
+		vrLoc = 0;
+	};
+	4D8D7C4514EC8F1100CAA606 /* FBFriendCustomCell.m:19 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */;
+		functionName = "-initWithStyle:reuseIdentifier:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 19;
+		location = GuessThatFriend;
+		modificationTime = 351048399.112395;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	4D8D7C5D14EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */;
+		name = "FBFriendCustomCell.m: 33";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 756;
+		vrLoc = 51;
+	};
+	4D8D7C5E14EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7A5F14EBB8BC00CAA606 /* Friend.h */;
+		name = "Friend.h: 19";
+		rLen = 0;
+		rLoc = 388;
+		rType = 0;
+		vrLen = 474;
+		vrLoc = 0;
+	};
+	4D8D7C5F14EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7A6014EBB8BC00CAA606 /* Friend.m */;
+		name = "Friend.m: 26";
+		rLen = 0;
+		rLoc = 547;
+		rType = 0;
+		vrLen = 656;
+		vrLoc = 0;
+	};
+	4D8D7C6014EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */;
+		name = "QuizSettings.h: 10";
+		rLen = 0;
+		rLoc = 181;
+		rType = 0;
+		vrLen = 228;
+		vrLoc = 0;
+	};
+	4D8D7C6114EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */;
+		name = "QuizSettings.m: 14";
+		rLen = 0;
+		rLoc = 208;
+		rType = 0;
+		vrLen = 208;
+		vrLoc = 0;
+	};
+	4D8D7C6214EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */;
+		name = "MultipleChoiceQuestion.h: 17";
+		rLen = 0;
+		rLoc = 393;
+		rType = 0;
+		vrLen = 443;
+		vrLoc = 0;
+	};
+	4D8D7C6514EC90D200CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */;
+		name = "QuizManager.m: 16";
+		rLen = 0;
+		rLoc = 285;
+		rType = 0;
+		vrLen = 671;
+		vrLoc = 146;
+	};
+	4D8D7C8014EC929500CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */;
+		name = "SettingsViewController.m: 61";
+		rLen = 0;
+		rLoc = 2221;
+		rType = 0;
+		vrLen = 1024;
+		vrLoc = 1670;
+	};
+	4D8D7C8614EC92CC00CAA606 /* MainMenuViewController.m:73 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */;
+		functionName = "-switchViewToRegularQuiz:";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 73;
+		location = GuessThatFriend;
+		modificationTime = 351048415.060433;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	4D8D7C8B14EC92CD00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */;
+		name = "MultipleChoiceQuestion.m: 58";
+		rLen = 0;
+		rLoc = 1645;
+		rType = 0;
+		vrLen = 1330;
+		vrLoc = 252;
+	};
+	4D8D7C9214EC94A600CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D1E2E7C14E33FC700FA9B1B /* MainMenuViewController.h */;
+		name = "MainMenuViewController.h: 32";
+		rLen = 0;
+		rLoc = 972;
+		rType = 0;
+		vrLen = 1167;
+		vrLoc = 0;
+	};
+	4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 786}}";
+			sepNavSelRange = "{291, 0}";
+			sepNavVisRange = "{0, 297}";
+		};
+	};
+	4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {957, 554}}";
+			sepNavSelRange = "{296, 0}";
+			sepNavVisRange = "{0, 296}";
+		};
+	};
+	4D8D7CC014EC955C00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */;
+		name = "MainMenuViewController.m: 68";
+		rLen = 0;
+		rLoc = 2836;
+		rType = 0;
+		vrLen = 1093;
+		vrLoc = 2467;
+	};
+	4D8D7CC114EC955C00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79D414EBA10A00CAA606 /* MultipleChoiceQuizViewController.h */;
+		name = "MultipleChoiceQuizViewController.h: 16";
+		rLen = 0;
+		rLoc = 430;
+		rType = 0;
+		vrLen = 615;
+		vrLoc = 0;
+	};
+	4D8D7CC214EC955C00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */;
+		name = "MultipleChoiceQuizViewController.m: 25";
+		rLen = 0;
+		rLoc = 630;
+		rType = 0;
+		vrLen = 1303;
+		vrLoc = 275;
+	};
+	4D8D7CC314EC955C00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7AB014EC5CF400CAA606 /* QuizManager.h */;
+		name = "QuizManager.h: 23";
+		rLen = 0;
+		rLoc = 481;
+		rType = 0;
+		vrLen = 546;
+		vrLoc = 0;
+	};
+	4D8D7CC414EC955C00CAA606 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */;
+		name = "AnswerSubmittingSubsystem.h: 17";
+		rLen = 0;
+		rLoc = 291;
+		rType = 0;
+		vrLen = 297;
+		vrLoc = 0;
+	};
+	4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1196, 809}}";
+			sepNavSelRange = "{287, 0}";
+			sepNavVisRange = "{0, 506}";
+		};
+	};
+	4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1756.74, 1827}}";
+			sepNavSelRange = "{2221, 0}";
+			sepNavVisRange = "{1670, 1024}";
+			sepNavWindowFrame = "{{1929, 388}, {1271, 687}}";
+		};
+	};
+	4DB36AFE14E8E61200E2A563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */;
+		name = "GuessThatFriendAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 821;
+		vrLoc = 0;
+	};
+}
