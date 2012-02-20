@@ -11,9 +11,11 @@
 @implementation AnswerSubmittingSubsystem
 
 - (void)submitAnswer {
+    //TODO: implementation
 }
 
 - (void)getResult {
+    //TODO: implementation
 }
 
 @end
