@@ -27,6 +27,19 @@ th {
 	text-align: left;
 	
 }
+.colParameter {
+	width: 130px;
+}
+.colType {
+	width: 50px;
+}
+.colValue {
+	width: 90px;
+}
+.colDefault {
+	width: 50px;
+}
+
 
 #wrapper {
 	font-family: "Helvetica Neue";

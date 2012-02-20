@@ -1,17 +1,17 @@
-<table class="apiCommandTable" id="getQuizAPICommandTable">
+<table class="apiCommandTable" Id="getQuizAPICommandTable">
 	<tr>
-		<th>GET Parameter</th>
-		<th>Type</th>
-		<th>Value</th>
-		<th>Default</th>
-		<th>Description</th>
+		<th class="colParameter">GET Parameter</th>
+		<th class="colType">Type</th>
+		<th class="colValue">Value</th>
+		<th class="colDefault">Default</th>
+		<th class="colDescription">Description</th>
 	</tr>
 	<tr>
 		<td>cmd</td>
 		<td>string</td>
 		<td>getQuiz</td>
 		<td>N/A</td>
-		<td>N/A</td>
+		<td>Generate a quiz on what the authenticated user's friends like.</td>
 	</tr>
 	<tr>
 		<td>questionCount</td>
@@ -21,26 +21,26 @@
 		<td>Number of quiz questions to generate.</td>
 	</tr>
 	<tr>
-		<td>answerCount</td>
+		<td>optionCount</td>
 		<td>int</td>
 		<td>-1: Random<br />0: Fill in the blank<br />2-6: Multiple choice</td>
 		<td>4</td>
-		<td>How many choices (if any) should the user have to choose from for each question? Specifying '-1' means that each question will have a random number of choices.</td>
+		<td>How many options (if any) should come with each question? Specifying '-1' means that each question will have a random number of options.</td>
 	</tr>
 	<tr>
-		<td>friendFacebookID</td>
+		<td>friendFacebookId</td>
 		<td>string</td>
-		<td>Friend's Facebook ID</td>
+		<td>Friend's Facebook Id</td>
 		<td>All friends</td>
-		<td>Should the quiz focus on a specific friend or all of the user's friends?</td>
+		<td>Should the quiz focus on a specific friend or all friends?</td>
 	</tr>
 	<tr>
-		<td>topicFacebookID</td>
+		<td>category</td>
 		<td>string</td>
-		<td>Topic's Facebook ID</td>
-		<td>All topics</td>
-		<td>Should the quiz focus on a particular topic like books or movies?</td>
+		<td>Musician/band<br />Movie<br />Tv show<br />...</td>
+		<td>All categories</td>
+		<td>Should the quiz focus on a particular category of likes like books or movies?</td>
 	</tr>
 	<tr>
-		<td colspan="5"><a href="?cmd=getQuiz&questionCount=1&answerCount=2">?cmd=getQuiz&questionCount=1&answerCount=2</a> (hardcoded dummy example)</td>
+		<td colspan="5"><a href="?cmd=getQuiz&questionCount=1&optionCount=2">?cmd=getQuiz&questionCount=1&optionCount=2</a> (hardcoded dummy example)</td>
 </table>

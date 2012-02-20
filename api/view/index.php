@@ -7,7 +7,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="pageTitle">Guess That Friend API</div>
-		<div id="subtitle"><a href="https://github.com/bmish/GuessThatFriend">github</a></div>
+		<div id="subtitle"><a target="_new" href="https://github.com/bmish/GuessThatFriend">github</a> - <a target="_new" href="https://developers.facebook.com/">Facebook API</a></div>
 	</div>
 	<div id="body">
 		<br /><br />
