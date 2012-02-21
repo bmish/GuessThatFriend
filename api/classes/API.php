@@ -17,9 +17,8 @@ class API {
 			return;
 		}
 
-		$arr = getArrayOfResult($result);
-
-		outputJSON($arr);
+		$arr = API::getArrayOfResult($result);
+		API::outputJSON($arr);
 	}
 	
 	private static function getArrayOfResult($result) {
