@@ -1,11 +1,29 @@
 <?php
-function getQuiz() {
+function apiGetQuiz() {
 	header('Content-type: application/json');
 	require_once("examples/json/getQuiz.json");
 }
 
-function submitQuiz() {
+function apiSubmitQuiz() {
 	header('Content-type: application/json');
 	require_once("examples/json/submitQuiz.json");
+}
+
+function apiGetCategories() {
+	header('Content-type: application/json');
+	
+	// Get categories from database.
+	$result = mysql_query("SELECT * FROM categories");
+	if (!$result || mysql_num_rows($result) == 0) {
+		return;
+	}
+	
+	// Put categories into an array.
+	$arr = array();
+	while ($row = mysql_fetch_array($result)) {
+		$arr[] = $row;
+	}
+	
+	echo json_encode($arr);
 }
 ?>
