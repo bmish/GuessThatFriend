@@ -2,23 +2,24 @@
 // Report all PHP errors.
 error_reporting(-1);
 
-require_once('fns/misc.php');
-require_once('fns/api.php');
-require_once('fns/facebook.php');
+// Includes.
+require_once('classes/API.php');
+require_once('classes/DB.php');
+require_once('classes/Facebook.php');
 require_once('fns/config.php');
-require_once('fns/db.php');
+require_once('fns/misc.php');
 
 // Connect to database.
-dbConnect();
+DB::connect();
 
 // Handle an API request.
 $cmd = $_GET['cmd'];
 if ($cmd == 'getQuiz') {
-	apiGetQuiz();
+	API::getQuiz();
 } else if ($cmd == 'submitQuiz') {
-	apiSubmitQuiz();
+	API::submitQuiz();
 } else if ($cmd == 'getCategories') {
-	apiGetCategories();
+	API::getCategories();
 } else {
 	// Display page that describes the API.
 	include_once("view/index.php");
@@ -26,5 +27,5 @@ if ($cmd == 'getQuiz') {
 }
 
 // Close database connection.
-dbClose();
+DB::close();
 ?>
