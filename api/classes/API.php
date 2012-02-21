@@ -17,15 +17,23 @@ class API {
 			return;
 		}
 
-		// Put categories into an array.
+		$arr = getArrayOfResult($result);
+
+		outputJSON($arr);
+	}
+	
+	private static function getArrayOfResult($result) {
 		$arr = array();
 		while ($row = mysql_fetch_assoc($result)) {
 			$arr[] = $row;
 		}
-
+		
+		return $arr;
+	}
+	
+	private static function outputJSON($json) {
 		header('Content-type: application/json');
-		echo json_encode($arr);
+		echo json_encode($json);
 	}
 }
-
 ?>
