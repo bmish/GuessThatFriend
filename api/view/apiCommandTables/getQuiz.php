@@ -35,9 +35,9 @@
 		<td>Should the quiz focus on a specific friend or all friends?</td>
 	</tr>
 	<tr>
-		<td>category</td>
-		<td>string</td>
-		<td>Musician/band<br />Movie<br />Tv show<br />...</td>
+		<td>categoryId</td>
+		<td>int</td>
+		<td><a href="?cmd=getCategories">Get category list</a></td>
 		<td>All categories</td>
 		<td>Should the quiz focus on a particular category of likes like books or movies?</td>
 	</tr>

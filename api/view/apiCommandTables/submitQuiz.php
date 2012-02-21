@@ -14,13 +14,6 @@
 		<td>Submit a quiz that the authenticated user generated.</td>
 	</tr>
 	<tr>
-		<td>quizId</td>
-		<td>int</td>
-		<td>quizId</td>
-		<td>N/A</td>
-		<td>The quizId of the quiz.</td>
-	</tr>
-	<tr>
 		<td>optionIdOfQuestion[X]</td>
 		<td>int</td>
 		<td>optionId</td>
@@ -28,5 +21,5 @@
 		<td>The optionId of the option that was chosen for questionId X. Questions that were skipped can be excluded.</td>
 	</tr>
 	<tr>
-		<td colspan="5"><a href="?cmd=submitQuiz&optionIdOfQuestion11=12">?cmd=submitQuiz&quizId=10&optionIdOfQuestion11=12</a> (hardcoded dummy example)</td>
+		<td colspan="5"><a href="?cmd=submitQuiz&optionIdOfQuestion11=12">?cmd=submitQuiz&optionIdOfQuestion11=12</a> (hardcoded dummy example)</td>
 </table>
