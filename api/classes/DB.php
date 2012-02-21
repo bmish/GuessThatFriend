@@ -6,6 +6,11 @@ class DB {
 		if (!$con) {
 			echo 'Could not connect: '.mysql_error();
 		}
+		
+		$db_selected = mysql_select_db($dbName, $con);
+		if (!$db_selected) {
+		    echo 'Can\'t select database: '.mysql_error();
+		}
 	}
 
 	public static function close() {
