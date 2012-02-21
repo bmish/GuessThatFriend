@@ -19,7 +19,7 @@ class API {
 
 		// Put categories into an array.
 		$arr = array();
-		while ($row = mysql_fetch_array($result)) {
+		while ($row = mysql_fetch_assoc($result)) {
 			$arr[] = $row;
 		}
 

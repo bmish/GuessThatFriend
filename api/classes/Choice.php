@@ -1,5 +1,5 @@
 <?php
-class Quiz
+class Choice
 {
 	
 }

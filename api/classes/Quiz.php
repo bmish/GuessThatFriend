@@ -2,11 +2,11 @@
 class Quiz
 {	
 	function __construct(){
-		print "in constructor\n";
+		print "In constructor.<br />";
 	}
 
 	function testPrint(){
-		print "testing print from quiz object";
+		print "Testing print from quiz object.";
 	}
 }
 ?>
