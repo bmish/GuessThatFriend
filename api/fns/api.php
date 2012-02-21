@@ -10,8 +10,6 @@ function apiSubmitQuiz() {
 }
 
 function apiGetCategories() {
-	header('Content-type: application/json');
-	
 	// Get categories from database.
 	$result = mysql_query("SELECT * FROM categories");
 	if (!$result || mysql_num_rows($result) == 0) {
@@ -24,6 +22,7 @@ function apiGetCategories() {
 		$arr[] = $row;
 	}
 	
+	header('Content-type: application/json');
 	echo json_encode($arr);
 }
 ?>
