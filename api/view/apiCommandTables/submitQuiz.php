@@ -1,25 +1,22 @@
-<table class="apiCommandTable" id="getQuizAPICommandTable">
-	<tr>
-		<th class="colParameter">GET Parameter</th>
-		<th class="colType">Type</th>
-		<th class="colValue">Value</th>
-		<th class="colDefault">Default</th>
-		<th class="colDescription">Description</th>
-	</tr>
-	<tr>
-		<td>cmd</td>
-		<td>string</td>
-		<td>submitQuiz</td>
-		<td>N/A</td>
-		<td>Submit a quiz that the authenticated user generated.</td>
-	</tr>
-	<tr>
-		<td>optionIdOfQuestion[X]</td>
-		<td>int</td>
-		<td>optionId</td>
-		<td>Skipped</td>
-		<td>The optionId of the option that was chosen for questionId X. Questions that were skipped can be excluded.</td>
-	</tr>
-	<tr>
-		<td colspan="5"><a href="?cmd=submitQuiz&optionIdOfQuestion11=12">?cmd=submitQuiz&optionIdOfQuestion11=12</a> (hardcoded dummy example)</td>
-</table>
+<div class="apiCommandSection" id="apiCommandSectionSubmitQuiz">
+	<span class="apiCommandSectionTitle">submitQuiz</span>
+	<div class="apiCommandSectionTable" id="apiCommandSectionTableSubmitQuiz">
+		<table>
+			<tr>
+				<td class="colParameter">cmd</td>
+				<td class="colType fontCode">string</td>
+				<td class="colValue">submitQuiz</td>
+				<td class="colDefault"></td>
+				<td>Submit a quiz that the authenticated user generated.</td>
+			</tr>
+			<tr>
+				<td class="colParameter">optionIdOfQuestion[X]</td>
+				<td class="colType fontCode">int</td>
+				<td class="colValue">optionId</td>
+				<td class="colDefault">Default: Skipped</td>
+				<td>The optionId of the option that was chosen for questionId X. Questions that were skipped can be excluded.</td>
+			</tr>
+		</table>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuiz&optionIdOfQuestion11=12">?cmd=submitQuiz&optionIdOfQuestion11=12</a> - Hardcoded dummy example.</div>
+	</div>
+</div>

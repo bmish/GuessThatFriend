@@ -1,7 +1,4 @@
 <?php
-// Report all PHP errors.
-error_reporting(-1);
-
 // Includes.
 require_once('classes/API.php');
 require_once('classes/DB.php');
