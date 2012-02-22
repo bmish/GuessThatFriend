@@ -11,16 +11,29 @@
 #import "QuizManager.h"
 #import "FBFriendCustomCell.h"
 #import "Friend.h"
+#import "QuizFeedbackViewController.h"
 
 @implementation MultipleChoiceQuizViewController
 
 @synthesize friendsTable;
 @synthesize questionString;
 @synthesize friendsList;
+@synthesize quizFeedbackViewController;
 
 - (IBAction)submitAnswers:(id)sender {
 	//TODO: Get the answers from GUI and send them to the server. Then wait
 	// for the result from the server, and display the result.
+    
+    if (quizFeedbackViewController == nil) {
+        quizFeedbackViewController = [[QuizFeedbackViewController alloc] 
+                                      initWithNibName:@"QuizFeedbackViewController" bundle:nil];
+    }
+    
+    if(self.modalViewController) {
+		[self dismissModalViewControllerAnimated:NO];
+	}
+	
+	[self presentModalViewController:quizFeedbackViewController animated:YES];
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -40,20 +53,26 @@
 }
 */
 
+/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	[super viewDidLoad];
+}
+*/
+
+- (void)viewWillAppear:(BOOL)animated {
 	QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil];
 	MultipleChoiceQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
 	
 	self.questionString = multipleChoiceQuestion.question;
 	friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.friends copyItems:YES];
-
+    
 	[questionTextView setText:[@"Question:\n" stringByAppendingString: self.questionString]];
 	
 	[multipleChoiceQuestion release];
 	[quizManager release];
 	
-	[super viewDidLoad];
+	[super viewWillAppear:animated];
 }
 
 /*
@@ -79,12 +98,14 @@
 	self.friendsTable = nil;
 	self.questionString = nil;
 	self.friendsList = nil;
+    self.quizFeedbackViewController = nil;
 }
 
 - (void)dealloc {
 	[friendsTable release];
 	[questionString release];
 	[friendsList release];
+    [quizFeedbackViewController release];
 	
     [super dealloc];
 }

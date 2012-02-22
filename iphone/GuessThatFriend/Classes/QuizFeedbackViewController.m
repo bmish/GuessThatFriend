@@ -14,7 +14,18 @@
 @synthesize nextButton;
 
 - (IBAction)goToNext:(id)sender{
-	//TODO: go to the next question.
+	// Go to the next question by dismissing this view. So this view's parent view will appear.
+    // The parent view of this view is responsible for showing the next question upon appearing.
+    
+    if(self.modalViewController) {
+		[self dismissModalViewControllerAnimated:NO];
+	}
+	
+    if ([self respondsToSelector:@selector(presentingViewController)]){
+        [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    } else {
+        [self.parentViewController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.

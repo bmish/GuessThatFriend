@@ -62,7 +62,8 @@
 	//TODO: finish implementation
 	
 	if (multipleChoiceQuizViewController == nil) {
-		multipleChoiceQuizViewController = [[MultipleChoiceQuizViewController alloc] initWithNibName:@"MultipleChoiceQuizViewController" bundle:nil];
+		multipleChoiceQuizViewController = [[MultipleChoiceQuizViewController alloc] 
+                                            initWithNibName:@"MultipleChoiceQuizViewController" bundle:nil];
 	}
 	
 	if(self.modalViewController) {
@@ -82,7 +83,8 @@
 
 - (IBAction)switchViewToSettings:(id)sender {
 	if(settingsViewController == nil) {
-		SettingsViewController *settingsController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+		SettingsViewController *settingsController = [[SettingsViewController alloc] 
+                                                      initWithNibName:@"SettingsViewController" bundle:nil];
 		self.settingsViewController = settingsController;
 		[settingsController release];
 	}
