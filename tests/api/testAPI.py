@@ -9,13 +9,15 @@ import urllib2
 import filecmp
 import os
 
+APIurl = "http://guessthatfriend.jasonsze.com/"
+
 def loadGetQuizJson(questionCount, optionCount, catID):
-    jsonObject = urllib2.urlopen("http://guessthatfriend.jasonsze.com/api/?cmd=getQuiz&questionCount="+str(questionCount)+"&optionCount="+str(optionCount)+"&categoryId="+str(catID));
+    jsonObject = urllib2.urlopen(APIurl+"api/?cmd=getQuiz&questionCount="+str(questionCount)+"&optionCount="+str(optionCount)+"&categoryId="+str(catID));
     parsedData = json.load(jsonObject);
     return parsedData;
 
 def loadSubmitQuizJson(questionNum):
-    jsonObject = urllib2.urlopen("http://guessthatfriend.jasonsze.com/api/?cmd=submitQuiz&optionIdOfQuestion"+str(questionNum)+"=");
+    jsonObject = urllib2.urlopen(APIurl+"api/?cmd=submitQuiz&optionIdOfQuestion"+str(questionNum)+"=");
     parsedData = json.load(jsonObject);
     return parsedData;
     
@@ -28,8 +30,8 @@ def testGetQuiz(self, questionCount, optionCount, catID):
     self.assertEquals(optionC, optionCount)
     questions = parsedData["questions"];
     for question in questions:
-        catID=question["categoryId"];
-        self.assertEqual(catID, catID)
+        categoryID=question["categoryId"];
+        self.assertEqual(categoryID, str(catID))
 
 def testSubmitQuiz(self, questionNum):
     parsedData = loadSubmitQuizJson(questionNum)
@@ -45,7 +47,7 @@ class Test(unittest.TestCase):
         testSubmitQuiz(self, 11)
         
     def testCategories(self):
-        jsonObject1 = urllib2.urlopen("http://guessthatfriend.jasonsze.com/api/?cmd=getCategories");
+        jsonObject1 = urllib2.urlopen(APIurl+"api/?cmd=getCategories");
         newFile = open('tmp.json','w')
         newFile.write(jsonObject1.read());
         newFile.close()
