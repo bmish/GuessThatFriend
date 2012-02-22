@@ -29,7 +29,6 @@ def testGetQuiz(self, questionCount, optionCount, catID):
     questions = parsedData["questions"];
     for question in questions:
         catID=question["categoryId"];
-        print(catID)
         self.assertEqual(catID, catID)
 
 def testSubmitQuiz(self, questionNum):
@@ -39,10 +38,10 @@ def testSubmitQuiz(self, questionNum):
             
 class Test(unittest.TestCase):
       
-    def testSomething(self):
+    def testGetQuiz1(self):
         testGetQuiz(self,1,2,2)
         
-    def testSomething2(self):
+    def testSubmitQuiz1(self):
         testSubmitQuiz(self, 11)
         
     def testCategories(self):
