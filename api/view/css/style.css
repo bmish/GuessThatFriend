@@ -97,3 +97,16 @@ body {
 .fontCode {
 	font-family: monospace;
 }
+
+.apiCommandSectionTitleIcon {
+	width: 26px;
+	height: 26px;
+}
+
+.apiCommandSectionTitleIconCollapsed {
+	background-image: url(view/images/RightTriangleIcon.png);
+}
+
+.apiCommandSectionTitleIconExpanded {
+	background-image: url(view/images/DownTriangleIcon.png);
+}

@@ -1,5 +1,7 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Guess That Friend API</title>
 <link href="view/css/style.css" rel="stylesheet" type="text/css">
 <script src="view/js/jquery-1.7.1.js"></script>
@@ -9,7 +11,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="pageTitle">Guess That Friend API</div>
-		<div id="subtitle"><a target="_new" href="https://github.com/bmish/GuessThatFriend">github</a> - <a href="/mysql">phpMyAdmin</a> - <a target="_new" href="https://wiki.engr.illinois.edu/display/cs428sp12/bmishk2nirh1">Wiki</a></div>
+		<div id="subtitle"><a target="_blank" href="https://github.com/bmish/GuessThatFriend">github</a> - <a target="_blank" href="/mysql">phpMyAdmin</a> - <a target="_blank" href="https://wiki.engr.illinois.edu/display/cs428sp12/bmishk2nirh1">Wiki</a></div>
 	</div>
 	<div id="page">
 		<div id="body">
@@ -20,6 +22,5 @@
 		</div>
 	</div>
 </div>
-</table>
 </body>
 </html>

@@ -5,7 +5,7 @@
 			<tr>
 				<td class="colParameter">cmd</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">getQuiz</td>
+				<td class="colValue">&ldquo;getQuiz&rdquo;</td>
 				<td class="colDefault"></td>
 				<td>Generate a quiz on what the authenticated user's friends like.</td>
 			</tr>
@@ -38,6 +38,6 @@
 				<td>Should the quiz focus on a particular category of likes like books or movies?</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getQuiz&questionCount=1&optionCount=2">?cmd=getQuiz&questionCount=1&optionCount=2</a> - Hardcoded dummy example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getQuiz&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2">?cmd=getQuiz&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2</a> - Hardcoded dummy example.</div>
 	</div>
 </div>
