@@ -61,7 +61,11 @@
 		[self dismissModalViewControllerAnimated:NO];
 	}
 	
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+    if ([self respondsToSelector:@selector(presentingViewController)]){
+        [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    } else {
+        [self.parentViewController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)switchViewToMenu:(id)sender {

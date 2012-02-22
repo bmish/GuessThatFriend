@@ -49,9 +49,15 @@
 
 - (IBAction)switchViewToFBLogin:(id)sender {
 	UIViewController *root = self;
-	while (root.parentViewController != nil) {
-		root = root.parentViewController;
-	}
+    if ([self respondsToSelector:@selector(presentingViewController)]){
+        while (root.presentingViewController != nil) {
+            root = root.presentingViewController;
+        }
+    } else {
+        while (root.parentViewController != nil) {
+            root = root.parentViewController;
+        }
+    }
 	
 	[root dismissModalViewControllerAnimated:YES];
 }
@@ -61,7 +67,11 @@
 		[self dismissModalViewControllerAnimated:NO];
 	}
 	
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+    if ([self respondsToSelector:@selector(presentingViewController)]){
+        [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    } else {
+        [self.parentViewController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
