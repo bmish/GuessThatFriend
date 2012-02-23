@@ -16,7 +16,7 @@
 - (Friend *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath {
 	self.name = friendName;
 	self.image = [UIImage imageNamed:imagePath];
-	
+
 	return [super init];
 }
 
