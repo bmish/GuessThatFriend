@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
-    log_file = "/project/httpd-www/tests/log_file.txt"
+    log_file = "/project/GuessThatFriend/tests/log_file.txt"
     f = open(log_file, 'w')
     runner = unittest.TxtTestRunner(f)
     unittest.main(testRunner=runner)
