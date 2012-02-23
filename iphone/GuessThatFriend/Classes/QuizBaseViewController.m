@@ -1,4 +1,4 @@
-    //
+//
 //  QuizBaseViewController.m
 //  GuessThatFriend
 //
@@ -13,9 +13,15 @@
 @synthesize questionID;
 @synthesize questionTextView;
 @synthesize submitButton;
+@synthesize doneButton;
 
 // Not implemented, this should be implemented by sub-classes.
 - (IBAction)submitAnswers:(id)sender {
+    //TODO:
+}
+
+- (IBAction)finishQuiz:(id)sender {
+    //TODO: implementation
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -40,10 +46,12 @@
 	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
 	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 	[submitButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+    [doneButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
 	
 	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
 	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 	[submitButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+    [doneButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 	
     [super viewDidLoad];
 }
@@ -70,11 +78,13 @@
 	
 	self.questionTextView = nil;	
 	self.submitButton = nil;
+    self.doneButton = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
 	[submitButton release];
+    [doneButton release];
 	
     [super dealloc];
 }

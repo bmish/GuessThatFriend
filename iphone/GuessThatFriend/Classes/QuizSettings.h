@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+//	This is a singleton object.
+
 @interface QuizSettings : NSObject {
-    
+    int questionCount;
+    int option;
+    NSString *friendFacebookID;
 }
+
+@property int questionCount;
+@property int option;
+@property (nonatomic, retain) NSString *friendFacebookID;
 
 @end

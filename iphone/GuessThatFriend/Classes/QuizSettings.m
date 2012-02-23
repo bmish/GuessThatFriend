@@ -10,4 +10,14 @@
 
 @implementation QuizSettings
 
+@synthesize questionCount;
+@synthesize option;
+@synthesize friendFacebookID;
+
+- (void)dealloc {
+    [friendFacebookID release];
+    
+	[super dealloc];
+}
+
 @end

@@ -134,17 +134,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D12199814F5BB740051646B /* Models */,
 				4D1A375414DB2A7900BEB8B8 /* ViewControllers */,
-				4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */,
-				4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */,
-				4D8D7AB014EC5CF400CAA606 /* QuizManager.h */,
-				4D8D7AB114EC5CF400CAA606 /* QuizManager.m */,
-				4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */,
-				4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */,
-				4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */,
-				4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */,
-				4D8D7A5F14EBB8BC00CAA606 /* Friend.h */,
-				4D8D7A6014EBB8BC00CAA606 /* Friend.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -201,6 +192,23 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D12199814F5BB740051646B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */,
+				4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */,
+				4D8D7AB014EC5CF400CAA606 /* QuizManager.h */,
+				4D8D7AB114EC5CF400CAA606 /* QuizManager.m */,
+				4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */,
+				4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */,
+				4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */,
+				4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */,
+				4D8D7A5F14EBB8BC00CAA606 /* Friend.h */,
+				4D8D7A6014EBB8BC00CAA606 /* Friend.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		4D1A373114DB289F00BEB8B8 /* Icon */ = {
