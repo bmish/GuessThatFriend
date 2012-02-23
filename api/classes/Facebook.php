@@ -1,8 +1,7 @@
 <?php
 
 require 'FacebookSDK.php';
-class Facebook
-{
+class Facebook_API{
 	
 	
 }
