@@ -1,6 +1,16 @@
 <?php
 class API {
 	public static function getQuiz() {
+		//Change this ...
+
+
+		/*
+		Quiz q = new Quiz;
+		1.GENERATE QUIZ: initialize quiz variables with facebook data
+		2.PRINT QUIZ: print quiz details in json format 
+		3.STORE QUIZ: in db
+		*/
+
 		header('Content-type: application/json');
 		require_once("examples/json/getQuiz.json");
 	}
