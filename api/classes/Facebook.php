@@ -1,6 +1,6 @@
 <?php
 
-require 'facebookSDK.php';
+require 'FacebookSDK.php';
 class Facebook
 {
 	
