@@ -62,5 +62,5 @@ if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     log_file = "/project/GuessThatFriend/tests/log_file.txt"
     f = open(log_file, 'w')
-    runner = unittest.TxtTestRunner(f)
+    runner = unittest.TextTestRunner(f)
     unittest.main(testRunner=runner)
