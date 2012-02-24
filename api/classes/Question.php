@@ -1,19 +1,19 @@
 <?php
 class Question
 {
-	int questionId;
-	int categoryId;
-	string categoryFacebookName;	//eg movie
-	string categoryPrettyName;
-	string topicFacebookId;		//eg 300
+	protected $questionId;
+	protected $categoryId;
+	protected $categoryFacebookName;	//eg movie
+	protected $categoryPrettyName;
+	protected $topicFacebookId;		//eg 300
 	
 	//Main question string
-	string text;
-	boolean success;
+	protected $text;
+	protected $success;
 
 
 	//Will behave differently based on Question type
-	// string makeQuestionText(){}
+	// $makeQuestionText(){}
 
 }
 ?>

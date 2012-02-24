@@ -1,10 +1,11 @@
 <?php
 class MCQuestion extends Question
 {
-	string correctBlankId;
-	string answerText;
-	string facebookProfileURL;
-	string facebookPictureURL;
+	protected $correctBlankId;
+	protected $answerText;
+	protected $facebookProfileURL;
+	protected $facebookPictureURL;
+
 	// string makeQuestionText(){}
 }
 ?>

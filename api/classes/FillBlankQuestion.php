@@ -1,7 +1,7 @@
 <?php
 class FillBlankQuestion extends Question
 {
-	int correctOptionId;
+	protected $correctOptionId;
 	
 	// string makeQuestionText(){}
 }

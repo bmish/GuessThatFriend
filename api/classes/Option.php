@@ -2,10 +2,10 @@
 class Option
 {
 
-	int optionId;
-	string facebookId;
-	string facebookPictureURL;
-	string facebookProfileURL;
+	protected $optionId;
+	protected $facebookId;
+	protected $facebookPictureURL;
+	protected $facebookProfileURL;
 
 }
 ?>
