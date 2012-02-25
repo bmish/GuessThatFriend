@@ -7,7 +7,7 @@
 //
 
 #import "GuessThatFriendAppDelegate.h"
-#import "GuessThatFriendViewController.h"
+#import "MultipleChoiceQuizViewController.h"
 
 @implementation GuessThatFriendAppDelegate
 
