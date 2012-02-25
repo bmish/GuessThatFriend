@@ -13,20 +13,73 @@
 
 @synthesize window;
 @synthesize viewController;
-
+@synthesize facebook;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Override point for customization after application launch.
-
     // Add the view controller's view to the window and display.
     [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
+    
+    // Override point for customization after application launch.
+    facebook = [[Facebook alloc] initWithAppId:@"178461392264777" andDelegate:self];
+    
+    // Check for previsouly saved access token.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    // Check if the session is valid. If not, ask user to log in.
+    if (![facebook isSessionValid]) {
+        [facebook authorize:nil];
+    }
 
     return YES;
+}
+
+// Pre 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [facebook handleOpenURL:url]; 
+}
+
+// For 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [facebook handleOpenURL:url]; 
+}
+
+- (void)fbDidLogin {
+    // Save the user's access token to UserDefaults.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    NSLog(@"access token is ");
+    NSLog(@"%@", facebook.accessToken);
+}
+
+- (void)fbDidNotLogin:(BOOL)cancelled {
+    
+}
+
+- (void)fbDidLogout {
+
+}
+
+- (void)fbDidExtendToken:(NSString*)accessToken
+               expiresAt:(NSDate*)expiresAt {
+    
+}
+
+- (void)fbSessionInvalidated {
+    
 }
 
 
@@ -36,7 +89,6 @@
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 }
-
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     /*
