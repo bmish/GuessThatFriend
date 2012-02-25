@@ -15,7 +15,7 @@
 	</div>
 	<div id="page">
 		<div id="body">
-			<div id="pageDescription">Parameters are GET. Some of these commands will eventually require authentication with OAuth.</div>
+			<div id="pageDescription">Parameters are GET. Some commands require you to pass along an access token from Facebook.</div>
 			<?php include_once("view/apiCommandTables/getQuiz.php"); ?>
 			<?php include_once("view/apiCommandTables/submitQuiz.php"); ?>
 			<?php include_once("view/apiCommandTables/getCategories.php"); ?>

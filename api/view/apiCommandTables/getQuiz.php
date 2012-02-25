@@ -10,6 +10,13 @@
 				<td>Generate a quiz on what the authenticated user's friends like.</td>
 			</tr>
 			<tr>
+				<td class="colParameter">facebookAccessToken</td>
+				<td class="colType fontCode">string</td>
+				<td class="colValue">User's access token</td>
+				<td class="colDefault"></td>
+				<td>The access token for the user's current Facebook session.</td>
+			</tr>
+			<tr>
 				<td class="colParameter">questionCount</td>
 				<td class="colType fontCode">int</td>
 				<td class="colValue">1-100</td>
@@ -38,6 +45,6 @@
 				<td>Should the quiz focus on a particular category of likes like books or movies?</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getQuiz&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2">?cmd=getQuiz&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2</a> - Hardcoded dummy example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getQuiz&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2">?cmd=getQuiz&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2</a> - Hardcoded dummy example.</div>
 	</div>
 </div>
