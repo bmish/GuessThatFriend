@@ -1,11 +1,17 @@
 <?php
 class Quiz
 {	
-	function __construct(){
+	//date
+	public $questionCount;
+	protected $optionCount;
+	protected $userFacebookId;		
+	//protected $questionArray = array[];
+
+	public function __construct(){
 		print "In constructor.<br />";
 	}
 
-	function testPrint(){
+	public function testPrint(){
 		print "Testing print from quiz object.";
 	}
 }
