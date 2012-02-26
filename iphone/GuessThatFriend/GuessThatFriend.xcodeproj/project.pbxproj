@@ -55,7 +55,7 @@
 		4D8D7A2F14EBABC800CAA606 /* QuizFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */; };
 		4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */; };
 		4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */; };
-		4D8D7A6114EBB8BC00CAA606 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A6014EBB8BC00CAA606 /* Friend.m */; };
+		4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A6014EBB8BC00CAA606 /* Option.m */; };
 		4D8D7AAD14EC5C9300CAA606 /* MultipleChoiceQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */; };
 		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
@@ -70,6 +70,10 @@
 		4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
+		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
+		93BA120914F9B10100248763 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120814F9B10100248763 /* Category.m */; };
+		93BA120C14F9BAF000248763 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120B14F9BAF000248763 /* Subject.m */; };
+		93FC73C614F9AE15002EB781 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC73C514F9AE15002EB781 /* Question.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,8 +148,8 @@
 		4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuizFeedbackViewController.xib; path = Classes/QuizFeedbackViewController.xib; sourceTree = "<group>"; };
 		4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleChoiceQuizViewController.xib; sourceTree = "<group>"; };
 		4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
-		4D8D7A5F14EBB8BC00CAA606 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
-		4D8D7A6014EBB8BC00CAA606 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		4D8D7A5F14EBB8BC00CAA606 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
+		4D8D7A6014EBB8BC00CAA606 /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
 		4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleChoiceQuestion.h; sourceTree = "<group>"; };
 		4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleChoiceQuestion.m; sourceTree = "<group>"; };
 		4D8D7AB014EC5CF400CAA606 /* QuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizManager.h; sourceTree = "<group>"; };
@@ -166,6 +170,14 @@
 		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GuessThatFriend-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillBlankQuestion.h; sourceTree = "<group>"; };
+		938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillBlankQuestion.m; sourceTree = "<group>"; };
+		93BA120714F9B10100248763 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		93BA120814F9B10100248763 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		93BA120A14F9BAF000248763 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subject.h; sourceTree = "<group>"; };
+		93BA120B14F9BAF000248763 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subject.m; sourceTree = "<group>"; };
+		93FC73C414F9AE15002EB781 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		93FC73C514F9AE15002EB781 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,12 +265,20 @@
 				4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */,
 				4D8D7AB014EC5CF400CAA606 /* QuizManager.h */,
 				4D8D7AB114EC5CF400CAA606 /* QuizManager.m */,
+				93FC73C414F9AE15002EB781 /* Question.h */,
+				938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */,
+				938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */,
+				93FC73C514F9AE15002EB781 /* Question.m */,
 				4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */,
 				4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */,
 				4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */,
 				4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */,
-				4D8D7A5F14EBB8BC00CAA606 /* Friend.h */,
-				4D8D7A6014EBB8BC00CAA606 /* Friend.m */,
+				4D8D7A5F14EBB8BC00CAA606 /* Option.h */,
+				93BA120A14F9BAF000248763 /* Subject.h */,
+				93BA120B14F9BAF000248763 /* Subject.m */,
+				4D8D7A6014EBB8BC00CAA606 /* Option.m */,
+				93BA120714F9B10100248763 /* Category.h */,
+				93BA120814F9B10100248763 /* Category.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -565,7 +585,7 @@
 				4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */,
 				4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */,
 				4D8D7A2E14EBABC800CAA606 /* QuizFeedbackViewController.m in Sources */,
-				4D8D7A6114EBB8BC00CAA606 /* Friend.m in Sources */,
+				4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */,
 				4D8D7AAD14EC5C9300CAA606 /* MultipleChoiceQuestion.m in Sources */,
 				4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */,
 				4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */,
@@ -581,6 +601,10 @@
 				4D3F819514F98E9500245D4F /* SBJsonBase.m in Sources */,
 				4D3F819614F98E9500245D4F /* SBJsonParser.m in Sources */,
 				4D3F819714F98E9500245D4F /* SBJsonWriter.m in Sources */,
+				93FC73C614F9AE15002EB781 /* Question.m in Sources */,
+				93BA120914F9B10100248763 /* Category.m in Sources */,
+				93BA120C14F9BAF000248763 /* Subject.m in Sources */,
+				938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

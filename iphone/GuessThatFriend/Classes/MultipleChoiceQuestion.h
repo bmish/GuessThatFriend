@@ -8,13 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MultipleChoiceQuestion : NSObject {
-	NSString *question;
-	NSMutableArray *friends;
-}
+#import "Question.h"
 
-@property (nonatomic, retain) NSString *question;
-@property (nonatomic, retain) NSMutableArray *friends;
+@interface MultipleChoiceQuestion : Question {
+	NSMutableArray *options;
+}
 
 - (MultipleChoiceQuestion *)initQuestion;
 

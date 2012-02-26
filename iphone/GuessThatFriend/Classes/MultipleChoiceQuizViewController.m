@@ -10,7 +10,7 @@
 #import "MultipleChoiceQuestion.h"
 #import "QuizManager.h"
 #import "FBFriendCustomCell.h"
-#import "Friend.h"
+#import "Option.h"
 #import "QuizFeedbackViewController.h"
 
 @implementation MultipleChoiceQuizViewController
@@ -64,8 +64,8 @@
 	QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil];
 	MultipleChoiceQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
 	
-	self.questionString = multipleChoiceQuestion.question;
-	friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.friends copyItems:YES];
+	self.questionString = multipleChoiceQuestion.text;
+	friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.options copyItems:YES];
     
 	[questionTextView setText:[@"Question:\n" stringByAppendingString: self.questionString]];
 	
@@ -128,7 +128,7 @@
 	
 	NSUInteger row = [indexPath row];
 	
-	Friend *friend = [friendsList objectAtIndex:row];
+	Option *friend = [friendsList objectAtIndex:row];
 	cell.picture.image = friend.image;
 	cell.name.text = friend.name;
 	
