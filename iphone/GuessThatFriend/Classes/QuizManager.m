@@ -7,7 +7,7 @@
 //
 
 #import "QuizManager.h"
-#import "MultipleChoiceQuestion.h"
+#import "MCQuestion.h"
 
 @implementation QuizManager
 
@@ -30,10 +30,10 @@
 }
 
 // Call should free the returned object.
-- (MultipleChoiceQuestion *)getNextQuestion {
+- (MCQuestion *)getNextQuestion {
 	//TODO: actual implementation
 	
-	MultipleChoiceQuestion *question = [[MultipleChoiceQuestion alloc] initQuestion];
+	MCQuestion *question = [[MCQuestion alloc] initQuestion];
 	
 	return question;
 }

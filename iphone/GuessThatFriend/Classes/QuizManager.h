@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class QuizSettings;
-@class MultipleChoiceQuestion;
+@class MCQuestion;
 
 @interface QuizManager : NSObject {
 	unsigned int numQuestions;
@@ -21,6 +21,6 @@
 
 - (QuizManager *)initWithQuizSettings:(QuizSettings *)settings;
 - (void)requestQuizFromServer;
-- (MultipleChoiceQuestion *)getNextQuestion;
+- (MCQuestion *)getNextQuestion;
 
 @end

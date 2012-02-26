@@ -1,11 +1,8 @@
 <?php
 class Option
 {
-
 	protected $optionId;
-	protected $facebookId;
-	protected $facebookPictureURL;
-	protected $facebookProfileURL;
-
+	protected $questionId;		// ID of the Question that this Option is part of.
+	protected $subjectId;		// The person or page of this Option.
 }
 ?>

@@ -7,7 +7,9 @@
 //
 
 #import "Category.h"
-#import "Option.h"
+#import "Subject.h"
+
+@class Option; // Forward class to avoid circular dependency between Question and Option.
 
 @interface Question : NSObject {
     int questionId;
@@ -15,6 +17,7 @@
     Subject *subject;       // Subject of the question (a person or page).
 	NSString *text;         // Question text.
     Option *correctOption;  // The correct answer to this question.
+    Option *chosenOption;   // The answer that the user chose (if the question has been answered).
 }
 
 @property (nonatomic, assign) int questionId;
@@ -22,5 +25,6 @@
 @property (nonatomic, retain) Subject *subject;
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, retain) Option *correctOption;
+@property (nonatomic, retain) Option *chosenOption;
 
 @end

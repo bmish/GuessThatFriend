@@ -7,7 +7,7 @@
 //
 
 #import "MultipleChoiceQuizViewController.h"
-#import "MultipleChoiceQuestion.h"
+#import "MCQuestion.h"
 #import "QuizManager.h"
 #import "FBFriendCustomCell.h"
 #import "Option.h"
@@ -62,7 +62,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil];
-	MultipleChoiceQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
+	MCQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
 	
 	self.questionString = multipleChoiceQuestion.text;
 	//friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.options copyItems:YES];

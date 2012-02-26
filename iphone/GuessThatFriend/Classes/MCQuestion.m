@@ -6,14 +6,14 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MultipleChoiceQuestion.h"
+#import "MCQuestion.h"
 #import "Option.h"
 
-@implementation MultipleChoiceQuestion
+@implementation MCQuestion
 
 @synthesize options;
 
-- (MultipleChoiceQuestion *)initQuestion {
+- (MCQuestion *)initQuestion {
 	//TODO: actual implementation
 	
 	text = [[NSString alloc] initWithString:@"Which of the following four people likes the movie 300?"];
@@ -49,7 +49,6 @@
 }
 
 - (void)dealloc {
-	[text release];
 	[options release];
 	
 	[super dealloc];

@@ -10,7 +10,7 @@
 
 @implementation Option
 
-@synthesize optionId, subject;
+@synthesize optionId, question, subject;
 
 - (Option *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath {
 	self.subject = [[Subject alloc] initWithName:friendName andImagePath:imagePath];
@@ -26,6 +26,7 @@
 }
 
 - (void)dealloc {
+    [question release];
     [subject release];
 	[super dealloc];
 }

@@ -1,6 +1,6 @@
 <?php
 class API {
-	public static function getQuiz() {
+	public static function getQuestions() {
 		//Change this ...
 
 
@@ -12,12 +12,12 @@ class API {
 		*/
 
 		header('Content-type: application/json');
-		require_once("examples/json/getQuiz.json");
+		require_once("examples/json/getQuestions.json");
 	}
 
-	public static function submitQuiz() {
+	public static function submitQuestions() {
 		header('Content-type: application/json');
-		require_once("examples/json/submitQuiz.json");
+		require_once("examples/json/submitQuestions.json");
 	}
 
 	public static function getCategories() {

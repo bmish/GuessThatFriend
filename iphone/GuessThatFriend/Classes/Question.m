@@ -10,6 +10,15 @@
 
 @implementation Question
 
-@synthesize questionId, category, subject, text, correctOption;
+@synthesize questionId, category, subject, text, correctOption, chosenOption;
+
+- (void)dealloc {
+    [category release];
+    [subject release];
+    [text release];
+    [correctOption release];
+    [chosenOption release];
+	[super dealloc];
+}
 
 @end

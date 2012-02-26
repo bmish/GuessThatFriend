@@ -1,13 +1,13 @@
-<div class="apiCommandSection" id="apiCommandSectionSubmitQuiz">
-	<span class="apiCommandSectionTitle">submitQuiz</span>
-	<div class="apiCommandSectionTable" id="apiCommandSectionTableSubmitQuiz">
+<div class="apiCommandSection" id="apiCommandSectionSubmitQuestions">
+	<span class="apiCommandSectionTitle">submitQuestions</span>
+	<div class="apiCommandSectionTable" id="apiCommandSectionTableSubmitQuestions">
 		<table>
 			<tr>
 				<td class="colParameter">cmd</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">&ldquo;submitQuiz&rdquo;</td>
+				<td class="colValue">&ldquo;submitQuestions&rdquo;</td>
 				<td class="colDefault"></td>
-				<td>Submit a quiz that the authenticated user generated.</td>
+				<td>Submit questions that the authenticated user answered.</td>
 			</tr>
 			<tr>
 				<td class="colParameter">facebookAccessToken</td>
@@ -24,6 +24,6 @@
 				<td>The optionId of the option that was chosen for questionId X. Questions that were skipped can be excluded.</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=submitQuiz&amp;facebookAccessToken=xxx&amp;optionIdOfQuestion11=12">?cmd=submitQuiz&amp;facebookAccessToken=xxx&amp;optionIdOfQuestion11=12</a> - Hardcoded dummy example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;optionIdOfQuestion11=12">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;optionIdOfQuestion11=12</a> - Hardcoded dummy example.</div>
 	</div>
 </div>

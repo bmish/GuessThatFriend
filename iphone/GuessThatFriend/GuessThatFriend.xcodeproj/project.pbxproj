@@ -56,7 +56,7 @@
 		4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */; };
 		4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */; };
 		4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A6014EBB8BC00CAA606 /* Option.m */; };
-		4D8D7AAD14EC5C9300CAA606 /* MultipleChoiceQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */; };
+		4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */; };
 		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
 		4D8D7ADB14EC65BD00CAA606 /* colin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD714EC65BD00CAA606 /* colin.jpg */; };
@@ -150,8 +150,8 @@
 		4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
 		4D8D7A5F14EBB8BC00CAA606 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
 		4D8D7A6014EBB8BC00CAA606 /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
-		4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleChoiceQuestion.h; sourceTree = "<group>"; };
-		4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleChoiceQuestion.m; sourceTree = "<group>"; };
+		4D8D7AAB14EC5C9300CAA606 /* MCQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MCQuestion.h; sourceTree = "<group>"; };
+		4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCQuestion.m; sourceTree = "<group>"; };
 		4D8D7AB014EC5CF400CAA606 /* QuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizManager.h; sourceTree = "<group>"; };
 		4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizManager.m; sourceTree = "<group>"; };
 		4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSettings.h; sourceTree = "<group>"; };
@@ -267,8 +267,8 @@
 				93BA120814F9B10100248763 /* Category.m */,
 				938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */,
 				938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */,
-				4D8D7AAB14EC5C9300CAA606 /* MultipleChoiceQuestion.h */,
-				4D8D7AAC14EC5C9300CAA606 /* MultipleChoiceQuestion.m */,
+				4D8D7AAB14EC5C9300CAA606 /* MCQuestion.h */,
+				4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */,
 				4D8D7A5F14EBB8BC00CAA606 /* Option.h */,
 				4D8D7A6014EBB8BC00CAA606 /* Option.m */,
 				93FC73C414F9AE15002EB781 /* Question.h */,
@@ -586,7 +586,7 @@
 				4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */,
 				4D8D7A2E14EBABC800CAA606 /* QuizFeedbackViewController.m in Sources */,
 				4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */,
-				4D8D7AAD14EC5C9300CAA606 /* MultipleChoiceQuestion.m in Sources */,
+				4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */,
 				4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */,
 				4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */,
 				4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */,
