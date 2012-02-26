@@ -10,27 +10,23 @@
 
 @implementation Option
 
-@synthesize name;
-@synthesize image;
+@synthesize optionId, subject;
 
 - (Option *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath {
-	self.name = friendName;
-	self.image = [UIImage imageNamed:imagePath];
+	self.subject = [[Subject alloc] initWithName:friendName andImagePath:imagePath];
 
 	return [super init];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
 	Option *friendCopy = [[Option allocWithZone:zone] init];
-	friendCopy.name = name;
-	friendCopy.image = image;
+	friendCopy.subject.name = subject.name; // TODO
+	friendCopy.subject.picture = subject.picture; // TODO
 	return friendCopy;
 }
 
 - (void)dealloc {
-	[name release];
-	[image release];
-	
+    [subject release];
 	[super dealloc];
 }
 

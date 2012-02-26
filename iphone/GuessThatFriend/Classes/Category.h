@@ -14,4 +14,8 @@
     NSString *prettyName;   // Pretty name that we gave to this category.
 }
 
+@property (nonatomic, assign) int categoryId;
+@property (nonatomic, retain) NSString *facebookName;
+@property (nonatomic, retain) NSString *prettyName;
+
 @end

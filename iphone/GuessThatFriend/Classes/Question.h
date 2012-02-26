@@ -17,7 +17,10 @@
     Option *correctOption;  // The correct answer to this question.
 }
 
+@property (nonatomic, assign) int questionId;
+@property (nonatomic, retain) Category *category;
+@property (nonatomic, retain) Subject *subject;
 @property (nonatomic, retain) NSString *text;
-@property (nonatomic, retain) NSMutableArray *options;
+@property (nonatomic, retain) Option *correctOption;
 
 @end

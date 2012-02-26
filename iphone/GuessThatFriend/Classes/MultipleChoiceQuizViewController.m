@@ -65,7 +65,8 @@
 	MultipleChoiceQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
 	
 	self.questionString = multipleChoiceQuestion.text;
-	friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.options copyItems:YES];
+	//friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.options copyItems:YES];
+    friendsList = [NSArray arrayWithArray:multipleChoiceQuestion.options];
     
 	[questionTextView setText:[@"Question:\n" stringByAppendingString: self.questionString]];
 	
@@ -129,8 +130,8 @@
 	NSUInteger row = [indexPath row];
 	
 	Option *friend = [friendsList objectAtIndex:row];
-	cell.picture.image = friend.image;
-	cell.name.text = friend.name;
+	cell.picture.image = friend.subject.picture;
+	cell.name.text = friend.subject.name;
 	
 	return cell;
 }

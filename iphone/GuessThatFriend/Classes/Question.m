@@ -10,7 +10,6 @@
 
 @implementation Question
 
-@synthesize text;
-@synthesize options;
+@synthesize questionId, category, subject, text, correctOption;
 
 @end

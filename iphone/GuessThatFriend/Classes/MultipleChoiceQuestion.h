@@ -14,6 +14,8 @@
 	NSMutableArray *options;
 }
 
+@property (nonatomic, retain) NSMutableArray *options;
+
 - (MultipleChoiceQuestion *)initQuestion;
 
 @end

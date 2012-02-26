@@ -11,6 +11,7 @@
 
 @implementation MultipleChoiceQuestion
 
+@synthesize options;
 
 - (MultipleChoiceQuestion *)initQuestion {
 	//TODO: actual implementation
@@ -43,7 +44,7 @@
 	friend = [[Option alloc] initWithName:@"Tian" andImagePath:@"tian.jpg"];
 	[options addObject:friend];
 	[friend release];
-	
+
 	return [super init];
 }
 

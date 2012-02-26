@@ -12,12 +12,10 @@
 @interface Option : NSObject <NSCopying> {
     int optionId;
     Subject *subject;   // The subject of this option (a person or page).
-	NSString *name;     // To be deleted (stored in subject instead).
-	UIImage *image;     // To be deleted (stored in subject instead).
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, assign) int optionId;
+@property (nonatomic, retain) Subject *subject;
 
 - (Option *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath;
 - (id)copyWithZone:(NSZone *)zone;
