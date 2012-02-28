@@ -46,16 +46,16 @@ class Test(unittest.TestCase):
     def testSubmitQuiz1(self):
         testSubmitQuiz(self, 11)
         
-    def testCategories(self):
-        jsonObject1 = urllib2.urlopen(APIurl+"api/?cmd=getCategories");
-        newFile = open('tmp.json','w')
-        newFile.write(jsonObject1.read());
-        newFile.close()
-        
-        diff = filecmp.cmp('tmp.json', 'categories.json')
-        os.remove('tmp.json')
-        
-        self.assertTrue(diff)
+##    def testCategories(self):
+##        jsonObject1 = urllib2.urlopen(APIurl+"api/?cmd=getCategories");
+##        newFile = open('tmp.json','w')
+##        newFile.write(jsonObject1.read());
+##        newFile.close()
+##        
+##        diff = filecmp.cmp('tmp.json', 'categories.json')
+##       os.remove('tmp.json')
+##        
+##        self.assertTrue(diff)
 
 
 if __name__ == "__main__":
