@@ -1,7 +1,8 @@
 <?php
 class FillBlankQuestion extends Question
 {
-	protected $correctOptionId;		// ID of the Option that stores the correct answer to this question.
+	protected $correctAnswerText;	// Text of the correct answer.
+	protected $userAnswerText;	// Text of the user's answer.	
 		
 	// string makeQuestionText(){}
 }
