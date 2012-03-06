@@ -14,9 +14,7 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		4D1A373914DB28B000BEB8B8 /* ho-oh.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A373814DB28B000BEB8B8 /* ho-oh.gif */; };
-		4D1A37F014DB683E00BEB8B8 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */; };
 		4D1A37F114DB683E00BEB8B8 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A37EF14DB683E00BEB8B8 /* AboutViewController.xib */; };
-		4D1E2E7F14E33FC700FA9B1B /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */; };
 		4D1E2E8014E33FC700FA9B1B /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1E2E7E14E33FC700FA9B1B /* MainMenuViewController.xib */; };
 		4D3F818014F98E9500245D4F /* categories.pbxbtree in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815214F98E9500245D4F /* categories.pbxbtree */; };
 		4D3F818114F98E9500245D4F /* cdecls.pbxbtree in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815314F98E9500245D4F /* cdecls.pbxbtree */; };
@@ -86,11 +84,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessThatFriend_Prefix.pch; sourceTree = "<group>"; };
 		4D1A373814DB28B000BEB8B8 /* ho-oh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ho-oh.gif"; sourceTree = "<group>"; };
-		4D1A37ED14DB683E00BEB8B8 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		4D1A37EF14DB683E00BEB8B8 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AboutViewController.xib; path = Classes/AboutViewController.xib; sourceTree = "<group>"; };
-		4D1E2E7C14E33FC700FA9B1B /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
-		4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		4D1E2E7E14E33FC700FA9B1B /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenuViewController.xib; path = Classes/MainMenuViewController.xib; sourceTree = "<group>"; };
 		4D3F815214F98E9500245D4F /* categories.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = categories.pbxbtree; sourceTree = "<group>"; };
 		4D3F815314F98E9500245D4F /* cdecls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = cdecls.pbxbtree; sourceTree = "<group>"; };
@@ -428,10 +422,6 @@
 		4D8D7A0A14EBA63300CAA606 /* CommonViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4D1A37ED14DB683E00BEB8B8 /* AboutViewController.h */,
-				4D1A37EE14DB683E00BEB8B8 /* AboutViewController.m */,
-				4D1E2E7C14E33FC700FA9B1B /* MainMenuViewController.h */,
-				4D1E2E7D14E33FC700FA9B1B /* MainMenuViewController.m */,
 				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
 			);
@@ -572,8 +562,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* GuessThatFriendAppDelegate.m in Sources */,
-				4D1A37F014DB683E00BEB8B8 /* AboutViewController.m in Sources */,
-				4D1E2E7F14E33FC700FA9B1B /* MainMenuViewController.m in Sources */,
 				4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */,
 				4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */,
 				4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */,
