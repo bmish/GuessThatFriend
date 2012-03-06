@@ -12,14 +12,12 @@
 	int questionID;
 	
 	UITextView *questionTextView;
-	UIButton *submitButton;
-    UIButton *doneButton;
+	UIButton *nextButton;
 }
 
 @property int questionID;
 @property (nonatomic, retain) IBOutlet UITextView *questionTextView;
-@property (nonatomic, retain) IBOutlet UIButton *submitButton;
-@property (nonatomic, retain) IBOutlet UIButton *doneButton;
+@property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
 - (IBAction)submitAnswers:(id)sender;
 - (IBAction)finishQuiz:(id)sender;

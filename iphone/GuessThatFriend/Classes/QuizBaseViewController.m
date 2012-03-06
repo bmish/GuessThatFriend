@@ -12,8 +12,7 @@
 
 @synthesize questionID;
 @synthesize questionTextView;
-@synthesize submitButton;
-@synthesize doneButton;
+@synthesize nextButton;
 
 // Not implemented, this should be implemented by sub-classes.
 - (IBAction)submitAnswers:(id)sender {
@@ -45,13 +44,11 @@
 - (void)viewDidLoad {
 	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
 	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[submitButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-    [doneButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+	[nextButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
 	
 	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
 	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[submitButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
-    [doneButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 	
     [super viewDidLoad];
 }
@@ -77,14 +74,12 @@
     // e.g. self.myOutlet = nil;
 	
 	self.questionTextView = nil;	
-	self.submitButton = nil;
-    self.doneButton = nil;
+	self.nextButton = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
-	[submitButton release];
-    [doneButton release];
+	[nextButton release];
 	
     [super dealloc];
 }
