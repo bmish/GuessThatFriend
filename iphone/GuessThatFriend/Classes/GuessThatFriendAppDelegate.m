@@ -30,10 +30,13 @@
         CGRect statusBarRect;
         statusBarRect = [[UIApplication sharedApplication] statusBarFrame];
         
-        viewController.view.frame = CGRectMake(0, statusBarRect.size.height, 
+        CGFloat navControllerHeight = navController.navigationBar.frame.size.height;
+
+        viewController.view.frame = CGRectMake(0, statusBarRect.size.height + navControllerHeight, 
                                                viewController.view.frame.size.width, viewController.view.frame.size.height);
     }
     
+    [self.window addSubview:navController.view];
     [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
     

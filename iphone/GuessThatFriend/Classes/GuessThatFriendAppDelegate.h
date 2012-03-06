@@ -21,7 +21,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) UINavigationController *navController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) QuizBaseViewController *viewController;
 @property (nonatomic, retain) Facebook *facebook;
 
