@@ -11,11 +11,11 @@
 @interface FBFriendCustomCell : UITableViewCell {
 	UIImageView *picture;
 	UILabel *name;
-	UISegmentedControl *answer;
+	UIButton *answerButton;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *picture;
 @property (nonatomic, retain) IBOutlet UILabel *name;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *answer;
+@property (nonatomic, retain) IBOutlet UIButton *answerButton;
 
 @end

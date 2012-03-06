@@ -143,7 +143,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attention" 
-													message:@"Please toggle the control on the right" 
+													message:@"Please use the button on the right" 
 												   delegate:nil 
 										  cancelButtonTitle:@"OK" 
 										  otherButtonTitles:nil];

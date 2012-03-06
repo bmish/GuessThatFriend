@@ -12,7 +12,7 @@
 
 @synthesize picture;
 @synthesize name;
-@synthesize answer;
+@synthesize answerButton;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
@@ -33,7 +33,7 @@
 - (void)dealloc {
 	[picture release];
 	[name release];
-	[answer release];
+	[answerButton release];
 	
     [super dealloc];
 }
