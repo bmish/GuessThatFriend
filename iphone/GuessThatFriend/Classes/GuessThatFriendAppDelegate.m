@@ -7,11 +7,13 @@
 //
 
 #import "GuessThatFriendAppDelegate.h"
+#import "QuizBaseViewController.h"
 #import "MultipleChoiceQuizViewController.h"
 
 @implementation GuessThatFriendAppDelegate
 
 @synthesize window;
+@synthesize navController;
 @synthesize viewController;
 @synthesize facebook;
 
@@ -21,6 +23,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Add the view controller's view to the window and display.
+    if (viewController == nil) {
+        viewController = [[MultipleChoiceQuizViewController alloc] 
+                          initWithNibName:@"MultipleChoiceQuizViewController" bundle:nil];
+        
+        CGRect statusBarRect;
+        statusBarRect = [[UIApplication sharedApplication] statusBarFrame];
+        
+        viewController.view.frame = CGRectMake(0, statusBarRect.size.height, 
+                                               viewController.view.frame.size.width, viewController.view.frame.size.height);
+    }
+    
     [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
     
@@ -61,6 +74,7 @@
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
     
+    // TODO: remove this later.
     NSLog(@"access token is ");
     NSLog(@"%@", facebook.accessToken);
 }
@@ -82,7 +96,6 @@
     
 }
 
-
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -97,13 +110,11 @@
      */
 }
 
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
 }
-
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     /*
@@ -111,14 +122,12 @@
      */
 }
 
-
 - (void)applicationWillTerminate:(UIApplication *)application {
     /*
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
 }
-
 
 #pragma mark -
 #pragma mark Memory management
@@ -129,12 +138,12 @@
      */
 }
 
-
 - (void)dealloc {
     [viewController release];
+    [navController release];
     [window release];
+    
     [super dealloc];
 }
-
 
 @end

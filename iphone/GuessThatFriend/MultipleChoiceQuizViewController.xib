@@ -111,7 +111,6 @@
 						<string key="NSFrame">{{124, 403}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -144,6 +143,7 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="96576365"/>
 				<reference key="IBUIBackgroundColor" ref="530345844"/>
+				<int key="IBUIContentMode">6</int>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -217,9 +217,9 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="96576365"/>
-							<reference ref="1046391432"/>
 							<reference ref="821143803"/>
 							<reference ref="201183034"/>
+							<reference ref="1046391432"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
