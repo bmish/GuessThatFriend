@@ -9,7 +9,7 @@
 #import "GuessThatFriendAppDelegate.h"
 #import "QuizBaseViewController.h"
 #import "MultipleChoiceQuizViewController.h"
-
+#import "SettingsViewController.h"
 @implementation GuessThatFriendAppDelegate
 
 @synthesize window;
@@ -22,22 +22,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Add the view controller's view to the window and display.
+    // Add the view controller's view as the root view controller of the navigation controller.
     if (viewController == nil) {
         viewController = [[MultipleChoiceQuizViewController alloc] 
                           initWithNibName:@"MultipleChoiceQuizViewController" bundle:nil];
-        
-        CGRect statusBarRect;
-        statusBarRect = [[UIApplication sharedApplication] statusBarFrame];
-        
-        CGFloat navControllerHeight = navController.navigationBar.frame.size.height;
-
-        viewController.view.frame = CGRectMake(0, statusBarRect.size.height + navControllerHeight, 
-                                               viewController.view.frame.size.width, viewController.view.frame.size.height);
     }
     
+    NSArray *viewControllers = [NSArray arrayWithObjects:viewController, nil];
+    [navController setViewControllers:viewControllers animated:NO];
+    navController.navigationBar.topItem.title = @"GuessThatFriend!";
     [self.window addSubview:navController.view];
-    [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
     
     // Override point for customization after application launch.
