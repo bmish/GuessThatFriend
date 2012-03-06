@@ -7,12 +7,15 @@
 //
 
 #import "QuizBaseViewController.h"
+#import "GuessThatFriendAppDelegate.h"
+#import "SettingsViewController.h"
 
 @implementation QuizBaseViewController
 
 @synthesize questionID;
 @synthesize questionTextView;
 @synthesize nextButton;
+@synthesize settingsViewController;
 
 // Not implemented, this should be implemented by sub-classes.
 - (IBAction)submitAnswers:(id)sender {
@@ -40,6 +43,28 @@
 }
 */
 
+- (IBAction)settingsItemPressed:(id)sender {
+    if(settingsViewController == nil) {
+		SettingsViewController *settingsController = [[SettingsViewController alloc] 
+                                                      initWithNibName:@"SettingsViewController" bundle:nil];
+		self.settingsViewController = settingsController;
+		[settingsController release];
+	}
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    [UIView beginAnimations:@"settings" context: nil];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.75];
+    [delegate.navController pushViewController:self.settingsViewController animated:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
+    [UIView commitAnimations];
+}
+
+- (IBAction)doneItemPressed:(id)sender {
+    NSLog(@"TODO: implementation");
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
@@ -50,6 +75,25 @@
 	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 	
+    // Set up the two bar items on this view.
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    delegate.navController.navigationBar.topItem.title = @"GTF!";
+    
+    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
+                                          initWithTitle:@"Settings" 
+                                          style:UIBarButtonItemStylePlain target:self 
+                                          action:@selector(settingsItemPressed:)];
+    delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
+    [leftCornerButton release];
+    
+    UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc] 
+                                          initWithTitle:@"  Done  " 
+                                          style:UIBarButtonItemStylePlain target:self 
+                                          action:@selector(doneItemPressed:)];
+    delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
+    [rightCornerButton release];
+    
     [super viewDidLoad];
 }
 
@@ -75,11 +119,13 @@
 	
 	self.questionTextView = nil;	
 	self.nextButton = nil;
+    self.settingsViewController = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
 	[nextButton release];
+    [settingsViewController release];
 	
     [super dealloc];
 }

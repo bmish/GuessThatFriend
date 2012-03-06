@@ -15,7 +15,6 @@
     UILabel *targetFriendLabel;
     UIButton *categoryEditButton;
     UILabel *categoryLabel;
-    
 	UIButton *logoutButton;
 }
 
@@ -25,7 +24,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *targetFriendLabel;
 @property (nonatomic, retain) IBOutlet UIButton *categoryEditButton;
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
-
 @property (nonatomic, retain) IBOutlet UIButton *logoutButton;
 
 - (IBAction)switchViewToFBLogin:(id)sender;

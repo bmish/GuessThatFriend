@@ -18,23 +18,7 @@
 @synthesize settingsItem;
 @synthesize doneItem;
 @synthesize viewController;
-@synthesize settingsViewController;
 @synthesize facebook;
-
-- (IBAction)settingsItemPressed:(id)sender {
-    if(settingsViewController == nil) {
-		SettingsViewController *settingsController = [[SettingsViewController alloc] 
-                                                      initWithNibName:@"SettingsViewController" bundle:nil];
-		self.settingsViewController = settingsController;
-		[settingsController release];
-	}
-	
-    [navController pushViewController:self.settingsViewController animated:YES];
-}
-
-- (IBAction)doneItemPressed:(id)sender {
-    NSLog(@"Implementation done");
-}
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -47,9 +31,8 @@
                           initWithNibName:@"MultipleChoiceQuizViewController" bundle:nil];
     }
     
-    NSArray *viewControllers = [NSArray arrayWithObjects:viewController, nil];
+    NSArray *viewControllers = [NSArray arrayWithObjects: viewController, nil];
     [self.navController setViewControllers:viewControllers animated:NO];
-    
     [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
     
@@ -159,7 +142,6 @@
     [navController release];
     [settingsItem release];
     [doneItem release];
-    [settingsViewController release];
     [window release];
     
     [super dealloc];

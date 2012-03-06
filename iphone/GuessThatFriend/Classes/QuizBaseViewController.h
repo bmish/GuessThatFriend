@@ -8,16 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class SettingsViewController;
+
 @interface QuizBaseViewController : UIViewController {
 	int questionID;
 	
 	UITextView *questionTextView;
 	UIButton *nextButton;
+    
+    SettingsViewController *settingsViewController;
 }
 
 @property int questionID;
 @property (nonatomic, retain) IBOutlet UITextView *questionTextView;
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
+
+@property (nonatomic, retain) SettingsViewController *settingsViewController;
 
 - (IBAction)submitAnswers:(id)sender;
 - (IBAction)finishQuiz:(id)sender;
