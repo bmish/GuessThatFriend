@@ -10,8 +10,6 @@
 
 @implementation SettingsViewController
 
-@synthesize noQuestionsSlider;
-@synthesize noQuestionsLabel;
 @synthesize quizOptionSegmentedControl;
 @synthesize quizOptionLabel;
 @synthesize targetFriendEditButton;
@@ -19,7 +17,6 @@
 @synthesize categoryEditButton;
 @synthesize categoryLabel;
 @synthesize logoutButton;
-@synthesize backButton;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -37,23 +34,16 @@
 	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
 	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 	[logoutButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-	[backButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
 	[targetFriendEditButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
 	[categoryEditButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
     
 	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
 	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 	[logoutButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
-	[backButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 	[targetFriendEditButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 	[categoryEditButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
     
     [super viewDidLoad];
-}
-
-- (IBAction)noQuestionSliderChanged:(id)sender {
-    int value = (int)noQuestionsSlider.value;
-    noQuestionsLabel.text = [NSString stringWithFormat:@"%d", value];
 }
 
 - (IBAction)quizOptionSegmentedControlChanged:(id)sender {
@@ -84,6 +74,7 @@
         default:
             break;
     }
+    
     quizOptionLabel.text = option;
 }
 
@@ -110,18 +101,6 @@
 	[root dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)switchViewToGoBack:(id)sender {
-	if(self.modalViewController) {
-		[self dismissModalViewControllerAnimated:NO];
-	}
-	
-    if ([self respondsToSelector:@selector(presentingViewController)]){
-        [self.presentingViewController dismissModalViewControllerAnimated:YES];
-    } else {
-        [self.parentViewController dismissModalViewControllerAnimated:YES];
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -133,25 +112,16 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-	
-    self.noQuestionsSlider = nil;
-    self.noQuestionsLabel = nil;
+    
     self.quizOptionSegmentedControl = nil;
     self.quizOptionLabel = nil;
     self.targetFriendEditButton = nil;
     self.targetFriendLabel = nil;
     self.categoryEditButton = nil;
     self.categoryLabel = nil;
-    self.logoutButton = nil;
-    self.backButton = nil;
-    
-	self.logoutButton = nil;
-	self.backButton = nil;
 }
 
 - (void)dealloc {
-    [noQuestionsSlider release];
-    [noQuestionsLabel release];
     [quizOptionSegmentedControl release];
     [quizOptionLabel release];
     [targetFriendEditButton release];
@@ -159,10 +129,6 @@
     [categoryEditButton release];
     [categoryLabel release];
     [logoutButton release];
-    [backButton release];
-    
-	[logoutButton release];
-	[backButton release];
 	
     [super dealloc];
 }

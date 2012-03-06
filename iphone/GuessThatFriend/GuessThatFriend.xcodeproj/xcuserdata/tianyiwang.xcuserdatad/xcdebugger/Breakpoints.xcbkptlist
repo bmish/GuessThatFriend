@@ -60,24 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "351599005.231864"
+         timestampString = "352720720.279981"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
-         landmarkName = "-switchViewToGoBack:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/SettingsViewController.m"
-         timestampString = "351599005.231864"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "100"
-         endingLineNumber = "100"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
          landmarkName = "-switchViewToFBLogin:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,12 +73,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/GuessThatFriendAppDelegate.m"
-         timestampString = "352713969.50806"
+         timestampString = "352720334.13662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-fbDidLogin"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -99,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/GuessThatFriendAppDelegate.m"
-         timestampString = "352707162.415658"
+         timestampString = "352720334.13662"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
+         startingLineNumber = "42"
+         endingLineNumber = "42"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
