@@ -51,8 +51,6 @@
 		4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */; };
 		4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */; };
 		4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */; };
-		4D8D7A2E14EBABC800CAA606 /* QuizFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */; };
-		4D8D7A2F14EBABC800CAA606 /* QuizFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */; };
 		4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */; };
 		4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */; };
 		4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A6014EBB8BC00CAA606 /* Option.m */; };
@@ -144,9 +142,6 @@
 		4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillInBlankQuizViewController.m; sourceTree = "<group>"; };
 		4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizBaseViewController.h; sourceTree = "<group>"; };
 		4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizBaseViewController.m; sourceTree = "<group>"; };
-		4D8D7A2B14EBABC800CAA606 /* QuizFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizFeedbackViewController.h; sourceTree = "<group>"; };
-		4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizFeedbackViewController.m; sourceTree = "<group>"; };
-		4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuizFeedbackViewController.xib; path = Classes/QuizFeedbackViewController.xib; sourceTree = "<group>"; };
 		4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleChoiceQuizViewController.xib; sourceTree = "<group>"; };
 		4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
 		4D8D7A5F14EBB8BC00CAA606 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
@@ -424,8 +419,6 @@
 				4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */,
 				4D8D79E314EBA35300CAA606 /* FillInBlankQuizViewController.h */,
 				4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */,
-				4D8D7A2B14EBABC800CAA606 /* QuizFeedbackViewController.h */,
-				4D8D7A2C14EBABC800CAA606 /* QuizFeedbackViewController.m */,
 				4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */,
 				4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */,
 			);
@@ -461,7 +454,6 @@
 			children = (
 				4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */,
 				4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */,
-				4D8D7A2D14EBABC800CAA606 /* QuizFeedbackViewController.xib */,
 				4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */,
 			);
 			name = "Quiz Nibs";
@@ -544,7 +536,6 @@
 				4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */,
 				4D8D79BD14EB994100CAA606 /* Notes in Resources */,
 				4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */,
-				4D8D7A2F14EBABC800CAA606 /* QuizFeedbackViewController.xib in Resources */,
 				4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */,
 				4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */,
 				4D8D7ADB14EC65BD00CAA606 /* colin.jpg in Resources */,
@@ -588,7 +579,6 @@
 				4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */,
 				4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */,
 				4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */,
-				4D8D7A2E14EBABC800CAA606 /* QuizFeedbackViewController.m in Sources */,
 				4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */,
 				4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */,
 				4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */,

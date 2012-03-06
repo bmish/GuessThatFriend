@@ -9,21 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "QuizBaseViewController.h"
 
-@class QuizFeedbackViewController;
-
 @interface MultipleChoiceQuizViewController : QuizBaseViewController <UITableViewDataSource, UITableViewDelegate> {	
     
     UITableView *friendsTable;
 	
     NSString *questionString;
     NSMutableArray *optionsList;
-    
-    QuizFeedbackViewController *quizFeedbackViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *friendsTable;
 @property (nonatomic, retain) NSString *questionString;
 @property (nonatomic, retain) NSArray *optionsList;
-@property (nonatomic, retain) QuizFeedbackViewController *quizFeedbackViewController;
 
 @end

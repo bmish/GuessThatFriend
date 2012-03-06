@@ -11,30 +11,18 @@
 #import "QuizManager.h"
 #import "FBFriendCustomCell.h"
 #import "Option.h"
-#import "QuizFeedbackViewController.h"
 
 @implementation MultipleChoiceQuizViewController
 
 @synthesize friendsTable;
 @synthesize questionString;
 @synthesize optionsList;
-@synthesize quizFeedbackViewController;
 
 - (IBAction)submitAnswers:(id)sender {
     
 	//TODO: Get the answers from GUI and send them to the server. Then wait
 	// for the result from the server, and display the result.
     
-    if (quizFeedbackViewController == nil) {
-        quizFeedbackViewController = [[QuizFeedbackViewController alloc] 
-                                      initWithNibName:@"QuizFeedbackViewController" bundle:nil];
-    }
-    
-    if(self.modalViewController) {
-		[self dismissModalViewControllerAnimated:NO];
-	}
-	
-	[self presentModalViewController:quizFeedbackViewController animated:YES];
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -100,14 +88,12 @@
 	self.friendsTable = nil;
 	self.questionString = nil;
 	self.optionsList = nil;
-    self.quizFeedbackViewController = nil;
 }
 
 - (void)dealloc {
 	[friendsTable release];
 	[questionString release];
 	[optionsList release];
-    [quizFeedbackViewController release];
 	
     [super dealloc];
 }
