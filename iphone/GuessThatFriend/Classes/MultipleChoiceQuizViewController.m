@@ -17,10 +17,11 @@
 
 @synthesize friendsTable;
 @synthesize questionString;
-@synthesize friendsList;
+@synthesize optionsList;
 @synthesize quizFeedbackViewController;
 
 - (IBAction)submitAnswers:(id)sender {
+    
 	//TODO: Get the answers from GUI and send them to the server. Then wait
 	// for the result from the server, and display the result.
     
@@ -61,12 +62,12 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
+    
 	QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil];
 	MCQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
 	
 	self.questionString = multipleChoiceQuestion.text;
-	//friendsList = [[NSMutableArray alloc] initWithArray: multipleChoiceQuestion.options copyItems:YES];
-    friendsList = [NSArray arrayWithArray:multipleChoiceQuestion.options];
+    self.optionsList = [NSArray arrayWithArray:multipleChoiceQuestion.options];
     
 	[questionTextView setText:[@"Question:\n" stringByAppendingString: self.questionString]];
 	
@@ -98,14 +99,14 @@
 	
 	self.friendsTable = nil;
 	self.questionString = nil;
-	self.friendsList = nil;
+	self.optionsList = nil;
     self.quizFeedbackViewController = nil;
 }
 
 - (void)dealloc {
 	[friendsTable release];
 	[questionString release];
-	[friendsList release];
+	[optionsList release];
     [quizFeedbackViewController release];
 	
     [super dealloc];
@@ -115,7 +116,7 @@
 #pragma mark Table View Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.friendsList count];
+	return [self.optionsList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,9 +130,9 @@
 	
 	NSUInteger row = [indexPath row];
 	
-	Option *friend = [friendsList objectAtIndex:row];
-	cell.picture.image = friend.subject.picture;
-	cell.name.text = friend.subject.name;
+	Option *option = [optionsList objectAtIndex:row];
+	cell.picture.image = option.subject.picture;
+	cell.name.text = option.subject.name;
 	
 	return cell;
 }

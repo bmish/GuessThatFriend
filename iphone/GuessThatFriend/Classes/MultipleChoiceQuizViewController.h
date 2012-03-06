@@ -16,14 +16,14 @@
     UITableView *friendsTable;
 	
     NSString *questionString;
-    NSMutableArray *friendsList;
+    NSMutableArray *optionsList;
     
     QuizFeedbackViewController *quizFeedbackViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *friendsTable;
 @property (nonatomic, retain) NSString *questionString;
-@property (nonatomic, retain) NSArray *friendsList;
+@property (nonatomic, retain) NSArray *optionsList;
 @property (nonatomic, retain) QuizFeedbackViewController *quizFeedbackViewController;
 
 @end

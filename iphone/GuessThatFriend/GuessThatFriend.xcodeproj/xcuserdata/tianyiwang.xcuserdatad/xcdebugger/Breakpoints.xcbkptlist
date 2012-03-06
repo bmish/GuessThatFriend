@@ -21,24 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/MultipleChoiceQuizViewController.m"
-         timestampString = "351585095.704447"
+         timestampString = "352701157.999378"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
-         landmarkName = "-tableView:numberOfRowsInSection:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/MultipleChoiceQuizViewController.m"
-         timestampString = "351585095.704447"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
+         startingLineNumber = "122"
+         endingLineNumber = "122"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>

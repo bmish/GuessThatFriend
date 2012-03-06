@@ -12,8 +12,7 @@
 
 @synthesize facebookId, name, picture, link;
 
-- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath;
-{
+- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath {
     self.name = friendName;
 	self.picture = [UIImage imageNamed:imagePath];
     
