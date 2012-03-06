@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/SettingsViewController.m"
-         timestampString = "352722025.748269"
+         timestampString = "352724247.894603"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-switchViewToFBLogin:"
          landmarkType = "5">
       </FileBreakpoint>

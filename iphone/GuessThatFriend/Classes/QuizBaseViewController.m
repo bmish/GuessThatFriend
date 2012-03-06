@@ -65,25 +65,17 @@
     NSLog(@"TODO: implementation");
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
-	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[nextButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-	
-	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
-	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
-	
+- (void)viewDidAppear:(BOOL)animated {
+    
     // Set up the two bar items on this view.
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     delegate.navController.navigationBar.topItem.title = @"GTF!";
     
     UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
-                                          initWithTitle:@"Settings" 
-                                          style:UIBarButtonItemStylePlain target:self 
-                                          action:@selector(settingsItemPressed:)];
+                                         initWithTitle:@"Settings" 
+                                         style:UIBarButtonItemStylePlain target:self 
+                                         action:@selector(settingsItemPressed:)];
     delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
     [leftCornerButton release];
     
@@ -93,6 +85,19 @@
                                           action:@selector(doneItemPressed:)];
     delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
     [rightCornerButton release];
+    
+    [super viewDidAppear:animated];
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
+	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+	[nextButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+	
+	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
+	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
     
     [super viewDidLoad];
 }

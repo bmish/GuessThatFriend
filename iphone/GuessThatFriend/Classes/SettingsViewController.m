@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "GuessThatFriendAppDelegate.h"
 
 @implementation SettingsViewController
 
@@ -28,6 +29,30 @@
     return self;
 }
 */
+
+- (IBAction)backItemPressed:(id)sender {
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [delegate.navController popViewControllerAnimated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    // Set up the two bar items on this view.
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    delegate.navController.navigationBar.topItem.title = @"Settings";
+    
+    delegate.navController.navigationBar.topItem.hidesBackButton = YES;
+    
+    UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc] 
+                                          initWithTitle:@"  Back  " 
+                                          style:UIBarButtonItemStylePlain target:self 
+                                          action:@selector(backItemPressed:)];
+    delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
+    [rightCornerButton release];
+    
+    [super viewDidAppear:animated];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {

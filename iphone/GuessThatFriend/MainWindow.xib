@@ -16,7 +16,6 @@
 			<string>IBUINavigationController</string>
 			<string>IBUIViewController</string>
 			<string>IBUICustomObject</string>
-			<string>IBUIBarButtonItem</string>
 			<string>IBUIWindow</string>
 			<string>IBUINavigationBar</string>
 			<string>IBUINavigationItem</string>
@@ -66,18 +65,6 @@
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="704394824">
 							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">GTF!</string>
-							<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="258561205">
-								<string key="IBUITitle">Settings</string>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUINavigationItem" ref="704394824"/>
-							</object>
-							<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="632843372">
-								<string key="IBUITitle">  Done  </string>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUINavigationItem" ref="704394824"/>
-							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIParentViewController" ref="189028257"/>
@@ -133,22 +120,6 @@
 						<reference key="destination" ref="189028257"/>
 					</object>
 					<int key="connectionID">28</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">settingsItem</string>
-						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="258561205"/>
-					</object>
-					<int key="connectionID">31</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">doneItem</string>
-						<reference key="source" ref="664661524"/>
-						<reference key="destination" ref="632843372"/>
-					</object>
-					<int key="connectionID">32</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -213,20 +184,8 @@
 						<reference key="object" ref="704394824"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="258561205"/>
-							<reference ref="632843372"/>
 						</object>
 						<reference key="parent" ref="307016887"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">29</int>
-						<reference key="object" ref="258561205"/>
-						<reference key="parent" ref="704394824"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">30</int>
-						<reference key="object" ref="632843372"/>
-						<reference key="parent" ref="704394824"/>
 					</object>
 				</object>
 			</object>
@@ -243,10 +202,8 @@
 					<string>25.IBPluginDependency</string>
 					<string>26.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
-					<string>29.IBPluginDependency</string>
 					<string>3.CustomClassName</string>
 					<string>3.IBPluginDependency</string>
-					<string>30.IBPluginDependency</string>
 				</object>
 				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -259,9 +216,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GuessThatFriendAppDelegate</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
