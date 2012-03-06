@@ -18,13 +18,6 @@
 @synthesize questionString;
 @synthesize optionsList;
 
-- (IBAction)submitAnswers:(id)sender {
-    
-	//TODO: Get the answers from GUI and send them to the server. Then wait
-	// for the result from the server, and display the result.
-    
-}
-
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {

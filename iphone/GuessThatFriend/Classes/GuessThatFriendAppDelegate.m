@@ -19,11 +19,32 @@
 @synthesize doneItem;
 @synthesize viewController;
 @synthesize facebook;
+@synthesize nextButton;
+
+- (void)nextButtonPressed:(id)sender {
+    NSLog(@"TODO: implement next question");
+}
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    
+    // Set up the 'Next' button.
+    nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    CGRect buttonRect = CGRectMake(124, 359, 72, 37);
+    nextButton.frame = buttonRect;
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Set button images.
+    UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
+	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+	[nextButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+	
+	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
+	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
     
     // Add the view controller's view as the root view controller of the navigation controller.
     if (viewController == nil) {
@@ -31,8 +52,11 @@
                           initWithNibName:@"MultipleChoiceQuizViewController" bundle:nil];
     }
     
+    [viewController.view addSubview:self.nextButton];
+    
     NSArray *viewControllers = [NSArray arrayWithObjects: viewController, nil];
     [self.navController setViewControllers:viewControllers animated:NO];
+    
     [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
     
@@ -143,6 +167,7 @@
     [settingsItem release];
     [doneItem release];
     [window release];
+    [nextButton release];
     
     [super dealloc];
 }

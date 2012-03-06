@@ -14,17 +14,7 @@
 
 @synthesize questionID;
 @synthesize questionTextView;
-@synthesize nextButton;
 @synthesize settingsViewController;
-
-// Not implemented, this should be implemented by sub-classes.
-- (IBAction)submitAnswers:(id)sender {
-    //TODO:
-}
-
-- (IBAction)finishQuiz:(id)sender {
-    //TODO: implementation
-}
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -91,14 +81,6 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
-	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[nextButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
-	
-	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
-	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
-    
     [super viewDidLoad];
 }
 
@@ -123,13 +105,11 @@
     // e.g. self.myOutlet = nil;
 	
 	self.questionTextView = nil;	
-	self.nextButton = nil;
     self.settingsViewController = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
-	[nextButton release];
     [settingsViewController release];
 	
     [super dealloc];

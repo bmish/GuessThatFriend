@@ -19,6 +19,7 @@
     UIBarButtonItem *doneItem;
     QuizBaseViewController *viewController;
     Facebook *facebook;
+    UIButton *nextButton;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *doneItem;
 @property (nonatomic, retain) QuizBaseViewController *viewController;
 @property (nonatomic, retain) Facebook *facebook;
+@property (nonatomic, retain) UIButton *nextButton;
 
 @end
 
