@@ -18,7 +18,7 @@
 				"link": "https://www.facebook.com/300Movie"
 			},
 			"text": "Which of the following two friends likes the movie 300?",
-			"correctOptionId": 12,
+			"correctFacebookId": "bmish",
 			"options":
 			[
 				{
