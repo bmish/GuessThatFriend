@@ -60,7 +60,7 @@
     // Set up the two bar items on this view.
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    delegate.navController.navigationBar.topItem.title = @"GTF!";
+    delegate.navController.navigationBar.topItem.title = @"GTF";
     
     UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
                                          initWithTitle:@"Settings" 
@@ -70,7 +70,7 @@
     [leftCornerButton release];
     
     UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc] 
-                                          initWithTitle:@"  Done  " 
+                                          initWithTitle:@"Statistics" 
                                           style:UIBarButtonItemStylePlain target:self 
                                           action:@selector(doneItemPressed:)];
     delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;

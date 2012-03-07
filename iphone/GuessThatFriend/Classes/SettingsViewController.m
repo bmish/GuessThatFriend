@@ -44,12 +44,12 @@
     
     delegate.navController.navigationBar.topItem.hidesBackButton = YES;
     
-    UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc] 
-                                          initWithTitle:@"  Back  " 
+    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
+                                          initWithTitle:@"Back" 
                                           style:UIBarButtonItemStylePlain target:self 
                                           action:@selector(backItemPressed:)];
-    delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
-    [rightCornerButton release];
+    delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
+    [leftCornerButton release];
     
     [super viewDidAppear:animated];
 }
@@ -79,7 +79,7 @@
             option = [NSString stringWithString:@"Random"];
             break;
         case 1:
-            option = [NSString stringWithString:@"Fill in blanks"];
+            option = [NSString stringWithString:@"Fill in the blank"];
             break;
         case 2:
             option = [NSString stringWithString:@"2 choices"];
