@@ -58,9 +58,54 @@ class Test(unittest.TestCase):
     def testGetQuiz2(self):
         testGetQuiz(self,5,4,3)
 
+    def testGetQuiz3(self):
+        testGetQuiz(self,10,5,3)
+
+    def testGetQuiz4(self):
+        testGetQuiz(self,15,6,3)
+
+    def testGetQuiz5(self):
+        testGetQuiz(self,20,7,3)
+
+    def testGetQuiz6(self):
+        testGetQuiz(self,25,8,3)
+
+    def testGetQuizLots(self):
+        testGetQuiz(self,250,3,3)
+
+    def testGetQuizNegQCnt(self):
+        testGetQuiz(self,-1,3,3)
+
+    def testGetQuizNegOpCnt(self):
+        testGetQuiz(self,1,-3,3)
+
+    def testGetQuizNegCategory(self):
+        testGetQuiz(self,1,3,-3)
+
+    def testGetQuizZeroOpt(self):
+        testGetQuiz(self,1,0,3)
+
+    def testGetQuizZeroQuestions(self):
+        testGetQuiz(self,0,3,3)
+
+    def testGetQuizStringQuestionNum(self):
+        testGetQuiz(self,"1",3,3)
+
     def testSubmitQuiz1(self):
         testSubmitQuiz(self, 11)
         
+    def testSubmitQuiz2(self):
+        testSubmitQuiz(self, 12)
+
+    def testSubmitQuiz3(self):
+        testSubmitQuiz(self, 100)
+
+    def testSubmitQuiz4(self):
+        testSubmitQuiz(self, 1)
+
+    def testSubmitQuizNegQuestion(self):
+        testSubmitQuiz(self, -1)
+
     def testCategories(self):
         jsonObject1 = urllib2.urlopen(APIurl+"api/?cmd=getCategories");
         newFile = open('tmp.json','w')
