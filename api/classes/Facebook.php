@@ -74,12 +74,11 @@ class Facebook_API	{
 }
 
 // Testing
-$testUserId = '100003539848423';
-echo "Friends: \n";
-var_dump(Facebook_API::getFriends($testUserId));
-echo "\nLikes: \n";
-var_dump(Facebook_API::getFriendLikes($testUserId));
-
-
+if ($_GET['testFB'] == 'true') {
+	$testUserId = '100003539848423';
+	echo "<p>Friends:</p>";
+	var_dump(Facebook_API::getFriends($testUserId));
+	echo "<p>Likes:</p>";
+	var_dump(Facebook_API::getFriendLikes($testUserId));
+}
 ?>
-
