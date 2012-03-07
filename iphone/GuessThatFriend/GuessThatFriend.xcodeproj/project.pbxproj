@@ -62,6 +62,7 @@
 		4D8D7AE514EC65C500CAA606 /* grace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE114EC65C500CAA606 /* grace.jpg */; };
 		4D8D7AE614EC65C500CAA606 /* ken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE214EC65C500CAA606 /* ken.jpg */; };
 		4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */; };
+		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
 		4DD12AB61505D20C00A40761 /* qmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD12AB51505D20C00A40761 /* qmark.png */; };
@@ -152,6 +153,8 @@
 		4D8D7AE214EC65C500CAA606 /* ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ken.jpg; sourceTree = "<group>"; };
 		4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerSubmittingSubsystem.h; sourceTree = "<group>"; };
 		4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerSubmittingSubsystem.m; sourceTree = "<group>"; };
+		4DA0E9D515074FEF002AFFBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		4DA0E9D615074FEF002AFFBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4DD9367C15074AF900E338A2 /* JSONKit */,
 				4D3F814E14F98E9500245D4F /* FBApi */,
 				4D8D79BB14EB993300CAA606 /* Documentation */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -458,6 +462,15 @@
 			name = "Testing Resources";
 			sourceTree = "<group>";
 		};
+		4DD9367C15074AF900E338A2 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				4DA0E9D515074FEF002AFFBB /* JSONKit.h */,
+				4DA0E9D615074FEF002AFFBB /* JSONKit.m */,
+			);
+			name = JSONKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -579,6 +592,7 @@
 				93BA120914F9B10100248763 /* Category.m in Sources */,
 				93BA120C14F9BAF000248763 /* Subject.m in Sources */,
 				938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */,
+				4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

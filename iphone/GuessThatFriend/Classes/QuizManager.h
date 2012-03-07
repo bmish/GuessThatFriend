@@ -9,18 +9,26 @@
 #import <Foundation/Foundation.h>
 
 @class QuizSettings;
-@class MCQuestion;
+@class Question;
+@class QuizSettings;
 
 @interface QuizManager : NSObject {
+    NSMutableArray *questionArray;
+    
+    QuizSettings *bufferedQuizSettings;
+    NSString *bufferedToken;
+    
 	unsigned int numQuestions;
 	unsigned int numCorrect;
 }
 
+@property (nonatomic, retain) NSMutableArray *questionArray;
+@property (nonatomic, retain) QuizSettings *bufferedQuizSettings;
+@property (nonatomic, retain) NSString *bufferedToken;
 @property unsigned int numQuestions;
 @property unsigned int numCorrect;
 
-- (QuizManager *)initWithQuizSettings:(QuizSettings *)settings;
-- (void)requestQuizFromServer;
-- (MCQuestion *)getNextQuestion;
+- (QuizManager *)initWithQuizSettings:(QuizSettings *)settings andFBToken:(NSString *)token;
+- (Question *)getNextQuestion;
 
 @end

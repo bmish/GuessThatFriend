@@ -11,11 +11,11 @@
 #import "Question.h"
 
 @interface MCQuestion : Question {
-	NSMutableArray *options;
+	NSArray *options;
 }
 
-@property (nonatomic, retain) NSMutableArray *options;
+@property (nonatomic, retain) NSArray *options;
 
-- (MCQuestion *)initQuestion;
+- (MCQuestion *)initQuestionWithOptions:(NSArray *)questionOptions;
 
 @end

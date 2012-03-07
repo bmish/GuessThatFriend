@@ -43,18 +43,6 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-	QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil];
-	MCQuestion *multipleChoiceQuestion = [quizManager getNextQuestion];
-	
-	self.questionString = multipleChoiceQuestion.text;
-    self.optionsList = [NSArray arrayWithArray:multipleChoiceQuestion.options];
-    
-	[questionTextView setText:[@"Question:\n" stringByAppendingString: self.questionString]];
-	
-	[multipleChoiceQuestion release];
-	[quizManager release];
-	
 	[super viewWillAppear:animated];
 }
 

@@ -13,11 +13,13 @@
 @interface QuizSettings : NSObject {
     int questionCount;
     int option;
+    int categoryID;
     NSString *friendFacebookID;
 }
 
 @property int questionCount;
 @property int option;
+@property int categoryID;
 @property (nonatomic, retain) NSString *friendFacebookID;
 
 @end

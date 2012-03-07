@@ -10,6 +10,7 @@
 #import "FBConnect.h"
 
 @class QuizBaseViewController;
+@class QuizManager;
 
 @interface GuessThatFriendAppDelegate : NSObject <UIApplicationDelegate, FBSessionDelegate> {
     
@@ -20,6 +21,8 @@
     QuizBaseViewController *viewController;
     Facebook *facebook;
     UIButton *nextButton;
+    
+    QuizManager *quizManager;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -29,6 +32,8 @@
 @property (nonatomic, retain) QuizBaseViewController *viewController;
 @property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic, retain) UIButton *nextButton;
+
+@property (nonatomic, retain) QuizManager *quizManager;
 
 @end
 

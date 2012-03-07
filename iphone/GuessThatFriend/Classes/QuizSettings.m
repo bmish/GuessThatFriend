@@ -12,6 +12,7 @@
 
 @synthesize questionCount;
 @synthesize option;
+@synthesize categoryID;
 @synthesize friendFacebookID;
 
 - (void)dealloc {

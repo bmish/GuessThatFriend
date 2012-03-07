@@ -10,6 +10,11 @@
 #import "QuizBaseViewController.h"
 #import "MultipleChoiceQuizViewController.h"
 #import "SettingsViewController.h"
+#import "QuizManager.h"
+#import "QuizSettings.h"
+#import "Question.h"
+#import "MCQuestion.h"
+#import "FillBlankQuestion.h"
 
 @implementation GuessThatFriendAppDelegate
 
@@ -20,9 +25,27 @@
 @synthesize viewController;
 @synthesize facebook;
 @synthesize nextButton;
+@synthesize quizManager;
 
 - (void)nextButtonPressed:(id)sender {
-    NSLog(@"TODO: implement next question");
+	Question *nextQuestion = [quizManager getNextQuestion];
+	
+    // Determine the type of this question.
+    if ([nextQuestion isKindOfClass:[MCQuestion class]]) {      // Multiple Choice Question.
+        
+        MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+        MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
+        
+        quizViewController.questionString = mcQuestion.text;
+        quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
+        [quizViewController.questionTextView setText:
+            [@"Question:\n" stringByAppendingString: quizViewController.questionString]];
+        
+        [mcQuestion release];
+        
+    } else {                                                    // Fill in blank Question.
+        
+    }
 }
 
 #pragma mark -
@@ -60,7 +83,7 @@
     [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
     
-    // Override point for customization after application launch.
+    // Setup for Facebook login.
     facebook = [[Facebook alloc] initWithAppId:@"178461392264777" andDelegate:self];
     
     // Check for previsouly saved access token.
@@ -75,7 +98,19 @@
     if (![facebook isSessionValid]) {
         [facebook authorize:nil];
     }
-
+    
+    // Now we have facebook token, use it to initialize the quiz manager.
+    QuizSettings *quizSettings = [[QuizSettings alloc] init];
+    quizSettings.questionCount = 1;
+    quizSettings.option = 2;
+    quizSettings.categoryID = 2;
+    quizSettings.friendFacebookID = nil;
+    quizManager = [[QuizManager alloc] initWithQuizSettings:quizSettings andFBToken:facebook.accessToken];
+    
+    // Show the first question. Do this by pretending the user pressed 
+    // the Next Question button.
+    [self nextButtonPressed:nil];
+    
     return YES;
 }
 
@@ -96,10 +131,6 @@
     [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
-    
-    // TODO: remove this later.
-    NSLog(@"access token is ");
-    NSLog(@"%@", facebook.accessToken);
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
@@ -168,6 +199,7 @@
     [doneItem release];
     [window release];
     [nextButton release];
+    [quizManager release];
     
     [super dealloc];
 }

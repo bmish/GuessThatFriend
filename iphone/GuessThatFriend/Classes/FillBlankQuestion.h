@@ -8,6 +8,8 @@
 
 #import "Question.h"
 
-@interface FillBlankQuestion : Question
+@interface FillBlankQuestion : Question {
+    
+}
 
 @end

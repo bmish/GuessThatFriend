@@ -13,38 +13,8 @@
 
 @synthesize options;
 
-- (MCQuestion *)initQuestion {
-	//TODO: actual implementation
-	
-	text = [[NSString alloc] initWithString:@"Which of the following four people likes the movie 300?"];
-	options = [[NSMutableArray alloc] initWithCapacity:8];
-	
-	Option *friend;
-	friend = [[Option alloc] initWithName:@"Arjan" andImagePath:@"arjan.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Bryan" andImagePath:@"bryan.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Colin" andImagePath:@"colin.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Grace" andImagePath:@"grace.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Jason" andImagePath:@"jason.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Ken" andImagePath:@"ken.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Mike" andImagePath:@"mike.jpg"];
-	[options addObject:friend];
-	[friend release];
-	friend = [[Option alloc] initWithName:@"Tian" andImagePath:@"tian.jpg"];
-	[options addObject:friend];
-	[friend release];
-
+- (MCQuestion *)initQuestionWithOptions:(NSArray *)questionOptions {
+    self.options = questionOptions;
 	return [super init];
 }
 

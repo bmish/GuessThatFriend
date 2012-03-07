@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/MultipleChoiceQuizViewController.m"
-         timestampString = "352725286.15899"
+         timestampString = "352796485.271445"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "101"
-         endingLineNumber = "101"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,25 +73,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/GuessThatFriendAppDelegate.m"
-         timestampString = "352726305.697693"
+         timestampString = "352804634.466247"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
          landmarkName = "-fbDidLogin"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/GuessThatFriendAppDelegate.m"
-         timestampString = "352726305.697693"
+         timestampString = "352804634.466247"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/QuizManager.m"
+         timestampString = "352804548.750131"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
+         landmarkName = "-createQuestionsFromServerResponse:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
