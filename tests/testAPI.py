@@ -13,14 +13,7 @@ APIurl = "http://guessthatfriend.jasonsze.com/"
 
 def loadGetQuizJson(questionCount, optionCount, catID):
     jsonObject = urllib2.urlopen(APIurl+"api/?cmd=getQuestions&facebookAccessToken=xxx&questionCount="+str(questionCount)+"&optionCount="+str(optionCount)+"&categoryId="+str(catID));
-    testFile = "tmp.json"
-    tmpJson = open(testFile, "w");
-    tmpJson.write(jsonObject.read());
-    tmpJson.close()
-    tmpJson = open(testFile, "r");
-    parsedData = json.load(tmpJson);
-    tmpJson.close()
-    os.remove('tmp.json')
+    parsedData = json.load(jsonObject);
     return parsedData;
 
 def loadSubmitQuizJson(questionNum):
