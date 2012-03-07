@@ -17,9 +17,6 @@ class API {
 
 	public static function submitQuestions() {
 		header('Content-type: application/json');
-
-		
-
 		require_once("examples/json/submitQuestions.json");
 	}
 
