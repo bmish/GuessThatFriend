@@ -38,8 +38,7 @@
         
         quizViewController.questionString = mcQuestion.text;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
-        [quizViewController.questionTextView setText:
-            [@"Question:\n" stringByAppendingString: quizViewController.questionString]];
+        [quizViewController.questionTextView setText: quizViewController.questionString];
         
         [mcQuestion release];
         
