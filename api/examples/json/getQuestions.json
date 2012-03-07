@@ -8,7 +8,7 @@
 			{
 				"categoryId": 2,
 				"facebookName": "Movie",
-				"prettyName": "Movies",
+				"prettyName": "Movies"
 			},
 			"subject":
 			{
@@ -25,18 +25,18 @@
 					"optionId": 12,
 					"subject": 
 					{
-						"facebookId": "bmish"
-						"name": "Bryan Mishkin"
-						"picture": "http://graph.facebook.com/bmish/picture"
+						"facebookId": "bmish",
+						"name": "Bryan Mishkin",
+						"picture": "http://graph.facebook.com/bmish/picture",
 						"link": "https://www.facebook.com/bmish"
-					},
+					}
 				},
 				{
 					"optionId": 13,
 					"subject":
 					{
-						"facebookId": "arjanirh"
-						"name": "Arjan Singh Nirh"
+						"facebookId": "arjanirh",
+						"name": "Arjan Singh Nirh",
 						"picture": "http://graph.facebook.com/arjanirh/picture",
 						"link": "https://www.facebook.com/arjanirh"
 					}	
