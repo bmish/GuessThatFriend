@@ -10,11 +10,11 @@ class Category
 	}
 	
 	public function getFacebookName()	{
-		$this->getName ("facebookName");
+		return $this->getName ("facebookName");
 	}
 	
 	public function getPrettyName()	{
-		$this->getName ("prettyName");
+		return $this->getName ("prettyName");
 	}
 	
 	private function getName($nameType)	{
