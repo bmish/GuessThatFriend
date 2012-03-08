@@ -112,7 +112,7 @@ class Test(unittest.TestCase):
 
 
 if __name__ == "__main__":
-#    logFile = 'log_file.txt'
-#    f = open(logFile, "w")
-#    runner = unittest.TextTestRunner(f)
-    unittest.main()#testRunner=runner)
+    logFile = 'log_file.txt'
+    f = open(logFile, "w")
+    runner = unittest.TextTestRunner(f)
+    unittest.main(testRunner=runner)
