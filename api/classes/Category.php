@@ -18,10 +18,7 @@ class Category
 	}
 	
 	private function getName($nameType)	{
-		require_once "DB.php";
 		global $categoryId;
-	
-		DB::connect();
 		
 		$nameQuery = "SELECT ".$nameType." FROM categories WHERE categoryId = ".$categoryId;
 		$queryResult = mysql_query($nameQuery);
@@ -30,15 +27,7 @@ class Category
 			echo $nameQuery;
 			echo mysql_error();
 		} else {
-			$name = mysql_fetch_array($queryResult);
-		}
-		
-		DB::close();
-		
-		if (isset($name))	{
-			return $name;
-		} else {
-			return;
+			return mysql_fetch_array($queryResult);
 		}
 	}
 }
