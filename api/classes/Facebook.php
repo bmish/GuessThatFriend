@@ -1,8 +1,5 @@
 <?php
 class Facebook_API	{
-
-	const APP_ID = '178461392264777';
-	const SECRET = '7bddd2e7e8d4094ff02bdda4c7fd44ee';
 	
 	private $facebook;
 	
@@ -10,9 +7,11 @@ class Facebook_API	{
 		global $facebook;
 		if (!isset($facebook))	{
 			require 'FacebookSDK.php';
+			require 'Subject.php';
+			require '../fns/config.php';
 			$facebook = new Facebook(array(
-				'appId' => self::APP_ID,
-				'secret' => self::SECRET,
+				'appId' => APP_ID,
+				'secret' => SECRET,
 			));
 		}
 	}
@@ -26,15 +25,25 @@ class Facebook_API	{
 		
 		$accessToken = $facebook->getAccessToken();
 		$friends = $facebook->api('/'.$userId.'/friends?access_token='.$accessToken);
-		return $friends['data'];
+		$friendsData = $friends['data'];
+		
+		for ($i = 0; $i < sizeof($friendsData); $i++)	{
+			$subjects[$i] = new Subject();
+			$subjects[$i]->name = $friendsData[$i]['name'];
+			$subjects[$i]->facebookId = $friendsData[$i]['id'];
+			$subjects[$i]->picture = 'https://graph.facebook.com/'.$friendsData[$i]['id'].'/picture';
+			$subjects[$i]->link = 'facebook.com/'.$friendsData[$i]['id'];
+		}
+		return $subjects;
 	}
 	
 	/*
 	 * Returns all friends' likes.
 	 */
 	public static function getFriendsLikes($userId)	{
+		$friends = self::getFriends($userId);
 		for ($i = 0; $i < sizeof($friends); $i++)	{
-			$likes[$i] = self::getFriendsLikes($friends[$i]['id']);
+			$likes[$i] = self::getFriendLikes($friends[$i]);
 		}
 		return $likes;
 	} 
@@ -42,13 +51,24 @@ class Facebook_API	{
 	/*
 	 * Returns a particular friend's likes.
 	 */
-	public static function getFriendLikes($friendId)	{
+	public static function getFriendLikes($friend)	{
 		self::setupFacebook();
 		global $facebook;
 		
 		$accessToken = $facebook->getAccessToken();
-		$likes = $facebook->api('/'.$friendId.'/likes?access_token='.$accessToken);
-		return $likes['data'];
+		$likes = $facebook->api('/'.($friend -> facebookId).'/likes?access_token='.$accessToken);
+		return array (
+			'friend' => $friend,
+			'friendLikes' => $likes['data'],
+		);
+	}
+	
+	/*
+	 * Returns the facebook object's name for a given ID.
+	 */
+	public static function getNameFromId($id)	{
+		$object = $facebook->api('/'.$id);
+		return $object['name'];
 	}
 
 	/*
@@ -79,6 +99,6 @@ if ($_GET['testFB'] == 'true') {
 	echo "<p>Friends:</p>";
 	var_dump(Facebook_API::getFriends($testUserId));
 	echo "<p>Likes:</p>";
-	var_dump(Facebook_API::getFriendLikes($testUserId));
+	var_dump(Facebook_API::getFriendsLikes($testUserId));
 }
 ?>
