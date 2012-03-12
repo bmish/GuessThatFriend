@@ -1,5 +1,4 @@
 <?php
-require 'Question.php';
 class MCQuestion extends Question
 {
 	protected $correctOptionId;	//Id of the correct answer for the question
