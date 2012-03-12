@@ -12,7 +12,8 @@
 #import "JSONKit.h"
 #import "Option.h"
 
-#define BASE_URL_ADDR           "http://guessthatfriend.jasonsze.com/api/"
+#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
+#define SAMPLE_GET_QUESTIONS_ADDR   "http://guessthatfriend.jasonsze.com/api/examples/json/getQuestions.json"
 
 @implementation QuizManager
 
@@ -34,12 +35,18 @@
 - (void)requestQuizFromServer:(QuizSettings *)settings FBToken:(NSString *)token {
     
     // Create GET request.
-    NSMutableString *getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-    [getRequest appendString:@"?cmd=getQuestions"];
-    [getRequest appendFormat:@"&facebookAccessToken=%@", token];
-    [getRequest appendFormat:@"&questionCount=%i", settings.questionCount];
-    [getRequest appendFormat:@"&optionCount=%i", settings.option];
-    [getRequest appendFormat:@"&categoryId=%i", settings.categoryID];
+    NSMutableString *getRequest;
+    
+    if ([token length] == 0) { // Retrieve sample data.
+        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_QUESTIONS_ADDR];
+    } else { // Make a real request.
+        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+        [getRequest appendString:@"?cmd=getQuestions"];
+        [getRequest appendFormat:@"&facebookAccessToken=%@", token];
+        [getRequest appendFormat:@"&questionCount=%i", settings.questionCount];
+        [getRequest appendFormat:@"&optionCount=%i", settings.option];
+        [getRequest appendFormat:@"&categoryId=%i", settings.categoryID];
+    }
     
     // Send the GET request to the server.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];

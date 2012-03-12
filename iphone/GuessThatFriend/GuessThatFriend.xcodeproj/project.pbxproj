@@ -69,8 +69,23 @@
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
 		93BA120914F9B10100248763 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120814F9B10100248763 /* Category.m */; };
 		93BA120C14F9BAF000248763 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120B14F9BAF000248763 /* Subject.m */; };
+		93E21BFE150DBDD000A475DC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E21BFD150DBDD000A475DC /* SenTestingKit.framework */; };
+		93E21BFF150DBDD000A475DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		93E21C00150DBDD000A475DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		93E21C06150DBDD000A475DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93E21C04150DBDD000A475DC /* InfoPlist.strings */; };
+		93E21C09150DBDD000A475DC /* UnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E21C08150DBDD000A475DC /* UnitTesting.m */; };
 		93FC73C614F9AE15002EB781 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC73C514F9AE15002EB781 /* Question.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		93E21C0F150DCBDC00A475DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = GuessThatFriend;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,6 +181,13 @@
 		93BA120814F9B10100248763 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 		93BA120A14F9BAF000248763 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subject.h; sourceTree = "<group>"; };
 		93BA120B14F9BAF000248763 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subject.m; sourceTree = "<group>"; };
+		93E21BFC150DBDD000A475DC /* UnitTesting.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTesting.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93E21BFD150DBDD000A475DC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		93E21C03150DBDD000A475DC /* UnitTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTesting-Info.plist"; sourceTree = "<group>"; };
+		93E21C05150DBDD000A475DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		93E21C07150DBDD000A475DC /* UnitTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTesting.h; sourceTree = "<group>"; };
+		93E21C08150DBDD000A475DC /* UnitTesting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTesting.m; sourceTree = "<group>"; };
+		93E21C0A150DBDD000A475DC /* UnitTesting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTesting-Prefix.pch"; sourceTree = "<group>"; };
 		93FC73C414F9AE15002EB781 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		93FC73C514F9AE15002EB781 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 /* End PBXFileReference section */
@@ -178,6 +200,16 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93E21BF8150DBDD000A475DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E21BFE150DBDD000A475DC /* SenTestingKit.framework in Frameworks */,
+				93E21BFF150DBDD000A475DC /* UIKit.framework in Frameworks */,
+				93E21C00150DBDD000A475DC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* GuessThatFriend.app */,
+				93E21BFC150DBDD000A475DC /* UnitTesting.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +245,7 @@
 				1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				93E21C01150DBDD000A475DC /* UnitTesting */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -245,6 +279,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				93E21BFD150DBDD000A475DC /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -471,6 +506,26 @@
 			name = JSONKit;
 			sourceTree = "<group>";
 		};
+		93E21C01150DBDD000A475DC /* UnitTesting */ = {
+			isa = PBXGroup;
+			children = (
+				93E21C07150DBDD000A475DC /* UnitTesting.h */,
+				93E21C08150DBDD000A475DC /* UnitTesting.m */,
+				93E21C02150DBDD000A475DC /* Supporting Files */,
+			);
+			path = UnitTesting;
+			sourceTree = "<group>";
+		};
+		93E21C02150DBDD000A475DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				93E21C03150DBDD000A475DC /* UnitTesting-Info.plist */,
+				93E21C04150DBDD000A475DC /* InfoPlist.strings */,
+				93E21C0A150DBDD000A475DC /* UnitTesting-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,6 +546,25 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* GuessThatFriend.app */;
 			productType = "com.apple.product-type.application";
 		};
+		93E21BFB150DBDD000A475DC /* UnitTesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93E21C0D150DBDD000A475DC /* Build configuration list for PBXNativeTarget "UnitTesting" */;
+			buildPhases = (
+				93E21BF7150DBDD000A475DC /* Sources */,
+				93E21BF8150DBDD000A475DC /* Frameworks */,
+				93E21BF9150DBDD000A475DC /* Resources */,
+				93E21BFA150DBDD000A475DC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93E21C10150DCBDC00A475DC /* PBXTargetDependency */,
+			);
+			name = UnitTesting;
+			productName = UnitTesting;
+			productReference = 93E21BFC150DBDD000A475DC /* UnitTesting.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -508,12 +582,14 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* GuessThatFriend */,
+				93E21BFB150DBDD000A475DC /* UnitTesting */,
 			);
 		};
 /* End PBXProject section */
@@ -558,7 +634,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93E21BF9150DBDD000A475DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E21C06150DBDD000A475DC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93E21BFA150DBDD000A475DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -596,7 +696,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93E21BF7150DBDD000A475DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E21C09150DBDD000A475DC /* UnitTesting.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93E21C10150DCBDC00A475DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* GuessThatFriend */;
+			targetProxy = 93E21C0F150DCBDC00A475DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		93E21C04150DBDD000A475DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93E21C05150DBDD000A475DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -608,6 +735,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "GuessThatFriend-Info.plist";
 				PRODUCT_NAME = GuessThatFriend;
 			};
@@ -620,9 +748,65 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "GuessThatFriend-Info.plist";
 				PRODUCT_NAME = GuessThatFriend;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93E21C0B150DBDD000A475DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GuessThatFriend.app/GuessThatFriend";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTesting/UnitTesting-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "UnitTesting/UnitTesting-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		93E21C0C150DBDD000A475DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTesting/UnitTesting-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "UnitTesting/UnitTesting-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -659,6 +843,15 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93E21C0D150DBDD000A475DC /* Build configuration list for PBXNativeTarget "UnitTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93E21C0B150DBDD000A475DC /* Debug */,
+				93E21C0C150DBDD000A475DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
