@@ -6,7 +6,7 @@ class Facebook_API	{
 	
 	private $facebook;
 	
-	private static function setupFacebook()	{
+	public static function setupFacebook()	{
 		global $facebook;
 		if (!isset($facebook))	{
 			require 'FacebookSDK.php';
