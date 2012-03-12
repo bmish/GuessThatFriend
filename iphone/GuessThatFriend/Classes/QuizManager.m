@@ -19,33 +19,39 @@
 
 @synthesize questionArray;
 @synthesize bufferedQuizSettings;
-@synthesize bufferedToken;
+@synthesize bufferedFBToken;
 @synthesize numQuestions;
 @synthesize numCorrect;
 
-- (QuizManager *)initWithQuizSettings:(QuizSettings *)settings andFBToken:(NSString *)token {
+- (QuizManager *)initWithQuizSettings:(QuizSettings *)settings andFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
 	
     questionArray = [[NSMutableArray alloc] initWithCapacity:10];
     self.bufferedQuizSettings = settings;
-	[self requestQuizFromServer:settings FBToken:token];
+    useSampleData = paramUseSampleData;
+    bufferedFBToken = paramFBToken;
+    numQuestions = 0;
+	numCorrect = 0;
+	[self requestQuestionsFromServer];
 	
 	return [super init];
 }
 
-- (void)requestQuizFromServer:(QuizSettings *)settings FBToken:(NSString *)token {
+- (void)requestQuestionsFromServer{
     
     // Create GET request.
     NSMutableString *getRequest;
     
-    if ([token length] == 0) { // Retrieve sample data.
+    if (useSampleData) { // Retrieve sample data.
         getRequest = [NSMutableString stringWithString:@SAMPLE_GET_QUESTIONS_ADDR];
-    } else { // Make a real request.
+    } else if (bufferedQuizSettings != nil) { // Make a real request.
         getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
         [getRequest appendString:@"?cmd=getQuestions"];
-        [getRequest appendFormat:@"&facebookAccessToken=%@", token];
-        [getRequest appendFormat:@"&questionCount=%i", settings.questionCount];
-        [getRequest appendFormat:@"&optionCount=%i", settings.option];
-        [getRequest appendFormat:@"&categoryId=%i", settings.categoryID];
+        [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
+        [getRequest appendFormat:@"&questionCount=%i", bufferedQuizSettings.questionCount];
+        [getRequest appendFormat:@"&optionCount=%i", bufferedQuizSettings.option];
+        [getRequest appendFormat:@"&categoryId=%i", bufferedQuizSettings.categoryID];
+    } else { // Settings is nil.
+        return;
     }
     
     // Send the GET request to the server.
@@ -103,7 +109,7 @@
 - (Question *)getNextQuestion {
     if (questionArray.count == 0) {
         // Need more questions from the server.
-        [self requestQuizFromServer:bufferedQuizSettings FBToken:bufferedToken];
+        [self requestQuestionsFromServer];
     }
     
     Question *question = [questionArray objectAtIndex:questionArray.count - 1];
@@ -116,7 +122,7 @@
 - (void)dealloc {
     [questionArray release];
     [bufferedQuizSettings release];
-    [bufferedToken release];
+    [bufferedFBToken release];
     
 	[super dealloc];
 }
