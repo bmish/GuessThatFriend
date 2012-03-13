@@ -10,8 +10,8 @@ class Facebook_API	{
 			require 'Subject.php';
 			require '../fns/config.php';
 			$facebook = new Facebook(array(
-				'appId' => APP_ID,
-				'secret' => SECRET,
+				'appId' => FB_APP_ID,
+				'secret' => FB_SECRET,
 			));
 		}
 	}
@@ -75,7 +75,7 @@ class Facebook_API	{
 	 * Returns the facebook app URL.
 	 */
 	public static function getAppURL() {
-		return self::getFacebookURL(self::APP_ID);
+		return self::getFacebookURL(self::FB_APP_ID);
 	}
 	
 	/*
