@@ -10,12 +10,22 @@ class API {
 			return;
 		}
 		
+		for ($i = 0; $i < $questionCount; $i++) {
+			$question = new MCQuestion($optionCount, $friendFacebookId, $categoryId);
+		}
+		
 		/* TODO:
 		Quiz q = new Quiz;
 		1.GENERATE QUIZ: initialize quiz variables with facebook data
 		2.PRINT QUIZ: print quiz details in json format 
 		3.STORE QUIZ: in db
 		*/
+		
+		$output = array();
+		$output["questionIds"] = $questionIdsOfSavedAnswers;
+		$output["success"] = true;
+ 		
+		API::outputArrayInJSON($output);
 	}
 
 	public static function submitQuestions($facebookAccessToken, $questionAnswers) {

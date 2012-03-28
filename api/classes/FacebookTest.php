@@ -10,28 +10,25 @@ class FacebookTest{
 	private $facebookAPI;
 
 	public function testGetFriends(){
-		$userID = "1436983640";				//Colin's fb id
-		$friends_array = $this->facebookAPI->getFriends($userID);
-		$this->testSubjects($friends_array);
-
+		$facebookId = "1436983640";				// Colin's facebookId
+		$friends = $this->facebookAPI->getFriendsOf($facebookId);
+		$this->testSubjects($friends);
 	}
 
 	public function testGetLikes(){
-		$userID = "1436983640";				//Colin's fb id
-		$likes_array = $this->facebookAPI->getLikes($userID);
-		FacebookTest::testSubjects($likes_array);
-
+		$facebookId = "1436983640";				// Colin's facebookId
+		$likes = $this->facebookAPI->getLikesOfFriend($facebookId);
+		$this->testSubjects($likes);
 	}
 	
-	public function testSubjects($subject_array){
+	public function testSubjects($subjects){
 		//Make sure the 'friends' json has more than 1 friend
-		$arr_len = sizeof($subject_array);
-		echo '<p> Testing NumSubjects >0 : '.($arr_len > 0).'</p>';
+		echo '<p> Testing NumSubjects >0 : '.(sizeof($subjects) > 0).'</p>';
 
 		/* Loop through all friends, check if friend information is valid */
 		echo 'Running string checks on Subject info...</p>';
-		for($i=0; $i<$arr_len; $i++){
-			$curr_subject = $subject_array[$i];
+		for($i=0; $i < sizeof($subjects); $i++){
+			$curr_subject = $subjects[$i];
 
 			/* Check if subject name is not blank */
 			if(strlen($curr_subject->$name)<=0)

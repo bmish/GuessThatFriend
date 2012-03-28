@@ -8,7 +8,7 @@ class MCQuestion extends Question
 
 	public function __construct($likes, $isFriendSelected, $numOptions)	{
 		parent::__construct($likes, $isFriendSelected);
-		$this->numOptions = numOptions;
+		$this->numOptions = $numOptions;
 	}
 	
 	public function makeQuestionText()	{
@@ -22,7 +22,7 @@ class MCQuestion extends Question
 		// TODO: modify question to depend on subject type (person v.s. page)
 		$this->text = "<p>Which of the following ".$categoryName." does ".$subjectName." like?</p><ol>";
 		$options = $this->makeOptions($this->like['id']);
-		for ($i = 0; $i < numOptions; $i++)	{
+		for ($i = 0; $i < $numOptions; $i++)	{
 			$this->text = $this->text."<li>".Facebook::getNameFromId($options[$i]->subjectId)."</li>";
 		}
 		$this->text = $this->text."</ol>";

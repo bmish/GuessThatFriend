@@ -5,55 +5,60 @@ require_once("FacebookSDK.php");
 
 class FacebookAPI	{
 	private $facebook;
+	private $likes;
+	private $facebookAccessToken;
 	
 	public function __construct() {
 		$this->facebook = new Facebook(array(
 			'appId' => FB_APP_ID,
 			'secret' => FB_SECRET,
 		));
+		
+		$this->likes = array(); // Cache any likes we request.
 	}
 	
 	/* 
 	 * Returns the user's friends.
 	 */
-	public function getFriends($userId)	{
-		$accessToken = $this->facebook->getAccessToken();
-		$friends = $this->facebook->api('/'.$userId.'/friends?access_token='.$accessToken);
-		$friendsData = $friends['data'];
+	public function getFriendsOf($facebookId) {
+		$friends = $this->facebook->api('/'.$facebookId.'/friends?access_token='.$this->facebookAccessToken);
 		
-		for ($i = 0; $i < sizeof($friendsData); $i++)	{
-			$subjects[$i] = new Subject();
-			$subjects[$i]->name = $friendsData[$i]['name'];
-			$subjects[$i]->facebookId = $friendsData[$i]['id'];
-			$subjects[$i]->picture = 'https://graph.facebook.com/'.$friendsData[$i]['id'].'/picture';
-			$subjects[$i]->link = 'facebook.com/'.$friendsData[$i]['id'];
+		return jsonToSubjects($friends['data']);
+	}
+	
+	/*
+	 * Returns all friends' likes.
+	 */
+	public function getLikesOfAllMyFriends() {
+		$friends = $this->getFriends($this->facebook->getUser());
+		for ($i = 0; $i < sizeof($friends); $i++)	{
+			$likes[$friends[$i]->facebookId] = $this->getFriendLikes($friends[$i]);
+		}
+		
+		return $likes;
+	}
+	
+	private function jsonToSubjects($json) {
+		$subjects = array();
+		for ($i = 0; $i < sizeof($json); $i++)	{
+			$subjects[$i] = new Subject($json[$i]);
 		}
 		
 		return $subjects;
 	}
 	
 	/*
-	 * Returns all friends' likes.
-	 */
-	public function getFriendsLikes($userId)	{
-		$friends = $this->getFriends($userId);
-		for ($i = 0; $i < sizeof($friends); $i++)	{
-			$likes[$i] = $this->getFriendLikes($friends[$i]);
-		}
-		
-		return $likes;
-	} 
-	
-	/*
 	 * Returns a particular friend's likes.
 	 */
-	public function getFriendLikes($friend)	{
-		$accessToken = $this->facebook->getAccessToken();
-		$likes = $this->facebook->api('/'.($friend -> facebookId).'/likes?access_token='.$accessToken);
-		return array (
-			'friend' => $friend,
-			'friendLikes' => $likes['data'],
-		);
+	public function getLikesOfFriend($facebookId = "") {
+		if (!isset($this->likes[$facebookId])) {
+			$likesResponse = $this->facebook->api('/'.($facebookId).'/likes?access_token='.$this->facebookAccessToken);
+
+			// Store friend's likes so we won't have to look it up again.
+			$this->likes[$facebookId] = jsonToSubjects($likesResponse);
+		}
+		
+		return $this->likes[$facebookId];
 	}
 	
 	/*
@@ -78,16 +83,17 @@ class FacebookAPI	{
 		$content = file_get_contents('https://graph.facebook.com/'.$id);
 		$content = json_decode($content);
 		
-		if ($content -> link) {
-			return "<a href=".$content->link." target=_blank>";
-		} else {
-			return false;
-		}
+		if ($content->link) {
+			return '<a href="'.$content->link.'" target="_blank">';
+		} 
+		
+		return false;
 	}	
 	
 	// Log user in with given access token.
 	public function authenticate($facebookAccessToken) {
 		$this->facebook->setAccessToken($facebookAccessToken);
+		$this->facebookAccessToken = $facebookAccessToken;
 		
 		return $this->facebook->getUser(); // User ID of current user, or 0 if no logged-in user.
 	}
