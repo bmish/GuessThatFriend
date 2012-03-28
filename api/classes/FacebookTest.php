@@ -1,30 +1,29 @@
 <html>
 <body>
-<h1> PHP Tests </h1>
+<h1>PHP Tests</h1>
 <?php
-
-require_once 'Facebook.php';
+require_once 'FacebookAPI.php';
 require_once 'Subject.php';
 //require_once 'PHPUnit/Framework.php';
 
 class FacebookTest{
+	private $facebookAPI;
 
-	public static function testGetFriends(){
+	public function testGetFriends(){
 		$userID = "1436983640";				//Colin's fb id
-		$friends_array = Facebook_API::getFriends($userID);
-		FacebookTest::testSubjects($friends_array);
+		$friends_array = $this->facebookAPI->getFriends($userID);
+		$this->testSubjects($friends_array);
 
 	}
 
-	public static function testGetLikes(){
+	public function testGetLikes(){
 		$userID = "1436983640";				//Colin's fb id
-		$likes_array = Facebook_API::getLikes($userID);
+		$likes_array = $this->facebookAPI->getLikes($userID);
 		FacebookTest::testSubjects($likes_array);
 
 	}
 	
-	public static function testSubjects($subject_array){
-
+	public function testSubjects($subject_array){
 		//Make sure the 'friends' json has more than 1 friend
 		$arr_len = sizeof($subject_array);
 		echo '<p> Testing NumSubjects >0 : '.($arr_len > 0).'</p>';
@@ -58,16 +57,19 @@ class FacebookTest{
 		}
 	}
 
-	public static function runalltests(){
-		FacebookTest::testGetFriends();
-		FacebookTest::testGetLikes();
+	public function runAllTests(){
+		$this->testGetFriends();
+		$this->testGetLikes();
 	}
-
+	
+	public function FacebookTest() {
+		$this->facebookAPI = new FacebookAPI();
+		$this->facebookAPI->authenticate("");
+	}
 }
 
-FacebookTest::runalltests();
-
+$facebookTest = new FacebookTest();
+$facebookTest->runAllTests();
 ?>
-
 </body>
 </html>

@@ -1,20 +1,53 @@
 <?php
 class API {
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $friendFacebookId, $categoryId) {
+		global $facebookAPI;
+		
+		// Check authentication.
+		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
+		if (!$authenticatedFacebookId) {
+			API::outputExampleJSON("getQuestions.json");
+			return;
+		}
+		
 		/* TODO:
 		Quiz q = new Quiz;
 		1.GENERATE QUIZ: initialize quiz variables with facebook data
 		2.PRINT QUIZ: print quiz details in json format 
 		3.STORE QUIZ: in db
 		*/
-
-		header('Content-type: application/json');
-		require_once("examples/json/getQuestions.json");
 	}
 
 	public static function submitQuestions($facebookAccessToken, $questionAnswers) {
-		header('Content-type: application/json');
-		require_once("examples/json/submitQuestions.json");
+		global $facebookAPI;
+		
+		// Check authentication.
+		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
+		if (!$authenticatedFacebookId) {
+			API::outputExampleJSON("submitQuestions.json");
+			return;
+		}
+		
+		// Update the user's answers for the given questions.
+		$questionIdsOfSavedAnswers = array();
+		for($i = 0; $i < count($questionAnswers); $i++) {
+			$questionId = $questionAnswers[$i]["questionId"];
+			$facebookId = $questionAnswers[$i]["facebookId"]; // What the user chose.
+			
+			// Update the user's answer for this question.
+			// Note: We only update the answer if the user owned and had not already answered the question.
+			mysql_query("UPDATE questions SET chosenFacebookId = '$facebookId' WHERE chosenFacebookId = '' AND userFacebookId = '$authenticatedFacebookId' LIMIT 1");
+			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
+				$questionIdsOfSavedAnswers[] = $questionId;
+			}
+		}
+		
+		// Build object to represent the JSON we will display.
+		$output = array();
+		$output["questionIds"] = $questionIdsOfSavedAnswers;
+		$output["success"] = true;
+ 		
+		API::outputArrayInJSON($output);
 	}
 
 	public static function getCategories() {
@@ -25,7 +58,7 @@ class API {
 		}
 
 		$arr = API::getArrayOfResult($result);
-		API::outputJSON($arr);
+		API::outputArrayInJSON($arr);
 	}
 	
 	private static function getArrayOfResult($result) {
@@ -37,9 +70,22 @@ class API {
 		return $arr;
 	}
 	
-	private static function outputJSON($json) {
+	private static function outputExampleJSON($filename) {
+		header('Content-type: application/json');
+		require_once("examples/json/".$filename);
+	}
+	
+	private static function outputArrayInJSON($json) {
 		header('Content-type: application/json');
 		echo json_encode($json);
+	}
+	
+	private static function outputFailure() {
+		$output = array();
+		$output["success"] = false;
+		
+		header('Content-type: application/json');
+		echo json_encode($output);
 	}
 	
 	public static function getQuestionAnswersFromGETVars() {

@@ -8,12 +8,15 @@ require_once('classes/MCQuestion.php');
 require_once('classes/API.php');
 require_once('classes/Option.php');
 require_once('classes/DB.php');
-require_once('classes/Facebook.php');
+require_once('classes/FacebookAPI.php');
 require_once('fns/config.php');
 require_once('fns/misc.php');
 
 // Connect to database.
 DB::connect();
+
+// Setup Facebook API.
+$facebookAPI = new FacebookAPI();
 
 // Handle an API request.
 $cmd = $_GET['cmd'];
