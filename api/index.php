@@ -8,19 +8,29 @@ require_once('classes/MCQuestion.php');
 require_once('classes/API.php');
 require_once('classes/Option.php');
 require_once('classes/DB.php');
-require_once('classes/Facebook.php');
+require_once('classes/FacebookAPI.php');
 require_once('fns/config.php');
 require_once('fns/misc.php');
 
 // Connect to database.
 DB::connect();
 
+// Setup Facebook API.
+$facebookAPI = new FacebookAPI();
+
 // Handle an API request.
 $cmd = $_GET['cmd'];
 if ($cmd == 'getQuestions') {
-	API::getQuestions();
+	$facebookAccessToken = cleanInputForDatabase($_GET['facebookAccessToken']);
+	$questionCount = intval($_GET['questionCount']);
+	$optionCount = intval($_GET['optionCount']);
+	$friendFacebookId = cleanInputForDatabase($_GET['friendFacebookId']);
+	$categoryId = intval($_GET['categoryId']);
+	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $friendFacebookId, $categoryId);
 } else if ($cmd == 'submitQuestions') {
-	API::submitQuestions();
+	$facebookAccessToken = cleanInputForDatabase($_GET['facebookAccessToken']);
+	$questionAnswers = API::getQuestionAnswersFromGETVars();
+	API::submitQuestions($facebookAccessToken, $questionAnswers);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();
 } else {

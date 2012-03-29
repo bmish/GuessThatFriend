@@ -1,38 +1,34 @@
 <html>
 <body>
-<h1> PHP Tests </h1>
+<h1>PHP Tests</h1>
 <?php
-
-require_once 'Facebook.php';
+require_once 'FacebookAPI.php';
 require_once 'Subject.php';
 //require_once 'PHPUnit/Framework.php';
 
 class FacebookTest{
+	private $facebookAPI;
 
-	public static function testGetFriends(){
-		$userID = "1436983640";				//Colin's fb id
-		$friends_array = Facebook_API::getFriends($userID);
-		FacebookTest::testSubjects($friends_array);
-
+	public function testGetFriends(){
+		$facebookId = "1436983640";				// Colin's facebookId
+		$friends = $this->facebookAPI->getFriendsOf($facebookId);
+		$this->testSubjects($friends);
 	}
 
-	public static function testGetLikes(){
-		$userID = "1436983640";				//Colin's fb id
-		$likes_array = Facebook_API::getLikes($userID);
-		FacebookTest::testSubjects($likes_array);
-
+	public function testGetLikes(){
+		$facebookId = "1436983640";				// Colin's facebookId
+		$likes = $this->facebookAPI->getLikesOfFriend($facebookId);
+		$this->testSubjects($likes);
 	}
 	
-	public static function testSubjects($subject_array){
-
+	public function testSubjects($subjects){
 		//Make sure the 'friends' json has more than 1 friend
-		$arr_len = sizeof($subject_array);
-		echo '<p> Testing NumSubjects >0 : '.($arr_len > 0).'</p>';
+		echo '<p> Testing NumSubjects >0 : '.(sizeof($subjects) > 0).'</p>';
 
 		/* Loop through all friends, check if friend information is valid */
 		echo 'Running string checks on Subject info...</p>';
-		for($i=0; $i<$arr_len; $i++){
-			$curr_subject = $subject_array[$i];
+		for($i=0; $i < sizeof($subjects); $i++){
+			$curr_subject = $subjects[$i];
 
 			/* Check if subject name is not blank */
 			if(strlen($curr_subject->$name)<=0)
@@ -58,16 +54,19 @@ class FacebookTest{
 		}
 	}
 
-	public static function runalltests(){
-		FacebookTest::testGetFriends();
-		FacebookTest::testGetLikes();
+	public function runAllTests(){
+		$this->testGetFriends();
+		$this->testGetLikes();
 	}
-
+	
+	public function FacebookTest() {
+		$this->facebookAPI = new FacebookAPI();
+		$this->facebookAPI->authenticate("");
+	}
 }
 
-FacebookTest::runalltests();
-
+$facebookTest = new FacebookTest();
+$facebookTest->runAllTests();
 ?>
-
 </body>
 </html>

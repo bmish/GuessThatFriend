@@ -6,9 +6,7 @@ abstract class Question
 	protected $categoryId;		// Category of this Question (like books or movies).
 	protected $subjectId;		// Subject of this Question (a person or page).
 	protected $text;			// Question text.
-	
-	private static $numQuestions;
-	
+
 	protected $like;
 	
 	//protected $correctOptionId;	// The correct answer to this question.
@@ -32,9 +30,8 @@ abstract class Question
 	/*
 	 * Sets the question ID.
 	 */
-	protected function setQuestionId()	{
-		$this->questionId = self::$numQuestions;
-		self::$numQuestions++;
+	protected function setQuestionId($questionId) {
+		$this->questionId = $questionId;
 	}
 	
 	/*
