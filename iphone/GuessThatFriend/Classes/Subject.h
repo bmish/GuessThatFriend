@@ -20,6 +20,8 @@
 @property (nonatomic, retain) UIImage *picture;
 @property (nonatomic, retain) NSString *link;
 
-- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath;
+- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath 
+            andFacebookId:(NSString *)facebookId
+                  andLink:(NSString *)link;
 
 @end

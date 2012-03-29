@@ -104,7 +104,8 @@
     quizSettings.option = 2;
     quizSettings.categoryID = 2;
     quizSettings.friendFacebookID = nil;
-    quizManager = [[QuizManager alloc] initWithQuizSettings:quizSettings andFBToken:facebook.accessToken andUseSampleData:NO];
+    quizManager = [[QuizManager alloc] initWithQuizSettings:quizSettings andFBToken:facebook.accessToken andUseSampleData:YES];     //TODO
+    
     
     // Show the first question. Do this by pretending the user pressed 
     // the Next Question button.

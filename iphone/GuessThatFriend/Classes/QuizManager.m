@@ -54,8 +54,10 @@
         return;
     }
     
+    
     // Send the GET request to the server.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+    NSLog(@"%@ \n",request);
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     
@@ -87,8 +89,10 @@
             NSDictionary *subjectDict = [curOption objectForKey:@"subject"];
             NSString *subjectName = [subjectDict objectForKey:@"name"];
             NSString *subjectImageURL = [subjectDict objectForKey:@"picture"];
-            
-            Option *option = [[Option alloc] initWithName:subjectName andImagePath:subjectImageURL];
+            NSString *subjectFacebookId = [subjectDict objectForKey:@"facebookId"];
+            NSString *subjectLink = [subjectDict objectForKey:@"link"];
+
+             Option *option = [[Option alloc] initWithName:subjectName andImagePath:subjectImageURL andFacebookId:subjectFacebookId andLink:subjectLink];
             [optionArray addObject:option];
             [option release];
         }
@@ -112,6 +116,7 @@
         [self requestQuestionsFromServer];
     }
     
+    NSLog(@"%d, \n", questionArray.count);
     Question *question = [questionArray objectAtIndex:questionArray.count - 1];
     [question retain];
     [questionArray removeLastObject];

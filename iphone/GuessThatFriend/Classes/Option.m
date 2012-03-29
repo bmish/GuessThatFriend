@@ -12,9 +12,12 @@
 
 @synthesize optionId, question, subject;
 
-- (Option *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath {
-	self.subject = [[Subject alloc] initWithName:friendName andImagePath:imagePath];
 
+
+- (Option *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andFacebookId:(NSString *)facebookId andLink:(NSString *)link
+{
+	self.subject = [[Subject alloc] initWithName:friendName andImagePath:imagePath andFacebookId:facebookId andLink:link];
+    
 	return [super init];
 }
 
