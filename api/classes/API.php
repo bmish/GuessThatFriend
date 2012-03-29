@@ -11,9 +11,14 @@ class API {
 		}
 		$output = array();
 		$questions = array();
-		if($questionCount != 1){
+		if($optionCount != 1){
 			for ($i = 0; $i < $questionCount; $i++) {
 				$question = new MCQuestion($optionCount, $friendFacebookId, $categoryId);
+				$questions[i] = $question;
+			}
+		} else{
+			for ($i = 0; $i < $questionCount; $i++){
+				$question = new FillBlankQuestion(/*TODO: Parameters*/);
 				$questions[i] = $question;
 			}
 		}
