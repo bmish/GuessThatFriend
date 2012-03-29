@@ -7,18 +7,12 @@ class Category
 	
 	public function __construct($categoryId)	{
 		$this->categoryId = $categoryId;
-		$this->facebookName = $this->getFacebookName();
-		$this->prettyName = $this->getPrettyName();
+		$this->facebookName = $this->getName('facebookName');
+		$this->prettyName = $this->getName('prettyName');
 	}
 	
-	public function getFacebookName()	{
-		if (isset($this->facebookName)) return $this->facebookName;
-		return $this->getName ("facebookName");
-	}
-	
-	public function getPrettyName()	{
-		if (isset($this->prettyName))	return $this->prettyName;
-		return $this->getName ("prettyName");
+	public function __get($field)	{
+		return $this->$field;
 	}
 	
 	private function getName($nameType)	{

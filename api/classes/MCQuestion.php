@@ -1,44 +1,30 @@
 <?php
+require_once "Question.php";
 class MCQuestion extends Question
 {
-	protected $correctOptionId;	//Id of the correct answer for the question
-	protected $chosenOptionId; 	//Id of the option chosen by the user
-	
-	private $numOptions;
+	protected $options;
+	protected $optionCount;
 
-	public function __construct($likes, $isFriendSelected, $numOptions)	{
-		parent::__construct($likes, $isFriendSelected);
-		$this->numOptions = $numOptions;
+	public function __construct($optionCount, $friendFacebookId, $categoryId)	{
+		parent::__construct($friendFacebookId, $categoryId);
+		$this->optionCount = $optionCount;
+		$this->makeOptions();
 	}
 	
-	public function makeQuestionText()	{
-		require_once 'Subject.php';
-		require_once 'Facebook.php';
-
-		$category = new Category($this->categoryId);
-		$categoryName = $category->getPrettyName();
-		$subjectName = Subject::getNameFromId($this->subjectId);
-		
+	public function makeQuestionText() {
 		// TODO: modify question to depend on subject type (person v.s. page)
-		$this->text = "<p>Which of the following ".$categoryName." does ".$subjectName." like?</p><ol>";
-		$options = $this->makeOptions($this->like['id']);
-		for ($i = 0; $i < $numOptions; $i++)	{
-			$this->text = $this->text."<li>".Facebook::getNameFromId($options[$i]->subjectId)."</li>";
-		}
-		$this->text = $this->text."</ol>";
+		$this->text = "Which of the following ".strtolower($this->category->prettyName)." does ".$this->subject->name." like?";
 	}
 	
-	private function makeOptions($correctFacebookId)	{
-		$correctOption = rand(0, $this->numOptions-1);
+	private function makeOptions()	{
+		$correctOption = rand(0, $this->optionCount-1);
 		for ($i = 0; $i < $this->numOptions; $i++)	{
 			if ($i == $correctOption)	{
-				$options[$i] = new Option ($this->$questionId, $correctFacebookId);
-				$correctOptionId = $options[$i]->optionId;
+				$this->options[$i] = new Option ($this->$questionId, $correctSubject->facebookId);
 			} else	{
-				$options[$i] = new Option ($this->$questionId, randIncorrectFacebookId());
+				$this->options[$i] = new Option ($this->$questionId, randIncorrectFacebookId());
 			}
 		}
-		return $options;
 	}
 	
 	/*

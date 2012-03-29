@@ -32,7 +32,8 @@ class FacebookAPI	{
 	public function getLikesOfAllMyFriends() {
 		$friends = $this->getFriends($this->facebook->getUser());
 		for ($i = 0; $i < sizeof($friends); $i++)	{
-			$likes[$friends[$i]->facebookId] = $this->getFriendLikes($friends[$i]);
+			$likes[$friends[$i]->facebookId]['likes'] = $this->getLikesOfFriend($friends[$i]);
+			$likes[$friends[$i]->facebookId]['subject'] = $friends[$i];
 		}
 		
 		return $likes;
