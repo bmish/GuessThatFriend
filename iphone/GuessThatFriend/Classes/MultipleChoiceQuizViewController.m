@@ -17,6 +17,9 @@
 @synthesize friendsTable;
 @synthesize questionString;
 @synthesize optionsList;
+@synthesize correctFacebookId;
+@synthesize responseLabel;
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -69,13 +72,15 @@
 	self.friendsTable = nil;
 	self.questionString = nil;
 	self.optionsList = nil;
+    self.responseLabel = nil;
 }
 
 - (void)dealloc {
 	[friendsTable release];
 	[questionString release];
 	[optionsList release];
-	
+	[correctFacebookId release];
+    [responseLabel release];
     [super dealloc];
 }
 
@@ -119,13 +124,17 @@
     NSLog(@"%@\n", option.subject.picture);
     NSLog(@"%@\n", option.subject.facebookId);
     //if(indexPath[0]==@"bmish")
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attention" 
-													message:@"Please use the button on the right" 
-												   delegate:nil 
-										  cancelButtonTitle:@"OK" 
-										  otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+    
+    //Check if selected option is correct
+    if ([option.subject.facebookId isEqualToString: correctFacebookId ])
+    {
+        responseLabel.text = @"Correct";
+    }
+    else {
+        responseLabel.text = @"Wrong";
+    }
+    
+	
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,13 +10,13 @@
 
 @implementation Question
 
-@synthesize questionId, category, subject, text, correctOption, chosenOption;
+@synthesize questionId, category, subject, text, correctFacebookId, chosenOption;
 
 - (void)dealloc {
     [category release];
     [subject release];
     [text release];
-    [correctOption release];
+    [correctFacebookId release];
     [chosenOption release];
 	[super dealloc];
 }

@@ -81,6 +81,7 @@
     while (curQuestion = [questionEnumerator nextObject]) {
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
+        NSString *correctFbId = [curQuestion objectForKey:@"correctFacebookId"];
         
         NSEnumerator *optionEnumerator = [options objectEnumerator];
         NSDictionary *curOption;
@@ -99,7 +100,7 @@
         
         Question *question = [[MCQuestion alloc] initQuestionWithOptions:optionArray];
         question.text = text;
-        
+        question.correctFacebookId = correctFbId;
         [optionArray release];
         
         [questionArray addObject:question];

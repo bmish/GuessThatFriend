@@ -16,7 +16,7 @@
     Category *category;     // Category of this question (like movies or books).
     Subject *subject;       // Subject of the question (a person or page).
 	NSString *text;         // Question text.
-    Option *correctOption;  // The correct answer to this question.
+    NSString *correctFacebookId;  // The correct answer to this question.
     Option *chosenOption;   // The answer that the user chose (if the question has been answered).
 }
 
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) Category *category;
 @property (nonatomic, retain) Subject *subject;
 @property (nonatomic, retain) NSString *text;
-@property (nonatomic, retain) Option *correctOption;
+@property (nonatomic, retain) NSString *correctFacebookId;
 @property (nonatomic, retain) Option *chosenOption;
 
 @end
