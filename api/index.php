@@ -24,9 +24,9 @@ if ($cmd == 'getQuestions') {
 	$facebookAccessToken = cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionCount = intval($_GET['questionCount']);
 	$optionCount = intval($_GET['optionCount']);
-	$friendFacebookId = cleanInputForDatabase($_GET['friendFacebookId']);
+	$subjectFacebookId = cleanInputForDatabase($_GET['subjectFacebookId']);
 	$categoryId = intval($_GET['categoryId']);
-	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $friendFacebookId, $categoryId);
+	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $subjectFacebookId, $categoryId);
 } else if ($cmd == 'submitQuestions') {
 	$facebookAccessToken = cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionAnswers = API::getQuestionAnswersFromGETVars();

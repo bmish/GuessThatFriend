@@ -3,19 +3,22 @@ class Option
 {
 	protected $optionId;
 	protected $questionId;		// ID of the Question that this Option is part of.
-	protected $subjectId;		// The person or page of this Option.
+	protected $subject;		// The person or page of this Option.
 	
 	public function __construct($questionId, $subjectId)	{
+		$this->optionId = -1;
 		$this->questionId = $questionId;
-		$this->subjectId = $subjectId;
-		saveToDB();
+		$this->subject = new Subject($subjectId);
+		
+		//saveToDB();
 	}
-	
-	/*
-	 * Writes the new option into the database.
-	 */
+
+	public function __get($field)	{
+		return $this->$field;
+	}
+
 	private function saveToDB()	{
-		$insertQuery = "INSERT INTO options (questionId, facebookId) VALUES (".$this->questionId.", ".$this->subjectId.")";
+		$insertQuery = "INSERT INTO options (questionId, facebookId) VALUES (".$this->questionId.", ".$this->subject->subjectId.")";
 		$queryResult = mysql_query($insertQuery);
 		
 		if (!$queryResult) {
@@ -33,8 +36,12 @@ class Option
 		}
 	}
 	
-	public function __get($field)	{
-		return $this->$field;
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["optionId"] = $this->optionId;
+		$obj["subject"] = $this->subject->jsonSerialize();
+		
+		return $obj;
 	}
 }
 ?>

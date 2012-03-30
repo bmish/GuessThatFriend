@@ -18,7 +18,7 @@ class Category
 	private function getName($nameType)	{
 		global $categoryId;
 		
-		$nameQuery = "SELECT ".$nameType." FROM categories WHERE categoryId = ".$categoryId;
+		$nameQuery = "SELECT $nameType FROM categories WHERE categoryId = $categoryId LIMIT 1";
 		$queryResult = mysql_query($nameQuery);
 		
 		if (!$queryResult) {
@@ -30,7 +30,7 @@ class Category
 	}
 	
 	public static function getCategoryId($facebookName)	{
-		$idQuery = "SELECT categoryId FROM categories WHERE facebookName = ".$facebookName;
+		$idQuery = "SELECT categoryId FROM categories WHERE facebookName = '$facebookName' LIMIT 1";
 		$queryResult = mysql_query($idQuery);
 		
 		if (!$queryResult) {
@@ -39,6 +39,15 @@ class Category
 		} else {
 			return mysql_fetch_array($queryResult);
 		}
+	}
+	
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["categoryId"] = $this->categoryId;
+		$obj["facebookName"] = $this->facebookName;
+		$obj["prettyName"] = $this->prettyName;
+		
+		return $obj;
 	}
 }
 

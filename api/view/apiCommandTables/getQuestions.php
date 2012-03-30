@@ -31,9 +31,9 @@
 				<td>How many options (if any) should come with each question? Specifying '-1' means that each question will have a random number of options.</td>
 			</tr>
 			<tr>
-				<td class="colParameter">friendFacebookId</td>
+				<td class="colParameter">subjectFacebookId</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">Friend's Facebook Id</td>
+				<td class="colValue">Subject's Facebook Id</td>
 				<td class="colDefault">Default: All friends</td>
 				<td>Should the questions focus on a specific friend or all friends?</td>
 			</tr>

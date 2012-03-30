@@ -1,32 +1,36 @@
 <?php
 class Subject
 {
-	protected $facebookId;
-	protected $name;
-	protected $picture;
-	protected $link;
-
-    public function __get($field)	{
+	private $facebookId;
+	private $name;
+	private $picture;
+	private $link;
+	
+	public function __construct($facebookId, $name = "") {
+		global $facebookAPI;
+		
+		$this->name = $name;
+		$this->facebookId = $facebookId;
+		$this->picture = 'https://graph.facebook.com/'.$facebookId.'/picture';
+		$this->link = 'https://www.facebook.com/'.$facebookId;
+		
+		if ($this->name == "") {
+			$this->name = $facebookAPI->getNameFromId($facebookId);
+		}
+	}
+	
+	public function __get($field)	{
         return $this->$field;
 	}
 	
-	public function __construct($friendData) {
-		$this->name = $friendData['name'];
-		$this->facebookId = $friendData['id'];
-		$this->picture = 'https://graph.facebook.com/'.$friendData['id'].'/picture';
-		$this->link = 'https://www.facebook.com/'.$friendData['id'];
-	}
-	
-	public static function getNameFromId($facebookId)	{
-		$nameQuery = "SELECT name FROM subjects WHERE facebookId = ".$facebookId;
-		$queryResult = mysql_query($nameQuery);
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["facebookId"] = $this->facebookId;
+		$obj["name"] = $this->name;
+		$obj["picture"] = $this->picture;
+		$obj["link"] = $this->link;
 		
-		if (!$queryResult) {
-			echo $nameQuery;
-			echo mysql_error();
-		} else {
-			return mysql_fetch_array($queryResult);
-		}
+		return $obj;
 	}
 }
 ?>

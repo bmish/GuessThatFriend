@@ -1,32 +1,29 @@
 <?php
 class API {
-	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $friendFacebookId, $categoryId) {
+	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $subjectFacebookId, $categoryId) {
 		global $facebookAPI;
 		
 		// Check authentication.
 		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
-		if (!$authenticatedFacebookId) {
+		if (!$authenticatedFacebookId) { // Show example if not authenticated.
 			API::outputExampleJSON("getQuestions.json");
 			return;
 		}
-		$output = array();
-		$questions = array();
-
-		//Check if MCQuestions or FillBlankQuestions TODO: Random question type
-		if($optionCount != 1){
-			for ($i = 0; $i < $questionCount; $i++) {
-				$question = new MCQuestion($optionCount, $friendFacebookId, $categoryId);
-				$questions[i] = $question;
-			}
-		} else{
-			for ($i = 0; $i < $questionCount; $i++){
-				$question = new FillBlankQuestion(/*TODO: Parameters*/);
-				$questions[i] = $question;
-			}
+		
+		// Use defaults if necessary.
+		if ($questionCount == "") {
+			$questionCount = 10;
 		}
+		if ($optionCount == "") {
+			$optionCount = 4;
+		}
+		
+		// Create questions.
+		$questions = API::getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId);
 
-		$output["date"] = date('Y-m-d');
-		$output["questions"] = $questions;
+		// Build object to represent the JSON we will display.
+		$output = array();
+		$output["questions"] = API::jsonSerializeArray($questions);
 		$output["success"] = true;
  		
 		API::outputArrayInJSON($output);
@@ -37,12 +34,51 @@ class API {
 		
 		// Check authentication.
 		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
-		if (!$authenticatedFacebookId) {
+		if (!$authenticatedFacebookId) { // Show example if not authenticated.
 			API::outputExampleJSON("submitQuestions.json");
 			return;
 		}
 		
 		// Update the user's answers for the given questions.
+		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($authenticatedFacebookId, $questionAnswers);
+		
+		// Build object to represent the JSON we will display.
+		$output = array();
+		$output["questionIds"] = $questionIdsOfSavedAnswers;
+		$output["success"] = true;
+ 		
+		API::outputArrayInJSON($output);
+	}
+	
+	public static function getCategories() {
+		// Get categories from database.
+		$result = mysql_query("SELECT * FROM categories");
+		if (!$result || mysql_num_rows($result) == 0) {
+			return;
+		}
+
+		$arr = API::getArrayOfResult($result);
+		API::outputArrayInJSON($arr);
+	}
+	
+	private static function getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId) {
+		$questions = array();
+		for ($i = 0; $i < $questionCount; $i++) { 
+			if ($optionCount == 0) { // Fill in the blank.
+				$question = new FillBlankQuestion($subjectFacebookId, $categoryId);
+			} elseif ($optionCount == -1) { // Random type.
+				
+			} else { // Multiple choice.
+				$question = new MCQuestion($optionCount, $subjectFacebookId, $categoryId);
+			}
+			
+			$questions[] = $question;
+		}
+		
+		return $questions;
+	}
+	
+	private static function saveQuestionAnswers($authenticatedFacebookId, $questionAnswers) {
 		$questionIdsOfSavedAnswers = array();
 		for($i = 0; $i < count($questionAnswers); $i++) {
 			$questionId = $questionAnswers[$i]["questionId"];
@@ -56,23 +92,7 @@ class API {
 			}
 		}
 		
-		// Build object to represent the JSON we will display.
-		$output = array();
-		$output["questionIds"] = $questionIdsOfSavedAnswers;
-		$output["success"] = true;
- 		
-		API::outputArrayInJSON($output);
-	}
-
-	public static function getCategories() {
-		// Get categories from database.
-		$result = mysql_query("SELECT * FROM categories");
-		if (!$result || mysql_num_rows($result) == 0) {
-			return;
-		}
-
-		$arr = API::getArrayOfResult($result);
-		API::outputArrayInJSON($arr);
+		return $questionIdsOfSavedAnswers;
 	}
 	
 	private static function getArrayOfResult($result) {
@@ -82,6 +102,18 @@ class API {
 		}
 		
 		return $arr;
+	}
+	
+	// Input an array and return a new one out of the desired JSON-use objects of each of input's elements.
+	// php 5.4.0 will bring automatic JsonSerializable functionality.
+	public static function jsonSerializeArray($array) {
+		$ret = array();
+		
+		for ($i = 0; $i < count($array); $i++) {
+			$ret[] = $array[$i]->jsonSerialize();
+		}
+		
+		return $ret;
 	}
 	
 	private static function outputExampleJSON($filename) {

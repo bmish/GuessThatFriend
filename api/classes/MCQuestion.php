@@ -5,10 +5,12 @@ class MCQuestion extends Question
 	protected $options;
 	protected $optionCount;
 
-	public function __construct($optionCount, $friendFacebookId, $categoryId)	{
-		parent::__construct($friendFacebookId, $categoryId);
+	public function __construct($optionCount, $subjectFacebookId, $categoryId)	{
+		parent::__construct($subjectFacebookId, $categoryId);
 		$this->optionCount = $optionCount;
-		$this->makeOptions();
+		$this->options = null;
+		
+		//$this->makeOptions();
 	}
 	
 	public function makeQuestionText() {
@@ -20,9 +22,9 @@ class MCQuestion extends Question
 		$correctOption = rand(0, $this->optionCount-1);
 		for ($i = 0; $i < $this->numOptions; $i++)	{
 			if ($i == $correctOption)	{
-				$this->options[$i] = new Option ($this->$questionId, $correctSubject->facebookId);
+				$this->options[$i] = new Option($this->$questionId, $correctSubject->facebookId);
 			} else	{
-				$this->options[$i] = new Option ($this->$questionId, randIncorrectFacebookId());
+				$this->options[$i] = new Option($this->$questionId, randIncorrectFacebookId());
 			}
 		}
 	}
@@ -38,6 +40,18 @@ class MCQuestion extends Question
 	public function setChosenOptionId($optionId)	{
 		$this->chosenOptionId = $optionId;
 		// TODO: update database
+	}
+	
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["questionId"] = $this->questionId;
+		$obj["category"] = $this->category->jsonSerialize();
+		$obj["text"] = $this->text;
+		$obj["subject"] = $this->subject->jsonSerialize();
+		$obj["correctFacebookId"] = $this->correctSubject->facebookId;
+		$obj["options"] = API::jsonSerializeArray($this->options);
+		
+		return $obj;
 	}
 }
 ?>

@@ -1,4 +1,6 @@
 <?php
+require_once 'Category.php';
+
 // TODO: currently assumes subject = a person
 abstract class Question
 {
@@ -9,30 +11,20 @@ abstract class Question
 	protected $correctSubject; 		// The correct answer to this question.
 	protected $chosenSubject; 		// The answer that the user chose (if the question has been answered).
 	
-	protected $friendFacebookId;
+	public function __construct($subjectFacebookId, $categoryId)	{
+		$this->questionId = -1;
+		$this->category = new Category($categoryId);
+		$this->text = "";
+		$this->subject = new Subject($subjectFacebookId);
+		$this->correctSubject = "";
+		$this->chosenSubject = "";
+	
+		//$this->pickSubject();
+		//$this->pickLike();
+	}
 	
 	public function __get($field)	{
         return $this->$field;
-	}
-	
-	/*
-	 * Constructor
-	 */
-	public function __construct($friendFacebookId, $categoryId)	{
-		require_once 'Category.php';
-		
-		$this->friendFacebookId = friendFacebookId;
-		$this->categoryId = $categoryId;
-	
-		$this->pickSubject();
-		$this->pickLike();
-	}
-	
-	/*
-	 * Sets the question ID.
-	 */
-	protected function setQuestionId($questionId) {
-		$this->questionId = $questionId;
 	}
 	
 	/*
@@ -43,10 +35,10 @@ abstract class Question
 		global $facebookAPI;
 	
 		$friendsWithLikes = $facebookAPI->getLikesOfAllMyFriends();
-		if ($this->friendFacebookId <= 0)	{
-			$this->friendFacebookId = array_rand($friendsWithLikes, 1);
+		if ($this->subject->facebookId <= 0)	{
+			$this->subject->facebookId = array_rand($friendsWithLikes, 1);
 		}
-		$this->subject = $friendsWithLikes[$this->friendFacebookId]['subject'];
+		$this->subject = $friendsWithLikes[$this->subject->facebookId]['subject'];
 	}
 	
 	/*
@@ -57,7 +49,7 @@ abstract class Question
 	protected function pickLike()	{
 		global $facebookAPI;
 	
-		$likes = $facebookAPI->likes[$this->friendFacebookId]['likes'];
+		$likes = $facebookAPI->likes[$this->subject->facebookId]['likes'];
 		if ($this->categoryId > 0)	{
 			$likesInCategory = array();
 			foreach ($likes as $like)	{
@@ -79,9 +71,8 @@ abstract class Question
 	 */
 	protected abstract function makeQuestionText();
 	
-	/*
-	 * Saves the question to the database.
-	 */
+	public abstract function jsonSerialize();
+	
 	protected function saveToDB()	{
 		// TODO: missing implementation
 	}
