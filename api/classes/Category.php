@@ -11,7 +11,7 @@ class Category
 		$this->prettyName = "";
 		
 		if ($categoryId > 0) {
-			$this->fillInNamesFromDB();
+			$this->fillInFieldsFromDB();
 		}
 	}
 	
@@ -19,7 +19,7 @@ class Category
 		return $this->$field;
 	}
 	
-	private function fillInNamesFromDB()	{
+	private function fillInFieldsFromDB()	{
 		$nameQuery = "SELECT facebookName, prettyName FROM categories WHERE categoryId = ".$this->categoryId." LIMIT 1";
 		$queryResult = mysql_query($nameQuery);
 		
@@ -32,15 +32,16 @@ class Category
 	}
 	
 	public static function getCategoryId($facebookName)	{
-		$idQuery = "SELECT categoryId FROM categories WHERE facebookName = '$facebookName' LIMIT 1";
-		$queryResult = mysql_query($idQuery);
+		$query = "SELECT categoryId FROM categories WHERE facebookName = '".cleanInputForDatabase($facebookName)."' LIMIT 1";
+		$queryResult = mysql_query($query);
 		
-		if (!$queryResult) {
-			echo $nameQuery;
-			echo mysql_error();
-		} else {
-			return mysql_fetch_array($queryResult);
+		if ($queryResult && mysql_num_rows($queryResult) == 1) {
+			$row = mysql_fetch_array($queryResult);
+			
+			return $row["categoryId"];
 		}
+		
+		return false;
 	}
 	
 	public function jsonSerialize() {
