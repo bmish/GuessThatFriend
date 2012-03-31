@@ -101,17 +101,7 @@
     }
     
     // Now we have facebook token, use it to initialize the quiz manager.
-    QuizSettings *quizSettings = [QuizSettings quizSettingObject];
-    quizSettings.questionCount = 1;
-    quizSettings.option = -1;
-    quizSettings.categoryID = 2;
-    quizSettings.friendFacebookID = nil;
-    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];     //TODO
-    
-    
-    // Show the first question. Do this by pretending the user pressed 
-    // the Next Question button.
-    [self nextButtonPressed:nil];
+    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
     
     return YES;
 }

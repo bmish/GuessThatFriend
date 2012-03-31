@@ -37,6 +37,10 @@
 
 - (void)requestQuestionsFromServer{
     
+    if (questionArray.count > 0) {
+        return;
+    }
+    
     // Create GET request.
     NSMutableString *getRequest;
     
@@ -45,7 +49,6 @@
     } else { // Make a real request.
         QuizSettings *quizSettings = [QuizSettings quizSettingObject];
         
-        
         getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
         [getRequest appendString:@"?cmd=getQuestions"];
         [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
@@ -53,7 +56,6 @@
         [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
         [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
     }
-    
     
     // Send the GET request to the server.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];

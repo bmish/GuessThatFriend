@@ -80,11 +80,12 @@
     NSString *option;
     switch (selected) {
             
-            /* From the API: 
-             -1: Random
-             0: Fill in the blank
-             2-6: Multiple choice
-             */
+        /* From the API: 
+           -1: Random
+           0: Fill in the blank
+           2-6: Multiple choice
+        */
+        
         case 0:
             option = [NSString stringWithString:@"Random"];
             quizSettings.option = -1;
