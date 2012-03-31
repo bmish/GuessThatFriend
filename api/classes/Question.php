@@ -97,7 +97,7 @@ abstract class Question
 	protected function saveToDB()	{
 		global $facebookAPI;
 		
-		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, subjectFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->subject->facebookId."','".$this->correctSubject->facebookId."')";
+		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, subjectFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".API::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->subject->facebookId."','".$this->correctSubject->facebookId."')";
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {

@@ -26,13 +26,13 @@ class Category
 		if ($queryResult && mysql_num_rows($queryResult) == 1) {
 			$row = mysql_fetch_array($queryResult);
 			
-			$this->facebookName = cleanOutputFromDatabase($row["facebookName"]);
-			$this->prettyName = cleanOutputFromDatabase($row["prettyName"]);
+			$this->facebookName = API::cleanOutputFromDatabase($row["facebookName"]);
+			$this->prettyName = API::cleanOutputFromDatabase($row["prettyName"]);
 		}
 	}
 	
 	public static function getCategoryId($facebookName)	{
-		$query = "SELECT categoryId FROM categories WHERE facebookName = '".cleanInputForDatabase($facebookName)."' LIMIT 1";
+		$query = "SELECT categoryId FROM categories WHERE facebookName = '".API::cleanInputForDatabase($facebookName)."' LIMIT 1";
 		$queryResult = mysql_query($query);
 		
 		if ($queryResult && mysql_num_rows($queryResult) == 1) {

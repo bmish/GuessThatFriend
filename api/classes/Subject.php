@@ -42,9 +42,9 @@ class Subject
 		if ($result && mysql_num_rows($result) == 1) {
 			$row = mysql_fetch_array($result);
 			
-			$this->name = cleanOutputFromDatabase($row["name"]);
-			$this->picture = cleanOutputFromDatabase($row["picture"]);
-			$this->link = cleanOutputFromDatabase($row["link"]);
+			$this->name = API::cleanOutputFromDatabase($row["name"]);
+			$this->picture = API::cleanOutputFromDatabase($row["picture"]);
+			$this->link = API::cleanOutputFromDatabase($row["link"]);
 			
 			return true;
 		}
