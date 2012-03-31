@@ -8,14 +8,18 @@ abstract class Question
 	protected $questionId;
 	protected $category; 			// Category of this Question (like books or movies).
 	protected $text; 				// Question text.
+	protected $ownerSubject;		// The person who this question was generated for.
 	protected $subject; 			// Person or page that this question is about.
 	protected $correctSubject; 		// The correct answer to this question.
 	protected $chosenSubject; 		// The answer that the user chose (if the question has been answered).
 	
-	public function __construct($subjectFacebookId, $categoryId)	{
+	public function __construct($ownerFacebookId, $subjectFacebookId, $categoryId)	{
+		global $facebookAPI;
+		
 		$this->questionId = -1;
 		$this->category = new Category($categoryId);
 		$this->text = "";
+		$this->ownerSubject = new Subject($ownerFacebookId);
 		$this->subject = new Subject($subjectFacebookId);
 		$this->correctSubject = null;
 		$this->chosenSubject = null;
@@ -85,7 +89,7 @@ abstract class Question
 		$obj["category"] = $this->category->jsonSerialize();
 		$obj["text"] = $this->text;
 		$obj["subject"] = $this->subject->jsonSerialize();
-		$obj["correctFacebookId"] = $this->correctSubject->facebookId;
+		$obj["correctSubject"] = $this->correctSubject->jsonSerialize();
 		
 		return $obj;
 	}
@@ -93,7 +97,7 @@ abstract class Question
 	protected function saveToDB()	{
 		global $facebookAPI;
 		
-		$insertQuery = "INSERT INTO questions (categoryId, text, userFacebookId, subjectFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".cleanInputForDatabase($this->text)."', '".$facebookAPI->getLoggedInUserId()."','".$this->subject->facebookId."','".$this->correctSubject->facebookId."')";
+		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, subjectFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->subject->facebookId."','".$this->correctSubject->facebookId."')";
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {

@@ -31,7 +31,7 @@ class FacebookAPI	{
 	 * Returns all friends' likes.
 	 */
 	public function getLikesOfAllMyFriends() {
-		$friends = $this->getFriendsOf($this->facebook->getUser());
+		$friends = $this->getFriendsOf($this->getLoggedInUserId());
 		for ($i = 0; $i < sizeof($friends); $i++)	{
 			$likes[$friends[$i]->facebookId]['likes'] = $this->getLikesOfFriend($friends[$i]->facebookId);
 			$likes[$friends[$i]->facebookId]['subject'] = $friends[$i];
@@ -54,7 +54,7 @@ class FacebookAPI	{
 	 */
 	public function getLikesOfFriend($facebookId = "") {
 		if ($facebookId == "") { // Use logged in user's id.
-			$facebookId = $this->facebook->getUser();
+			$facebookId = $this->getLoggedInUserId();
 		}
 		
 		if (!isset($this->likes[$facebookId])) {
@@ -105,7 +105,7 @@ class FacebookAPI	{
 		$this->facebook->setAccessToken($facebookAccessToken);
 		$this->facebookAccessToken = $facebookAccessToken;
 		
-		return $this->facebook->getUser(); // User ID of current user, or 0 if no logged-in user.
+		return $this->getLoggedInUserId(); // User ID of current user, or 0 if no logged-in user.
 	}
 	
 	public function getLoggedInUserId() {

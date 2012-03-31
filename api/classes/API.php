@@ -4,8 +4,7 @@ class API {
 		global $facebookAPI;
 		
 		// Check authentication.
-		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
-		if (!$authenticatedFacebookId) { // Show example if not authenticated.
+		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			API::outputExampleJSON("getQuestions.json");
 			return;
 		}
@@ -33,14 +32,13 @@ class API {
 		global $facebookAPI;
 		
 		// Check authentication.
-		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
-		if (!$authenticatedFacebookId) { // Show example if not authenticated.
+		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			API::outputExampleJSON("submitQuestions.json");
 			return;
 		}
 		
 		// Update the user's answers for the given questions.
-		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($authenticatedFacebookId, $questionAnswers);
+		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
 		
 		// Build object to represent the JSON we will display.
 		$output = array();
@@ -62,14 +60,16 @@ class API {
 	}
 	
 	private static function getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId) {
+		global $facebookAPI;
+		
 		$questions = array();
 		for ($i = 0; $i < $questionCount; $i++) { 
 			if ($optionCount == 0) { // Fill in the blank.
-				$question = new FillBlankQuestion($subjectFacebookId, $categoryId);
+				$question = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $subjectFacebookId, $categoryId);
 			} elseif ($optionCount == -1) { // Random type.
 				
 			} else { // Multiple choice.
-				$question = new MCQuestion($subjectFacebookId, $categoryId, $optionCount);
+				$question = new MCQuestion($facebookAPI->getLoggedInUserId(), $subjectFacebookId, $categoryId, $optionCount);
 			}
 			
 			$questions[] = $question;
@@ -78,7 +78,9 @@ class API {
 		return $questions;
 	}
 	
-	private static function saveQuestionAnswers($authenticatedFacebookId, $questionAnswers) {
+	private static function saveQuestionAnswers($questionAnswers) {
+		global $facebookAPI;
+		
 		$questionIdsOfSavedAnswers = array();
 		for($i = 0; $i < count($questionAnswers); $i++) {
 			$questionId = $questionAnswers[$i]["questionId"];
@@ -86,7 +88,7 @@ class API {
 			
 			// Update the user's answer for this question.
 			// Note: We only update the answer if the user owned and had not already answered the question.
-			mysql_query("UPDATE questions SET chosenFacebookId = '$facebookId' WHERE chosenFacebookId = '' AND userFacebookId = '$authenticatedFacebookId' LIMIT 1");
+			mysql_query("UPDATE questions SET chosenFacebookId = '$facebookId' WHERE chosenFacebookId = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' LIMIT 1");
 			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
 				$questionIdsOfSavedAnswers[] = $questionId;
 			}

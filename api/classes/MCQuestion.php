@@ -5,11 +5,11 @@ class MCQuestion extends Question
 	private $optionCount;
 	private $options;
 
-	public function __construct($subjectFacebookId, $categoryId, $optionCount)	{
-		parent::__construct($subjectFacebookId, $categoryId);
+	public function __construct($ownerFacebookId, $subjectFacebookId, $categoryId, $optionCount)	{
+		parent::__construct($ownerFacebookId, $subjectFacebookId, $categoryId);
 		
 		$this->optionCount = $optionCount;
-		$this->options = null;
+		$this->options = array();
 		
 		//$this->makeOptions();
 	}
@@ -25,7 +25,7 @@ class MCQuestion extends Question
 			if ($i == $correctOption)	{
 				$this->options[$i] = new Option($this->$questionId, $correctSubject->facebookId);
 			} else	{
-				$this->options[$i] = new Option($this->$questionId, randIncorrectFacebookId());
+				$this->options[$i] = new Option($this->$questionId, getRandomFacebookId());
 			}
 		}
 	}
@@ -34,7 +34,7 @@ class MCQuestion extends Question
 	 * Generates an incorrect option for the question.
 	 * @return incorrect Facebook ID
 	 */
-	private function randIncorrectFacebookId()	{
+	private function getRandomFacebookId()	{
 		// TODO: missing implementation
 	}
 		
