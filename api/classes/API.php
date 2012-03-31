@@ -88,7 +88,8 @@ class API {
 			
 			// Update the user's answer for this question.
 			// Note: We only update the answer if the user owned and had not already answered the question.
-			mysql_query("UPDATE questions SET chosenFacebookId = '$facebookId' WHERE chosenFacebookId = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' LIMIT 1");
+			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = NOW() WHERE chosenFacebookId = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' LIMIT 1";
+			mysql_query($updateQuery);
 			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
 				$questionIdsOfSavedAnswers[] = $questionId;
 			}
