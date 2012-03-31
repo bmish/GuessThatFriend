@@ -22,4 +22,6 @@
 @property int categoryID;
 @property (nonatomic, retain) NSString *friendFacebookID;
 
++ (id) quizSettingObject;
+
 @end

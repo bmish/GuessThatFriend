@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "GuessThatFriendAppDelegate.h"
+#import "QuizSettings.h"
 
 @implementation SettingsViewController
 
@@ -18,6 +19,7 @@
 @synthesize categoryEditButton;
 @synthesize categoryLabel;
 @synthesize logoutButton;
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -73,28 +75,43 @@
 
 - (IBAction)quizOptionSegmentedControlChanged:(id)sender {
     int selected = quizOptionSegmentedControl.selectedSegmentIndex;
+    QuizSettings *quizSettings = [QuizSettings quizSettingObject];
+    
     NSString *option;
     switch (selected) {
+            
+            /* From the API: 
+             -1: Random
+             0: Fill in the blank
+             2-6: Multiple choice
+             */
         case 0:
             option = [NSString stringWithString:@"Random"];
+            quizSettings.option = -1;
             break;
         case 1:
             option = [NSString stringWithString:@"Fill in the blank"];
+            quizSettings.option = 0;
             break;
         case 2:
             option = [NSString stringWithString:@"2 choices"];
+            quizSettings.option = 2;
             break;
         case 3:
             option = [NSString stringWithString:@"3 choices"];
+            quizSettings.option = 3;
             break;
         case 4:
             option = [NSString stringWithString:@"4 choices"];
+            quizSettings.option = 4;
             break;
         case 5:
             option = [NSString stringWithString:@"5 choices"];
+            quizSettings.option = 5;
             break;
         case 6:
             option = [NSString stringWithString:@"6 choices"];
+            quizSettings.option = 6;
             break;
         default:
             break;

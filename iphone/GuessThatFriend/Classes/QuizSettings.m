@@ -8,12 +8,30 @@
 
 #import "QuizSettings.h"
 
+static QuizSettings *quizSettingsObject = nil;
+
 @implementation QuizSettings
 
 @synthesize questionCount;
 @synthesize option;
 @synthesize categoryID;
 @synthesize friendFacebookID;
+
++ (id) quizSettingObject {
+    @synchronized(self) {
+        if (quizSettingsObject == nil) {
+            quizSettingsObject = [[self alloc] init];
+        }
+    }
+    return quizSettingsObject;
+}
+
+- (id)init {
+    if (self = [super init]) {
+        //Should initialize
+    }
+    return self;
+}
 
 - (void)dealloc {
     [friendFacebookID release];

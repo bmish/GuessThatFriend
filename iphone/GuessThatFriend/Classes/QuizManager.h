@@ -15,7 +15,6 @@
 @interface QuizManager : NSObject {
     NSMutableArray *questionArray;
     
-    QuizSettings *bufferedQuizSettings;
     NSString *bufferedFBToken;
     
 	unsigned int numQuestions;
@@ -25,12 +24,11 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
-@property (nonatomic, retain) QuizSettings *bufferedQuizSettings;
 @property (nonatomic, retain) NSString *bufferedFBToken;
 @property unsigned int numQuestions;
 @property unsigned int numCorrect;
 
-- (QuizManager *)initWithQuizSettings:(QuizSettings *)settings andFBToken:(NSString *)token andUseSampleData:(BOOL)useSampleData;
+- (QuizManager *)initWithFBToken:(NSString *)token andUseSampleData:(BOOL)useSampleData;
 - (Question *)getNextQuestion;
 
 @end

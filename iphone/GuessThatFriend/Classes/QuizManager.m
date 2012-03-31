@@ -18,15 +18,14 @@
 @implementation QuizManager
 
 @synthesize questionArray;
-@synthesize bufferedQuizSettings;
 @synthesize bufferedFBToken;
 @synthesize numQuestions;
 @synthesize numCorrect;
 
-- (QuizManager *)initWithQuizSettings:(QuizSettings *)settings andFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
+- (QuizManager *)initWithFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
 	
-    questionArray = [[NSMutableArray alloc] initWithCapacity:10];
-    self.bufferedQuizSettings = settings;
+    questionArray = [[NSMutableArray alloc] initWithCapacity:1];
+    
     useSampleData = paramUseSampleData;
     bufferedFBToken = paramFBToken;
     numQuestions = 0;
@@ -43,21 +42,22 @@
     
     if (useSampleData) { // Retrieve sample data.
         getRequest = [NSMutableString stringWithString:@SAMPLE_GET_QUESTIONS_ADDR];
-    } else if (bufferedQuizSettings != nil) { // Make a real request.
+    } else { // Make a real request.
+        QuizSettings *quizSettings = [QuizSettings quizSettingObject];
+        
+        
         getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
         [getRequest appendString:@"?cmd=getQuestions"];
         [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
-        [getRequest appendFormat:@"&questionCount=%i", bufferedQuizSettings.questionCount];
-        [getRequest appendFormat:@"&optionCount=%i", bufferedQuizSettings.option];
-        [getRequest appendFormat:@"&categoryId=%i", bufferedQuizSettings.categoryID];
-    } else { // Settings is nil.
-        return;
+        [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];
+        [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
+        [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
     }
     
     
     // Send the GET request to the server.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    NSLog(@"%@ \n",request);
+    NSLog(@"REQUEST QUESTION: %@ \n",request);
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     
@@ -130,7 +130,6 @@
 
 - (void)dealloc {
     [questionArray release];
-    [bufferedQuizSettings release];
     [bufferedFBToken release];
     
 	[super dealloc];
