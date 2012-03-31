@@ -53,19 +53,10 @@
 		4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */; };
 		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
-		4D8D7ADB14EC65BD00CAA606 /* colin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD714EC65BD00CAA606 /* colin.jpg */; };
-		4D8D7ADC14EC65BD00CAA606 /* jason.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD814EC65BD00CAA606 /* jason.jpg */; };
-		4D8D7ADD14EC65BD00CAA606 /* mike.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AD914EC65BD00CAA606 /* mike.jpg */; };
-		4D8D7ADE14EC65BD00CAA606 /* tian.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7ADA14EC65BD00CAA606 /* tian.jpg */; };
-		4D8D7AE314EC65C500CAA606 /* arjan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7ADF14EC65C500CAA606 /* arjan.jpg */; };
-		4D8D7AE414EC65C500CAA606 /* bryan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE014EC65C500CAA606 /* bryan.jpg */; };
-		4D8D7AE514EC65C500CAA606 /* grace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE114EC65C500CAA606 /* grace.jpg */; };
-		4D8D7AE614EC65C500CAA606 /* ken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE214EC65C500CAA606 /* ken.jpg */; };
 		4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */; };
 		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
-		4DD12AB61505D20C00A40761 /* qmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD12AB51505D20C00A40761 /* qmark.png */; };
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
 		93BA120914F9B10100248763 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120814F9B10100248763 /* Category.m */; };
 		93BA120C14F9BAF000248763 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120B14F9BAF000248763 /* Subject.m */; };
@@ -158,14 +149,6 @@
 		4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizManager.m; sourceTree = "<group>"; };
 		4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSettings.h; sourceTree = "<group>"; };
 		4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizSettings.m; sourceTree = "<group>"; };
-		4D8D7AD714EC65BD00CAA606 /* colin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = colin.jpg; sourceTree = "<group>"; };
-		4D8D7AD814EC65BD00CAA606 /* jason.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jason.jpg; sourceTree = "<group>"; };
-		4D8D7AD914EC65BD00CAA606 /* mike.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mike.jpg; sourceTree = "<group>"; };
-		4D8D7ADA14EC65BD00CAA606 /* tian.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tian.jpg; sourceTree = "<group>"; };
-		4D8D7ADF14EC65C500CAA606 /* arjan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arjan.jpg; sourceTree = "<group>"; };
-		4D8D7AE014EC65C500CAA606 /* bryan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bryan.jpg; sourceTree = "<group>"; };
-		4D8D7AE114EC65C500CAA606 /* grace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grace.jpg; sourceTree = "<group>"; };
-		4D8D7AE214EC65C500CAA606 /* ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ken.jpg; sourceTree = "<group>"; };
 		4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerSubmittingSubsystem.h; sourceTree = "<group>"; };
 		4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerSubmittingSubsystem.m; sourceTree = "<group>"; };
 		4DA0E9D515074FEF002AFFBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -173,7 +156,6 @@
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
-		4DD12AB51505D20C00A40761 /* qmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qmark.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GuessThatFriend-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillBlankQuestion.h; sourceTree = "<group>"; };
 		938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillBlankQuestion.m; sourceTree = "<group>"; };
@@ -264,7 +246,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4D8D7AC814EC650F00CAA606 /* Testing Resources */,
 				4D8D797314EB91C900CAA606 /* Images */,
 				4D8D797214EB91B500CAA606 /* Nibs */,
 				4D1A373114DB289F00BEB8B8 /* Icon */,
@@ -423,7 +404,6 @@
 		4D8D797314EB91C900CAA606 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4DD12AB51505D20C00A40761 /* qmark.png */,
 				4D8D796214EB90C800CAA606 /* background.png */,
 				4D8D797914EB91FA00CAA606 /* whiteButton.png */,
 				4D8D797B14EB91FE00CAA606 /* blueButton.png */,
@@ -480,21 +460,6 @@
 				4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */,
 			);
 			name = "Quiz Nibs";
-			sourceTree = "<group>";
-		};
-		4D8D7AC814EC650F00CAA606 /* Testing Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4D8D7ADF14EC65C500CAA606 /* arjan.jpg */,
-				4D8D7AE014EC65C500CAA606 /* bryan.jpg */,
-				4D8D7AD714EC65BD00CAA606 /* colin.jpg */,
-				4D8D7AE114EC65C500CAA606 /* grace.jpg */,
-				4D8D7AD814EC65BD00CAA606 /* jason.jpg */,
-				4D8D7AE214EC65C500CAA606 /* ken.jpg */,
-				4D8D7AD914EC65BD00CAA606 /* mike.jpg */,
-				4D8D7ADA14EC65BD00CAA606 /* tian.jpg */,
-			);
-			name = "Testing Resources";
 			sourceTree = "<group>";
 		};
 		4DD9367C15074AF900E338A2 /* JSONKit */ = {
@@ -609,14 +574,6 @@
 				4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */,
 				4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */,
 				4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */,
-				4D8D7ADB14EC65BD00CAA606 /* colin.jpg in Resources */,
-				4D8D7ADC14EC65BD00CAA606 /* jason.jpg in Resources */,
-				4D8D7ADD14EC65BD00CAA606 /* mike.jpg in Resources */,
-				4D8D7ADE14EC65BD00CAA606 /* tian.jpg in Resources */,
-				4D8D7AE314EC65C500CAA606 /* arjan.jpg in Resources */,
-				4D8D7AE414EC65C500CAA606 /* bryan.jpg in Resources */,
-				4D8D7AE514EC65C500CAA606 /* grace.jpg in Resources */,
-				4D8D7AE614EC65C500CAA606 /* ken.jpg in Resources */,
 				4D3F818014F98E9500245D4F /* categories.pbxbtree in Resources */,
 				4D3F818114F98E9500245D4F /* cdecls.pbxbtree in Resources */,
 				4D3F818214F98E9500245D4F /* decls.pbxbtree in Resources */,
@@ -630,7 +587,6 @@
 				4D3F818A14F98E9500245D4F /* subclasses.pbxbtree in Resources */,
 				4D3F818B14F98E9500245D4F /* symbols0.pbxsymbols in Resources */,
 				4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */,
-				4DD12AB61505D20C00A40761 /* qmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
