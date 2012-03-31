@@ -149,19 +149,6 @@
 		4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizManager.m; sourceTree = "<group>"; };
 		4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSettings.h; sourceTree = "<group>"; };
 		4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizSettings.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		4D8D7AD714EC65BD00CAA606 /* colin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = colin.jpg; sourceTree = "<group>"; };
-		4D8D7AD814EC65BD00CAA606 /* jason.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jason.jpg; sourceTree = "<group>"; };
-		4D8D7AD914EC65BD00CAA606 /* mike.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mike.jpg; sourceTree = "<group>"; };
-		4D8D7ADA14EC65BD00CAA606 /* tian.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tian.jpg; sourceTree = "<group>"; };
-		4D8D7ADF14EC65C500CAA606 /* arjan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = arjan.jpg; sourceTree = "<group>"; };
-		4D8D7AE014EC65C500CAA606 /* bryan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bryan.jpg; sourceTree = "<group>"; };
-		4D8D7AE114EC65C500CAA606 /* grace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grace.jpg; sourceTree = "<group>"; };
-		4D8D7AE214EC65C500CAA606 /* ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ken.jpg; sourceTree = "<group>"; };
-=======
-		4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerSubmittingSubsystem.h; sourceTree = "<group>"; };
-		4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerSubmittingSubsystem.m; sourceTree = "<group>"; };
->>>>>>> 541ca25c97a9b9b6ab23a944d16c5d19106b422f
 		4DA0E9D515074FEF002AFFBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		4DA0E9D615074FEF002AFFBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
