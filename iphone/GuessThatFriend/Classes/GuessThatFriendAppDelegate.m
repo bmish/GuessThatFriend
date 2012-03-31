@@ -39,6 +39,7 @@
         quizViewController.questionString = mcQuestion.text;
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
+        quizViewController.questionID = mcQuestion.questionId;
         [quizViewController.questionTextView setText: quizViewController.questionString];
         
         [mcQuestion release];

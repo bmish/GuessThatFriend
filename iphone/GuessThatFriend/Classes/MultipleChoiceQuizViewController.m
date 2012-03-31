@@ -11,6 +11,9 @@
 #import "QuizManager.h"
 #import "FBFriendCustomCell.h"
 #import "Option.h"
+#import "GuessThatFriendAppDelegate.h"
+
+#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
 
 @implementation MultipleChoiceQuizViewController
 
@@ -123,7 +126,21 @@
     NSLog(@"%@\n", option.subject.link);
     NSLog(@"%@\n", option.subject.picture);
     NSLog(@"%@\n", option.subject.facebookId);
-    //if(indexPath[0]==@"bmish")
+    
+    
+    //construct the request string
+    NSMutableString *getRequest;
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
+    
+    
+    getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    [getRequest appendString:@"?cmd=submitQuestions"];
+    [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
+    [getRequest appendFormat:@"&facebookIdOfQuestion%@=%@", questionID, option.subject.facebookId];
+    
+    NSLog(@"Request: %@\n", getRequest);
+        
     
     //Check if selected option is correct
     if ([option.subject.facebookId isEqualToString: correctFacebookId ])
@@ -133,6 +150,13 @@
     else {
         responseLabel.text = @"Wrong";
     }
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+    NSLog(@"%@\n", request);
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *responseString = [[NSString alloc] initWithData: response encoding:NSUTF8StringEncoding];
+    
+    [responseString release];
     
 	
 }

@@ -82,6 +82,7 @@
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
         NSString *correctFbId = [curQuestion objectForKey:@"correctFacebookId"];
+        int questionId = (int) [curQuestion objectForKey:@"questionId"];    
         
         NSEnumerator *optionEnumerator = [options objectEnumerator];
         NSDictionary *curOption;
@@ -101,6 +102,8 @@
         Question *question = [[MCQuestion alloc] initQuestionWithOptions:optionArray];
         question.text = text;
         question.correctFacebookId = correctFbId;
+        question.questionId = questionId;
+        
         [optionArray release];
         
         [questionArray addObject:question];

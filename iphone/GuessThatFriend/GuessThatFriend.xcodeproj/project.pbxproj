@@ -61,7 +61,6 @@
 		4D8D7AE414EC65C500CAA606 /* bryan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE014EC65C500CAA606 /* bryan.jpg */; };
 		4D8D7AE514EC65C500CAA606 /* grace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE114EC65C500CAA606 /* grace.jpg */; };
 		4D8D7AE614EC65C500CAA606 /* ken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7AE214EC65C500CAA606 /* ken.jpg */; };
-		4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */; };
 		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
@@ -166,8 +165,6 @@
 		4D8D7AE014EC65C500CAA606 /* bryan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bryan.jpg; sourceTree = "<group>"; };
 		4D8D7AE114EC65C500CAA606 /* grace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grace.jpg; sourceTree = "<group>"; };
 		4D8D7AE214EC65C500CAA606 /* ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ken.jpg; sourceTree = "<group>"; };
-		4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerSubmittingSubsystem.h; sourceTree = "<group>"; };
-		4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerSubmittingSubsystem.m; sourceTree = "<group>"; };
 		4DA0E9D515074FEF002AFFBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		4DA0E9D615074FEF002AFFBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -287,8 +284,6 @@
 		4D12199814F5BB740051646B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4D8D7C9514EC951D00CAA606 /* AnswerSubmittingSubsystem.h */,
-				4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */,
 				93BA120714F9B10100248763 /* Category.h */,
 				93BA120814F9B10100248763 /* Category.m */,
 				938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */,
@@ -676,7 +671,6 @@
 				4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */,
 				4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */,
 				4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */,
-				4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */,
 				4D3F818C14F98E9500245D4F /* Facebook.m in Sources */,
 				4D3F818E14F98E9500245D4F /* FBDialog.m in Sources */,
 				4D3F818F14F98E9500245D4F /* FBFrictionlessRequestSettings.m in Sources */,
