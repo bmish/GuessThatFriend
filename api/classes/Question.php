@@ -1,7 +1,8 @@
 <?php
 require_once 'Category.php';
+require_once 'Subject.php';
+require_once 'MCQuestion.php';
 
-// TODO: currently assumes subject = a person
 abstract class Question
 {
 	protected $questionId;
@@ -16,11 +17,17 @@ abstract class Question
 		$this->category = new Category($categoryId);
 		$this->text = "";
 		$this->subject = new Subject($subjectFacebookId);
-		$this->correctSubject = "";
-		$this->chosenSubject = "";
+		$this->correctSubject = null;
+		$this->chosenSubject = null;
 	
+		// Pick a subject (topic).
 		//$this->pickSubject();
+		
+		// Pick a correct answer.
 		//$this->pickLike();
+		
+		// Save question to database after choosing a subject and correct answer.
+		$this->saveToDB();
 	}
 	
 	public function __get($field)	{
@@ -28,6 +35,7 @@ abstract class Question
 	}
 	
 	/*
+	 * TODO: currently assumes subject = a person
 	 * Picks a random friend from the list if there are more than one and sets the subject ID.
 	 * @return the list of 'likes' for the chosen friend.
 	 */
@@ -71,10 +79,30 @@ abstract class Question
 	 */
 	protected abstract function makeQuestionText();
 	
-	public abstract function jsonSerialize();
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["questionId"] = $this->questionId;
+		$obj["category"] = $this->category->jsonSerialize();
+		$obj["text"] = $this->text;
+		$obj["subject"] = $this->subject->jsonSerialize();
+		$obj["correctFacebookId"] = $this->correctSubject->facebookId;
+		
+		return $obj;
+	}
 	
 	protected function saveToDB()	{
-		// TODO: missing implementation
+		global $facebookAPI;
+		
+		$insertQuery = "INSERT INTO questions (categoryId, text, userFacebookId, subjectFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".cleanInputForDatabase($this->text)."', '".$facebookAPI->getLoggedInUserId()."','".$this->subject->facebookId."','".$this->correctSubject->facebookId."')";
+		$result = mysql_query($insertQuery);
+		
+		if (!$result) {
+			return false;
+		}
+		
+		$this->questionId = mysql_insert_id();
+		
+		return true;
 	}
 }
 ?>

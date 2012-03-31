@@ -1,31 +1,33 @@
 <?php
 class Category
 {
-	protected $categoryId;		// ID of category as stored in server database.
-	protected $facebookName;	// The name that Facebook gives to this category.
-	protected $prettyName;		// The pretty name that we give to this category.
+	private $categoryId;		// ID of category as stored in server database.
+	private $facebookName;		// The name that Facebook gives to this category.
+	private $prettyName;		// The pretty name that we give to this category.
 	
 	public function __construct($categoryId)	{
 		$this->categoryId = $categoryId;
-		$this->facebookName = $this->getName('facebookName');
-		$this->prettyName = $this->getName('prettyName');
+		$this->facebookName = "";
+		$this->prettyName = "";
+		
+		if ($categoryId > 0) {
+			$this->fillInNamesFromDB();
+		}
 	}
 	
 	public function __get($field)	{
 		return $this->$field;
 	}
 	
-	private function getName($nameType)	{
-		global $categoryId;
-		
-		$nameQuery = "SELECT $nameType FROM categories WHERE categoryId = $categoryId LIMIT 1";
+	private function fillInNamesFromDB()	{
+		$nameQuery = "SELECT facebookName, prettyName FROM categories WHERE categoryId = ".$this->categoryId." LIMIT 1";
 		$queryResult = mysql_query($nameQuery);
 		
-		if (!$queryResult) {
-			echo $nameQuery;
-			echo mysql_error();
-		} else {
-			return mysql_fetch_array($queryResult);
+		if ($queryResult && mysql_num_rows($queryResult) == 1) {
+			$row = mysql_fetch_array($queryResult);
+			
+			$this->facebookName = cleanOutputFromDatabase($row["facebookName"]);
+			$this->prettyName = cleanOutputFromDatabase($row["prettyName"]);
 		}
 	}
 	

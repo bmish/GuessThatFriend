@@ -2,11 +2,12 @@
 require_once "Question.php";
 class MCQuestion extends Question
 {
-	protected $options;
-	protected $optionCount;
+	private $optionCount;
+	private $options;
 
-	public function __construct($optionCount, $subjectFacebookId, $categoryId)	{
+	public function __construct($subjectFacebookId, $categoryId, $optionCount)	{
 		parent::__construct($subjectFacebookId, $categoryId);
+		
 		$this->optionCount = $optionCount;
 		$this->options = null;
 		
@@ -43,12 +44,7 @@ class MCQuestion extends Question
 	}
 	
 	public function jsonSerialize() {
-		$obj = array();
-		$obj["questionId"] = $this->questionId;
-		$obj["category"] = $this->category->jsonSerialize();
-		$obj["text"] = $this->text;
-		$obj["subject"] = $this->subject->jsonSerialize();
-		$obj["correctFacebookId"] = $this->correctSubject->facebookId;
+		$obj = parent::jsonSerialize();
 		$obj["options"] = API::jsonSerializeArray($this->options);
 		
 		return $obj;

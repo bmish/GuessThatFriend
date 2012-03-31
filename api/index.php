@@ -36,7 +36,6 @@ if ($cmd == 'getQuestions') {
 } else {
 	// Display page that describes the API.
 	include_once("view/index.php");
-	exit();
 }
 
 // Close database connection.

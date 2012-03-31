@@ -69,7 +69,7 @@ class API {
 			} elseif ($optionCount == -1) { // Random type.
 				
 			} else { // Multiple choice.
-				$question = new MCQuestion($optionCount, $subjectFacebookId, $categoryId);
+				$question = new MCQuestion($subjectFacebookId, $categoryId, $optionCount);
 			}
 			
 			$questions[] = $question;

@@ -107,5 +107,9 @@ class FacebookAPI	{
 		
 		return $this->facebook->getUser(); // User ID of current user, or 0 if no logged-in user.
 	}
+	
+	public function getLoggedInUserId() {
+		return $this->facebook->getUser();
+	}
 }
 ?>
