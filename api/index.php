@@ -9,8 +9,7 @@ require_once('classes/API.php');
 require_once('classes/Option.php');
 require_once('classes/DB.php');
 require_once('classes/FacebookAPI.php');
-require_once('fns/config.php');
-require_once('fns/misc.php');
+require_once('config/config.php');
 
 // Connect to database.
 DB::connect();
@@ -21,14 +20,14 @@ $facebookAPI = new FacebookAPI();
 // Handle an API request.
 $cmd = $_GET['cmd'];
 if ($cmd == 'getQuestions') {
-	$facebookAccessToken = cleanInputForDatabase($_GET['facebookAccessToken']);
+	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionCount = intval($_GET['questionCount']);
 	$optionCount = intval($_GET['optionCount']);
-	$friendFacebookId = cleanInputForDatabase($_GET['friendFacebookId']);
+	$subjectFacebookId = API::cleanInputForDatabase($_GET['subjectFacebookId']);
 	$categoryId = intval($_GET['categoryId']);
-	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $friendFacebookId, $categoryId);
+	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $subjectFacebookId, $categoryId);
 } else if ($cmd == 'submitQuestions') {
-	$facebookAccessToken = cleanInputForDatabase($_GET['facebookAccessToken']);
+	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionAnswers = API::getQuestionAnswersFromGETVars();
 	API::submitQuestions($facebookAccessToken, $questionAnswers);
 } else if ($cmd == 'getCategories') {
@@ -36,7 +35,6 @@ if ($cmd == 'getQuestions') {
 } else {
 	// Display page that describes the API.
 	include_once("view/index.php");
-	exit();
 }
 
 // Close database connection.

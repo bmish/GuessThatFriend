@@ -1,36 +1,66 @@
 <?php
 class Subject
 {
-	protected $facebookId;
-	protected $name;
-	protected $picture;
-	protected $link;
+	private $facebookId;
+	private $name;
+	private $picture;
+	private $link;
 	
-	public function __set($field, $value)	{
-        $this->$field = $value;
-    }
-
-    public function __get($field)	{
+	public function __construct($facebookId, $name = "") {
+		global $facebookAPI;
+		
+		$this->facebookId = $facebookId;
+		$this->name = $name;
+		$this->picture = 'https://graph.facebook.com/'.$facebookId.'/picture';
+		$this->link = 'https://www.facebook.com/'.$facebookId;
+		
+		// Get these fields from Facebook if we haven't stored them yet.
+		if (empty($this->name) && !$this->fillInFieldsFromDB()) {
+			$this->name = $facebookAPI->getNameFromId($facebookId);
+			
+			$this->saveToDB();
+		}
+	}
+	
+	public function __get($field)	{
         return $this->$field;
 	}
 	
-	public function __construct($friendData) {
-		$this->name = $friendData['name'];
-		$this->facebookId = $friendData['id'];
-		$this->picture = 'https://graph.facebook.com/'.$friendData['id'].'/picture';
-		$this->link = 'https://www.facebook.com/'.$friendData['id'];
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["facebookId"] = $this->facebookId;
+		$obj["name"] = $this->name;
+		$obj["picture"] = $this->picture;
+		$obj["link"] = $this->link;
+		
+		return $obj;
 	}
 	
-	public static function getNameFromId($facebookId)	{
-		$nameQuery = "SELECT name FROM subjects WHERE facebookId = ".$facebookId;
-		$queryResult = mysql_query($nameQuery);
+	private function fillInFieldsFromDB() {
+		$query = "SELECT name, picture, link FROM subjects WHERE facebookId = '".$this->facebookId."' LIMIT 1";
+		$result = mysql_query($query);
+		if ($result && mysql_num_rows($result) == 1) {
+			$row = mysql_fetch_array($result);
+			
+			$this->name = API::cleanOutputFromDatabase($row["name"]);
+			$this->picture = API::cleanOutputFromDatabase($row["picture"]);
+			$this->link = API::cleanOutputFromDatabase($row["link"]);
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private function saveToDB()	{
+		$insertQuery = "INSERT INTO subjects (facebookId, name, picture, link) VALUES ('".$this->facebookId."', '".$this->name."', '".$this->picture."', '".$this->link."')";
+		$queryResult = mysql_query($insertQuery);
 		
 		if (!$queryResult) {
-			echo $nameQuery;
-			echo mysql_error();
-		} else {
-			return mysql_fetch_array($queryResult);
+			return false;
 		}
+
+		return true;
 	}
 }
 ?>

@@ -1,28 +1,28 @@
 <?php
 class API {
-	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $friendFacebookId, $categoryId) {
+	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $subjectFacebookId, $categoryId) {
 		global $facebookAPI;
 		
 		// Check authentication.
-		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
-		if (!$authenticatedFacebookId) {
+		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			API::outputExampleJSON("getQuestions.json");
 			return;
 		}
 		
-		for ($i = 0; $i < $questionCount; $i++) {
-			$question = new MCQuestion($optionCount, $friendFacebookId, $categoryId);
+		// Use defaults if necessary.
+		if ($questionCount == "") {
+			$questionCount = 10;
+		}
+		if ($optionCount == "") {
+			$optionCount = 4;
 		}
 		
-		/* TODO:
-		Quiz q = new Quiz;
-		1.GENERATE QUIZ: initialize quiz variables with facebook data
-		2.PRINT QUIZ: print quiz details in json format 
-		3.STORE QUIZ: in db
-		*/
-		
+		// Create questions.
+		$questions = API::getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId);
+
+		// Build object to represent the JSON we will display.
 		$output = array();
-		$output["questionIds"] = $questionIdsOfSavedAnswers;
+		$output["questions"] = API::jsonSerializeArray($questions);
 		$output["success"] = true;
  		
 		API::outputArrayInJSON($output);
@@ -32,25 +32,13 @@ class API {
 		global $facebookAPI;
 		
 		// Check authentication.
-		$authenticatedFacebookId = $facebookAPI->authenticate($facebookAccessToken);
-		if (!$authenticatedFacebookId) {
+		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			API::outputExampleJSON("submitQuestions.json");
 			return;
 		}
 		
 		// Update the user's answers for the given questions.
-		$questionIdsOfSavedAnswers = array();
-		for($i = 0; $i < count($questionAnswers); $i++) {
-			$questionId = $questionAnswers[$i]["questionId"];
-			$facebookId = $questionAnswers[$i]["facebookId"]; // What the user chose.
-			
-			// Update the user's answer for this question.
-			// Note: We only update the answer if the user owned and had not already answered the question.
-			mysql_query("UPDATE questions SET chosenFacebookId = '$facebookId' WHERE chosenFacebookId = '' AND userFacebookId = '$authenticatedFacebookId' LIMIT 1");
-			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
-				$questionIdsOfSavedAnswers[] = $questionId;
-			}
-		}
+		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
 		
 		// Build object to represent the JSON we will display.
 		$output = array();
@@ -59,7 +47,7 @@ class API {
  		
 		API::outputArrayInJSON($output);
 	}
-
+	
 	public static function getCategories() {
 		// Get categories from database.
 		$result = mysql_query("SELECT * FROM categories");
@@ -71,6 +59,45 @@ class API {
 		API::outputArrayInJSON($arr);
 	}
 	
+	private static function getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId) {
+		global $facebookAPI;
+		
+		$questions = array();
+		for ($i = 0; $i < $questionCount; $i++) { 
+			if ($optionCount == 0) { // Fill in the blank.
+				$question = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $subjectFacebookId, $categoryId);
+			} elseif ($optionCount == -1) { // Random type.
+				
+			} else { // Multiple choice.
+				$question = new MCQuestion($facebookAPI->getLoggedInUserId(), $subjectFacebookId, $categoryId, $optionCount);
+			}
+			
+			$questions[] = $question;
+		}
+		
+		return $questions;
+	}
+	
+	private static function saveQuestionAnswers($questionAnswers) {
+		global $facebookAPI;
+		
+		$questionIdsOfSavedAnswers = array();
+		for($i = 0; $i < count($questionAnswers); $i++) {
+			$questionId = $questionAnswers[$i]["questionId"];
+			$facebookId = $questionAnswers[$i]["facebookId"]; // What the user chose.
+			
+			// Update the user's answer for this question.
+			// Note: We only update the answer if the user owned and had not already answered the question.
+			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = NOW() WHERE chosenFacebookId = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			mysql_query($updateQuery);
+			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
+				$questionIdsOfSavedAnswers[] = $questionId;
+			}
+		}
+		
+		return $questionIdsOfSavedAnswers;
+	}
+	
 	private static function getArrayOfResult($result) {
 		$arr = array();
 		while ($row = mysql_fetch_assoc($result)) {
@@ -78,6 +105,18 @@ class API {
 		}
 		
 		return $arr;
+	}
+	
+	// Input an array and return a new one out of the desired JSON-use objects of each of input's elements.
+	// php 5.4.0 will bring automatic JsonSerializable functionality.
+	public static function jsonSerializeArray($array) {
+		$ret = array();
+		
+		for ($i = 0; $i < count($array); $i++) {
+			$ret[] = $array[$i]->jsonSerialize();
+		}
+		
+		return $ret;
 	}
 	
 	private static function outputExampleJSON($filename) {
@@ -109,7 +148,7 @@ class API {
 				$pair = array();
 				$questionId = substr($parameterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
 				$pair["questionId"] = intval($questionId);
-				$pair["facebookId"] = cleanInputForDatabase($facebookId);
+				$pair["facebookId"] = API::cleanInputForDatabase($facebookId);
 				
 				// Add this pair to our list.
 				if ($pair["questionId"] > 0) {
@@ -119,6 +158,18 @@ class API {
 		}
 		
 		return $questionAnswers;
+	}
+	
+	public static function cleanInputForDatabase($input) {
+		return addslashes(trim($input));
+	}
+
+	public static function cleanInputForDisplay($input) {
+		return htmlentities(trim($input), ENT_QUOTES, 'UTF-8');
+	}
+
+	public static function cleanOutputFromDatabase($output) {
+		return stripslashes($output);
 	}
 }
 ?>

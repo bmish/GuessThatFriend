@@ -1,5 +1,4 @@
 {
-	"date": "2012-02-08:01-01-01",
 	"questions": 
 	[
 		{
@@ -10,6 +9,7 @@
 				"facebookName": "Movie",
 				"prettyName": "Movies"
 			},
+			"text": "Which of the following two friends likes the movie 300?",
 			"subject":
 			{
 				"facebookId": "300Movie",
@@ -17,8 +17,13 @@
 				"picture": "https://graph.facebook.com/300Movie/picture",
 				"link": "https://www.facebook.com/300Movie"
 			},
-			"text": "Which of the following two friends likes the movie 300?",
-			"correctFacebookId": "bmish",
+			"correctSubject":
+			{
+				"facebookId": "bmish",
+				"name": "Bryan Mishkin",
+				"picture": "http://graph.facebook.com/bmish/picture",
+				"link": "https://www.facebook.com/bmish"
+			},
 			"options":
 			[
 				{

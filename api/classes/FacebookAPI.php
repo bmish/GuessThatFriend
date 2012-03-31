@@ -1,7 +1,8 @@
 <?php
 // https://developers.facebook.com/docs/reference/php/
 
-require_once("FacebookSDK.php");
+require_once("../references/facebook-php-sdk/src/facebook.php");
+require_once("Subject.php");
 
 class FacebookAPI	{
 	private $facebook;
@@ -23,22 +24,23 @@ class FacebookAPI	{
 	public function getFriendsOf($facebookId) {
 		$friends = $this->facebook->api('/'.$facebookId.'/friends?access_token='.$this->facebookAccessToken);
 		
-		return jsonToSubjects($friends['data']);
+		return FacebookAPI::jsonToSubjects($friends['data']);
 	}
 	
 	/*
 	 * Returns all friends' likes.
 	 */
 	public function getLikesOfAllMyFriends() {
-		$friends = $this->getFriends($this->facebook->getUser());
+		$friends = $this->getFriendsOf($this->getLoggedInUserId());
 		for ($i = 0; $i < sizeof($friends); $i++)	{
-			$likes[$friends[$i]->facebookId] = $this->getFriendLikes($friends[$i]);
+			$likes[$friends[$i]->facebookId]['likes'] = $this->getLikesOfFriend($friends[$i]->facebookId);
+			$likes[$friends[$i]->facebookId]['subject'] = $friends[$i];
 		}
 		
 		return $likes;
 	}
 	
-	private function jsonToSubjects($json) {
+	private static function jsonToSubjects($json) {
 		$subjects = array();
 		for ($i = 0; $i < sizeof($json); $i++)	{
 			$subjects[$i] = new Subject($json[$i]);
@@ -51,11 +53,15 @@ class FacebookAPI	{
 	 * Returns a particular friend's likes.
 	 */
 	public function getLikesOfFriend($facebookId = "") {
+		if ($facebookId == "") { // Use logged in user's id.
+			$facebookId = $this->getLoggedInUserId();
+		}
+		
 		if (!isset($this->likes[$facebookId])) {
-			$likesResponse = $this->facebook->api('/'.($facebookId).'/likes?access_token='.$this->facebookAccessToken);
+			$likesResponse = $this->facebook->api('/'.$facebookId.'/likes?access_token='.$this->facebookAccessToken);
 
 			// Store friend's likes so we won't have to look it up again.
-			$this->likes[$facebookId] = jsonToSubjects($likesResponse);
+			$this->likes[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse);
 		}
 		
 		return $this->likes[$facebookId];
@@ -64,8 +70,12 @@ class FacebookAPI	{
 	/*
 	 * Returns the facebook object's name for a given ID.
 	 */
-	public function getNameFromId($id)	{
-		$object = $this->facebook->api('/'.$id);
+	public function getNameFromId($facebookId) {
+		if ($facebookId == "") {
+			return "";
+		}
+		
+		$object = $this->facebook->api('/'.$facebookId);
 		return $object['name'];
 	}
 
@@ -95,7 +105,11 @@ class FacebookAPI	{
 		$this->facebook->setAccessToken($facebookAccessToken);
 		$this->facebookAccessToken = $facebookAccessToken;
 		
-		return $this->facebook->getUser(); // User ID of current user, or 0 if no logged-in user.
+		return $this->getLoggedInUserId(); // User ID of current user, or 0 if no logged-in user.
+	}
+	
+	public function getLoggedInUserId() {
+		return $this->facebook->getUser();
 	}
 }
 ?>

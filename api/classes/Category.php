@@ -1,50 +1,56 @@
 <?php
 class Category
 {
-	protected $categoryId;		// ID of category as stored in server database.
-	protected $facebookName;	// The name that Facebook gives to this category.
-	protected $prettyName;		// The pretty name that we give to this category.
+	private $categoryId;		// ID of category as stored in server database.
+	private $facebookName;		// The name that Facebook gives to this category.
+	private $prettyName;		// The pretty name that we give to this category.
 	
 	public function __construct($categoryId)	{
 		$this->categoryId = $categoryId;
-		$this->facebookName = $this->getFacebookName();
-		$this->prettyName = $this->getPrettyName();
-	}
-	
-	public function getFacebookName()	{
-		if (isset($this->facebookName)) return $this->facebookName;
-		return $this->getName ("facebookName");
-	}
-	
-	public function getPrettyName()	{
-		if (isset($this->prettyName))	return $this->prettyName;
-		return $this->getName ("prettyName");
-	}
-	
-	private function getName($nameType)	{
-		global $categoryId;
+		$this->facebookName = "";
+		$this->prettyName = "";
 		
-		$nameQuery = "SELECT ".$nameType." FROM categories WHERE categoryId = ".$categoryId;
+		if ($categoryId > 0) {
+			$this->fillInFieldsFromDB();
+		}
+	}
+	
+	public function __get($field)	{
+		return $this->$field;
+	}
+	
+	private function fillInFieldsFromDB()	{
+		$nameQuery = "SELECT facebookName, prettyName FROM categories WHERE categoryId = ".$this->categoryId." LIMIT 1";
 		$queryResult = mysql_query($nameQuery);
 		
-		if (!$queryResult) {
-			echo $nameQuery;
-			echo mysql_error();
-		} else {
-			return mysql_fetch_array($queryResult);
+		if ($queryResult && mysql_num_rows($queryResult) == 1) {
+			$row = mysql_fetch_array($queryResult);
+			
+			$this->facebookName = API::cleanOutputFromDatabase($row["facebookName"]);
+			$this->prettyName = API::cleanOutputFromDatabase($row["prettyName"]);
 		}
 	}
 	
 	public static function getCategoryId($facebookName)	{
-		$idQuery = "SELECT categoryId FROM categories WHERE facebookName = ".$facebookName;
-		$queryResult = mysql_query($idQuery);
+		$query = "SELECT categoryId FROM categories WHERE facebookName = '".API::cleanInputForDatabase($facebookName)."' LIMIT 1";
+		$queryResult = mysql_query($query);
 		
-		if (!$queryResult) {
-			echo $nameQuery;
-			echo mysql_error();
-		} else {
-			return mysql_fetch_array($queryResult);
+		if ($queryResult && mysql_num_rows($queryResult) == 1) {
+			$row = mysql_fetch_array($queryResult);
+			
+			return $row["categoryId"];
 		}
+		
+		return false;
+	}
+	
+	public function jsonSerialize() {
+		$obj = array();
+		$obj["categoryId"] = $this->categoryId;
+		$obj["facebookName"] = $this->facebookName;
+		$obj["prettyName"] = $this->prettyName;
+		
+		return $obj;
 	}
 }
 
