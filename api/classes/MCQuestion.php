@@ -5,8 +5,8 @@ class MCQuestion extends Question
 	private $optionCount;
 	private $options;
 
-	public function __construct($ownerFacebookId, $subjectFacebookId, $categoryId, $optionCount)	{
-		parent::__construct($ownerFacebookId, $subjectFacebookId, $categoryId);
+	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $optionCount)	{
+		parent::__construct($ownerFacebookId, $topicFacebookId, $categoryId);
 		
 		$this->optionCount = $optionCount;
 		$this->options = array();
@@ -16,7 +16,7 @@ class MCQuestion extends Question
 	
 	public function makeQuestionText() {
 		// TODO: modify question to depend on subject type (person v.s. page)
-		$this->text = "Which of the following ".strtolower($this->category->prettyName)." does ".$this->subject->name." like?";
+		$this->text = "Which of the following ".strtolower($this->category->prettyName)." does ".$this->topicSubject->name." like?";
 	}
 	
 	private function makeOptions()	{

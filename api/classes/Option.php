@@ -2,13 +2,13 @@
 class Option
 {
 	private $optionId;
-	private $questionId;		// ID of the Question that this Option is part of.
-	private $subject;			// The person or page of this Option.
+	private $questionId;		// ID of the question that this option is part of.
+	private $topicSubject;		// The person or page that this option is about.
 	
-	public function __construct($questionId, $subjectId)	{
+	public function __construct($questionId, $topicFacebookId)	{
 		$this->optionId = -1;
 		$this->questionId = $questionId;
-		$this->subject = new Subject($subjectId);
+		$this->topicSubject = new Subject($topicFacebookId);
 		
 		$this->saveToDB();
 	}
@@ -18,7 +18,7 @@ class Option
 	}
 
 	private function saveToDB()	{
-		$insertQuery = "INSERT INTO options (questionId, facebookId) VALUES ('".$this->questionId."', '".$this->subject->facebookId."')";
+		$insertQuery = "INSERT INTO options (questionId, facebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
 		$queryResult = mysql_query($insertQuery);
 		
 		if (!$queryResult) {
@@ -33,7 +33,7 @@ class Option
 	public function jsonSerialize() {
 		$obj = array();
 		$obj["optionId"] = $this->optionId;
-		$obj["subject"] = $this->subject->jsonSerialize();
+		$obj["topicSubject"] = $this->topicSubject->jsonSerialize();
 		
 		return $obj;
 	}

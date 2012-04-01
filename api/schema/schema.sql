@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 CREATE TABLE IF NOT EXISTS `options` (
   `optionId` int(11) NOT NULL AUTO_INCREMENT,
   `questionId` int(11) NOT NULL,
-  `facebookId` varchar(250) NOT NULL,
+  `topicFacebookId` varchar(250) NOT NULL,
   PRIMARY KEY (`optionId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `categoryId` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
   `ownerFacebookId` varchar(250) NOT NULL,
-  `subjectFacebookId` varchar(250) NOT NULL,
+  `topicFacebookId` varchar(250) NOT NULL,
   `correctFacebookId` varchar(250) NOT NULL,
   `chosenFacebookId` varchar(250) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

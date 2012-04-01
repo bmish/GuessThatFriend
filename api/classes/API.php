@@ -1,6 +1,6 @@
 <?php
 class API {
-	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $subjectFacebookId, $categoryId) {
+	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
 		
 		// Check authentication.
@@ -18,7 +18,7 @@ class API {
 		}
 		
 		// Create questions.
-		$questions = API::getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId);
+		$questions = API::getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId);
 
 		// Build object to represent the JSON we will display.
 		$output = array();
@@ -59,17 +59,17 @@ class API {
 		API::outputArrayInJSON($arr);
 	}
 	
-	private static function getQuestionsArray($questionCount, $optionCount, $subjectFacebookId, $categoryId) {
+	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
 		
 		$questions = array();
 		for ($i = 0; $i < $questionCount; $i++) { 
 			if ($optionCount == 0) { // Fill in the blank.
-				$question = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $subjectFacebookId, $categoryId);
+				$question = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
 			} elseif ($optionCount == -1) { // Random type.
 				
 			} else { // Multiple choice.
-				$question = new MCQuestion($facebookAPI->getLoggedInUserId(), $subjectFacebookId, $categoryId, $optionCount);
+				$question = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
 			}
 			
 			$questions[] = $question;

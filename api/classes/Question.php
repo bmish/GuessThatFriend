@@ -9,18 +9,18 @@ abstract class Question
 	protected $category; 			// Category of this Question (like books or movies).
 	protected $text; 				// Question text.
 	protected $ownerSubject;		// The person who this question was generated for.
-	protected $subject; 			// Person or page that this question is about.
+	protected $topicSubject; 		// Person or page that this question is about.
 	protected $correctSubject; 		// The correct answer to this question.
 	protected $chosenSubject; 		// The answer that the user chose (if the question has been answered).
 	
-	public function __construct($ownerFacebookId, $subjectFacebookId, $categoryId)	{
+	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId)	{
 		global $facebookAPI;
 		
 		$this->questionId = -1;
 		$this->category = new Category($categoryId);
 		$this->text = "";
 		$this->ownerSubject = new Subject($ownerFacebookId);
-		$this->subject = new Subject($subjectFacebookId);
+		$this->topicSubject = new Subject($topicFacebookId);
 		$this->correctSubject = null;
 		$this->chosenSubject = null;
 	
@@ -43,14 +43,14 @@ abstract class Question
 	 * Picks a random friend from the list if there are more than one and sets the subject ID.
 	 * @return the list of 'likes' for the chosen friend.
 	 */
-	protected function pickSubject()	{
+	protected function pickTopicSubject()	{
 		global $facebookAPI;
 	
 		$friendsWithLikes = $facebookAPI->getLikesOfAllMyFriends();
-		if ($this->subject->facebookId <= 0)	{
-			$this->subject->facebookId = array_rand($friendsWithLikes, 1);
+		if ($this->topicSubject->facebookId <= 0)	{
+			$this->topicSubject->facebookId = array_rand($friendsWithLikes, 1);
 		}
-		$this->subject = $friendsWithLikes[$this->subject->facebookId]['subject'];
+		$this->topicSubject = $friendsWithLikes[$this->topicSubject->facebookId]['subject'];
 	}
 	
 	/*
@@ -61,7 +61,7 @@ abstract class Question
 	protected function pickLike()	{
 		global $facebookAPI;
 	
-		$likes = $facebookAPI->likes[$this->subject->facebookId]['likes'];
+		$likes = $facebookAPI->likes[$this->topicSubject->facebookId]['likes'];
 		if ($this->categoryId > 0)	{
 			$likesInCategory = array();
 			foreach ($likes as $like)	{
@@ -88,7 +88,7 @@ abstract class Question
 		$obj["questionId"] = $this->questionId;
 		$obj["category"] = $this->category->jsonSerialize();
 		$obj["text"] = $this->text;
-		$obj["subject"] = $this->subject->jsonSerialize();
+		$obj["topicSubject"] = $this->topicSubject->jsonSerialize();
 		$obj["correctSubject"] = $this->correctSubject->jsonSerialize();
 		
 		return $obj;
@@ -97,7 +97,7 @@ abstract class Question
 	protected function saveToDB()	{
 		global $facebookAPI;
 		
-		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, subjectFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".API::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->subject->facebookId."','".$this->correctSubject->facebookId."')";
+		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, topicFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".API::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->topicSubject->facebookId."','".$this->correctSubject->facebookId."')";
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {

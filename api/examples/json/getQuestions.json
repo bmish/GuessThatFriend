@@ -10,7 +10,7 @@
 				"prettyName": "Movies"
 			},
 			"text": "Which of the following two friends likes the movie 300?",
-			"subject":
+			"topicSubject":
 			{
 				"facebookId": "300Movie",
 				"name": "300",
@@ -28,7 +28,7 @@
 			[
 				{
 					"optionId": 12,
-					"subject": 
+					"topicSubject": 
 					{
 						"facebookId": "bmish",
 						"name": "Bryan Mishkin",
@@ -38,7 +38,7 @@
 				},
 				{
 					"optionId": 13,
-					"subject":
+					"topicSubject":
 					{
 						"facebookId": "arjanirh",
 						"name": "Arjan Singh Nirh",
