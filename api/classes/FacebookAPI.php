@@ -111,5 +111,54 @@ class FacebookAPI	{
 	public function getLoggedInUserId() {
 		return $this->facebook->getUser();
 	}
+	
+	/*
+	 * Returns whether a person likes a particular page.
+	 * @param facebookId - the facebook Id of the person
+	 * @param pageFacebookId - the facebook Id of the page
+	 * @return true if the person likes the page, false otherwise
+	 */
+	public function likesPage($facebookId, $pageFacebookId)	{
+		$likes = $this->getLikesOfFriend($facebookId);
+		foreach ($likes as $like)	{
+			if ($like->facebookId == $facebookId)	{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/*
+	 * TODO: This function will probably get our app banned from facebook.
+	 * @return a random Facebook ID of a particular category.
+	 */
+	public function getRandomlyGeneratedFacebookId($categoryFacebookName = "")	{
+		$maxTries = 10;
+		$triesCount = 0;
+		
+		while ($triesCount++ <= $maxTries)	{
+			// Only generates ids up to 12 digits long
+			$randId = rand(1,9);
+			for ($i = 1; $i <= 12; $i++)	{
+				if (rand(0,1) == 1) {
+					$randId = $randId.rand(0,9);
+				}
+			}
+			
+			// Check if we found a valid facebook id
+			$contents = @file_get_contents('http://graph.facebook.com/'.$randId);
+			if (($contents != false) && (strcmp($contents, 'false') != 0))	{
+				$contents = json_decode($contents);
+				
+				// Check if id belongs to a page of the correct category
+				if (!empty($contents->category) && (empty($contents->category) || strcmp($contents->category, $categoryFacebookName) == 0)) {
+					return $randId;
+				}
+			}
+		}
+		
+		return "";
+	}
 }
 ?>
