@@ -27,6 +27,18 @@ class FacebookAPI	{
 		return FacebookAPI::jsonToSubjects($friends['data']);
 	}
 	
+	public function getRandomFriend($facebookId = "") { // TODO
+		return null;
+	}
+	
+	public function getRandomSubject($category = null) {
+		if ($category) {
+			return getRandomPage($category);
+		}
+		
+		return getRandomFriend();
+	}
+	
 	/*
 	 * Returns all friends' likes.
 	 */
@@ -129,11 +141,15 @@ class FacebookAPI	{
 		return false;
 	}
 	
+	public function getRandomPage($category = null) { // TODO
+		return null;
+	}
+	
 	/*
 	 * TODO: This function will probably get our app banned from facebook.
 	 * @return a random Facebook ID of a particular category.
 	 */
-	public function getRandomlyGeneratedFacebookId($categoryFacebookName = "")	{
+	public function getRandomlyGeneratedFacebookId($category = null)	{
 		$maxTries = 10;
 		$triesCount = 0;
 		
@@ -152,7 +168,7 @@ class FacebookAPI	{
 				$contents = json_decode($contents);
 				
 				// Check if id belongs to a page of the correct category
-				if (!empty($contents->category) && (empty($contents->category) || strcmp($contents->category, $categoryFacebookName) == 0)) {
+				if (!empty($contents->category) && (empty($contents->category) || strcmp($contents->category, $category->facebookName) == 0)) {
 					return $randId;
 				}
 			}

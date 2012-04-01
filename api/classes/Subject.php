@@ -62,5 +62,13 @@ class Subject
 
 		return true;
 	}
+	
+	public function isPerson() {
+		return $this->getCategory() == null;
+	}
+	
+	public function getCategory() { // TODO: Probably need to add category as a field of Subject.
+		return null;
+	}	
 }
 ?>

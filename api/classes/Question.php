@@ -6,7 +6,7 @@ require_once 'MCQuestion.php';
 abstract class Question
 {
 	protected $questionId;
-	protected $category; 			// Category of this Question (like books or movies).
+	protected $category; 			// Category of this Question (like books or movies). TODO: This will become redundant because it will be stored inside topicSubject.
 	protected $text; 				// Question text.
 	protected $ownerSubject;		// The person who this question was generated for.
 	protected $topicSubject; 		// Person or page that this question is about.
@@ -14,23 +14,21 @@ abstract class Question
 	protected $chosenSubject; 		// The answer that the user chose (if the question has been answered).
 	
 	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId)	{
-		global $facebookAPI;
-		
 		$this->questionId = -1;
-		$this->category = new Category($categoryId);
+		$this->category = empty($categoryId) ? null : new Category($categoryId);
 		$this->text = "";
 		$this->ownerSubject = new Subject($ownerFacebookId);
-		$this->topicSubject = new Subject($topicFacebookId);
+		$this->topicSubject = empty($topicFacebookId) ? null : new Subject($topicFacebookId);
 		$this->correctSubject = null;
 		$this->chosenSubject = null;
 	
-		// Pick a subject (topic).
-		//$this->pickSubject();
+		// Pick a topic.
+		$this->pickTopic();
 		
 		// Pick a correct answer.
-		//$this->pickLike();
+		$this->pickAnswer();
 		
-		// Save question to database after choosing a subject and correct answer.
+		// Save question to database after choosing a topic and correct answer.
 		$this->saveToDB();
 	}
 	
@@ -38,41 +36,27 @@ abstract class Question
         return $this->$field;
 	}
 	
-	/*
-	 * TODO: currently assumes subject = a person
-	 * Picks a random friend from the list if there are more than one and sets the subject ID.
-	 * @return the list of 'likes' for the chosen friend.
-	 */
-	protected function pickTopicSubject()	{
+	protected function pickTopic()	{
 		global $facebookAPI;
-	
-		$friendsWithLikes = $facebookAPI->getLikesOfAllMyFriends();
-		if ($this->topicSubject->facebookId <= 0)	{
-			$this->topicSubject->facebookId = array_rand($friendsWithLikes, 1);
+		
+		// Was the topic provided to us?
+		if (!$this->topicSubject) {
+			$this->topicSubject = $facebookAPI->getRandomSubject($this->category); // Generate a random topic of the desired category of a random friend.
 		}
-		$this->topicSubject = $friendsWithLikes[$this->topicSubject->facebookId]['subject'];
+		
+		// Store the category of the topic if we don't already know it.
+		if (!$this->category) {
+			$this->category = $this->topicSubject->getCategory();
+		}
 	}
 	
-	/*
-	 * Picks a random 'like' from the list and sets the category ID.
-	 * @param likes: the list of 'likes'
-	 * @return the chosen 'like'
-	 */
-	protected function pickLike()	{
+	protected function pickAnswer() {
 		global $facebookAPI;
-	
-		$likes = $facebookAPI->likes[$this->topicSubject->facebookId]['likes'];
-		if ($this->categoryId > 0)	{
-			$likesInCategory = array();
-			foreach ($likes as $like)	{
-				if ($like['category'] == $this->categoryId)	{
-					$likesInCategory[] = $like;
-				}
-			}
-			$this->correctSubject = $likesInCategory[rand(0,sizeof($likesInCategory)-1)];
-		} else {
-			$this->correctSubject = $likes[rand(0,sizeof($likes)-1)];
-			$this->category = new Category(Category::getCategoryId($this->correctSubject['category']));
+		
+		if ($this->topicSubject->isPerson()) {
+			$this->correctSubject = $facebookAPI->getRandomPage($this->category); // Generate a random page of the desired category.
+		} else { // Topic is a page.
+			$this->correctSubject = $facebookAPI->getRandomFriend(); // Generate a random friend.
 		}
 	}
 	
