@@ -1,8 +1,9 @@
 <?php
 // https://developers.facebook.com/docs/reference/php/
 
-require_once("../references/facebook-php-sdk/src/facebook.php");
+require_once("../../references/facebook-php-sdk/src/facebook.php");
 require_once("Subject.php");
+require_once("../fns/config.php");
 
 class FacebookAPI	{
 	private $facebook;
@@ -141,8 +142,24 @@ class FacebookAPI	{
 		return false;
 	}
 	
-	public function getRandomPage($category = null) { // TODO
-		return null;
+	public function getRandomPage($category = null) {
+		if ($category == null)
+			$selectQuery = "SELECT * FROM pages";
+		else
+			$selectQuery = "SELECT id, name FROM pages WHERE category = ".$category->facebookName;
+			
+		$pages = mysql_query($selectQuery);
+		
+		if (!$pages)	{
+			return false;
+		} else	{
+			mysql_data_seek ($pages, rand(0,mysql_num_rows($pages)-1));
+			$page = mysql_fetch_array($pages);
+			if ($category == null)
+				return array('id' => $page[0], 'name' => $page[1], 'category' => $page[2]);
+			else
+				return array('id' => $page[0], 'name' => $page[1], 'category' => $category->facebookName);
+		}
 	}
 	
 	/*
