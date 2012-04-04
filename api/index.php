@@ -8,8 +8,10 @@ require_once('classes/MCQuestion.php');
 require_once('classes/API.php');
 require_once('classes/Option.php');
 require_once('classes/DB.php');
+require_once('classes/Subject.php');
 require_once('classes/FacebookAPI.php');
 require_once('config/config.php');
+require_once('../references/facebook-php-sdk/src/facebook.php');
 
 // Connect to database.
 DB::connect();
