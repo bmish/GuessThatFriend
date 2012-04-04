@@ -1,8 +1,4 @@
 <?php
-require_once 'Category.php';
-require_once 'Subject.php';
-require_once 'MCQuestion.php';
-
 abstract class Question
 {
 	protected $questionId;

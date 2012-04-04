@@ -1,10 +1,6 @@
 <?php
 // https://developers.facebook.com/docs/reference/php/
 
-require_once("../../references/facebook-php-sdk/src/facebook.php");
-require_once("Subject.php");
-require_once("../fns/config.php");
-
 class FacebookAPI	{
 	private $facebook;
 	private $likes;

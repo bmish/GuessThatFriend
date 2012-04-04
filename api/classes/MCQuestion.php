@@ -1,5 +1,4 @@
 <?php
-require_once "Question.php";
 class MCQuestion extends Question
 {
 	private $optionCount;
