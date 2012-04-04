@@ -7,10 +7,12 @@ class APIIntegrationTests extends UnitTestCase {
 		$addr=$url.'?cmd=getQuestions&facebookAccessToken=xxx&questionCount='.$qCount.'&optionCount='.$oCount.'&categoryId='.$cat;
 
 		$jsonFile = fopen($addr, 'r');
+		$content = NULL;
 		while ($out = fread($jsonFile, 1024)) $content .= $out;
 		fclose($jsonFile);
 		$json=json_decode($content);
 		
+		$question = NULL;
 		foreach ($json->questions as $question) {
 			$category = $question->category->categoryId;
 			$this->assertEqual($category, $cat);
@@ -22,14 +24,15 @@ class APIIntegrationTests extends UnitTestCase {
 
 	function submitQuizHelper($questionId) {
 		$url = 'http://guessthatfriend.jasonsze.com/api/';
-		$addr = $url.'?cmd=submitQuestions&facebookAccessToken=xxx&optionIdOfQuestion'.questionId.'=12';
+		$addr = $url.'?cmd=submitQuestions&facebookAccessToken=xxx&optionIdOfQuestion'.$questionId.'=12';
 		$jsonFile = fopen($addr, 'r');
+		$content = NULL;
 		while ($out = fread($jsonFile, 1024)) $content .= $out;
 		fclose($jsonFile);
 
 		$json = json_decode($content);
 
-		$this->assertEqual($json->questions[0], $questionId);
+		$this->assertEqual($json->questionIds[0], $questionId);
 	}
 
         function testGetQuizOneQuestion() {
@@ -50,21 +53,6 @@ class APIIntegrationTests extends UnitTestCase {
 	function testGetQuizFifteenQuestions() {
                 echo 'Questions=15,Options=6,Category=3<br><br>';
 		$this->getQuizHelper(15,6,3);
-	}
-
-	function testGetQuizTwentyQuestions() {
-                echo 'Questions=20,Options=7,Category=3<br><br>';
-		$this->getQuizHelper(20,7,3);
-	}
-
-	function testGetQuizTwentyfiveQuestions() {
-                echo 'Questions=25,Options=8,Category=3<br><br>';
-		$this->getQuizHelper(25,8,3);
-	}
-
-	function testGetQuizLotsOfQuestions() {
-                echo 'Questions=250,Options=3,Category=3<br><br>';
-		$this->getQuizHelper(250,3,3);
 	}
 
 	function testGetQuizNegQCnt() {
