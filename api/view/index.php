@@ -19,6 +19,7 @@
 			<?php include_once("view/apiCommandTables/getQuestions.php"); ?>
 			<?php include_once("view/apiCommandTables/submitQuestions.php"); ?>
 			<?php include_once("view/apiCommandTables/getCategories.php"); ?>
+			<?php include_once("view/apiCommandTables/getStatistics.php"); ?>
 		</div>
 	</div>
 </div>
