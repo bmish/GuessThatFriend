@@ -7,7 +7,7 @@
 				<td class="colType fontCode">string</td>
 				<td class="colValue">&ldquo;getStatistics&rdquo;</td>
 				<td class="colDefault"></td>
-				<td>Generate questions on what the authenticated user's friends like.</td>
+				<td>Generate statistics based on the authenticated user's history.</td>
 			</tr>
 			<tr>
 				<td class="colParameter">facebookAccessToken</td>

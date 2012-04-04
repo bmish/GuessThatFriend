@@ -34,6 +34,10 @@ if ($cmd == 'getQuestions') {
 	API::submitQuestions($facebookAccessToken, $questionAnswers);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();
+} else if ($cmd == 'getStatistics') {
+	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
+	$type = $_GET['type'];
+	API::getStatistics($facebookAccessToken, $type);
 } else {
 	// Display page that describes the API.
 	include_once("view/index.php");

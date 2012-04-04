@@ -58,6 +58,17 @@ class API {
 		$arr = API::getArrayOfResult($result);
 		API::outputArrayInJSON($arr);
 	}
+
+	public static function getStatistics($facebookAccessToken, $type){
+		global $facebookAPI;
+		
+		// Check authentication.
+		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
+			API::outputExampleJSON("getStatistics.json");
+			return;
+		}
+
+	}
 	
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
