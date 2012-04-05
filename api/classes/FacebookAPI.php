@@ -30,10 +30,10 @@ class FacebookAPI	{
 	
 	public function getRandomSubject($category = null) {
 		if ($category) {
-			return getRandomPage($category);
+			return $this->getRandomPage($category);
 		}
 		
-		return getRandomFriend();
+		return $this->getRandomFriend();
 	}
 	
 	/*
@@ -52,7 +52,8 @@ class FacebookAPI	{
 	private static function jsonToSubjects($json) {
 		$subjects = array();
 		for ($i = 0; $i < sizeof($json); $i++)	{
-			$subjects[$i] = new Subject($json[$i]);
+			$category = isset($json[$i]['category']) ? new Category(Category::getCategoryId($json[$i]['category'])) : null;
+			$subjects[$i] = new Subject($json[$i]['id'], $json[$i]['name'], $category);
 		}
 		
 		return $subjects;
@@ -70,7 +71,8 @@ class FacebookAPI	{
 			$likesResponse = $this->facebook->api('/'.$facebookId.'/likes?access_token='.$this->facebookAccessToken);
 
 			// Store friend's likes so we won't have to look it up again.
-			$this->likes[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse);
+			$this->likes[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse['data']);
+			
 		}
 		
 		return $this->likes[$facebookId];
@@ -143,18 +145,17 @@ class FacebookAPI	{
 			$selectQuery = "SELECT * FROM pages";
 		else
 			$selectQuery = "SELECT id, name FROM pages WHERE category = ".$category->facebookName;
-			
-		$pages = mysql_query($selectQuery);
 		
-		if (!$pages)	{
+		// select one random row
+		$selectQuery .= " ORDER BY RAND() LIMIT 1";
+			
+		$result = mysql_query($selectQuery);
+		if (!$result)	{
 			return false;
 		} else	{
-			mysql_data_seek ($pages, rand(0,mysql_num_rows($pages)-1));
-			$page = mysql_fetch_array($pages);
-			if ($category == null)
-				return array('id' => $page[0], 'name' => $page[1], 'category' => $page[2]);
-			else
-				return array('id' => $page[0], 'name' => $page[1], 'category' => $category->facebookName);
+			$page = mysql_fetch_assoc($result);
+			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['category'])) : $category;
+			return new Subject($page['id'], $page['name'], $pageCategory);
 		}
 	}
 	
@@ -189,5 +190,43 @@ class FacebookAPI	{
 		
 		return "";
 	}
+	
+	/*
+	 * Store a page in the database.
+	 */
+	public function insertPageIntoDatabase($subject)	{
+		$replaceQuery = "REPLACE INTO pages SET id = '".$subject->facebookId."', name = '".$subject->name."', category = '".$subject->category->facebookName."';";
+		$result = mysql_query($replaceQuery);
+		
+		if (!$result) {
+			echo "Error - unable to insert page ".$subject->facebookId;
+		}
+	}
+}
+
+// Testing
+if (isset($_GET['testInsertPage']) && ($_GET['testInsertPage'] == 'true'))	{
+	require_once('Subject.php');
+	require_once('Category.php');
+	require_once('API.php');
+	require_once('DB.php');
+	require_once('../../references/facebook-php-sdk/src/facebook.php');
+	require_once('../config/config.php');
+	DB::connect();
+
+	$person = new Subject('4', 'Mark Zuckerberg', null);
+	echo "<p>person is person?: ".$person->isPerson()."</p>";
+	$page1 = new Subject('123', 'Dummy Page', new Category(Category::getCategoryId('Movie')));
+	echo "<p>page1 is person?: ".$page1->isPerson()."</p>";
+	$page2 = new Subject('123', 'Dummy Page - New', new Category(Category::getCategoryId('Interest')));
+	echo "<p>page2 is person?: ".$page2->isPerson()."</p>";
+	$page3 = new Subject('456', 'Dummy Page 2', new Category(Category::getCategoryId('Movie')));
+	echo "<p>page3 is person?: ".$page3->isPerson()."</p>";
+	$fbapi = new FacebookAPI();
+	$fbapi->insertPageIntoDatabase($page1);
+	$fbapi->insertPageIntoDatabase($page2);
+	$fbapi->insertPageIntoDatabase($page3);
+
+	DB::close();
 }
 ?>

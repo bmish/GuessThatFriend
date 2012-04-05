@@ -53,12 +53,4 @@ class Category
 		return $obj;
 	}
 }
-
-// Testing
-if ($_GET['testCategory'] == 'true') {
-	for ($i = 1; $i <= 5; $i++)	{
-		$cat = new Category($i);
-		echo "<p>Category ".$i.": fbName = ".$cat->getFacebookName()."; prettyName = ".$cat->getPrettyName()."</p>";
-	}
-}
 ?>

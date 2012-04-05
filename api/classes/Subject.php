@@ -5,14 +5,16 @@ class Subject
 	private $name;
 	private $picture;
 	private $link;
+	private $category;
 	
-	public function __construct($facebookId, $name = "") {
+	public function __construct($facebookId, $name = "", $category = null) {
 		global $facebookAPI;
 		
 		$this->facebookId = $facebookId;
 		$this->name = $name;
 		$this->picture = 'https://graph.facebook.com/'.$facebookId.'/picture';
 		$this->link = 'https://www.facebook.com/'.$facebookId;
+		$this->category = $category;
 		
 		// Get these fields from Facebook if we haven't stored them yet.
 		if (empty($this->name) && !$this->fillInFieldsFromDB()) {
@@ -64,11 +66,7 @@ class Subject
 	}
 	
 	public function isPerson() {
-		return $this->getCategory() == null;
+		return ($this->category == null);
 	}
-	
-	public function getCategory() { // TODO: Probably need to add category as a field of Subject.
-		return null;
-	}	
 }
 ?>
