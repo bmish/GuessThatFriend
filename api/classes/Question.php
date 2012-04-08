@@ -50,9 +50,9 @@ abstract class Question
 		global $facebookAPI;
 		
 		if ($this->topicSubject->isPerson()) {
-			$this->correctSubject = $facebookAPI->getRandomPage($this->category); // Generate a random page of the desired category.
+			$this->correctSubject = $facebookAPI->getRandomLikedPage($this->topicSubject->facebookId, $this->category); // Generate a random page of the desired category.
 		} else { // Topic is a page.
-			$this->correctSubject = $facebookAPI->getRandomFriend(); // Generate a random friend.
+			$this->correctSubject = $facebookAPI->getRandomFriendWhoLikes($this->topicSubject->facebookId); // Generate a random friend.
 		}
 	}
 	
