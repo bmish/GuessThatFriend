@@ -68,6 +68,42 @@ class API {
 			return;
 		}
 
+		// Build object to represent the JSON we will display.
+		$output = array();
+		$output["friends"] = API::getFriendAnswerCounts();
+		$output["success"] = true;
+
+		API::outputArrayInJSON($output);
+	}
+
+	private static function getFriendAnswerCounts() {
+		global $facebookAPI;
+		$correctCountResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+										WHERE `ownerFacebookId`='".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId`=`correctFacebookId`
+										GROUP BY `topicFacebookId`");
+		$totalCountResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+										WHERE `ownerFacebookId`='".$facebookAPI->getLoggedInUserId()."'
+										GROUP BY `topicFacebookId`");
+		if (!$correctCountResult || !$totalCountResult) {
+			return;
+		}
+
+		$friendsArray = array();
+		while($totalCountRow = mysql_fetch_array($totalCountResult)){
+			$friendArray = array();
+			$friendArray["subject"] = new Subject($totalCountRow["topicFacebookId"]);
+			$friendArray["correctAnswerCount"] = 0;
+			$friendArray["totalAnswerCount"] = $totalCountRow["count"];
+			$friendsArray[$totalCountRow["topicFacebookId"]] = $friendArray;
+		}
+
+		while($correctCountRow = mysql_fetch_array($correctCountResult)){
+			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
+		}
+		
+		return array_values($friendsArray);
+		
 	}
 	
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
