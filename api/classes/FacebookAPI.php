@@ -3,6 +3,7 @@
 
 class FacebookAPI	{
 	private $facebook;
+	private $facebookId;
 	private $likes;
 	private $facebookAccessToken;
 	
@@ -188,16 +189,33 @@ class FacebookAPI	{
 		return false;
 	}	
 	
-	// Log user in with given access token.
+	// Log user in with given access token. Return user ID if login is successful, or false if no logged-in user.
 	public function authenticate($facebookAccessToken) {
 		$this->facebook->setAccessToken($facebookAccessToken);
-		$this->facebookAccessToken = $facebookAccessToken;
+		$this->facebookAccessToken = API::cleanInputForDatabase($facebookAccessToken);
 		
-		return $this->getLoggedInUserId(); // User ID of current user, or 0 if no logged-in user.
+		// Invalid access token?
+		if (!$this->getLoggedInUserId()) {
+			return false;
+		}
+			
+		// Update our database record for this user.
+		$this->updateLoggedInUserDatabaseRecord();
+			
+		return $this->getLoggedInUserId();
+	}
+	
+	public function updateLoggedInUserDatabaseRecord() {
+		mysql_query("INSERT INTO users (facebookId) VALUES ('".$this->getLoggedInUserId()."')"); // This query won't affect anything if the user already exists in the database.
+		mysql_query("UPDATE users SET lastVisitedAt = NOW() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1");
 	}
 	
 	public function getLoggedInUserId() {
-		return $this->facebook->getUser();
+		if (!$this->facebookId) {
+			$this->facebookId = $this->facebook->getUser();
+		}
+		
+		return $this->facebookId;
 	}
 	
 	/*

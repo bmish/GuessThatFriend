@@ -46,10 +46,8 @@ CREATE TABLE IF NOT EXISTS `subjects` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `facebookId` varchar(250) NOT NULL,
-  `twitterId` varchar(100) NOT NULL,
-  `joinDate` date NOT NULL,
-  `lastLoginDate` date NOT NULL,
-  `facebookAccessToken` varchar(255) NOT NULL,
+  `joinedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastVisitedAt` datetime NOT NULL,
   PRIMARY KEY (`facebookId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
