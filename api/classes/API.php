@@ -91,10 +91,13 @@ class API {
 
 		$friendsArray = array();
 		while($totalCountRow = mysql_fetch_array($totalCountResult)){
+			$friendSubject = new Subject($totalCountRow["topicFacebookId"]);
+			
 			$friendArray = array();
-			$friendArray["subject"] = new Subject($totalCountRow["topicFacebookId"]);
+			$friendArray["subject"] = $friendSubject->jsonSerialize();
 			$friendArray["correctAnswerCount"] = 0;
 			$friendArray["totalAnswerCount"] = $totalCountRow["count"];
+			
 			$friendsArray[$totalCountRow["topicFacebookId"]] = $friendArray;
 		}
 
@@ -103,7 +106,6 @@ class API {
 		}
 		
 		return array_values($friendsArray);
-		
 	}
 	
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
