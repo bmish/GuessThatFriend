@@ -9,17 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @class SettingsViewController;
+@class StatsViewController;
 
 @interface QuizBaseViewController : UIViewController {
 	int questionID;
 	UITextView *questionTextView;
     UIImageView *topicImage;
     SettingsViewController *settingsViewController;
+    StatsViewController *statsViewController;
+    
 }
 
 @property int questionID;
 @property (nonatomic, retain) IBOutlet UITextView *questionTextView;
 @property (nonatomic, retain) SettingsViewController *settingsViewController;
 @property (nonatomic, retain) IBOutlet UIImageView *topicImage;
+@property (nonatomic, retain) StatsViewController *statsViewController;
 
 @end

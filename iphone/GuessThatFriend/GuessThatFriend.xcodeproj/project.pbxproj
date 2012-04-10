@@ -430,8 +430,6 @@
 				4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */,
 				4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */,
 				4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */,
-				BA6F95931533DE3600C875F1 /* StatsViewController.h */,
-				BA6F95941533DE3600C875F1 /* StatsViewController.m */,
 			);
 			name = QuizViewControllers;
 			sourceTree = "<group>";
@@ -439,6 +437,8 @@
 		4D8D7A0A14EBA63300CAA606 /* CommonViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA6F95931533DE3600C875F1 /* StatsViewController.h */,
+				BA6F95941533DE3600C875F1 /* StatsViewController.m */,
 				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
 			);
