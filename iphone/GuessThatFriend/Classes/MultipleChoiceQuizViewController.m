@@ -137,7 +137,7 @@
     getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
     [getRequest appendString:@"?cmd=submitQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-    [getRequest appendFormat:@"&facebookIdOfQuestion%@=%@", questionID, option.subject.facebookId];
+    [getRequest appendFormat:@"&facebookIdOfQuestion%i=%@", questionID, option.subject.facebookId];
     
     NSLog(@"Request: %@\n", getRequest);
         

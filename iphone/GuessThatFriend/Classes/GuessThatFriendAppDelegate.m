@@ -37,8 +37,10 @@
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
+        quizViewController.responseLabel.text = @"";
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
+        [quizViewController.friendsTable reloadData];
         quizViewController.questionID = mcQuestion.questionId;
         [quizViewController.questionTextView setText: quizViewController.questionString];
         
@@ -101,7 +103,9 @@
     }
     
     // Now we have facebook token, use it to initialize the quiz manager.
-    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
+    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:YES];
+    
+    [self nextButtonPressed:nil];
     
     return YES;
 }

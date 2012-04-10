@@ -57,12 +57,16 @@
         [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
     }
     
+    NSLog(@"Request string: %@", getRequest);
+    
     // Send the GET request to the server.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    NSLog(@"REQUEST QUESTION: %@ \n",request);
+
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     
+    NSLog(@"RESPONSE STRING: %@ \n",responseString);
+
     // Initialize array of questions from the server's response.
     [self createQuestionsFromServerResponse:responseString];
     
@@ -83,20 +87,21 @@
     while (curQuestion = [questionEnumerator nextObject]) {
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
-        NSString *correctFbId = [curQuestion objectForKey:@"correctFacebookId"];
-        int questionId = (int) [curQuestion objectForKey:@"questionId"];    
+        NSDictionary *correctSubject = [curQuestion objectForKey:@"correctSubject"];
+        NSString *correctFbId = [correctSubject objectForKey:@"facebookId"];
+        int questionId = [[curQuestion objectForKey:@"questionId"] intValue]; 
         
         NSEnumerator *optionEnumerator = [options objectEnumerator];
         NSDictionary *curOption;
         NSMutableArray *optionArray = [[NSMutableArray alloc] initWithCapacity:8];
         while (curOption = [optionEnumerator nextObject]) {
-            NSDictionary *subjectDict = [curOption objectForKey:@"subject"];
+            NSDictionary *subjectDict = [curOption objectForKey:@"topicSubject"];
             NSString *subjectName = [subjectDict objectForKey:@"name"];
             NSString *subjectImageURL = [subjectDict objectForKey:@"picture"];
             NSString *subjectFacebookId = [subjectDict objectForKey:@"facebookId"];
             NSString *subjectLink = [subjectDict objectForKey:@"link"];
-
-             Option *option = [[Option alloc] initWithName:subjectName andImagePath:subjectImageURL andFacebookId:subjectFacebookId andLink:subjectLink];
+            
+            Option *option = [[Option alloc] initWithName:subjectName andImagePath:subjectImageURL andFacebookId:subjectFacebookId andLink:subjectLink];
             [optionArray addObject:option];
             [option release];
         }
