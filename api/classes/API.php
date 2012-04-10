@@ -121,7 +121,7 @@ class API {
 				$question = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
 			}
 			
-			$questions[] = $question;
+			$questions[$i] = $question;
 		}
 		
 		return $questions;
