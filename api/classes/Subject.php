@@ -34,6 +34,9 @@ class Subject
 		$obj["name"] = $this->name;
 		$obj["picture"] = $this->picture;
 		$obj["link"] = $this->link;
+		if ($this->category) {
+			$obj["category"] = $this->category->jsonSerialize();
+		}
 		
 		return $obj;
 	}

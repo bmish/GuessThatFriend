@@ -29,7 +29,28 @@ class FacebookAPI	{
 		if ($facebookId == "")	{
 			$facebookId = $this->getLoggedInUserId();
 		}
-		return getRandomValue($this->getFriendsOf($facebookId));
+		
+		$friends = $this->getFriendsOf($facebookId);
+		
+		// Only choose a friend that has likes.
+		return $this->chooseFriendWithSufficientLikes($friends);
+	}
+	
+	public function chooseFriendWithSufficientLikes($friends) {
+		$MIN_ACCEPTABLE_LIKES = 2;
+		$MAX_TRIES = 10;
+		$triesCount = 0;
+		do {
+			if ($triesCount++ == $MAX_TRIES) {
+				echo "Could not find a friend with sufficient likes.";
+				exit;
+			}
+			
+			$friend = $this->getRandomElement($friends);
+			$likesData = $this->getLikesOfFriend($friend->facebookId);
+		} while (count($likesData["likes"]) < MIN_ACCEPTABLE_LIKES);
+		
+		return $friend;
 	}
 	
 	public function getRandomFriendWhoLikes($facebookId = "") {
@@ -43,7 +64,7 @@ class FacebookAPI	{
 			if (likesPage($friend->facebookId, $facebookId))
 				$friendsWhoLike[] = $friend;
 		}
-		return getRandomValue($friendsWhoLike);
+		return $this->getRandomElement($friendsWhoLike);
 	}
 		
 	/*
@@ -64,41 +85,43 @@ class FacebookAPI	{
 	}
 	
 	public function getRandomPage($category = null) {
-		if ($category == null)
-			$selectQuery = "SELECT * FROM pages";
-		else
-			$selectQuery = "SELECT id, name FROM pages WHERE category = ".$category->facebookName;
+		if ($category == null) {
+			$selectQuery = "SELECT * FROM randomPages";
+		} else {
+			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE category = ".$category->facebookName;
+		}
 		
 		// select one random row
 		$selectQuery .= " ORDER BY RAND() LIMIT 1";
 			
 		$result = mysql_query($selectQuery);
-		if (!$result)	{
+		if (!$result) {
 			return false;
-		} else	{
+		} else {
 			$page = mysql_fetch_assoc($result);
-			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['category'])) : $category;
-			return new Subject($page['id'], $page['name'], $pageCategory);
+			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+			return new Subject($page['facebookId'], $page['name'], $pageCategory);
 		}
 	}
 	
 	public function getRandomLikedPage($facebookId = "", $category = null)	{
-		if ($facebookId != "")	{
-			$likes = $this->getLikesOfFriend($facebookId);
-			if ($category != null)	{
-				$likesOfCategory = array();
-				foreach ($likes as $like)	{
-					if ($like->category->categoryId == $category->categoryId)
-						$likesOfCategory[] = $like;
-				}
-				return getRandomValue($likesOfCategory);
-			}
-			else return getRandomValue($likes);
+		$likes = $this->getLikesOfFriend($facebookId);
+		
+		if (!$category) { // No specific category.
+			return $this->getRandomElement($likes);
 		}
-		return null;
+		
+		$likesOfCategory = array();
+		foreach ($likes as $like)	{
+			if ($like->category->categoryId == $category->categoryId) {
+				$likesOfCategory[] = $like;
+			}
+		}
+		
+		return $this->getRandomElement($likesOfCategory);
 	}
 	
-	private function getRandomValue($arr = null)	{
+	private function getRandomElement($arr = null)	{
 		if ($arr != null)	{
 			return (sizeof($arr) > 0) ? $arr[array_rand($arr, 1)] : null;
 		}

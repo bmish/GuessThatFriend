@@ -5,20 +5,20 @@ class Option
 	private $questionId;		// ID of the question that this option is part of.
 	private $topicSubject;		// The person or page that this option is about.
 	
-	public function __construct($questionId, $topicFacebookId)	{
+	public function __construct($questionId, $topicSubject)	{
 		$this->optionId = -1;
 		$this->questionId = $questionId;
-		$this->topicSubject = new Subject($topicFacebookId);
+		$this->topicSubject = $topicSubject;
 		
 		$this->saveToDB();
 	}
 
-	public function __get($field)	{
+	public function __get($field) {
 		return $this->$field;
 	}
 
 	private function saveToDB()	{
-		$insertQuery = "INSERT INTO options (questionId, facebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
+		$insertQuery = "INSERT INTO options (questionId, topicFacebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
 		$queryResult = mysql_query($insertQuery);
 		
 		if (!$queryResult) {

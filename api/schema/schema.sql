@@ -14,14 +14,21 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `facebookName` varchar(50) NOT NULL,
   `prettyName` varchar(50) NOT NULL,
   PRIMARY KEY (`categoryId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `options` (
   `optionId` int(11) NOT NULL AUTO_INCREMENT,
   `questionId` int(11) NOT NULL,
   `topicFacebookId` varchar(250) NOT NULL,
   PRIMARY KEY (`optionId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `randomPages` (
+  `facebookId` varchar(250) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `categoryFacebookName` varchar(250) NOT NULL,
+  PRIMARY KEY (`facebookId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `questions` (
   `questionId` int(11) NOT NULL AUTO_INCREMENT,
@@ -34,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `answeredAt` datetime NOT NULL,
   PRIMARY KEY (`questionId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `subjects` (
   `facebookId` varchar(250) NOT NULL,

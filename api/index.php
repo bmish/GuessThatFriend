@@ -6,6 +6,7 @@ require_once('classes/MCQuestion.php');
 
 // Misc includes.
 require_once('classes/API.php');
+require_once('classes/Category.php');
 require_once('classes/Option.php');
 require_once('classes/DB.php');
 require_once('classes/Subject.php');
@@ -24,9 +25,9 @@ $cmd = $_GET['cmd'];
 if ($cmd == 'getQuestions') {
 	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionCount = intval($_GET['questionCount']);
-	$optionCount = intval($_GET['optionCount']);
-	$topicFacebookId = API::cleanInputForDatabase($_GET['topicFacebookId']);
-	$categoryId = intval($_GET['categoryId']);
+	//$optionCount = intval($_GET['optionCount']);
+	//$topicFacebookId = API::cleanInputForDatabase($_GET['topicFacebookId']);
+	//$categoryId = intval($_GET['categoryId']);
 	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId);
 } else if ($cmd == 'submitQuestions') {
 	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);

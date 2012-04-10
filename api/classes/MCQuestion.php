@@ -1,16 +1,15 @@
 <?php
 class MCQuestion extends Question
 {
-	private $optionCount;
 	private $options;
 
 	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $optionCount)	{
 		parent::__construct($ownerFacebookId, $topicFacebookId, $categoryId);
-		
-		$this->optionCount = $optionCount;
+
 		$this->options = array();
+		$this->makeOptions($optionCount);
 		
-		//$this->makeOptions();
+		$this->makeQuestionText();
 	}
 	
 	public function makeQuestionText() {
@@ -18,20 +17,15 @@ class MCQuestion extends Question
 		$this->text = "Which of the following ".strtolower($this->category->prettyName)." does ".$this->topicSubject->name." like?";
 	}
 	
-	private function makeOptions()	{
-		$correctOption = rand(0, $this->optionCount-1);
-		for ($i = 0; $i < $this->numOptions; $i++)	{
-			if ($i == $correctOption)	{
-				$this->options[$i] = new Option($this->$questionId, $correctSubject->facebookId);
+	private function makeOptions($optionCount)	{
+		$correctOptionIndex = rand(0, $optionCount-1);
+		for ($i = 0; $i < $optionCount; $i++)	{
+			if ($i == $correctOptionIndex)	{
+				$this->options[$i] = new Option($this->questionId, $this->correctSubject);
 			} else	{
-				$this->options[$i] = new Option($this->$questionId, getRandomFacebookId());
+				$this->options[$i] = new Option($this->questionId, FacebookAPI::getRandomPage());
 			}
 		}
-	}
-		
-	public function setChosenOptionId($optionId)	{
-		$this->chosenOptionId = $optionId;
-		// TODO: update database
 	}
 	
 	public function jsonSerialize() {
