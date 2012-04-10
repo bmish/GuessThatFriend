@@ -29,6 +29,11 @@ class Category
 		}
 	}
 	
+	private static function addCategoryToDB($facebookName) {
+		mysql_query("INSERT INTO categories (facebookName, prettyName) VALUES ('".API::cleanInputForDatabase($facebookName)."', '".API::cleanInputForDatabase($facebookName)."')");
+		return mysql_insert_id();
+	}
+	
 	public static function getCategoryId($facebookName)	{
 		$query = "SELECT categoryId FROM categories WHERE facebookName = '".API::cleanInputForDatabase($facebookName)."' LIMIT 1";
 		$queryResult = mysql_query($query);
@@ -37,8 +42,7 @@ class Category
 			$row = mysql_fetch_array($queryResult);
 			return $row["categoryId"];
 		} else { // Add new category to database.
-			mysql_query("INSERT INTO categories (facebookName, prettyName) VALUES ('".API::cleanInputForDatabase($facebookName)."', '".API::cleanInputForDatabase($facebookName)."')");
-			return mysql_insert_id();
+			return Category::addCategoryToDB($facebookName);
 		}
 		
 		return false;

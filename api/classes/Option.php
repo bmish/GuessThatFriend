@@ -18,7 +18,7 @@ class Option
 	}
 
 	private function saveToDB()	{
-		$insertQuery = "INSERT INTO options (questionId, facebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
+		$insertQuery = "INSERT INTO options (questionId, topicFacebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
 		$queryResult = mysql_query($insertQuery);
 		
 		if (!$queryResult) {

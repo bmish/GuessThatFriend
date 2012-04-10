@@ -86,9 +86,9 @@ class FacebookAPI	{
 	
 	public function getRandomPage($category = null) {
 		if ($category == null) {
-			$selectQuery = "SELECT * FROM pages";
+			$selectQuery = "SELECT * FROM randomPages";
 		} else {
-			$selectQuery = "SELECT id, name FROM pages WHERE category = ".$category->facebookName;
+			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE category = ".$category->facebookName;
 		}
 		
 		// select one random row
@@ -99,8 +99,8 @@ class FacebookAPI	{
 			return false;
 		} else {
 			$page = mysql_fetch_assoc($result);
-			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['category'])) : $category;
-			return new Subject($page['id'], $page['name'], $pageCategory);
+			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+			return new Subject($page['facebookId'], $page['name'], $pageCategory);
 		}
 	}
 	
