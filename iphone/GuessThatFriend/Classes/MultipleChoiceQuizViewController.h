@@ -17,7 +17,6 @@
     NSString *questionString;
     NSString *correctFacebookId;
     NSMutableArray *optionsList;
-    
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *friendsTable;

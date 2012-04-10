@@ -53,7 +53,6 @@
 		4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */; };
 		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
-		4D8D7C9714EC951D00CAA606 /* AnswerSubmittingSubsystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7C9614EC951D00CAA606 /* AnswerSubmittingSubsystem.m */; };
 		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
@@ -66,6 +65,8 @@
 		93E21C06150DBDD000A475DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93E21C04150DBDD000A475DC /* InfoPlist.strings */; };
 		93E21C09150DBDD000A475DC /* UnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E21C08150DBDD000A475DC /* UnitTesting.m */; };
 		93FC73C614F9AE15002EB781 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC73C514F9AE15002EB781 /* Question.m */; };
+		BA6F95961533DE3600C875F1 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F95941533DE3600C875F1 /* StatsViewController.m */; };
+		BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,9 @@
 		93E21C0A150DBDD000A475DC /* UnitTesting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTesting-Prefix.pch"; sourceTree = "<group>"; };
 		93FC73C414F9AE15002EB781 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		93FC73C514F9AE15002EB781 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		BA6F95931533DE3600C875F1 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
+		BA6F95941533DE3600C875F1 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		BA6F95951533DE3600C875F1 /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = Classes/StatsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +430,8 @@
 				4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */,
 				4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */,
 				4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */,
+				BA6F95931533DE3600C875F1 /* StatsViewController.h */,
+				BA6F95941533DE3600C875F1 /* StatsViewController.m */,
 			);
 			name = QuizViewControllers;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 		4D8D7A1114EBA68800CAA606 /* Quiz Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				BA6F95951533DE3600C875F1 /* StatsViewController.xib */,
 				4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */,
 				4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */,
 				4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */,
@@ -583,6 +590,7 @@
 				4D3F818A14F98E9500245D4F /* subclasses.pbxbtree in Resources */,
 				4D3F818B14F98E9500245D4F /* symbols0.pbxsymbols in Resources */,
 				4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */,
+				BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +652,7 @@
 				93BA120C14F9BAF000248763 /* Subject.m in Sources */,
 				938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */,
 				4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */,
+				BA6F95961533DE3600C875F1 /* StatsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
