@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatsViewController : UIViewController
+@interface StatsViewController : UIViewController 
+ 
+{
+UITableView *friendsTable;
+UILabel *responseLabel;
+
+NSString *questionString;
+NSString *correctFacebookId;
+NSMutableArray *optionsList;
+}
 
 @end

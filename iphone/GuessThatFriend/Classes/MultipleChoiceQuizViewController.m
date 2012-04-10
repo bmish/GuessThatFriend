@@ -119,20 +119,32 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     NSUInteger selectedRow = [indexPath row];
-    NSLog(@"%d\n", selectedRow);
-    
     Option *option = [optionsList objectAtIndex:selectedRow];
-    NSLog(@"%@\n", option.subject.name);
-    NSLog(@"%@\n", option.subject.link);
-    NSLog(@"%@\n", option.subject.picture);
-    NSLog(@"%@\n", option.subject.facebookId);
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIView *bgColorView = [[UIView alloc] init];
+   
+    //Check if selected option is correct
+    if ([option.subject.facebookId isEqualToString:correctFacebookId]){
+        responseLabel.text = @"Correct";
+        cell.backgroundColor = [UIColor greenColor];
+        //[bgColorView setBackgroundColor:[UIColor greenColor]];
+    }
+    else {
+        responseLabel.text = @"Wrong";
+        cell.backgroundColor = [UIColor redColor];
+       // [bgColorView setBackgroundColor:[UIColor redColor]];
+    }
+    
+   // [cell setSelectedBackgroundView:bgColorView];
+    [bgColorView release];
     
     //construct the request string
     NSMutableString *getRequest;
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
-    
     
     getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
     [getRequest appendString:@"?cmd=submitQuestions"];
@@ -142,14 +154,7 @@
     NSLog(@"Request: %@\n", getRequest);
         
     
-    //Check if selected option is correct
-    if ([option.subject.facebookId isEqualToString: correctFacebookId ])
-    {
-        responseLabel.text = @"Correct";
-    }
-    else {
-        responseLabel.text = @"Wrong";
-    }
+
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);

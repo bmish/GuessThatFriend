@@ -37,6 +37,14 @@
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
+        
+        NSURL *topicImageURL = [NSURL URLWithString:mcQuestion.topicImage];
+        NSData *imageData = [NSData dataWithContentsOfURL:topicImageURL];
+        UIImage *topicImage = [[UIImage alloc] initWithData:imageData];
+        
+        quizViewController.topicImage.image = topicImage;
+        [topicImage release];
+        
         quizViewController.responseLabel.text = @"";
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
@@ -99,7 +107,15 @@
     
     // Check if the session is valid. If not, ask user to log in.
     if (![facebook isSessionValid]) {
-        [facebook authorize:nil];
+        NSArray *permissions = [[NSArray alloc] initWithObjects:
+                                @"user_likes", 
+                                @"read_stream",
+                                @"friends_likes", 
+                                @"friends_relationships",
+                                @"friends_about_me",
+                                nil];
+        [facebook authorize:permissions];
+        [permissions release];
     }
     
     // Now we have facebook token, use it to initialize the quiz manager.

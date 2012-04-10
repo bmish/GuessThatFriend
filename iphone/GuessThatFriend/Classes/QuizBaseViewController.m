@@ -15,6 +15,7 @@
 @synthesize questionID;
 @synthesize questionTextView;
 @synthesize settingsViewController;
+@synthesize topicImage;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -105,13 +106,15 @@
     // e.g. self.myOutlet = nil;
 	
 	self.questionTextView = nil;	
+    self.topicImage = nil;
     self.settingsViewController = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
     [settingsViewController release];
-	
+	[topicImage release];
+    
     [super dealloc];
 }
 

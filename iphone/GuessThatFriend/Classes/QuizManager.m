@@ -84,16 +84,23 @@
     
     NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];
     NSDictionary *curQuestion;
+    
+    //Go through all QUESTIONS
     while (curQuestion = [questionEnumerator nextObject]) {
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
         NSDictionary *correctSubject = [curQuestion objectForKey:@"correctSubject"];
         NSString *correctFbId = [correctSubject objectForKey:@"facebookId"];
+        NSDictionary *topicDict = [curQuestion objectForKey:@"topicSubject"];
+        NSString *topicPicture = [topicDict objectForKey:@"picture"];
+        
         int questionId = [[curQuestion objectForKey:@"questionId"] intValue]; 
         
         NSEnumerator *optionEnumerator = [options objectEnumerator];
         NSDictionary *curOption;
         NSMutableArray *optionArray = [[NSMutableArray alloc] initWithCapacity:8];
+        
+        //Go through all OPTIONS for current Question
         while (curOption = [optionEnumerator nextObject]) {
             NSDictionary *subjectDict = [curOption objectForKey:@"topicSubject"];
             NSString *subjectName = [subjectDict objectForKey:@"name"];
@@ -110,6 +117,7 @@
         question.text = text;
         question.correctFacebookId = correctFbId;
         question.questionId = questionId;
+        question.topicImage = topicPicture;
         
         [optionArray release];
         
