@@ -29,6 +29,7 @@ abstract class Question
 	}
 	
 	public function __get($field)	{
+		debug_print_backtrace();
         return $this->$field;
 	}
 	
@@ -37,12 +38,12 @@ abstract class Question
 		
 		// Was the topic provided to us?
 		if (!$this->topicSubject) {
-			$this->topicSubject = $facebookAPI->getRandomSubject($this->category); // Generate a random topic of the desired category of a random friend.
+			$this->topicSubject = $facebookAPI->getRandomSubject($this->category); // Generate a random topic of the desired category or a random friend.
 		}
 		
 		// Store the category of the topic if we don't already know it.
 		if (!$this->category) {
-			$this->category = $this->topicSubject->getCategory();
+			$this->category = $this->topicSubject->category;
 		}
 	}
 	
@@ -51,6 +52,7 @@ abstract class Question
 		
 		if ($this->topicSubject->isPerson()) {
 			$this->correctSubject = $facebookAPI->getRandomLikedPage($this->topicSubject->facebookId, $this->category); // Generate a random page of the desired category.
+			$this->category = $this->correctSubject->category;
 		} else { // Topic is a page.
 			$this->correctSubject = $facebookAPI->getRandomFriendWhoLikes($this->topicSubject->facebookId); // Generate a random friend.
 		}

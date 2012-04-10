@@ -10,9 +10,7 @@ class Category
 		$this->facebookName = "";
 		$this->prettyName = "";
 		
-		if ($categoryId > 0) {
-			$this->fillInFieldsFromDB();
-		}
+		$this->fillInFieldsFromDB();
 	}
 	
 	public function __get($field)	{
@@ -35,10 +33,12 @@ class Category
 		$query = "SELECT categoryId FROM categories WHERE facebookName = '".API::cleanInputForDatabase($facebookName)."' LIMIT 1";
 		$queryResult = mysql_query($query);
 		
-		if ($queryResult && mysql_num_rows($queryResult) == 1) {
+		if ($queryResult && mysql_num_rows($queryResult) == 1) { // Category is already in database.
 			$row = mysql_fetch_array($queryResult);
-			
 			return $row["categoryId"];
+		} else { // Add new category to database.
+			mysql_query("INSERT INTO categories (facebookName, prettyName) VALUES ('".API::cleanInputForDatabase($facebookName)."', '".API::cleanInputForDatabase($facebookName)."')");
+			return mysql_insert_id();
 		}
 		
 		return false;
