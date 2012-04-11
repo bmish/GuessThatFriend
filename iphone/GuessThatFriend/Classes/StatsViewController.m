@@ -170,7 +170,7 @@
     cell.picture.image = obj.picture;
 	cell.name.text = obj.name;
     float percentage = (float)obj.correctCount / obj.totalCount;
-    cell.percentageLabel.text = [NSString stringWithFormat:@"%0.2f%%", percentage * 100];
+    cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount];
 	[cell.progressBar setProgress:percentage animated:YES];
     
 	return cell;
