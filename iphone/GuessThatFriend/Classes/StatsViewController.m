@@ -120,7 +120,7 @@
 
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
-    [self requestStatisticsFromServer:YES];
+    [self requestStatisticsFromServer:NO];
     
     [super viewWillAppear:animated];
 }
