@@ -10,6 +10,7 @@
 #import "StatsCustomCell.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "JSONKit.h"
+#import "FriendStatsObject.h"
 
 #define SAMPLE_GET_STATISTICS_ADDR   "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics.json"
 #define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
@@ -73,7 +74,11 @@
         NSString *name = [subjectDict objectForKey:@"name"];
         NSString *picURL = [subjectDict objectForKey:@"picture"];
         
+        FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithName:name andImagePath:picURL andCorrectCount:correctCount andTotalCount:totalCount];
         
+        [friendsList addObject:statsObj];
+        
+        [statsObj release];
     }
 }
 
@@ -161,12 +166,13 @@
 	
 	NSUInteger row = [indexPath row];
 	
-	/*Option *option = [optionsList objectAtIndex:row];
-	cell.picture.image = option.subject.picture;
-	cell.name.text = option.subject.name;
-	*/
-     //cell = option.subject.link;
-	//	cell.name.text = option.subject.facebookId;
+    FriendStatsObject *obj = [friendsList objectAtIndex:row];
+    cell.picture.image = obj.picture;
+	cell.name.text = obj.name;
+    float percentage = (float)obj.correctCount / obj.totalCount;
+    cell.percentageLabel.text = [NSString stringWithFormat:@"%0.2f%%", percentage * 100];
+	[cell.progressBar setProgress:percentage animated:YES];
+    
 	return cell;
 }
 
@@ -175,7 +181,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-    // don't do anything if row is selected.
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     return;
 }
 
