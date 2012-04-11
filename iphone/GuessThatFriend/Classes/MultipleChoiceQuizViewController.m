@@ -21,7 +21,6 @@
 @synthesize questionString;
 @synthesize optionsList;
 @synthesize correctFacebookId;
-@synthesize scoreLabel;
 @synthesize scoreLabelString;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -67,7 +66,7 @@
 	self.friendsTable = nil;
 	self.questionString = nil;
 	self.optionsList = nil;
-    self.scoreLabel = nil;
+    self.scoreLabelString = nil;
 }
 
 - (void)dealloc {
@@ -75,7 +74,6 @@
 	[questionString release];
 	[optionsList release];
 	[correctFacebookId release];
-    [scoreLabel release];
     
     [scoreLabelString release];
     
@@ -154,7 +152,7 @@
     
     scoreLabelString = [NSMutableString stringWithFormat:@"%i/%i", delegate->correctAnswers, delegate->totalNumOfQuestions];
     
-    self.scoreLabel.text = scoreLabelString;
+    delegate.navController.navigationBar.topItem.title = scoreLabelString;
     
     //construct the request string
     NSMutableString *getRequest;

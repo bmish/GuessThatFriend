@@ -12,7 +12,6 @@
 @interface MultipleChoiceQuizViewController : QuizBaseViewController <UITableViewDataSource, UITableViewDelegate> {	
     
     UITableView *friendsTable;
-    UILabel *scoreLabel;
     
     NSMutableString *scoreLabelString;
 	
@@ -22,7 +21,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *friendsTable;
-@property (nonatomic, retain) IBOutlet UILabel *scoreLabel;
 @property (nonatomic, retain) NSString *questionString;
 @property (nonatomic, retain) NSString *correctFacebookId;
 @property (nonatomic, retain) NSArray *optionsList;
