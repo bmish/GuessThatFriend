@@ -9,6 +9,7 @@
 #import "StatsViewController.h"
 #import "StatsCustomCell.h"
 #import "GuessThatFriendAppDelegate.h"
+#import "JSONKit.h"
 
 #define SAMPLE_GET_STATISTICS_ADDR   "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics.json"
 #define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
@@ -45,6 +46,78 @@
     [friendsList release];
     
     [super dealloc];
+}
+
+- (void)createStatsFromServerResponse:(NSString *)response {
+    
+    // Empty the current list
+    [friendsList removeAllObjects];
+    
+    // Parse the JSON response.
+    NSDictionary *responseDictionary = [response objectFromJSONString];
+    
+    NSArray *friendsArray = [responseDictionary objectForKey:@"friends"];
+    
+    NSEnumerator *friendEnumerator = [friendsArray objectEnumerator];
+    NSDictionary *curFriend;
+    
+    // Go through all FRIENDS
+    while (curFriend = [friendEnumerator nextObject]) {
+        NSDictionary *subjectDict = [curFriend objectForKey:@"subject"];
+        NSString *correctCountStr = [curFriend objectForKey:@"correctAnswerCount"];
+        NSString *totalCountStr = [curFriend objectForKey:@"totalAnswerCount"];
+        
+        int correctCount = [correctCountStr intValue];
+        int totalCount = [totalCountStr intValue];
+        
+        NSString *name = [subjectDict objectForKey:@"name"];
+        NSString *picURL = [subjectDict objectForKey:@"picture"];
+        
+        
+    }
+}
+
+- (void)requestStatisticsFromServer:(BOOL)useSampleData{
+    
+    // Create GET request.
+    NSMutableString *getRequest;
+    
+    if (useSampleData) {    // Retrieve sample data.
+        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_ADDR];
+    } else { 
+        // Make a real request.
+        
+        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+        [getRequest appendString:@"?cmd=getStatistics"];
+        
+        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*)
+        [[UIApplication sharedApplication] delegate];
+        
+        [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
+        [getRequest appendFormat:@"&type=listAnswerCounts"];
+    }
+    
+    NSLog(@"STATS Request string: %@", getRequest);
+    
+    // Send the GET request to the server.
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"STATS RESPONSE STRING: %@ \n",responseString);
+    
+    // Initialize array of questions from the server's response.
+    [self createStatsFromServerResponse:responseString];
+    
+    [responseString release];
+}
+
+/* Everytime this view will appear, we ask the server for stats jason */
+- (void)viewWillAppear:(BOOL)animated {
+    [self requestStatisticsFromServer:YES];
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -95,115 +168,6 @@
      //cell = option.subject.link;
 	//	cell.name.text = option.subject.facebookId;
 	return cell;
-}
-
-
-
-- (void)requestStatisticsFromServer:(BOOL)useSampleData{
-    
-    // Create GET request.
-    NSMutableString *getRequest;
-    
-    if (useSampleData) {    // Retrieve sample data.
-        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_ADDR];
-    } else { 
-        // Make a real request.
-        
-        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-        [getRequest appendString:@"?cmd=getStatistics"];
-        
-        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*)
-                                                        [[UIApplication sharedApplication] delegate];
-        
-        [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-        [getRequest appendFormat:@"&type=listAnswerCounts"];
-    }
-    
-    NSLog(@"STATS Request string: %@", getRequest);
-    
-    // Send the GET request to the server.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"STATS RESPONSE STRING: %@ \n",responseString);
-    
-    // Initialize array of questions from the server's response.
-    [self createStatsFromServerResponse:responseString];
-    
-    [responseString release];
-}
-
-- (void)createStatsFromServerResponse:(NSString *)response {
-   
-    /*
-    numQuestions = 0;
-	numCorrect = 0;
-    
-    // Parse the JSON response.
-    NSDictionary *responseDictionary = [response objectFromJSONString];
-    
-    //Check if valid JSON response
-    if(responseDictionary==nil){
-        [self requestQuestionsFromServer];                  //Just ask for more questions
-        return;
-    }
-    
-    NSArray *questionsArray = [responseDictionary objectForKey:@"questions"];
-    
-    NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];
-    NSDictionary *curQuestion;
-    
-    //Go through all QUESTIONS
-    while (curQuestion = [questionEnumerator nextObject]) {
-        NSString *text = [curQuestion objectForKey:@"text"];
-        NSArray *options = [curQuestion objectForKey:@"options"];
-        NSDictionary *correctSubject = [curQuestion objectForKey:@"correctSubject"];
-        NSString *correctFbId = [correctSubject objectForKey:@"facebookId"];
-        NSDictionary *topicDict = [curQuestion objectForKey:@"topicSubject"];
-        NSString *topicPicture = [topicDict objectForKey:@"picture"];
-        
-        int questionId = [[curQuestion objectForKey:@"questionId"] intValue]; 
-        
-        NSEnumerator *optionEnumerator = [options objectEnumerator];
-        NSDictionary *curOption;
-        NSMutableArray *optionArray = [[NSMutableArray alloc] initWithCapacity:8];
-        
-        //Go through all OPTIONS for current Question
-        while (curOption = [optionEnumerator nextObject]) {
-            NSDictionary *subjectDict = [curOption objectForKey:@"topicSubject"];
-            NSString *subjectName = [subjectDict objectForKey:@"name"];
-            NSString *subjectImageURL = [subjectDict objectForKey:@"picture"];
-            NSString *subjectFacebookId = [subjectDict objectForKey:@"facebookId"];
-            NSString *subjectLink = [subjectDict objectForKey:@"link"];
-            
-            Option *option = [[Option alloc] initWithName:subjectName andImagePath:subjectImageURL andFacebookId:subjectFacebookId andLink:subjectLink];
-            [optionArray addObject:option];
-            [option release];
-        }
-        
-        Question *question = [[MCQuestion alloc] initQuestionWithOptions:optionArray];
-        question.text = text;
-        question.correctFacebookId = correctFbId;
-        question.questionId = questionId;
-        question.topicImage = topicPicture;
-        
-        [optionArray release];
-        
-        [questionArray addObject:question];
-        [question release];
-        
-        numQuestions++;
-    }
-     */
-}
-
-/* Everytime this view will appear, we ask the server for stats jason */
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [self requestStatisticsFromServer:YES];
-    [super viewWillAppear:animated];
 }
 
 #pragma mark -
