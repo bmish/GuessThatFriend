@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatsViewController : UIViewController 
- 
-{
-UITableView *friendsTable;
-UILabel *responseLabel;
-
-NSString *questionString;
-NSString *correctFacebookId;
-NSMutableArray *optionsList;
+@interface StatsViewController : UIViewController {
+    UITableView *friendsTable;
+    NSMutableArray *friendsList;
+    
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *friendsTable;
+@property (nonatomic, retain) NSMutableArray *friendsList;
 
 @end

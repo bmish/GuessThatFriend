@@ -109,17 +109,17 @@
     if (![facebook isSessionValid]) {
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"user_likes", 
-                                @"read_stream",
                                 @"friends_likes", 
-                                @"friends_relationships",
-                                @"friends_about_me",
                                 nil];
         [facebook authorize:permissions];
         [permissions release];
     }
+    else {
+        //???
+    }
     
     // Now we have facebook token, use it to initialize the quiz manager.
-    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:YES];
+    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
     
     [self nextButtonPressed:nil];
     

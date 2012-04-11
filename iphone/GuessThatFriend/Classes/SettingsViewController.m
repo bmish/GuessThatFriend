@@ -52,7 +52,7 @@
                                           action:@selector(backItemPressed:)];
     delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
     [leftCornerButton release];
-    
+     
     [super viewDidAppear:animated];
 }
 

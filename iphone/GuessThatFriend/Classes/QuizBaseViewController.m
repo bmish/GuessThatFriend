@@ -9,6 +9,7 @@
 #import "QuizBaseViewController.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "SettingsViewController.h"
+#import "StatsViewController.h"
 
 @implementation QuizBaseViewController
 
@@ -16,6 +17,7 @@
 @synthesize questionTextView;
 @synthesize settingsViewController;
 @synthesize topicImage;
+@synthesize statsViewController;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -52,8 +54,26 @@
     [UIView commitAnimations];
 }
 
-- (IBAction)doneItemPressed:(id)sender {
-    NSLog(@"TODO: implementation");
+- (IBAction)viewStatsItemPressed:(id)sender {
+    //NSLog(@"THIS IS SPARTA!");
+    
+    if(statsViewController == nil) {
+		StatsViewController *statsController = [[StatsViewController alloc] 
+                                                      initWithNibName:@"StatsViewController" bundle:nil];
+		self.statsViewController = statsController;
+		[statsController release];
+	}
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [UIView beginAnimations:@"stats" context: nil];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.75];
+    [delegate.navController pushViewController:self.statsViewController animated:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
+    [UIView commitAnimations];
+
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -73,7 +93,7 @@
     UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc] 
                                           initWithTitle:@"Statistics" 
                                           style:UIBarButtonItemStylePlain target:self 
-                                          action:@selector(doneItemPressed:)];
+                                          action:@selector(viewStatsItemPressed:)];
     delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
     [rightCornerButton release];
     
@@ -108,12 +128,14 @@
 	self.questionTextView = nil;	
     self.topicImage = nil;
     self.settingsViewController = nil;
+    self.statsViewController = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
     [settingsViewController release];
 	[topicImage release];
+    [statsViewController release];
     
     [super dealloc];
 }
