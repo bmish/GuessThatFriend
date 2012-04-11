@@ -67,11 +67,20 @@ class API {
 			API::outputExampleJSON("getStatistics.json");
 			return;
 		}
+		
+		// Use defaults if necessary.
+		if (empty($type)) {
+			$type = "listAnswerCounts";
+		}
 
 		// Build object to represent the JSON we will display.
 		$output = array();
-		$output["friends"] = API::getFriendAnswerCounts();
 		$output["success"] = true;
+
+		// Choose what kind of statistics to generate.
+		if ($type == "listAnswerCounts") {
+			$output["friends"] = API::getFriendAnswerCounts();
+		}	
 
 		API::outputArrayInJSON($output);
 	}
