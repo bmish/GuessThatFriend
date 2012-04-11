@@ -23,7 +23,7 @@ class MCQuestion extends Question
 			if ($i == $correctOptionIndex)	{
 				$this->options[$i] = new Option($this->questionId, $this->correctSubject);
 			} else	{
-				$this->options[$i] = new Option($this->questionId, FacebookAPI::getRandomPage());
+				$this->options[$i] = new Option($this->questionId, FacebookAPI::getRandomPage($this->category));
 			}
 		}
 	}

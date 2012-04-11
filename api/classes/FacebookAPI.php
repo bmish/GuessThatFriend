@@ -85,10 +85,10 @@ class FacebookAPI	{
 	}
 	
 	public function getRandomPage($category = null) {
-		if ($category == null) {
+		if (!$category) {
 			$selectQuery = "SELECT * FROM randomPages";
 		} else {
-			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE category = ".$category->facebookName;
+			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".$category->facebookName."'";
 		}
 		
 		// select one random row
@@ -97,11 +97,12 @@ class FacebookAPI	{
 		$result = mysql_query($selectQuery);
 		if (!$result) {
 			return false;
-		} else {
-			$page = mysql_fetch_assoc($result);
-			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
-			return new Subject($page['facebookId'], $page['name'], $pageCategory);
-		}
+		} 
+		
+		$page = mysql_fetch_assoc($result);
+		$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+		
+		return new Subject($page['facebookId'], $page['name'], $pageCategory);
 	}
 	
 	public function getRandomLikedPage($facebookId = "", $category = null)	{
