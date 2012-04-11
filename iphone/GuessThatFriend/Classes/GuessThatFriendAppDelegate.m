@@ -30,6 +30,7 @@
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
 	
+    NSLog(@"Arjan%%");
     // Determine the type of this question.
     if ([nextQuestion isKindOfClass:[MCQuestion class]]) {      // Multiple Choice Question.
         
@@ -117,12 +118,13 @@
     else {
         //???
     }
+
+    if(facebook.accessToken !=nil){
+        // Now we have facebook token, use it to initialize the quiz manager.
+        quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
     
-    // Now we have facebook token, use it to initialize the quiz manager.
-    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:YES];
-    
-    [self nextButtonPressed:nil];
-    
+        [self nextButtonPressed:nil];
+    }
     return YES;
 }
 
@@ -143,6 +145,12 @@
     [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+    
+    // Now we have facebook token, use it to initialize the quiz manager.
+    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
+    
+    [self nextButtonPressed:nil];
+    
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {

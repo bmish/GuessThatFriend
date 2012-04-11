@@ -30,7 +30,7 @@
     bufferedFBToken = paramFBToken;
     numQuestions = 0;
 	numCorrect = 0;
-	[self requestQuestionsFromServer];
+	//[self requestQuestionsFromServer];
 	
 	return [super init];
 }
