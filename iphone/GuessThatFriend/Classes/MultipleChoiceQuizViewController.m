@@ -22,6 +22,8 @@
 @synthesize optionsList;
 @synthesize correctFacebookId;
 @synthesize responseLabel;
+@synthesize scoreLabel;
+@synthesize scoreLabelString;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -75,6 +77,9 @@
 	[optionsList release];
 	[correctFacebookId release];
     [responseLabel release];
+    [scoreLabel release];
+    
+    [scoreLabelString release];
     
     [super dealloc];
 }
@@ -100,7 +105,7 @@
 	Option *option = [optionsList objectAtIndex:row];
 	cell.picture.image = option.subject.picture;
 	cell.name.text = option.subject.name;
-
+    
 	return cell;
 }
 
@@ -111,23 +116,32 @@
 	
     NSUInteger selectedRow = [indexPath row];
     Option *option = [optionsList objectAtIndex:selectedRow];
-        
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
+    
+    delegate->totalNumOfQuestions++;
     
     // Check if selected option is correct
     if ([option.subject.facebookId isEqualToString:correctFacebookId]) {
         responseLabel.text = @"Correct";
         cell.backgroundColor = [UIColor greenColor];
+        //Adding 1 to the running count for correct answers
+        //correctAnswers++;
+        delegate->correctAnswers++;
     }
     else {
         responseLabel.text = @"Wrong";
         cell.backgroundColor = [UIColor redColor];
     }
     
+    scoreLabelString = [NSMutableString stringWithFormat:@"%i/%i", delegate->correctAnswers, delegate->totalNumOfQuestions];
+    
+    self.scoreLabel.text = scoreLabelString;
+    
     //construct the request string
     NSMutableString *getRequest;
-    
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
     
     getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
     [getRequest appendString:@"?cmd=submitQuestions"];
@@ -135,7 +149,7 @@
     [getRequest appendFormat:@"&facebookIdOfQuestion%i=%@", questionID, option.subject.facebookId];
     
     NSLog(@"Request: %@\n", getRequest);
-        
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];

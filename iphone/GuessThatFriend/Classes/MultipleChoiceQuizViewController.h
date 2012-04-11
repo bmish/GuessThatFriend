@@ -13,6 +13,9 @@
     
     UITableView *friendsTable;
     UILabel *responseLabel;
+    UILabel *scoreLabel;
+    
+    NSMutableString *scoreLabelString;
 	
     NSString *questionString;
     NSString *correctFacebookId;
@@ -21,8 +24,10 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *friendsTable;
 @property (nonatomic, retain) IBOutlet UILabel *responseLabel;
+@property (nonatomic, retain) IBOutlet UILabel *scoreLabel;
 @property (nonatomic, retain) NSString *questionString;
 @property (nonatomic, retain) NSString *correctFacebookId;
 @property (nonatomic, retain) NSArray *optionsList;
+@property (nonatomic, retain) NSMutableString *scoreLabelString;
 
 @end

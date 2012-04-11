@@ -70,6 +70,7 @@
 		BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsViewController.xib */; };
 		BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsCustomCell.m */; };
 		BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsCustomCell.xib */; };
+		D487A88A153627C80007D2B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D487A889153627C80007D2B0 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		BA8F71A51535063F000C7458 /* StatsCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCustomCell.h; sourceTree = "<group>"; };
 		BA8F71A61535063F000C7458 /* StatsCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCustomCell.m; sourceTree = "<group>"; };
 		BA8F71A81535079C000C7458 /* StatsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCustomCell.xib; sourceTree = "<group>"; };
+		D487A889153627C80007D2B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +416,7 @@
 		4D8D797314EB91C900CAA606 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D487A889153627C80007D2B0 /* Default.png */,
 				4D8D796214EB90C800CAA606 /* background.png */,
 				4D8D797914EB91FA00CAA606 /* whiteButton.png */,
 				4D8D797B14EB91FE00CAA606 /* blueButton.png */,
@@ -605,6 +608,7 @@
 				4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */,
 				BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */,
 				BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */,
+				D487A88A153627C80007D2B0 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

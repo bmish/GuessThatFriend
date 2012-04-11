@@ -22,6 +22,12 @@
     Facebook *facebook;
     UIButton *nextButton;
     
+    //Jason: For Keeping the Score.
+    //@see MultipleChoiceQuizViewController
+    @public
+    int correctAnswers;
+    int totalNumOfQuestions;
+    
     QuizManager *quizManager;
 }
 

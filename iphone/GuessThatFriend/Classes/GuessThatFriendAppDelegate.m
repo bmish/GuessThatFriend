@@ -30,7 +30,6 @@
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
 	
-    NSLog(@"Arjan%%");
     // Determine the type of this question.
     if ([nextQuestion isKindOfClass:[MCQuestion class]]) {      // Multiple Choice Question.
         
@@ -125,6 +124,12 @@
     
         [self nextButtonPressed:nil];
     }
+    
+    //Initializing the values for the score keeping
+    //@see MultipleChoiceQuestionViewController
+    correctAnswers = 0;
+    totalNumOfQuestions = 0;
+    
     return YES;
 }
 
