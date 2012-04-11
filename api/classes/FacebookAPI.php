@@ -36,7 +36,7 @@ class FacebookAPI	{
 		return $this->chooseFriendWithSufficientLikes($friends);
 	}
 	
-	public function chooseFriendWithSufficientLikes($friends) {
+	private function chooseFriendWithSufficientLikes($friends) {
 		$MIN_ACCEPTABLE_LIKES = 2;
 		$MAX_TRIES = 10;
 		$triesCount = 0;
@@ -47,8 +47,8 @@ class FacebookAPI	{
 			}
 			
 			$friend = $this->getRandomElement($friends);
-			$likesData = $this->getLikesOfFriend($friend->facebookId);
-		} while (count($likesData["likes"]) < MIN_ACCEPTABLE_LIKES);
+			$likesSubjects = $this->getLikesOfFriend($friend->facebookId);
+		} while (count($likesSubjects) < $MIN_ACCEPTABLE_LIKES);
 		
 		return $friend;
 	}
@@ -122,9 +122,10 @@ class FacebookAPI	{
 	}
 	
 	private function getRandomElement($arr = null)	{
-		if ($arr != null)	{
-			return (sizeof($arr) > 0) ? $arr[array_rand($arr, 1)] : null;
+		if ($arr && count($arr) > 0) {
+			return $arr[array_rand($arr, 1)];
 		}
+		
 		return null;
 	}
 		
@@ -239,38 +240,6 @@ class FacebookAPI	{
 		}
 		
 		return $this->facebookId;
-	}
-	
-	/*
-	 * TODO: This function will probably get our app banned from facebook.
-	 * @return a random Facebook ID of a particular category.
-	 */
-	public function getRandomlyGeneratedFacebookId($category = null)	{
-		$maxTries = 10;
-		$triesCount = 0;
-		
-		while ($triesCount++ <= $maxTries)	{
-			// Only generates ids up to 12 digits long
-			$randId = rand(1,9);
-			for ($i = 1; $i <= 12; $i++)	{
-				if (rand(0,1) == 1) {
-					$randId = $randId.rand(0,9);
-				}
-			}
-			
-			// Check if we found a valid facebook id
-			$contents = @file_get_contents('http://graph.facebook.com/'.$randId);
-			if (($contents != false) && (strcmp($contents, 'false') != 0))	{
-				$contents = json_decode($contents);
-				
-				// Check if id belongs to a page of the correct category
-				if (!empty($contents->category) && (empty($contents->category) || strcmp($contents->category, $category->facebookName) == 0)) {
-					return $randId;
-				}
-			}
-		}
-		
-		return "";
 	}
 	
 	/*
