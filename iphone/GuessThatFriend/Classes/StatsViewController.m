@@ -43,8 +43,8 @@
 - (void)dealloc {
     [friendsTable release];
     [friendsList release];
-    [super dealloc];
     
+    [super dealloc];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -88,7 +88,6 @@
 	
 	NSUInteger row = [indexPath row];
 	
-    
 	/*Option *option = [optionsList objectAtIndex:row];
 	cell.picture.image = option.subject.picture;
 	cell.name.text = option.subject.name;
@@ -105,7 +104,7 @@
     // Create GET request.
     NSMutableString *getRequest;
     
-    if (useSampleData) { // Retrieve sample data.
+    if (useSampleData) {    // Retrieve sample data.
         getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_ADDR];
     } else { 
         // Make a real request.
@@ -118,7 +117,6 @@
         
         [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
         [getRequest appendFormat:@"&type=listAnswerCounts"];
-        
     }
     
     NSLog(@"STATS Request string: %@", getRequest);
@@ -201,7 +199,6 @@
      */
 }
 
-
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -214,14 +211,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+    // don't do anything if row is selected.
     return;
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 55;		// 55 is the fixed height of each cell, it is set in the nib.
 }
-
-
-
 
 @end

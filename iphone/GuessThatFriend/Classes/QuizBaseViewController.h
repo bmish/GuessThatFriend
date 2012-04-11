@@ -17,7 +17,6 @@
     UIImageView *topicImage;
     SettingsViewController *settingsViewController;
     StatsViewController *statsViewController;
-    
 }
 
 @property int questionID;

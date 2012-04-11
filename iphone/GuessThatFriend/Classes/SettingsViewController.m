@@ -20,7 +20,6 @@
 @synthesize categoryLabel;
 @synthesize logoutButton;
 
-
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -120,14 +119,6 @@
     
     quizOptionLabel.text = option;
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (IBAction)switchViewToFBLogin:(id)sender {
 	UIViewController *root = self;

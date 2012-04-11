@@ -11,7 +11,6 @@
 @interface StatsViewController : UIViewController {
     UITableView *friendsTable;
     NSMutableArray *friendsList;
-    
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *friendsTable;

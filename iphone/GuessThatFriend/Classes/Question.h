@@ -9,7 +9,7 @@
 #import "Category.h"
 #import "Subject.h"
 
-@class Option; // Forward class to avoid circular dependency between Question and Option.
+@class Option;              // Forward class to avoid circular dependency between Question and Option.
 
 @interface Question : NSObject {
     int questionId;

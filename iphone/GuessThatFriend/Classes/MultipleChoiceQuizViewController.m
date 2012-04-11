@@ -23,7 +23,6 @@
 @synthesize correctFacebookId;
 @synthesize responseLabel;
 
-
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
  - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -52,14 +51,6 @@
 	[super viewWillAppear:animated];
 }
 
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations.
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -84,6 +75,7 @@
 	[optionsList release];
 	[correctFacebookId release];
     [responseLabel release];
+    
     [super dealloc];
 }
 
@@ -108,8 +100,7 @@
 	Option *option = [optionsList objectAtIndex:row];
 	cell.picture.image = option.subject.picture;
 	cell.name.text = option.subject.name;
-	//cell = option.subject.link;
-	//	cell.name.text = option.subject.facebookId;
+
 	return cell;
 }
 
@@ -120,26 +111,18 @@
 	
     NSUInteger selectedRow = [indexPath row];
     Option *option = [optionsList objectAtIndex:selectedRow];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+        
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIView *bgColorView = [[UIView alloc] init];
-   
-    //Check if selected option is correct
-    if ([option.subject.facebookId isEqualToString:correctFacebookId]){
+    
+    // Check if selected option is correct
+    if ([option.subject.facebookId isEqualToString:correctFacebookId]) {
         responseLabel.text = @"Correct";
         cell.backgroundColor = [UIColor greenColor];
-        //[bgColorView setBackgroundColor:[UIColor greenColor]];
     }
     else {
         responseLabel.text = @"Wrong";
         cell.backgroundColor = [UIColor redColor];
-       // [bgColorView setBackgroundColor:[UIColor redColor]];
     }
-    
-   // [cell setSelectedBackgroundView:bgColorView];
-    [bgColorView release];
     
     //construct the request string
     NSMutableString *getRequest;
@@ -153,9 +136,6 @@
     
     NSLog(@"Request: %@\n", getRequest);
         
-    
-
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
@@ -163,7 +143,7 @@
     
     [responseString release];
     
-	
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

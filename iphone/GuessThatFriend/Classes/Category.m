@@ -15,6 +15,7 @@
 - (void)dealloc {
     [facebookName release];
     [prettyName release];
+    
 	[super dealloc];
 }
 

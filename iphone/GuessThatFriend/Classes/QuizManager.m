@@ -35,7 +35,7 @@
 	return [super init];
 }
 
-- (void)requestQuestionsFromServer{
+- (void)requestQuestionsFromServer {
     
     if (questionArray.count > 0) {
         return;
@@ -82,7 +82,7 @@
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
     //Check if valid JSON response
-    if(responseDictionary==nil){
+    if(responseDictionary==nil) {
         [self requestQuestionsFromServer];                  //Just ask for more questions
         return;
     }

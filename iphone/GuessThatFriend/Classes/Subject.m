@@ -12,9 +12,7 @@
 
 @synthesize facebookId, name, picture, link;
 
-
-- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andFacebookId:(NSString *)myfacebookId andLink:(NSString *)mylink
-{
+- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andFacebookId:(NSString *)myfacebookId andLink:(NSString *)mylink {
     // Download the subject's image from the 'imagePath'
     NSURL *url = [NSURL URLWithString:imagePath];
     UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
@@ -32,6 +30,7 @@
     [name release];
     [picture release];
     [link release];
+    
 	[super dealloc];
 }
 

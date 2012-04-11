@@ -54,10 +54,8 @@
     [UIView commitAnimations];
 }
 
-- (IBAction)viewStatsItemPressed:(id)sender {
-    //NSLog(@"THIS IS SPARTA!");
-    
-    if(statsViewController == nil) {
+- (IBAction)viewStatsItemPressed:(id)sender {    
+    if (statsViewController == nil) {
 		StatsViewController *statsController = [[StatsViewController alloc] 
                                                       initWithNibName:@"StatsViewController" bundle:nil];
 		self.statsViewController = statsController;
@@ -72,8 +70,6 @@
     [delegate.navController pushViewController:self.statsViewController animated:YES];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
     [UIView commitAnimations];
-
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,14 +100,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
