@@ -94,7 +94,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //enable the tableView from being further selected (previously disabled after selected)
     tableView.allowsSelection = YES;
-
+    
+    
 	
 	FBFriendCustomCell *cell = (FBFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"FBFriendCustomCellIdentifier"];
 	
@@ -109,6 +110,9 @@
 	cell.picture.image = option.subject.picture;
 	cell.name.text = option.subject.name;
     
+    //disable the check
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
 	return cell;
 }
 
@@ -121,6 +125,20 @@
     Option *option = [optionsList objectAtIndex:selectedRow];
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    for (int section = 0; section < [tableView numberOfSections]; section++) {
+        for (int row = 0; row < [tableView numberOfRowsInSection:section]; row++) {
+            NSIndexPath* cellPath = [NSIndexPath indexPathForRow:row inSection:section];
+            UITableViewCell* cellItr = [tableView cellForRowAtIndexPath:cellPath];
+            //do stuff with 'cell'
+            Option *optionItr = [optionsList objectAtIndex:row];
+            NSLog(@"Option:%@",optionItr.subject.facebookId);
+            if ([optionItr.subject.facebookId isEqual:[NSNull null]]) {
+            } else if ([optionItr.subject.facebookId isEqualToString:correctFacebookId]) {
+                cellItr.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        }
+    }
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
     
