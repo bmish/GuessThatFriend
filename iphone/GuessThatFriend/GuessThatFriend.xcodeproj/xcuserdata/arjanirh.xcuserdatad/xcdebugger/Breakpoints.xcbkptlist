@@ -7,26 +7,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "main.m"
-         timestampString = "355782521.21678"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "14"
-         endingLineNumber = "14"
-         landmarkName = "main()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Classes/QuizManager.m"
-         timestampString = "355785866.247719"
+         timestampString = "355809489.481445"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
-         landmarkName = "-requestQuestionsFromServer"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
+         landmarkName = "-initWithFBToken:andUseSampleData:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,25 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/GuessThatFriendAppDelegate.m"
-         timestampString = "355785949.928159"
+         timestampString = "355810151.499157"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/StatsViewController.m"
-         timestampString = "355799656.856795"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
-         landmarkName = "-viewDidAppear:"
+         startingLineNumber = "144"
+         endingLineNumber = "144"
+         landmarkName = "-fbDidLogin"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
