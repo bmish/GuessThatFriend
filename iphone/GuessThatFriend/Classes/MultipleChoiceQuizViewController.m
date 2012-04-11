@@ -21,7 +21,6 @@
 @synthesize questionString;
 @synthesize optionsList;
 @synthesize correctFacebookId;
-@synthesize responseLabel;
 @synthesize scoreLabel;
 @synthesize scoreLabelString;
 
@@ -68,7 +67,7 @@
 	self.friendsTable = nil;
 	self.questionString = nil;
 	self.optionsList = nil;
-    self.responseLabel = nil;
+    self.scoreLabel = nil;
 }
 
 - (void)dealloc {
@@ -76,7 +75,6 @@
 	[questionString release];
 	[optionsList release];
 	[correctFacebookId release];
-    [responseLabel release];
     [scoreLabel release];
     
     [scoreLabelString release];
@@ -146,14 +144,11 @@
     
     // Check if selected option is correct
     if ([option.subject.facebookId isEqualToString:correctFacebookId]) {
-        responseLabel.text = @"Correct";
         cell.backgroundColor = [UIColor greenColor];
         //Adding 1 to the running count for correct answers
-        //correctAnswers++;
         delegate->correctAnswers++;
     }
     else {
-        responseLabel.text = @"Wrong";
         cell.backgroundColor = [UIColor redColor];
     }
     

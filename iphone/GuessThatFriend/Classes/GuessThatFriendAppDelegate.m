@@ -45,7 +45,6 @@
         quizViewController.topicImage.image = topicImage;
         [topicImage release];
         
-        quizViewController.responseLabel.text = @"";
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
         [quizViewController.friendsTable reloadData];
