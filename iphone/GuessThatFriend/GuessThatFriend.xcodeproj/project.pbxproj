@@ -67,6 +67,8 @@
 		93FC73C614F9AE15002EB781 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC73C514F9AE15002EB781 /* Question.m */; };
 		BA6F95961533DE3600C875F1 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F95941533DE3600C875F1 /* StatsViewController.m */; };
 		BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsViewController.xib */; };
+		BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsCustomCell.m */; };
+		BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsCustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,9 @@
 		BA6F95931533DE3600C875F1 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
 		BA6F95941533DE3600C875F1 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		BA6F95951533DE3600C875F1 /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = Classes/StatsViewController.xib; sourceTree = "<group>"; };
+		BA8F71A51535063F000C7458 /* StatsCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StatsCustomCell.h; sourceTree = "<group>"; };
+		BA8F71A61535063F000C7458 /* StatsCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCustomCell.m; sourceTree = "<group>"; };
+		BA8F71A81535079C000C7458 /* StatsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +446,8 @@
 				BA6F95941533DE3600C875F1 /* StatsViewController.m */,
 				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
+				BA8F71A51535063F000C7458 /* StatsCustomCell.h */,
+				BA8F71A61535063F000C7458 /* StatsCustomCell.m */,
 			);
 			name = CommonViewControllers;
 			sourceTree = "<group>";
@@ -450,6 +457,7 @@
 			children = (
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
+				BA8F71A81535079C000C7458 /* StatsCustomCell.xib */,
 			);
 			name = "Common Nibs";
 			sourceTree = "<group>";
@@ -591,6 +599,7 @@
 				4D3F818B14F98E9500245D4F /* symbols0.pbxsymbols in Resources */,
 				4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */,
 				BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */,
+				BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +662,7 @@
 				938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */,
 				4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */,
 				BA6F95961533DE3600C875F1 /* StatsViewController.m in Sources */,
+				BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

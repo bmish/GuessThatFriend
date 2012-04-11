@@ -80,6 +80,13 @@
     
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
+    
+    //Check if valid JSON response
+    if(responseDictionary==nil){
+        [self requestQuestionsFromServer];                  //Just ask for more questions
+        return;
+    }
+        
     NSArray *questionsArray = [responseDictionary objectForKey:@"questions"];
     
     NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];

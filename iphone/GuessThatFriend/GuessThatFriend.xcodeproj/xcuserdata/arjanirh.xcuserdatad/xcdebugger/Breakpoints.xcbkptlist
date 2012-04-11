@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/StatsViewController.m"
-         timestampString = "355793762.729754"
+         timestampString = "355799656.856795"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "47"
-         endingLineNumber = "47"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
          landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>

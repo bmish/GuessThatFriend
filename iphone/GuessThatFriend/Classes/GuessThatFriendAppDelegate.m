@@ -119,7 +119,7 @@
     }
     
     // Now we have facebook token, use it to initialize the quiz manager.
-    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
+    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:YES];
     
     [self nextButtonPressed:nil];
     
