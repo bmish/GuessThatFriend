@@ -56,5 +56,10 @@ class Category
 		
 		return $obj;
 	}
+
+	public static function isEnoughCategoryData() {
+		$query = "SELECT COUNT(*) AS count FROM categories WHERE categoryId = '".$this->categoryId."' LIMIT 6";
+		return $query["count"] >= 6;
+	}
 }
 ?>

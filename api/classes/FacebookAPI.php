@@ -109,9 +109,14 @@ class FacebookAPI	{
 		$likes = $this->getLikesOfFriend($facebookId);
 		
 		if (!$category) { // No specific category.
-			return $this->getRandomElement($likes);
+			do {
+				$like = $this->getRandomElement($likes);
+			} while(!$like->category->isEnoughCategoryData());
+			return $like;
 		}
 		
+
+		//TODO: May need to deal with insufficient data for requested category
 		$likesOfCategory = array();
 		foreach ($likes as $like)	{
 			if ($like->category->categoryId == $category->categoryId) {
@@ -121,6 +126,8 @@ class FacebookAPI	{
 		
 		return $this->getRandomElement($likesOfCategory);
 	}
+	
+	
 	
 	private function getRandomElement($arr = null)	{
 		if ($arr && count($arr) > 0) {
