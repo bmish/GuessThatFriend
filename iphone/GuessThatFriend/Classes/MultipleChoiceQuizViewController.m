@@ -92,6 +92,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //enable the tableView from being further selected (previously disabled after selected)
+    tableView.allowsSelection = YES;
+
 	
 	FBFriendCustomCell *cell = (FBFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"FBFriendCustomCellIdentifier"];
 	
@@ -158,6 +161,9 @@
     [responseString release];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //disables the tableView from being further selected
+    tableView.allowsSelection = NO;
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
