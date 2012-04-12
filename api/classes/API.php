@@ -111,11 +111,12 @@ class API {
 	private static function getFriendAnswerCounts() {
 		global $facebookAPI;
 		$correctCountResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
-										WHERE `ownerFacebookId`='".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId`=`correctFacebookId`
+										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId` = `correctFacebookId`
 										GROUP BY `topicFacebookId`");
 		$totalCountResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
-										WHERE `ownerFacebookId`='".$facebookAPI->getLoggedInUserId()."'
+										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
 		if (!$correctCountResult || !$totalCountResult) {
 			return;

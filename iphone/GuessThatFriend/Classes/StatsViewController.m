@@ -145,7 +145,7 @@
 
 - (IBAction)backItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [delegate.navController popViewControllerAnimated:YES];
+    [delegate.navController popViewControllerAnimated:NO];
 }
 
 #pragma mark -
@@ -170,7 +170,7 @@
     cell.picture.image = obj.picture;
 	cell.name.text = obj.name;
     float percentage = (float)obj.correctCount / obj.totalCount;
-    cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount];
+    cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 
 	[cell.progressBar setProgress:percentage animated:YES];
     
 	return cell;
@@ -181,7 +181,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
     return;
 }

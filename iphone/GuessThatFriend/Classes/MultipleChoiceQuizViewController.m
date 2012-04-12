@@ -21,8 +21,6 @@
 @synthesize questionString;
 @synthesize optionsList;
 @synthesize correctFacebookId;
-@synthesize responseLabel;
-@synthesize scoreLabel;
 @synthesize scoreLabelString;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -68,7 +66,7 @@
 	self.friendsTable = nil;
 	self.questionString = nil;
 	self.optionsList = nil;
-    self.responseLabel = nil;
+    self.scoreLabelString = nil;
 }
 
 - (void)dealloc {
@@ -76,8 +74,6 @@
 	[questionString release];
 	[optionsList release];
 	[correctFacebookId release];
-    [responseLabel release];
-    [scoreLabel release];
     
     [scoreLabelString release];
     
@@ -94,7 +90,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //enable the tableView from being further selected (previously disabled after selected)
     tableView.allowsSelection = YES;
-
+    
+    
 	
 	FBFriendCustomCell *cell = (FBFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"FBFriendCustomCellIdentifier"];
 	
@@ -109,6 +106,9 @@
 	cell.picture.image = option.subject.picture;
 	cell.name.text = option.subject.name;
     
+    //disable the check
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
 	return cell;
 }
 
@@ -122,26 +122,37 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
+    for (int section = 0; section < [tableView numberOfSections]; section++) {
+        for (int row = 0; row < [tableView numberOfRowsInSection:section]; row++) {
+            NSIndexPath* cellPath = [NSIndexPath indexPathForRow:row inSection:section];
+            UITableViewCell* cellItr = [tableView cellForRowAtIndexPath:cellPath];
+            //do stuff with 'cell'
+            Option *optionItr = [optionsList objectAtIndex:row];
+            NSLog(@"Option:%@",optionItr.subject.facebookId);
+            if ([optionItr.subject.facebookId isEqual:[NSNull null]]) {
+            } else if ([optionItr.subject.facebookId isEqualToString:correctFacebookId]) {
+                cellItr.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        }
+    }
+    
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
     
     delegate->totalNumOfQuestions++;
     
     // Check if selected option is correct
     if ([option.subject.facebookId isEqualToString:correctFacebookId]) {
-        responseLabel.text = @"Correct";
         cell.backgroundColor = [UIColor greenColor];
         //Adding 1 to the running count for correct answers
-        //correctAnswers++;
         delegate->correctAnswers++;
     }
     else {
-        responseLabel.text = @"Wrong";
         cell.backgroundColor = [UIColor redColor];
     }
     
     scoreLabelString = [NSMutableString stringWithFormat:@"%i/%i", delegate->correctAnswers, delegate->totalNumOfQuestions];
     
-    self.scoreLabel.text = scoreLabelString;
+    delegate.navController.navigationBar.topItem.title = scoreLabelString;
     
     //construct the request string
     NSMutableString *getRequest;
@@ -155,10 +166,15 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);
+    
+    [NSURLConnection connectionWithRequest:request delegate:nil];
+    
+    /*
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *responseString = [[NSString alloc] initWithData: response encoding:NSUTF8StringEncoding];
     
     [responseString release];
+     */
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
