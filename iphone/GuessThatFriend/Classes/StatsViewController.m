@@ -171,7 +171,7 @@
 	cell.name.text = obj.name;
     float percentage = (float)obj.correctCount / obj.totalCount;
     cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 
-	[cell.progressBar setProgress:percentage animated:YES];
+	[cell.progressBar setProgress:percentage animated:NO];
     
 	return cell;
 }
