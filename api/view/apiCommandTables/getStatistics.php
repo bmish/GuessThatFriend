@@ -19,7 +19,7 @@
 			<tr>
 				<td class="colParameter">type</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">&ldquo;listAnswerCounts&rdquo;</td>
+				<td class="colValue">&ldquo;listAnswerCounts&rdquo;<br> &ldquo;history&rdquo;</td>
 				<td class="colDefault">Default: &ldquo;listAnswerCounts&rdquo;</td>
 				<td>Type of statistics to generate.</td>
 			</tr>	

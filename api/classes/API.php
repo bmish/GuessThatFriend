@@ -82,7 +82,30 @@ class API {
 			$output["friends"] = API::getFriendAnswerCounts();
 		}	
 
+		if ($type == "history") {
+			$output["questions"] = API::getQuestionHistory();
+		}
+
 		API::outputArrayInJSON($output);
+	}
+
+	private static function getQuestionHistory() {
+		global $facebookAPI;
+		$questions = mysql_query("SELECT text, correctFacebookId FROM questions
+										WHERE `ownerFacebookId`='".$facebookAPI->getLoggedInUserId()."'");
+		if (!$questions) {
+			return;
+		}
+
+		$questionsArray = array();
+		while($questionRow = mysql_fetch_array($questions)) {
+			$questionArray = array();
+			$questionArray["question"] = $questionRow["text"];
+			$questionArray["answer"] = $questionRow["correctFacebookId"];
+			$questionsArray[] = $questionArray;
+		}
+
+		return array_values($questionsArray);
 	}
 
 	private static function getFriendAnswerCounts() {
