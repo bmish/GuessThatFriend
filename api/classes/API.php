@@ -241,6 +241,25 @@ class API {
 		
 		return $questionAnswers;
 	}
+
+	public static function getQuestionTimesFromGETVars() {
+		$frontOfParameterName = "responseTimeOfQuestion";
+		$questionTimes = array();
+
+		foreach ($_GET as $parameterName => $responseTime) {
+			if (strncmp($parameterName, $frontOfParameterName, strlen($frontOfParameterName)) == 0){
+				$pair = array();
+				$questionId = substr($paramaterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
+				$pair["questionId"] = intval($questionId);
+				$pair["responseTime"] = $responseTime;
+
+				if ($pair["questionId"] > 0) {
+					$questionTimes[] = $pair;
+				}
+			}
+		}
+		return $questionTimes;
+	}
 	
 	public static function cleanInputForDatabase($input) {
 		return addslashes(trim($input));

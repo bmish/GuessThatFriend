@@ -23,7 +23,13 @@
 				<td class="colDefault">Default: Skipped</td>
 				<td>The facebookId of the option that was chosen for questionId X. Questions that were skipped can be excluded.</td>
 			</tr>
+			<tr>
+				<td class="colParameter">responseTimeOfQuestion[X]</td>
+				<td class="colType fontCode">int</td>
+				<td class="colValue">User's response time in milliseconds</td>
+				<td class="colDefault"></td>
+				<td>The time it took the user to answer the question.</td>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12</a> - Hardcoded dummy example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500</a> - Hardcoded dummy example.</div>
 	</div>
 </div>

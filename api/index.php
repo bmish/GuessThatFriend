@@ -32,7 +32,8 @@ if ($cmd == 'getQuestions') {
 } else if ($cmd == 'submitQuestions') {
 	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionAnswers = API::getQuestionAnswersFromGETVars();
-	API::submitQuestions($facebookAccessToken, $questionAnswers);
+	$questionTimes = API::getQuestionTimesFromGETVars();
+	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();
 } else if ($cmd == 'getStatistics') {
