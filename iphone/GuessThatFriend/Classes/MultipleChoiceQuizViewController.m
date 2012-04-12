@@ -166,10 +166,15 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);
+    
+    [NSURLConnection connectionWithRequest:request delegate:nil];
+    
+    /*
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *responseString = [[NSString alloc] initWithData: response encoding:NSUTF8StringEncoding];
     
     [responseString release];
+     */
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
