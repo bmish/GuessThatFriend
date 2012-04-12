@@ -109,7 +109,14 @@ class FacebookAPI	{
 		$likes = $this->getLikesOfFriend($facebookId);
 		
 		if (!$category) { // No specific category.
+			$MIN_ACCEPTABLE_LIKES = 2;
+			$MAX_TRIES = 10;
+			$triesCount = 0;
 			do {
+				if ($triesCount++ == $MAX_TRIES) {
+					echo "Could not a page with sufficient matching category pages.";
+					exit;
+				}
 				$like = $this->getRandomElement($likes);
 			} while(!$like->category->isEnoughCategoryData());
 			return $like;

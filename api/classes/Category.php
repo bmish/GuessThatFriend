@@ -57,9 +57,15 @@ class Category
 		return $obj;
 	}
 
-	public static function isEnoughCategoryData() {
-		$query = "SELECT COUNT(*) AS count FROM categories WHERE categoryId = '".$this->categoryId."' LIMIT 6";
-		return $query["count"] >= 6;
+	public function isEnoughCategoryData() {
+		$query = "SELECT COUNT(*) AS count FROM randomPages WHERE categoryFacebookName = '".$this->facebookName."' LIMIT 1";
+		$result = mysql_query($query);
+		if ($result && mysql_num_rows($result) == 1) {
+			$row = mysql_fetch_array($result);
+			return $row["count"] >= 6;
+		}
+
+		return false;
 	}
 }
 ?>
