@@ -30,6 +30,17 @@
     return self;
 }
 
+- (IBAction)backItemPressed:(id)sender {
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [UIView beginAnimations:@"back from stats" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.75];
+    [delegate.navController popViewControllerAnimated:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delegate.navController.view cache:NO];
+    [UIView commitAnimations];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -141,11 +152,6 @@
     [leftCornerButton release];
     
     [super viewDidAppear:animated];
-}
-
-- (IBAction)backItemPressed:(id)sender {
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [delegate.navController popViewControllerAnimated:NO];
 }
 
 #pragma mark -

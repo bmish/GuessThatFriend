@@ -33,7 +33,13 @@
 
 - (IBAction)backItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [UIView beginAnimations:@"back from settings" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.75];
     [delegate.navController popViewControllerAnimated:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
+    [UIView commitAnimations];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -121,18 +127,7 @@
 }
 
 - (IBAction)switchViewToFBLogin:(id)sender {
-	UIViewController *root = self;
-    if ([self respondsToSelector:@selector(presentingViewController)]){
-        while (root.presentingViewController != nil) {
-            root = root.presentingViewController;
-        }
-    } else {
-        while (root.parentViewController != nil) {
-            root = root.parentViewController;
-        }
-    }
-	
-	[root dismissModalViewControllerAnimated:YES];
+    // TODO: implementation.
 }
 
 - (void)didReceiveMemoryWarning {
