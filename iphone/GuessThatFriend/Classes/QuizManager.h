@@ -21,6 +21,9 @@
 	unsigned int numCorrect;
     
     BOOL useSampleData;
+    
+    //Lock for the multi-threaded program
+    NSCondition *questionArrayLock;
 }
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
@@ -30,5 +33,6 @@
 
 - (QuizManager *)initWithFBToken:(NSString *)token andUseSampleData:(BOOL)useSampleData;
 - (Question *)getNextQuestion;
+- (void)getQuestionThread;
 
 @end

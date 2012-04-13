@@ -91,8 +91,6 @@
     //enable the tableView from being further selected (previously disabled after selected)
     tableView.allowsSelection = YES;
     
-    
-	
 	FBFriendCustomCell *cell = (FBFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"FBFriendCustomCellIdentifier"];
 	
 	if(cell == nil) {
@@ -167,14 +165,8 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);
     
+    //The follow creates a aSynchronousRequest so that the UI would not be hogged
     [NSURLConnection connectionWithRequest:request delegate:nil];
-    
-    /*
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *responseString = [[NSString alloc] initWithData: response encoding:NSUTF8StringEncoding];
-    
-    [responseString release];
-     */
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     

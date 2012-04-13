@@ -23,23 +23,33 @@
 @synthesize numCorrect;
 
 - (QuizManager *)initWithFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
-	
+    
+    questionArrayLock = [[NSCondition alloc] init];
+    
+    [questionArrayLock lock];
     questionArray = [[NSMutableArray alloc] initWithCapacity:1];
+    [questionArrayLock unlock];
     
     useSampleData = paramUseSampleData;
     bufferedFBToken = paramFBToken;
+    
     numQuestions = 0;
+    
 	numCorrect = 0;
-	//[self requestQuestionsFromServer];
+	[self requestQuestionsFromServer];
 	
 	return [super init];
 }
 
 - (void)requestQuestionsFromServer {
     
-    if (questionArray.count > 0) {
+    /*
+    [questionCountLock lock];
+    if (questionArray.count > 3) {
+        [questionCountUnlock lock];
         return;
     }
+     */
     
     // Create GET request.
     NSMutableString *getRequest;
@@ -75,15 +85,17 @@
 
 - (void)createQuestionsFromServerResponse:(NSString *)response {
     
+    /*
     numQuestions = 0;
 	numCorrect = 0;
+     */
     
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
     //Check if valid JSON response
     if (responseDictionary == nil) {
-        [self requestQuestionsFromServer];                  //Just ask for more questions
+        [self requestQuestionsFromServer]; //Just ask for more questions
         return;
     }
         
@@ -128,24 +140,46 @@
         
         [optionArray release];
         
+        [questionArrayLock lock];
         [questionArray addObject:question];
+        [questionArrayLock signal];
+        [questionArrayLock unlock];
+        
         [question release];
         
         numQuestions++;
     }
 }
+//getQuestionThread handles the getQuestion prior to running out of questions
+//called in getNextQuestion
+- (void)getQuestionThread {
+    NSLog(@"Inside Thread!");
+    [self requestQuestionsFromServer];
+}
 
 // Call should free the returned object.
 - (Question *)getNextQuestion {
-    if (questionArray.count == 0) {
+    if (questionArray.count < 3) { //modified it into go fetch question on the 2nd last question
         // Need more questions from the server.
-        [self requestQuestionsFromServer];
+        //[self requestQuestionsFromServer];
+        
+        NSThread* getQuestionThread = [[NSThread alloc] initWithTarget:self selector:@selector(getQuestionThread) object:nil];
+        [getQuestionThread start];
     }
     
     NSLog(@"%d, \n", questionArray.count);
+    
+    if (questionArray.count == 0) {
+        [questionArrayLock lock];
+        [questionArrayLock wait];
+        [questionArrayLock unlock];
+    }
+    
+    [questionArrayLock lock];
     Question *question = [questionArray objectAtIndex:questionArray.count - 1];
     [question retain];
     [questionArray removeLastObject];
+    [questionArrayLock unlock];
 		
 	return question;
 }
@@ -153,6 +187,7 @@
 - (void)dealloc {
     [questionArray release];
     [bufferedFBToken release];
+    [questionArrayLock release];
     
 	[super dealloc];
 }

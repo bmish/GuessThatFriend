@@ -70,6 +70,9 @@
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
+    //UIBUtton nextButton is enabled / disabled! @see code after alloc-ing QuizManager
+    
+    
     // Set button images.
     UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
 	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
