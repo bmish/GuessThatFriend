@@ -5,12 +5,14 @@ class Category
 	private $facebookName;		// The name that Facebook gives to this category.
 	private $prettyName;		// The pretty name that we give to this category.
 	
-	public function __construct($categoryId)	{
+	public function __construct($categoryId, $facebookName = "", $prettyName = "")	{
 		$this->categoryId = $categoryId;
-		$this->facebookName = "";
-		$this->prettyName = "";
+		$this->facebookName = $facebookName;
+		$this->prettyName = $prettyName;
 		
-		$this->fillInFieldsFromDB();
+		if (empty($this->facebookName) || empty($this->prettyName)) {
+			$this->fillInFieldsFromDB();
+		}
 	}
 	
 	public function __get($field)	{
@@ -29,23 +31,21 @@ class Category
 		}
 	}
 	
-	private static function addCategoryToDB($facebookName) {
+	private static function addFacebookNameToDB($facebookName) {
 		mysql_query("INSERT INTO categories (facebookName, prettyName) VALUES ('".API::cleanInputForDatabase($facebookName)."', '".API::cleanInputForDatabase($facebookName)."')");
-		return mysql_insert_id();
+		return new Category(mysql_insert_id(), $facebookName, $facebookName);
 	}
 	
-	public static function getCategoryId($facebookName)	{
-		$query = "SELECT categoryId FROM categories WHERE facebookName = '".API::cleanInputForDatabase($facebookName)."' LIMIT 1";
+	public static function getCategoryByFacebookName($facebookName)	{
+		$query = "SELECT * FROM categories WHERE facebookName = '".API::cleanInputForDatabase($facebookName)."' LIMIT 1";
 		$queryResult = mysql_query($query);
-		
 		if ($queryResult && mysql_num_rows($queryResult) == 1) { // Category is already in database.
 			$row = mysql_fetch_array($queryResult);
-			return $row["categoryId"];
-		} else { // Add new category to database.
-			return Category::addCategoryToDB($facebookName);
+			return new Category($row["categoryId"], $row["facebookName"], $row["prettyName"]);
 		}
 		
-		return false;
+		// Add new category to database.
+		return Category::addFacebookNameToDB($facebookName);
 	}
 	
 	public function jsonSerialize() {

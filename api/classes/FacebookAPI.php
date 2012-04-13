@@ -91,9 +91,8 @@ class FacebookAPI	{
 			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".$category->facebookName."'";
 		}
 		
-		// select one random row
+		// Select random row(s).
 		$selectQuery .= " ORDER BY RAND() LIMIT ".API::cleanInputForDatabase($count);
-			
 		$result = mysql_query($selectQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return false;
@@ -102,7 +101,7 @@ class FacebookAPI	{
 		// Return one page?
 		if ($count == 1) {
 			$page = mysql_fetch_assoc($result);
-			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+			$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
 
 			return new Subject($page['facebookId'], $page['name'], $pageCategory);
 		}
@@ -110,7 +109,7 @@ class FacebookAPI	{
 		// Return an array of pages.
 		$pages = array();
 		while ($page = mysql_fetch_assoc($result)) {
-			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+			$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
 
 			$pages[] = new Subject($page['facebookId'], $page['name'], $pageCategory);
 		}
@@ -133,8 +132,7 @@ class FacebookAPI	{
 				$like = $this->getRandomElement($likes);
 			} while(!$like->category->isEnoughCategoryData());
 			return $like;
-		}
-		
+		}	
 
 		//TODO: May need to deal with insufficient data for requested category
 		$likesOfCategory = array();
@@ -146,8 +144,6 @@ class FacebookAPI	{
 		
 		return $this->getRandomElement($likesOfCategory);
 	}
-	
-	
 	
 	private function getRandomElement($arr = null)	{
 		if ($arr && count($arr) > 0) {
@@ -182,7 +178,7 @@ class FacebookAPI	{
 	private static function jsonToSubjects($json) {
 		$subjects = array();
 		for ($i = 0; $i < sizeof($json); $i++)	{
-			$category = isset($json[$i]['category']) ? new Category(Category::getCategoryId($json[$i]['category'])) : null;
+			$category = isset($json[$i]['category']) ? Category::getCategoryByFacebookName($json[$i]['category']) : null;
 			$subjects[$i] = new Subject($json[$i]['id'], $json[$i]['name'], $category);
 		}
 		
@@ -295,11 +291,11 @@ if (isset($_GET['testInsertPage']) && ($_GET['testInsertPage'] == 'true'))	{
 
 	$person = new Subject('4', 'Mark Zuckerberg', null);
 	echo "<p>person is person?: ".$person->isPerson()."</p>";
-	$page1 = new Subject('123', 'Dummy Page', new Category(Category::getCategoryId('Movie')));
+	$page1 = new Subject('123', 'Dummy Page', Category::getCategoryByFacebookName('Movie'));
 	echo "<p>page1 is person?: ".$page1->isPerson()."</p>";
-	$page2 = new Subject('123', 'Dummy Page - New', new Category(Category::getCategoryId('Interest')));
+	$page2 = new Subject('123', 'Dummy Page - New', Category::getCategoryByFacebookName('Interest'));
 	echo "<p>page2 is person?: ".$page2->isPerson()."</p>";
-	$page3 = new Subject('456', 'Dummy Page 2', new Category(Category::getCategoryId('Movie')));
+	$page3 = new Subject('456', 'Dummy Page 2', Category::getCategoryByFacebookName('Movie'));
 	echo "<p>page3 is person?: ".$page3->isPerson()."</p>";
 	$fbapi = new FacebookAPI();
 	$fbapi->insertPageIntoDatabase($page1);

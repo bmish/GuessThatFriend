@@ -154,14 +154,12 @@ class API {
 		$questions = array();
 		for ($i = 0; $i < $questionCount; $i++) { 
 			if ($optionCount == 0) { // Fill in the blank.
-				$question = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
+				$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
 			} elseif ($optionCount == -1) { // Random type.
 				
 			} else { // Multiple choice.
-				$question = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
+				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
 			}
-			
-			$questions[$i] = $question;
 		}
 		
 		return $questions;
