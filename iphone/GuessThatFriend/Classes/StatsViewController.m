@@ -12,8 +12,9 @@
 #import "JSONKit.h"
 #import "FriendStatsObject.h"
 
-#define SAMPLE_GET_STATISTICS_ADDR   "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics.json"
-#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
+#define SAMPLE_GET_STATISTICS_ANSWER_COUNTS_ADDR    "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics-answerCounts.json"
+#define SAMPLE_GET_STATISTICS_HISTORY_ADDR          "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics-history.json"
+#define BASE_URL_ADDR                               "http://guessthatfriend.jasonsze.com/api/"
 
 @implementation StatsViewController
 
@@ -99,7 +100,7 @@
     NSMutableString *getRequest;
     
     if (useSampleData) {    // Retrieve sample data.
-        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_ADDR];
+        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_ANSWER_COUNTS_ADDR];
     } else { 
         // Make a real request.
         
@@ -110,7 +111,7 @@
         [[UIApplication sharedApplication] delegate];
         
         [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-        [getRequest appendFormat:@"&type=listAnswerCounts"];
+        [getRequest appendFormat:@"&type=answerCounts"];
     }
     
     NSLog(@"STATS Request string: %@", getRequest);
