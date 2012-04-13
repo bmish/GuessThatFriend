@@ -30,6 +30,17 @@
     return self;
 }
 
+- (IBAction)backItemPressed:(id)sender {
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [UIView beginAnimations:@"back from stats" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.75];
+    [delegate.navController popViewControllerAnimated:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delegate.navController.view cache:NO];
+    [UIView commitAnimations];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -143,11 +154,6 @@
     [super viewDidAppear:animated];
 }
 
-- (IBAction)backItemPressed:(id)sender {
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [delegate.navController popViewControllerAnimated:NO];
-}
-
 #pragma mark -
 #pragma mark Table View Data Source Methods
 
@@ -171,7 +177,7 @@
 	cell.name.text = obj.name;
     float percentage = (float)obj.correctCount / obj.totalCount;
     cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 
-	[cell.progressBar setProgress:percentage animated:YES];
+	[cell.progressBar setProgress:percentage animated:NO];
     
 	return cell;
 }
