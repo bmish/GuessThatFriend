@@ -7,17 +7,23 @@ abstract class Question
 	protected $ownerSubject;		// The person who this question was generated for.
 	protected $topicSubject; 		// Person or page that this question is about.
 	protected $correctSubject; 		// The correct answer to this question.
-	protected $chosenSubject; 		// The answer that the user chose (if the question has been answered).
+	
+	// If the question has been answered:
+	protected $chosenSubject; 		// The answer that the user chose.
+	protected $answeredAt;			// The date and time that the user answered the question in string format.
+	protected $responseTime;		// The number of milliseconds that the user took to answer the question.
 	
 	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId)	{
 		$this->questionId = -1;
 		$this->category = empty($categoryId) ? null : new Category($categoryId);
 		$this->text = "";
-		$this->ownerSubject = new Subject($ownerFacebookId);
+		$this->ownerSubject = empty($ownerFacebookId) ? null : new Subject($ownerFacebookId);
 		$this->topicSubject = empty($topicFacebookId) ? null : new Subject($topicFacebookId);
 		$this->correctSubject = null;
 		$this->chosenSubject = null;
-	
+		$this->answeredAt = null;
+		$this->responseTime = -1;
+		
 		// Pick a topic.
 		$this->pickTopic();
 		
@@ -29,7 +35,6 @@ abstract class Question
 	}
 	
 	public function __get($field)	{
-		debug_print_backtrace();
         return $this->$field;
 	}
 	
@@ -75,13 +80,17 @@ abstract class Question
 		if ($this->chosenSubject) {
 			$obj["chosenSubject"] = $this->chosenSubject->jsonSerialize();
 		}
+		if ($this->answeredAt) {
+			$obj["answeredAt"] = $this->answeredAt;
+		}
+		if ($this->responseTime > 0) {
+			$obj["responseTime"] = $this->responseTime;
+		}
 		
 		return $obj;
 	}
 	
 	protected function saveToDB()	{
-		global $facebookAPI;
-		
 		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, topicFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".API::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->topicSubject->facebookId."','".$this->correctSubject->facebookId."')";
 		$result = mysql_query($insertQuery);
 		
