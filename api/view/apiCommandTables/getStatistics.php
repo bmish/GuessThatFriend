@@ -19,11 +19,11 @@
 			<tr>
 				<td class="colParameter">type</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">&ldquo;listAnswerCounts&rdquo;<br> &ldquo;history&rdquo;</td>
-				<td class="colDefault">Default: &ldquo;listAnswerCounts&rdquo;</td>
+				<td class="colValue">&ldquo;answerCounts&rdquo;<br> &ldquo;history&rdquo;</td>
+				<td class="colDefault">Default: &ldquo;answerCounts&rdquo;</td>
 				<td>Type of statistics to generate.</td>
 			</tr>	
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=listAnswerCounts">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=listAnswerCounts</a> - Hardcoded dummy example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=answerCounts">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=answerCounts</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history</a> - Hardcoded example.</div>
 	</div>
 </div>

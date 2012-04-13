@@ -64,13 +64,18 @@ class API {
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
-			API::outputExampleJSON("getStatistics.json");
+			if ($type == "answerCounts") {
+				API::outputExampleJSON("getStatistics-answerCounts.json");
+			} elseif ($type == "history") {
+				API::outputExampleJSON("getStatistics-history.json");
+			}
+
 			return;
 		}
 		
 		// Use defaults if necessary.
 		if (empty($type)) {
-			$type = "listAnswerCounts";
+			$type = "answerCounts";
 		}
 
 		// Build object to represent the JSON we will display.
@@ -78,11 +83,9 @@ class API {
 		$output["success"] = true;
 
 		// Choose what kind of statistics to generate.
-		if ($type == "listAnswerCounts") {
+		if ($type == "answerCounts") {
 			$output["friends"] = API::getFriendAnswerCounts();
-		}	
-
-		if ($type == "history") {
+		} elseif ($type == "history") {
 			$output["questions"] = API::getQuestionHistory();
 		}
 
@@ -91,17 +94,21 @@ class API {
 
 	private static function getQuestionHistory() {
 		global $facebookAPI;
-		$questions = mysql_query("SELECT text, correctFacebookId FROM questions
-										WHERE `ownerFacebookId`='".$facebookAPI->getLoggedInUserId()."'");
+		
+		$questions = mysql_query("SELECT text, correctFacebookId, chosenFacebookId FROM questions
+										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId` != ''");
 		if (!$questions) {
-			return;
+			return array();
 		}
 
 		$questionsArray = array();
 		while($questionRow = mysql_fetch_array($questions)) {
 			$questionArray = array();
-			$questionArray["question"] = $questionRow["text"];
-			$questionArray["answer"] = $questionRow["correctFacebookId"];
+			$questionArray["text"] = $questionRow["text"];
+			$questionArray["correctFacebookId"] = $questionRow["correctFacebookId"];
+			$questionArray["chosenFacebookId"] = $questionRow["chosenFacebookId"];
+			
 			$questionsArray[] = $questionArray;
 		}
 

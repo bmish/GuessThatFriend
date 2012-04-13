@@ -72,6 +72,9 @@ abstract class Question
 		$obj["text"] = $this->text;
 		$obj["topicSubject"] = $this->topicSubject->jsonSerialize();
 		$obj["correctSubject"] = $this->correctSubject->jsonSerialize();
+		if ($this->chosenSubject) {
+			$obj["chosenSubject"] = $this->chosenSubject->jsonSerialize();
+		}
 		
 		return $obj;
 	}

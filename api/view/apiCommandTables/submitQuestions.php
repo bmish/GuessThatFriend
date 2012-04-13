@@ -30,6 +30,6 @@
 				<td class="colDefault"></td>
 				<td>The time it took the user to answer the question.</td>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500</a> - Hardcoded dummy example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500</a> - Hardcoded example.</div>
 	</div>
 </div>
