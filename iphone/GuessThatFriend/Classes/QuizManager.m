@@ -38,14 +38,6 @@
 
 - (void)requestQuestionsFromServer {
     
-    /*
-    [questionCountLock lock];
-    if (questionArray.count > 3) {
-        [questionCountUnlock lock];
-        return;
-    }
-     */
-    
     // Create GET request.
     NSMutableString *getRequest;
     
