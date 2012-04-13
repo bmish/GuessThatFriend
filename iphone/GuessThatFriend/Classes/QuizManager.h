@@ -21,6 +21,7 @@
     
     //Lock for the multi-threaded program
     NSCondition *questionArrayLock;
+    BOOL threadRunning;
 }
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
