@@ -1,6 +1,8 @@
 config.php
 .DS_Store
 *.swp
+xcuserdata/
+build/
 iphone/GuessThatFriend/GuessThatFriend.xcodeproj/project.xcworkspace/xcuserdata/tianyiwang.xcuserdatad/UserInterfaceState.xcuserstate
 iphone/GuessThatFriend/GuessThatFriend.xcodeproj/xcuserdata/tianyiwang.xcuserdatad/xcdebugger/
 iphone/GuessThatFriend/GuessThatFriend.xcodeproj/project.xcworkspace/xcuserdata/Colin.xcuserdatad/UserInterfaceState.xcuserstate
