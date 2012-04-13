@@ -19,8 +19,6 @@
 
 @synthesize questionArray;
 @synthesize bufferedFBToken;
-@synthesize numQuestions;
-@synthesize numCorrect;
 
 - (QuizManager *)initWithFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
     
@@ -33,9 +31,6 @@
     useSampleData = paramUseSampleData;
     bufferedFBToken = paramFBToken;
     
-    numQuestions = 0;
-    
-	numCorrect = 0;
 	[self requestQuestionsFromServer];
 	
 	return [super init];
@@ -84,11 +79,6 @@
 }
 
 - (void)createQuestionsFromServerResponse:(NSString *)response {
-    
-    /*
-    numQuestions = 0;
-	numCorrect = 0;
-     */
     
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
@@ -146,8 +136,6 @@
         [questionArrayLock unlock];
         
         [question release];
-        
-        numQuestions++;
     }
 }
 //getQuestionThread handles the getQuestion prior to running out of questions

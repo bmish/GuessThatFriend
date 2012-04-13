@@ -17,9 +17,6 @@
     
     NSString *bufferedFBToken;
     
-	unsigned int numQuestions;
-	unsigned int numCorrect;
-    
     BOOL useSampleData;
     
     //Lock for the multi-threaded program
@@ -28,8 +25,6 @@
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
 @property (nonatomic, retain) NSString *bufferedFBToken;
-@property unsigned int numQuestions;
-@property unsigned int numCorrect;
 
 - (QuizManager *)initWithFBToken:(NSString *)token andUseSampleData:(BOOL)useSampleData;
 - (Question *)getNextQuestion;
