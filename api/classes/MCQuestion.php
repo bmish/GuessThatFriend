@@ -18,12 +18,16 @@ class MCQuestion extends Question
 	}
 	
 	private function makeOptions($optionCount)	{
+		// Build a list of random pages to use for our incorrect options.
+		$randomPages = FacebookAPI::getRandomPage($this->category, $optionCount - 1);
+		$currentRandomPageIndex = 0;
+		
 		$correctOptionIndex = rand(0, $optionCount-1);
 		for ($i = 0; $i < $optionCount; $i++)	{
 			if ($i == $correctOptionIndex)	{
 				$this->options[$i] = new Option($this->questionId, $this->correctSubject);
 			} else	{
-				$this->options[$i] = new Option($this->questionId, FacebookAPI::getRandomPage($this->category));
+				$this->options[$i] = new Option($this->questionId, $randomPages[$currentRandomPageIndex++]);
 			}
 		}
 	}

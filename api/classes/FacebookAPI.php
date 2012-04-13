@@ -84,7 +84,7 @@ class FacebookAPI	{
 		return false;
 	}
 	
-	public function getRandomPage($category = null) {
+	public function getRandomPage($category = null, $count = 1) {
 		if (!$category) {
 			$selectQuery = "SELECT * FROM randomPages";
 		} else {
@@ -92,17 +92,30 @@ class FacebookAPI	{
 		}
 		
 		// select one random row
-		$selectQuery .= " ORDER BY RAND() LIMIT 1";
+		$selectQuery .= " ORDER BY RAND() LIMIT ".API::cleanInputForDatabase($count);
 			
 		$result = mysql_query($selectQuery);
-		if (!$result) {
+		if (!$result || mysql_num_rows($result) == 0) {
 			return false;
-		} 
+		}
 		
-		$page = mysql_fetch_assoc($result);
-		$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+		// Return one page?
+		if ($count == 1) {
+			$page = mysql_fetch_assoc($result);
+			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+
+			return new Subject($page['facebookId'], $page['name'], $pageCategory);
+		}
 		
-		return new Subject($page['facebookId'], $page['name'], $pageCategory);
+		// Return an array of pages.
+		$pages = array();
+		while ($page = mysql_fetch_assoc($result)) {
+			$pageCategory = ($category == null) ? new Category(Category::getCategoryId($page['categoryFacebookName'])) : $category;
+
+			$pages[] = new Subject($page['facebookId'], $page['name'], $pageCategory);
+		}
+		
+		return $pages;
 	}
 	
 	public function getRandomLikedPage($facebookId = "", $category = null)	{
