@@ -28,8 +28,13 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
+		// Check current in-memory cache.
 		if (!isset($this->friendsCache[$facebookId])) {
-			$friendsResponse = $this->facebook->api('/'.$facebookId.'/friends?access_token='.$this->facebookAccessToken);
+			// Check filesystem cache.
+			if (!($friendsResponse = $this->checkForCachedAPIRequest('/'.$facebookId.'/friends'))) {
+				$friendsResponse = $this->facebook->api('/'.$facebookId.'/friends');
+				$this->cacheAPIRequest('/'.$facebookId.'/friends', $friendsResponse);
+			}
 
 			// Store friend's friends so we won't have to look it up again.
 			$this->friendsCache[$facebookId] = FacebookAPI::jsonToSubjects($friendsResponse['data']);
@@ -208,8 +213,13 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
+		// Check current in-memory cache.
 		if (!isset($this->likesCache[$facebookId])) {
-			$likesResponse = $this->facebook->api('/'.$facebookId.'/likes?access_token='.$this->facebookAccessToken);
+			// Check filesystem cache.
+			if (!($likesResponse = $this->checkForCachedAPIRequest('/'.$facebookId.'/likes'))) {
+				$likesResponse = $this->facebook->api('/'.$facebookId.'/likes');
+				$this->cacheAPIRequest('/'.$facebookId.'/likes', $likesResponse);
+			}
 
 			// Store friend's likes so we won't have to look it up again.
 			$this->likesCache[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse['data']);
@@ -226,8 +236,13 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
+		// Check current in-memory cache.
 		if (!isset($namesCache[$facebookId])) {
-			$personResponse = $this->facebook->api('/'.$facebookId);
+			// Check filesystem cache.
+			if (!($personResponse = $this->checkForCachedAPIRequest('/'.$facebookId))) {
+				$personResponse = $this->facebook->api('/'.$facebookId);
+				$this->cacheAPIRequest('/'.$facebookId, $personResponse);
+			}
 			
 			// Store friend's name so we won't have to look it up again.
 			$this->namesCache[$facebookId] = $personResponse['name'];
@@ -296,6 +311,43 @@ class FacebookAPI	{
 		if (!$result) {
 			echo "Error - unable to insert page ".$subject->facebookId;
 		}
+	}
+	
+	private function cacheAPIRequest($apiRequest, $jsonObj) {
+		$filename = sha1($apiRequest).".json";
+		$this->cacheTextToFile("cache/".$filename, json_encode($jsonObj));
+	}
+	
+	private function checkForCachedAPIRequest($apiRequest) {
+		$filename = sha1($apiRequest).".json";
+		$secondsInTwoWeeks = 60 * 60 * 24 * 7 * 2;
+		
+		$jsonText = $this->checkFileForText("cache/".$filename, $secondsInTwoWeeks);
+		return json_decode($jsonText, true);
+	}
+	
+	private function cacheTextToFile($filepath, $text) {
+		file_put_contents($filepath, $text);
+	}
+	
+	private function checkFileForText($filepath, $secondsToExpire) {
+		if (!file_exists($filepath)) {
+			return false;
+		}
+	
+		// Cache is too old to use?
+		$mtime = filemtime($filepath);
+		if (time() - $mtime > $secondsToExpire) {
+			return false;
+		}
+		
+		// Cache is empty?
+		$contents = file_get_contents($filepath);
+		if (empty($contents)) {
+			return false;
+		}
+		
+		return $contents;
 	}
 }
 

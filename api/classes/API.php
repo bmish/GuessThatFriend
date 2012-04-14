@@ -28,7 +28,7 @@ class API {
 		$output["questions"] = API::jsonSerializeArray($questions);
 		$output["success"] = true;
 		$output["duration"] = API::calculateLoadingDuration($timeStart);
- 		
+
 		API::outputArrayInJSON($output);
 	}
 
