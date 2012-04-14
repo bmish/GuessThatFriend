@@ -32,7 +32,7 @@
     bufferedFBToken = paramFBToken;
     
 	[self requestQuestionsFromServer];
-	
+    
 	return [super init];
 }
 
@@ -58,12 +58,12 @@
     
     // Send the GET request to the server.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-
+    
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     
     NSLog(@"RESPONSE STRING: %@ \n",responseString);
-
+    
     // Initialize array of questions from the server's response.
     [self createQuestionsFromServerResponse:responseString];
     
@@ -80,7 +80,7 @@
         [self requestQuestionsFromServer]; //Just ask for more questions
         return;
     }
-        
+    
     NSArray *questionsArray = [responseDictionary objectForKey:@"questions"];
     
     NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];
@@ -139,9 +139,9 @@
 
 // Call should free the returned object.
 - (Question *)getNextQuestion {
-    if (questionArray.count < 3) { //modified it into go fetch question on the 2nd last question
-        // Need more questions from the server.
-        //[self requestQuestionsFromServer];
+    if (questionArray.count < 3 && threadRunning == NO) { //modified it into go fetch question on the 2nd last question
+        
+        threadRunning = YES;
         
         NSThread* getQuestionThread = [[NSThread alloc] initWithTarget:self selector:@selector(getQuestionThread) object:nil];
         [getQuestionThread start];
@@ -160,7 +160,7 @@
     [question retain];
     [questionArray removeLastObject];
     [questionArrayLock unlock];
-		
+    
 	return question;
 }
 
