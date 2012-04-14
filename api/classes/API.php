@@ -3,6 +3,9 @@ class API {
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
 		
+		// Start timing.
+		$timeStart = microtime(true);
+		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			API::outputExampleJSON("getQuestions.json");
@@ -24,12 +27,16 @@ class API {
 		$output = array();
 		$output["questions"] = API::jsonSerializeArray($questions);
 		$output["success"] = true;
+		$output["duration"] = API::calculateLoadingDuration($timeStart);
  		
 		API::outputArrayInJSON($output);
 	}
 
 	public static function submitQuestions($facebookAccessToken, $questionAnswers) {
 		global $facebookAPI;
+		
+		// Start timing.
+		$timeStart = microtime(true);
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
@@ -44,6 +51,7 @@ class API {
 		$output = array();
 		$output["questionIds"] = $questionIdsOfSavedAnswers;
 		$output["success"] = true;
+		$output["duration"] = API::calculateLoadingDuration($timeStart);
  		
 		API::outputArrayInJSON($output);
 	}
@@ -61,6 +69,9 @@ class API {
 
 	public static function getStatistics($facebookAccessToken, $type){
 		global $facebookAPI;
+		
+		// Start timing.
+		$timeStart = microtime(true);
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
@@ -88,8 +99,13 @@ class API {
 		} elseif ($type == "history") {
 			$output["questions"] = API::getQuestionHistory();
 		}
+		$output["duration"] = API::calculateLoadingDuration($timeStart);
 
 		API::outputArrayInJSON($output);
+	}
+	
+	private static function calculateLoadingDuration($timeStart) {
+		return round(microtime(true) - $timeStart, 2);
 	}
 
 	private static function getQuestionHistory() {
