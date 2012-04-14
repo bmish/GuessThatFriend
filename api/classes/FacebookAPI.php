@@ -4,7 +4,9 @@
 class FacebookAPI	{
 	private $facebook;
 	private $facebookId;
-	private $likes;
+	private $likesCache;
+	private $friendsCache;
+	private $namesCache;
 	private $facebookAccessToken;
 	
 	public function __construct() {
@@ -13,16 +15,27 @@ class FacebookAPI	{
 			'secret' => FB_SECRET,
 		));
 		
-		$this->likes = array(); // Cache any likes we request.
+		$this->likesCache = array(); // Cache any likes we request.
+		$this->friendsCache = array(); // Cache any friends we request.
+		$this->namesCache = array(); // Cache any names we request.
 	}
 	
 	/* 
 	 * Returns the user's friends.
 	 */
-	public function getFriendsOf($facebookId) {
-		$friends = $this->facebook->api('/'.$facebookId.'/friends?access_token='.$this->facebookAccessToken);
+	public function getFriendsOf($facebookId = "") {
+		if ($facebookId == "")	{
+			$facebookId = $this->getLoggedInUserId();
+		}
 		
-		return FacebookAPI::jsonToSubjects($friends['data']);
+		if (!isset($this->friendsCache[$facebookId])) {
+			$friendsResponse = $this->facebook->api('/'.$facebookId.'/friends?access_token='.$this->facebookAccessToken);
+
+			// Store friend's friends so we won't have to look it up again.
+			$this->friendsCache[$facebookId] = FacebookAPI::jsonToSubjects($friendsResponse['data']);
+		}
+		
+		return $this->friendsCache[$facebookId];
 	}
 	
 	public function getRandomFriend($facebookId = "") {
@@ -61,9 +74,11 @@ class FacebookAPI	{
 		$friendsWhoLike = array();
 		$friends = $this->getFriendsOf($this->getLoggedInUserId());
 		foreach ($friends as $friend)	{
-			if (likesPage($friend->facebookId, $facebookId))
+			if (likesPage($friend->facebookId, $facebookId)) {
 				$friendsWhoLike[] = $friend;
+			}
 		}
+		
 		return $this->getRandomElement($friendsWhoLike);
 	}
 		
@@ -193,27 +208,32 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
-		if (!isset($this->likes[$facebookId])) {
+		if (!isset($this->likesCache[$facebookId])) {
 			$likesResponse = $this->facebook->api('/'.$facebookId.'/likes?access_token='.$this->facebookAccessToken);
 
 			// Store friend's likes so we won't have to look it up again.
-			$this->likes[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse['data']);
-			
+			$this->likesCache[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse['data']);
 		}
 		
-		return $this->likes[$facebookId];
+		return $this->likesCache[$facebookId];
 	}
 	
 	/*
 	 * Returns the facebook object's name for a given ID.
 	 */
 	public function getNameFromId($facebookId) {
-		if ($facebookId == "") {
-			return "";
+		if ($facebookId == "")	{
+			$facebookId = $this->getLoggedInUserId();
 		}
 		
-		$object = $this->facebook->api('/'.$facebookId);
-		return $object['name'];
+		if (!isset($namesCache[$facebookId])) {
+			$personResponse = $this->facebook->api('/'.$facebookId);
+			
+			// Store friend's name so we won't have to look it up again.
+			$this->namesCache[$facebookId] = $personResponse['name'];
+		}
+			
+		return $this->namesCache[$facebookId];
 	}
 
 	/*
