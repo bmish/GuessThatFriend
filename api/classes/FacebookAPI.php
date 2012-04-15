@@ -150,11 +150,11 @@ class FacebookAPI	{
 					exit;
 				}
 				$like = $this->getRandomElement($likes);
-			} while(!$like->category->isEnoughCategoryData());
+			} while(!$like->category->enoughRandomPagesOfSameCategory());
 			return $like;
 		}	
 
-		//TODO: May need to deal with insufficient data for requested category
+		// TODO: May need to deal with insufficient data for requested category.
 		$likesOfCategory = array();
 		foreach ($likes as $like)	{
 			if ($like->category->categoryId == $category->categoryId) {
@@ -179,20 +179,6 @@ class FacebookAPI	{
 		}
 		
 		return $this->getRandomFriend();
-	}
-	
-	/*
-	 * Returns all friends' likes.
-	 */
-	public function getLikesOfAllMyFriends() {
-		$friends = $this->getFriendsOf($this->getLoggedInUserId());
-		if (sizeof($likes) < $friends)	{
-			for ($i = 0; $i < sizeof($friends); $i++)	{
-				$likes[$friends[$i]->facebookId]['likes'] = $this->getLikesOfFriend($friends[$i]->facebookId);
-				$likes[$friends[$i]->facebookId]['subject'] = $friends[$i];
-			}
-		}
-		return $likes;
 	}
 	
 	private static function jsonToSubjects($json) {
@@ -349,31 +335,5 @@ class FacebookAPI	{
 		
 		return $contents;
 	}
-}
-
-// Testing
-if (isset($_GET['testInsertPage']) && ($_GET['testInsertPage'] == 'true'))	{
-	require_once('Subject.php');
-	require_once('Category.php');
-	require_once('API.php');
-	require_once('DB.php');
-	require_once('../../references/facebook-php-sdk/src/facebook.php');
-	require_once('../config/config.php');
-	DB::connect();
-
-	$person = new Subject('4', 'Mark Zuckerberg', null);
-	echo "<p>person is person?: ".$person->isPerson()."</p>";
-	$page1 = new Subject('123', 'Dummy Page', Category::getCategoryByFacebookName('Movie'));
-	echo "<p>page1 is person?: ".$page1->isPerson()."</p>";
-	$page2 = new Subject('123', 'Dummy Page - New', Category::getCategoryByFacebookName('Interest'));
-	echo "<p>page2 is person?: ".$page2->isPerson()."</p>";
-	$page3 = new Subject('456', 'Dummy Page 2', Category::getCategoryByFacebookName('Movie'));
-	echo "<p>page3 is person?: ".$page3->isPerson()."</p>";
-	$fbapi = new FacebookAPI();
-	$fbapi->insertPageIntoDatabase($page1);
-	$fbapi->insertPageIntoDatabase($page2);
-	$fbapi->insertPageIntoDatabase($page3);
-
-	DB::close();
 }
 ?>

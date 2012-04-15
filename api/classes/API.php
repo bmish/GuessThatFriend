@@ -63,7 +63,7 @@ class API {
 			return;
 		}
 
-		$arr = API::getArrayOfResult($result);
+		$arr = API::getArrayOfDBResult($result);
 		API::outputArrayInJSON($arr);
 	}
 
@@ -118,6 +118,7 @@ class API {
 			return array();
 		}
 
+		// Build list of questions that user has answered.
 		$questionsArray = array();
 		while($questionRow = mysql_fetch_array($questions)) {
 			$questionArray = array();
@@ -145,6 +146,7 @@ class API {
 			return;
 		}
 
+		// Store total counts for all friends that user has answered about.
 		$friendsArray = array();
 		while($totalCountRow = mysql_fetch_array($totalCountResult)){
 			$friendSubject = new Subject($totalCountRow["topicFacebookId"]);
@@ -157,6 +159,7 @@ class API {
 			$friendsArray[$totalCountRow["topicFacebookId"]] = $friendArray;
 		}
 
+		// Store correct counts for friends that user has answered any questions correctly about.
 		while($correctCountRow = mysql_fetch_array($correctCountResult)){
 			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
 		}
@@ -167,6 +170,7 @@ class API {
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
 		
+		// Build a list of questions depending upon the type of questions desired.
 		$questions = array();
 		for ($i = 0; $i < $questionCount; $i++) { 
 			if ($optionCount == 0) { // Fill in the blank.
@@ -181,6 +185,7 @@ class API {
 		return $questions;
 	}
 	
+	// Take an array of questions and their answers and update those questions in the database.
 	private static function saveQuestionAnswers($questionAnswers) {
 		global $facebookAPI;
 		
@@ -201,7 +206,7 @@ class API {
 		return $questionIdsOfSavedAnswers;
 	}
 	
-	private static function getArrayOfResult($result) {
+	private static function getArrayOfDBResult($result) {
 		$arr = array();
 		while ($row = mysql_fetch_assoc($result)) {
 			$arr[] = $row;
@@ -210,7 +215,7 @@ class API {
 		return $arr;
 	}
 	
-	// Input an array and return a new one out of the desired JSON-use objects of each of input's elements.
+	// Input an array and return a new one out that is ready to be converted to JSON.
 	// php 5.4.0 will bring automatic JsonSerializable functionality.
 	public static function jsonSerializeArray($array) {
 		$ret = array();
@@ -263,17 +268,20 @@ class API {
 		return $questionAnswers;
 	}
 
-	public static function getQuestionTimesFromGETVars() {
+	public static function getQuestionResponseTimesFromGETVars() {
 		$frontOfParameterName = "responseTimeOfQuestion";
 		$questionTimes = array();
 
 		foreach ($_GET as $parameterName => $responseTime) {
+			// Is this parameter name in the form of "responseTimeOfQuestion[X]"?
 			if (strncmp($parameterName, $frontOfParameterName, strlen($frontOfParameterName)) == 0){
+				// Create a pair of the questionId and the responseTime.
 				$pair = array();
 				$questionId = substr($paramaterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
 				$pair["questionId"] = intval($questionId);
-				$pair["responseTime"] = $responseTime;
+				$pair["responseTime"] = intval($responseTime);
 
+				// Add this pair to our list.
 				if ($pair["questionId"] > 0) {
 					$questionTimes[] = $pair;
 				}
