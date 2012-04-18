@@ -81,8 +81,9 @@ class API {
 				API::outputExampleJSON("getStatistics-answerCounts.json");
 			} elseif ($type == "history") {
 				API::outputExampleJSON("getStatistics-history.json");
+			} elseif ($type == "responseTimes") {
+				API::outputExampleJSON("getStatistics-responseTimes.json");
 			}
-
 			return;
 		}
 		
