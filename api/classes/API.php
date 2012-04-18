@@ -28,7 +28,7 @@ class API {
 		$output["questions"] = API::jsonSerializeArray($questions);
 		$output["success"] = true;
 		$output["duration"] = API::calculateLoadingDuration($timeStart);
-
+		
 		API::outputArrayInJSON($output);
 	}
 
@@ -168,6 +168,16 @@ class API {
 		while($correctCountRow = mysql_fetch_array($correctCountResult)){
 			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
 		}
+	
+		// Sorts the friends by decreasing percentage of correct answers
+		function cmp($a, $b)
+		{
+			 if ($a["correctAnswerCount"]/$a["totalAnswerCount"] == $b["correctAnswerCount"]/$b["totalAnswerCount"]) {
+				  return 0;
+			 }
+			 return ($a["correctAnswerCount"]/$a["totalAnswerCount"] > $b["correctAnswerCount"]/$b["totalAnswerCount"]) ? -1 : 1;
+		}
+		usort($friendsArray, "cmp");
 		
 		return array_values($friendsArray);
 	}
