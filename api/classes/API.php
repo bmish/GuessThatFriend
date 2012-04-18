@@ -32,7 +32,7 @@ class API {
 		API::outputArrayInJSON($output);
 	}
 
-	public static function submitQuestions($facebookAccessToken, $questionAnswers) {
+	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes) {
 		global $facebookAPI;
 		
 		// Start timing.
@@ -46,6 +46,8 @@ class API {
 		
 		// Update the user's answers for the given questions.
 		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
+		API::saveQuestionTimes($questionTimes);
+
 		
 		// Build object to represent the JSON we will display.
 		$output = array();
@@ -205,6 +207,19 @@ class API {
 		
 		return $questionIdsOfSavedAnswers;
 	}
+
+	private static function saveQuestionTimes($questionTimes){
+		global $facebookAPI;
+
+		for($i = 0; $i <count($questionTimes); $i++){
+			$questionId = $questionTimes[$i]["questionId"];
+			$responseTime = $questionTimes[$i]["responseTime"];
+
+			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			mysql_query($updateQuery);
+		}
+		return;
+	}
 	
 	private static function getArrayOfDBResult($result) {
 		$arr = array();
@@ -268,7 +283,7 @@ class API {
 		return $questionAnswers;
 	}
 
-	public static function getQuestionResponseTimesFromGETVars() {
+	public static function getQuestionTimesFromGETVars() {
 		$frontOfParameterName = "responseTimeOfQuestion";
 		$questionTimes = array();
 
