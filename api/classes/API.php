@@ -101,6 +101,8 @@ class API {
 			$output["friends"] = API::getFriendAnswerCounts();
 		} elseif ($type == "history") {
 			$output["questions"] = API::getQuestionHistory();
+		} elseif ($type == "responseTimes") {
+			$output["friends"] = API::getFriendResponseTimes();
 		}
 		$output["duration"] = API::calculateLoadingDuration($timeStart);
 
@@ -169,7 +171,44 @@ class API {
 		
 		return array_values($friendsArray);
 	}
-	
+
+	private static function getFriendResponseTimes() {
+		global $facebookAPI;
+		$fastestResponseTime = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId` = `correctFacebookId`
+										GROUP BY `topicFacebookId`");
+		$slowestResponseTime = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId` != ''
+										GROUP BY `topicFacebookId`");
+		$averageResponseTime = mysql_query();
+
+		if (!$fastestResponseTime || !$slowestResponseTime || !$averageResponseTime) {
+			return;
+		}
+
+		// Store total counts for all friends that user has answered about.
+		$friendsArray = array();
+		while($totalCountRow = mysql_fetch_array($totalCountResult)){
+			$friendSubject = new Subject($totalCountRow["topicFacebookId"]);
+			
+			$friendArray = array();
+			$friendArray["subject"] = $friendSubject->jsonSerialize();
+			$friendArray["correctAnswerCount"] = 0;
+			$friendArray["totalAnswerCount"] = $totalCountRow["count"];
+			
+			$friendsArray[$totalCountRow["topicFacebookId"]] = $friendArray;
+		}
+
+		// Store correct counts for friends that user has answered any questions correctly about.
+		while($correctCountRow = mysql_fetch_array($correctCountResult)){
+			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
+		}
+		
+		return array_values($friendsArray);
+	}
+
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
 		
