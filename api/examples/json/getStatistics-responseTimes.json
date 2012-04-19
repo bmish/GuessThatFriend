@@ -1,0 +1,30 @@
+{
+	"friends": 
+	[
+		{
+			"subject":
+			{
+				"facebookId": "bmish",
+				"name": "Bryan Mishkin",
+				"picture": "https://graph.facebook.com/bmish/picture",
+				"link": "https://www.facebook.com/bmish"
+			},
+			"fastestResponseTime": 1000,
+			"slowestResponseTime": 10000,
+			"averageResponseTime": 2500
+		},
+		{
+			"subject":
+			{
+				"facebookId": "arjanirh",
+				"name": "Arjan Singh Nirh",
+				"picture": "https://graph.facebook.com/arjanirh/picture",
+				"link": "https://www.facebook.com/arjanirh"
+			},
+			"fastestResponseTime": 1500,
+			"slowestResponseTime": 9500,
+			"averageResponseTime": 3000
+		}	
+	],
+	"success": true
+}
