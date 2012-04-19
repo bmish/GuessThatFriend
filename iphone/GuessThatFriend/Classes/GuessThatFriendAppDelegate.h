@@ -22,6 +22,9 @@
     Facebook *facebook;
     UIButton *nextButton;
     
+    
+    NSDate *responseTimer;
+
     //Jason: For Keeping the Score.
     //@see MultipleChoiceQuizViewController
     @public
@@ -40,6 +43,9 @@
 @property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) QuizManager *quizManager;
+@property (nonatomic, retain) NSDate *responseTimer;
+
+- (NSDate*)getResponseTimer;
 
 @end
 

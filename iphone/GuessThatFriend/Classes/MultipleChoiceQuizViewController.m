@@ -115,6 +115,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+    //Find response time for question answered
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
+    
+    NSTimeInterval responseTimeInterval = [[delegate getResponseTimer] timeIntervalSinceNow]*(-1);
+    
+    
     NSUInteger selectedRow = [indexPath row];
     Option *option = [optionsList objectAtIndex:selectedRow];
     
@@ -134,7 +141,6 @@
         }
     }
     
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
     
     delegate->totalNumOfQuestions++;
     
@@ -159,6 +165,9 @@
     [getRequest appendString:@"?cmd=submitQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
     [getRequest appendFormat:@"&facebookIdOfQuestion%i=%@", questionID, option.subject.facebookId];
+    [getRequest appendFormat:@"&responseTimeOfQuestion%i=%i", questionID, (int)(responseTimeInterval*(1000))];
+    
+    NSLog(@"Response time= %f\n", responseTimeInterval);
     
     NSLog(@"Request: %@\n", getRequest);
     

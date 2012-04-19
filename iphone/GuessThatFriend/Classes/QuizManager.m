@@ -86,7 +86,7 @@
     NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];
     NSDictionary *curQuestion;
     
-    //Go through all QUESTIONS
+    //Go through all QUESTIONS ie the QUESTIONS ARRAY
     while (curQuestion = [questionEnumerator nextObject]) {
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
@@ -101,7 +101,7 @@
         NSDictionary *curOption;
         NSMutableArray *optionArray = [[NSMutableArray alloc] initWithCapacity:8];
         
-        //Go through all OPTIONS for current Question
+        //Go through all OPTIONS for current Question ie the OPTIONS ARRAY
         while (curOption = [optionEnumerator nextObject]) {
             NSDictionary *subjectDict = [curOption objectForKey:@"topicSubject"];
             NSString *subjectName = [subjectDict objectForKey:@"name"];
@@ -137,7 +137,7 @@
     [self requestQuestionsFromServer];
 }
 
-// Call should free the returned object.
+// Call should also free the returned object.
 - (Question *)getNextQuestion {
     if (questionArray.count < 3 && threadRunning == NO) { //modified it into go fetch question on the 2nd last question
         

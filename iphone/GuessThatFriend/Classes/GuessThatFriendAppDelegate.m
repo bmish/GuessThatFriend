@@ -26,7 +26,19 @@
 @synthesize facebook;
 @synthesize nextButton;
 @synthesize quizManager;
+@synthesize responseTimer;
 
+
+- (NSDate*)getResponseTimer{
+    
+    return responseTimer;
+}
+
+
+/*
+    
+ 
+*/
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
 	
@@ -56,12 +68,20 @@
     } else {                                                    // Fill in blank Question.
         
     }
+    
+    //Start timer
+    responseTimer = [NSDate date];
+    [responseTimer retain];
+   // NSLog(@"Response timer = %lf", responseTimer);
+    
 }
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    
+    responseTimer = [[NSDate alloc] init];
     
     // Set up the 'Next' button.
     nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -227,6 +247,7 @@
     [window release];
     [nextButton release];
     [quizManager release];
+    [responseTimer release];
     
     [super dealloc];
 }
