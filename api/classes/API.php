@@ -169,16 +169,25 @@ class API {
 			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
 		}
 	
-		// Sorts the friends by decreasing percentage of correct answers
-		function cmp($a, $b)
-		{
-			 if ($a["correctAnswerCount"]/$a["totalAnswerCount"] == $b["correctAnswerCount"]/$b["totalAnswerCount"]) {
-				  return 0;
-			 }
-			 return ($a["correctAnswerCount"]/$a["totalAnswerCount"] > $b["correctAnswerCount"]/$b["totalAnswerCount"]) ? -1 : 1;
+		// Sorts the friends by decreasing percentage of correct answers and then by total correct answers.
+		function cmp($a, $b) {
+			$totalA = $a["totalAnswerCount"];
+			$totalB = $b["totalAnswerCount"];
+			$fractionA = $a["correctAnswerCount"]/$totalA;
+			$fractionB = $b["correctAnswerCount"]/$totalB;
+			if ($fractionA == $fractionB) { // Defer to second sorting criteria.
+				if ($totalA == $totalB) {
+					return 0;
+				}
+				
+				return ($totalA > $totalB) ? -1 : 1;
+			}
+			
+			return ($fractionA > $fractionB) ? -1 : 1;
 		}
-		usort($friendsArray, "cmp");
 		
+		usort($friendsArray, "cmp");
+
 		return array_values($friendsArray);
 	}
 
