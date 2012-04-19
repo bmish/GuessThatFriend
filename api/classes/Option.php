@@ -5,12 +5,14 @@ class Option
 	private $questionId;		// ID of the question that this option is part of.
 	private $topicSubject;		// The person or page that this option is about.
 	
-	public function __construct($questionId, $topicSubject)	{
-		$this->optionId = -1;
+	public function __construct($questionId, $topicSubject, $optionId = -1)	{
+		$this->optionId = $optionId;
 		$this->questionId = $questionId;
 		$this->topicSubject = $topicSubject;
 		
-		$this->saveToDB();
+		if ($optionId == -1) {
+			$this->saveToDB();
+		}
 	}
 
 	public function __get($field) {
@@ -28,6 +30,22 @@ class Option
 		$this->optionId = mysql_insert_id();
 		
 		return true;
+	}
+	
+	public static function getOptionsFromDB($questionId) {
+		$result = mysql_query("SELECT * FROM options WHERE questionId = '$questionId' ORDER BY optionId");
+		if (!$result || mysql_num_rows($result) == 0) {
+			return array();
+		}
+		
+		$options = array();
+		while ($row = mysql_fetch_array($result)) {
+			$optionId = $row["optionId"];
+			$topicSubject = new Subject($row["topicFacebookId"]);
+			$options[] = new Option($questionId, $topicSubject, $optionId);
+		}
+		
+		return $options;
 	}
 	
 	public function jsonSerialize() {
