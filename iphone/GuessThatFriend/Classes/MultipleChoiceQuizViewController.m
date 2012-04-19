@@ -88,7 +88,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //enable the tableView from being further selected (previously disabled after selected)
+    // enable the tableView from being further selected (previously disabled after selected)
     tableView.allowsSelection = YES;
     
 	FBFriendCustomCell *cell = (FBFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"FBFriendCustomCellIdentifier"];
@@ -104,7 +104,7 @@
 	cell.picture.image = option.subject.picture;
 	cell.name.text = option.subject.name;
     
-    //disable the check
+    // disable the checkmark.
     cell.accessoryType = UITableViewCellAccessoryNone;
     
 	return cell;
@@ -117,7 +117,7 @@
 	
     //Find response time for question answered
     
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
     
     NSTimeInterval responseTimeInterval = [delegate.responseTimer timeIntervalSinceNow];
     // responseTimer is before the current date, so negate the interval.
@@ -141,7 +141,6 @@
             }
         }
     }
-    
     
     delegate->totalNumOfQuestions++;
     

@@ -175,7 +175,14 @@
 	
     FriendStatsObject *obj = [friendsList objectAtIndex:row];
     cell.picture.image = obj.picture;
-	cell.name.text = obj.name;
+	
+    // Make sure the name is valid.
+    NSString *name = obj.name;
+    if (name == (id)[NSNull null] || name.length == 0) {
+        name = @"Something is wrong";
+    }
+    cell.name.text = name;
+    
     float percentage = (float)obj.correctCount / obj.totalCount;
     cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 
 	[cell.progressBar setProgress:percentage animated:NO];
