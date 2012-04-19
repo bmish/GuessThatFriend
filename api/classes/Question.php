@@ -59,7 +59,7 @@ abstract class Question
 			$this->correctSubject = $facebookAPI->getRandomLikedPage($this->topicSubject->facebookId, $this->category); // Generate a random page of the desired category.
 			$this->category = $this->correctSubject->category;
 		} else { // Topic is a page.
-			$this->correctSubject = $facebookAPI->getRandomFriendWhoLikes($this->topicSubject->facebookId); // Generate a random friend.
+			$this->correctSubject = $facebookAPI->getRandomFriendWhoLikes($this->topicSubject->facebookId, true); // Generate a random friend.
 		}
 	}
 	
