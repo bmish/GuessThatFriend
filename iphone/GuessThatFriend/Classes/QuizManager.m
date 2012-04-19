@@ -25,7 +25,7 @@
     questionArrayLock = [[NSCondition alloc] init];
     
     [questionArrayLock lock];
-    questionArray = [[NSMutableArray alloc] initWithCapacity:1];
+    questionArray = [[NSMutableArray alloc] initWithCapacity:20];
     [questionArrayLock unlock];
     
     useSampleData = paramUseSampleData;
@@ -75,9 +75,9 @@
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
-    //Check if valid JSON response
+    // Check if valid JSON response
     if (responseDictionary == nil) {
-        [self requestQuestionsFromServer]; //Just ask for more questions
+        [self requestQuestionsFromServer]; // Just ask for more questions
         return;
     }
     
@@ -130,35 +130,37 @@
         [question release];
     }
 }
-//getQuestionThread handles the getQuestion prior to running out of questions
-//called in getNextQuestion
+
+// getQuestionThread handles the getQuestion prior to running out of questions.
+// called in getNextQuestion.
 - (void)getQuestionThread {
     NSLog(@"Inside Thread!");
     [self requestQuestionsFromServer];
+    threadRunning = NO;
 }
 
 // Call should also free the returned object.
 - (Question *)getNextQuestion {
-    if (questionArray.count < 3 && threadRunning == NO) { //modified it into go fetch question on the 2nd last question
+    
+    if (questionArray.count < 3 && threadRunning == NO) { // modified it into go fetch question on the 2nd last question
         
         threadRunning = YES;
         
-        NSThread* getQuestionThread = [[NSThread alloc] initWithTarget:self selector:@selector(getQuestionThread) object:nil];
+        NSThread *getQuestionThread = [[NSThread alloc] initWithTarget:self selector:@selector(getQuestionThread) object:nil];
         [getQuestionThread start];
     }
     
-    NSLog(@"%d, \n", questionArray.count);
-    
-    if (questionArray.count == 0) {
-        [questionArrayLock lock];
+    NSLog(@"question count: %d\n", questionArray.count);
+
+    [questionArrayLock lock];
+    while (questionArray.count == 0) {
         [questionArrayLock wait];
-        [questionArrayLock unlock];
     }
     
-    [questionArrayLock lock];
     Question *question = [questionArray objectAtIndex:questionArray.count - 1];
     [question retain];
     [questionArray removeLastObject];
+    
     [questionArrayLock unlock];
     
 	return question;

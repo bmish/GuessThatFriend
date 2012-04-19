@@ -51,14 +51,14 @@
         [quizViewController.friendsTable reloadData];
         quizViewController.questionID = mcQuestion.questionId;
         [quizViewController.questionTextView setText: quizViewController.questionString];
-        
-        [mcQuestion release];
-        
+                
     } else {                                                    // Fill in blank Question.
         
     }
     
-    // Start timer
+    [nextQuestion release];
+    
+    // Start timer for this question.
     [responseTimer release];
     responseTimer = [NSDate date];
     [responseTimer retain];    

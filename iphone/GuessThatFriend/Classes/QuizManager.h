@@ -14,14 +14,14 @@
 
 @interface QuizManager : NSObject {
     NSMutableArray *questionArray;
-    
     NSString *bufferedFBToken;
     
     BOOL useSampleData;
     
-    //Lock for the multi-threaded program
+    // Lock for protecting questionArray.
     NSCondition *questionArrayLock;
-    BOOL threadRunning;
+    
+    BOOL threadRunning; // Used to ensure only one thread at a time.
 }
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
