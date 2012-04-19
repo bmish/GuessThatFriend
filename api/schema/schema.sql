@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `chosenFacebookId` varchar(250) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `answeredAt` datetime NOT NULL,
+  `responseTime` int(11) NOT NULL,
   PRIMARY KEY (`questionId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

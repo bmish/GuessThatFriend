@@ -71,7 +71,13 @@ class FacebookAPI	{
 		return $friend;
 	}
 	
-	public function getRandomFriendWhoLikes($facebookId = "") {
+	/*
+	 * Returns a random friend who likes/ not like a page.
+	 * @param facebookId facebook id of the page
+	 * @param likeFlag boolean flag indicating whether the returned friend should like or not like the page
+	 * @return the random friend (subject)
+	 */
+	public function getRandomFriendWhoLikes($facebookId = "", $likeFlag) {
 		if ($facebookId == "")	{
 			return $this->getRandomFriend();
 		}
@@ -79,7 +85,7 @@ class FacebookAPI	{
 		$friendsWhoLike = array();
 		$friends = $this->getFriendsOf($this->getLoggedInUserId());
 		foreach ($friends as $friend)	{
-			if (likesPage($friend->facebookId, $facebookId)) {
+			if (likesPage($friend->facebookId, $facebookId) == $likeFlag) {
 				$friendsWhoLike[] = $friend;
 			}
 		}
@@ -104,34 +110,42 @@ class FacebookAPI	{
 		return false;
 	}
 	
-	public function getRandomPage($category = null, $count = 1) {
+	/*
+	 * Returns a (list of) random page(s).
+	 * @param category - the category of pages to return
+	 * @param count - the number of pages to return; default to 1
+	 * @param facebookId - the facebook Id of the friend to check for 'likes' condition; null if no check required
+	 * @return the (list of) random page(s)
+	 */
+	public function getRandomPage($category = null, $count = 1, $facebookId = null) {
 		if (!$category) {
 			$selectQuery = "SELECT * FROM randomPages";
 		} else {
 			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".$category->facebookName."'";
 		}
-		
-		// Select random row(s).
-		$selectQuery .= " ORDER BY RAND() LIMIT ".API::cleanInputForDatabase($count);
+
 		$result = mysql_query($selectQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return false;
 		}
-		
-		// Return one page?
-		if ($count == 1) {
-			$page = mysql_fetch_assoc($result);
-			$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
-
-			return new Subject($page['facebookId'], $page['name'], $pageCategory);
-		}
-		
-		// Return an array of pages.
-		$pages = array();
-		while ($page = mysql_fetch_assoc($result)) {
-			$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
-
-			$pages[] = new Subject($page['facebookId'], $page['name'], $pageCategory);
+		else {
+			$pages = array();
+			$checkedPages = array();
+			while (sizeof($pages) < $count)	{
+				mysql_data_seek ($result, rand(0,mysql_num_rows($result)-1));
+				$page = mysql_fetch_assoc($result);
+				$pagefacebookId = $page['facebookId'];
+				if (!in_array($pagefacebookId, $checkedPages))	{
+					if (($faceboookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
+						$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
+						if ($count == 1)		// return one page?
+							return new Subject($pagefacebookId, $page['name'], $pageCategory);
+						else					// return an array of pages
+							$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
+					}
+					$checkedPages[] = $pagefacebookId;
+				}
+			}
 		}
 		
 		return $pages;

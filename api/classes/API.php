@@ -184,36 +184,45 @@ class API {
 
 	private static function getFriendResponseTimes() {
 		global $facebookAPI;
-		$fastestResponseTime = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+		$fastestResponseTime = mysql_query("SELECT MIN(`responseTime`) AS fastest, `topicFacebookId` FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` = `correctFacebookId`
 										GROUP BY `topicFacebookId`");
-		$slowestResponseTime = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+		$slowestResponseTime = mysql_query("SELECT MAX(`responseTime`) AS slowest, `topicFacebookId` FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
-		$averageResponseTime = mysql_query();
+		$averageResponseTime = mysql_query("SELECT AVG(`responseTime`) AS average, `topicFacebookId` FROM questions
+										WHERE 'ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										AND `chosenFacebookId` != ''
+										GROUP BY `topicFacebookId`");
 
 		if (!$fastestResponseTime || !$slowestResponseTime || !$averageResponseTime) {
 			return;
 		}
 
-		// Store total counts for all friends that user has answered about.
+		// Store fastest response times for friends user has answered questions about correctly.
 		$friendsArray = array();
-		while($totalCountRow = mysql_fetch_array($totalCountResult)){
-			$friendSubject = new Subject($totalCountRow["topicFacebookId"]);
+		while($averageResponseRow = mysql_fetch_array($averageResponseTime)){
+			$friendSubject = new Subject($averageResponseRow["topicFacebookId"]);
 			
 			$friendArray = array();
 			$friendArray["subject"] = $friendSubject->jsonSerialize();
-			$friendArray["correctAnswerCount"] = 0;
-			$friendArray["totalAnswerCount"] = $totalCountRow["count"];
+			$friendArray["slowestResponseTime"] = 0;
+			$friendArray["fastestResponseTime"] = 0;
+			$friendArray["averageResponseTime"] = $averageResponseRow["average"];
 			
-			$friendsArray[$totalCountRow["topicFacebookId"]] = $friendArray;
+			$friendsArray[$averageResponseRow["topicFacebookId"]] = $friendArray;
 		}
 
-		// Store correct counts for friends that user has answered any questions correctly about.
-		while($correctCountRow = mysql_fetch_array($correctCountResult)){
-			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
+		// Store slowest response times for friends that user has answered any questions about.
+		while($slowestResponseRow = mysql_fetch_array($slowestResponseTime)){
+			$friendsArray[$slowestResponseRow["topicFacebookId"]]["slowestResponseTime"] = $slowestResponseRow["slowest"];
+		}
+
+		// Store average response times for friends that user has answered any questions about.
+		while($fastestResponseRow = mysql_fetch_array($fastestResponseTime)){
+			$friendsArray[$fastestResponseRow["topicFacebookId"]]["fastestResponseTime"] = $fastestResponseRow["fastest"];
 		}
 		
 		return array_values($friendsArray);
