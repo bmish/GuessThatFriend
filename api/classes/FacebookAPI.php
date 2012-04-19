@@ -60,8 +60,8 @@ class FacebookAPI	{
 		$triesCount = 0;
 		do {
 			if ($triesCount++ == $MAX_TRIES) {
-				echo "Could not find a friend with sufficient likes.";
-				exit;
+				API::outputFailure("Could not find a friend with sufficient likes.");
+				return null;
 			}
 			
 			$friend = $this->getRandomElement($friends);
@@ -157,8 +157,8 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if ($triesCount++ == $MAX_TRIES) {
-					echo "Could not a page with sufficient matching category pages.";
-					exit;
+					API::outputFailure("Could not find a page with sufficient matching category pages.");
+					return null;
 				}
 				$like = $this->getRandomElement($likes);
 			} while(!$like->category->enoughRandomPagesOfSameCategory());

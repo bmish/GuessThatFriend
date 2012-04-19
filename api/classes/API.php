@@ -312,12 +312,17 @@ class API {
 		echo json_encode($json);
 	}
 	
-	private static function outputFailure() {
+	public static function outputFailure($error = "") {
 		$output = array();
+		if (!empty($error)) {
+			$output["error"] = $error;
+		}
 		$output["success"] = false;
 		
 		header('Content-type: application/json');
 		echo json_encode($output);
+		
+		exit;
 	}
 	
 	public static function getQuestionAnswersFromGETVars() {
