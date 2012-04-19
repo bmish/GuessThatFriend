@@ -1,9 +1,12 @@
 <?php
+// Timezone:
+date_default_timezone_set('America/Chicago');
+
 // Database:
-$dbHost = '';
+$dbHost = '127.0.0.1';
 $dbUser = '';
 $dbPass = '';
-$dbName = '';
+$dbName = 'GuessThatFriend';
 
 // Facebook:
 const FB_APP_ID = '';
