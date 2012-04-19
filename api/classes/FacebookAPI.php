@@ -111,11 +111,11 @@ class FacebookAPI	{
 	}
 	
 	/*
-	 * Returns a (list of) random page(s).
+	 * Returns a list of random pages.
 	 * @param category - the category of pages to return
 	 * @param count - the number of pages to return; default to 1
 	 * @param facebookId - the facebook Id of the friend to check for 'likes' condition; null if no check required
-	 * @return the (list of) random page(s)
+	 * @return the list of random pages
 	 */
 	public function getRandomPage($category = null, $count = 1, $facebookId = null) {
 		if (!$category) {
@@ -138,10 +138,7 @@ class FacebookAPI	{
 				if (!in_array($pagefacebookId, $checkedPages))	{
 					if (($faceboookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
 						$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
-						if ($count == 1)		// return one page?
-							return new Subject($pagefacebookId, $page['name'], $pageCategory);
-						else					// return an array of pages
-							$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
+						$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
 					}
 					$checkedPages[] = $pagefacebookId;
 				}
@@ -189,7 +186,8 @@ class FacebookAPI	{
 		
 	public function getRandomSubject($category = null) {
 		if ($category) {
-			return $this->getRandomPage($category);
+			$randomPages = $this->getRandomPage($category);
+			return $randomPages[0];
 		}
 		
 		return $this->getRandomFriend();

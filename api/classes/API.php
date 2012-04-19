@@ -16,7 +16,7 @@ class API {
 		if ($questionCount == "") {
 			$questionCount = 10;
 		}
-		if ($optionCount == "") {
+		if ($optionCount == "" || $optionCount < -1 || $optionCount == 0 || $optionCount == 1 || $optionCount > 6) {
 			$optionCount = 4;
 		}
 		
@@ -237,7 +237,8 @@ class API {
 			if ($optionCount == 0) { // Fill in the blank.
 				$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
 			} elseif ($optionCount == -1) { // Random type.
-				
+				$optionCountForQuestion = rand(2, 6);
+				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCountForQuestion);
 			} else { // Multiple choice.
 				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
 			}
