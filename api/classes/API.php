@@ -203,16 +203,16 @@ class API {
 
 		// Store fastest response times for friends user has answered questions about correctly.
 		$friendsArray = array();
-		while($fastestResponseRow = mysql_fetch_array($fastestResponseTime)){
-			$friendSubject = new Subject($fastestResponseRow["topicFacebookId"]);
+		while($averageResponseRow = mysql_fetch_array($averageResponseTime)){
+			$friendSubject = new Subject($averageResponseRow["topicFacebookId"]);
 			
 			$friendArray = array();
 			$friendArray["subject"] = $friendSubject->jsonSerialize();
 			$friendArray["slowestResponseTime"] = 0;
-			$friendArray["fastestResponseTime"] = $fastestResponseRow["fastest"];
-			$friendArray["averageResponseTime"] = 0;
+			$friendArray["fastestResponseTime"] = 0;
+			$friendArray["averageResponseTime"] = $averageResponseRow["average"];
 			
-			$friendsArray[$fastestResponseRow["topicFacebookId"]] = $friendArray;
+			$friendsArray[$averageResponseRow["topicFacebookId"]] = $friendArray;
 		}
 
 		// Store slowest response times for friends that user has answered any questions about.
@@ -221,8 +221,8 @@ class API {
 		}
 
 		// Store average response times for friends that user has answered any questions about.
-		while($averageResponseRow = mysql_fetch_array($averageResponseTime)){
-			$friendsArray[$averageResponseRow["topicFacebookId"]]["averageResponseTime"] = $averageResponseRow["average"];
+		while($fastestResponseRow = mysql_fetch_array($fastestResponseTime)){
+			$friendsArray[$fastestResponseRow["topicFacebookId"]]["fastestResponseTime"] = $fastestResponseRow["fastest"];
 		}
 		
 		return array_values($friendsArray);
