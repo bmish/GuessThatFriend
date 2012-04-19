@@ -345,13 +345,13 @@ class API {
 	public static function getQuestionTimesFromGETVars() {
 		$frontOfParameterName = "responseTimeOfQuestion";
 		$questionTimes = array();
-
+		
 		foreach ($_GET as $parameterName => $responseTime) {
 			// Is this parameter name in the form of "responseTimeOfQuestion[X]"?
 			if (strncmp($parameterName, $frontOfParameterName, strlen($frontOfParameterName)) == 0){
 				// Create a pair of the questionId and the responseTime.
 				$pair = array();
-				$questionId = substr($paramaterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
+				$questionId = substr($parameterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
 				$pair["questionId"] = intval($questionId);
 				$pair["responseTime"] = intval($responseTime);
 
