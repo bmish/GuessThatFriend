@@ -119,8 +119,9 @@
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*) [[UIApplication sharedApplication] delegate];
     
-    NSTimeInterval responseTimeInterval = [[delegate getResponseTimer] timeIntervalSinceNow]*(-1);
-    
+    NSTimeInterval responseTimeInterval = [delegate.responseTimer timeIntervalSinceNow];
+    // responseTimer is before the current date, so negate the interval.
+    responseTimeInterval *= -1;
     
     NSUInteger selectedRow = [indexPath row];
     Option *option = [optionsList objectAtIndex:selectedRow];
@@ -165,7 +166,7 @@
     [getRequest appendString:@"?cmd=submitQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
     [getRequest appendFormat:@"&facebookIdOfQuestion%i=%@", questionID, option.subject.facebookId];
-    [getRequest appendFormat:@"&responseTimeOfQuestion%i=%i", questionID, (int)(responseTimeInterval*(1000))];
+    [getRequest appendFormat:@"&responseTimeOfQuestion%i=%i", questionID, (int)(responseTimeInterval * 1000)];
     
     NSLog(@"Response time= %f\n", responseTimeInterval);
     

@@ -28,17 +28,6 @@
 @synthesize quizManager;
 @synthesize responseTimer;
 
-
-- (NSDate*)getResponseTimer{
-    
-    return responseTimer;
-}
-
-
-/*
-    
- 
-*/
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
 	
@@ -69,11 +58,10 @@
         
     }
     
-    //Start timer
+    // Start timer
+    [responseTimer release];
     responseTimer = [NSDate date];
-    [responseTimer retain];
-   // NSLog(@"Response timer = %lf", responseTimer);
-    
+    [responseTimer retain];    
 }
 
 #pragma mark -
@@ -81,7 +69,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    responseTimer = [[NSDate alloc] init];
+    responseTimer = [NSDate date];
+    [responseTimer retain];
     
     // Set up the 'Next' button.
     nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

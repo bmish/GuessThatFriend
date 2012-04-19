@@ -22,7 +22,6 @@
     Facebook *facebook;
     UIButton *nextButton;
     
-    
     NSDate *responseTimer;
 
     //Jason: For Keeping the Score.
@@ -44,8 +43,6 @@
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) QuizManager *quizManager;
 @property (nonatomic, retain) NSDate *responseTimer;
-
-- (NSDate*)getResponseTimer;
 
 @end
 
