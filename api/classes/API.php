@@ -148,7 +148,7 @@ class API {
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
 		if (!$correctCountResult || !$totalCountResult) {
-			return;
+			return array();
 		}
 
 		// Store total counts for all friends that user has answered about.
@@ -193,12 +193,12 @@ class API {
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
 		$averageResponseTime = mysql_query("SELECT AVG(`responseTime`) AS average, `topicFacebookId` FROM questions
-										WHERE 'ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
 
 		if (!$fastestResponseTime || !$slowestResponseTime || !$averageResponseTime) {
-			return;
+			return array();
 		}
 
 		// Store fastest response times for friends user has answered questions about correctly.
