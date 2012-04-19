@@ -3,13 +3,15 @@ class MCQuestion extends Question
 {
 	private $options;
 
-	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $optionCount)	{
-		parent::__construct($ownerFacebookId, $topicFacebookId, $categoryId);
+	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $optionCount, $questionId = -1) {
+		parent::__construct($ownerFacebookId, $topicFacebookId, $categoryId, $questionId);
 
-		$this->options = array();
-		$this->makeOptions($optionCount);
-		
-		$this->makeQuestionText();
+		if ($questionId > 0) { // Existing question from database.
+			$this->options = Option::getOptionsFromDB($questionId);
+			$this->optionCount = count($this->options);
+		} else { // New question.
+			$this->makeOptions($optionCount);
+		}
 	}
 	
 	public function makeQuestionText() {
@@ -22,6 +24,7 @@ class MCQuestion extends Question
 		$randomPages = FacebookAPI::getRandomPage($this->category, $optionCount - 1, $topicSubject->facebookId);
 		$currentRandomPageIndex = 0;
 		
+		$this->options = array();
 		$correctOptionIndex = rand(0, $optionCount-1);
 		for ($i = 0; $i < $optionCount; $i++)	{
 			if ($i == $correctOptionIndex)	{ // This should be the correct option.

@@ -13,8 +13,8 @@ abstract class Question
 	protected $answeredAt;			// The date and time that the user answered the question in string format.
 	protected $responseTime;		// The number of milliseconds that the user took to answer the question.
 	
-	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId)	{
-		$this->questionId = -1;
+	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $questionId = -1) {
+		$this->questionId = $questionId;
 		$this->category = empty($categoryId) ? null : new Category($categoryId);
 		$this->text = "";
 		$this->ownerSubject = empty($ownerFacebookId) ? null : new Subject($ownerFacebookId);
@@ -24,14 +24,19 @@ abstract class Question
 		$this->answeredAt = null;
 		$this->responseTime = -1;
 		
-		// Pick a topic.
-		$this->pickTopic();
-		
-		// Pick a correct answer.
-		$this->pickAnswer();
-		
-		// Save question to database after choosing a topic and correct answer.
-		$this->saveToDB();
+		if ($this->questionId == -1) { // New question.
+			// Pick a topic.
+			$this->pickTopic();
+
+			// Pick a correct answer.
+			$this->pickAnswer();
+			
+			// Create question text.
+			$this->makeQuestionText();
+
+			// Save question to database after choosing a topic and correct answer.
+			$this->saveToDB();
+		}
 	}
 	
 	public function __get($field)	{
@@ -101,6 +106,30 @@ abstract class Question
 		$this->questionId = mysql_insert_id();
 		
 		return true;
+	}
+	
+	// Get questions from the database that the owner has answered.
+	public static function getQuestionsFromDB($ownerFacebookId) {
+		$result = mysql_query("SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId != ''");
+		if (!$result || mysql_num_rows($result) == 0) {
+			return array();
+		}
+		
+		$questions = array();
+		while ($row = mysql_fetch_array($result)) {
+			$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
+			
+			// Fill in remaining fields that constructor didn't handle.
+			$question->text = $row["text"];
+			$question->correctSubject = new Subject($row["correctFacebookId"]);
+			$question->chosenSubject = new Subject($row["chosenFacebookId"]);
+			$question->answeredAt = $row["answeredAt"];
+			$question->responseTime = $row["responseTime"];
+				
+			$questions[] = $question;
+		}
+		
+		return $questions;
 	}
 }
 ?>

@@ -112,29 +112,11 @@ class API {
 	private static function calculateLoadingDuration($timeStart) {
 		return round(microtime(true) - $timeStart, 2);
 	}
-
+	
 	private static function getQuestionHistory() {
 		global $facebookAPI;
 		
-		$questions = mysql_query("SELECT text, correctFacebookId, chosenFacebookId FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` != ''");
-		if (!$questions) {
-			return array();
-		}
-
-		// Build list of questions that user has answered.
-		$questionsArray = array();
-		while($questionRow = mysql_fetch_array($questions)) {
-			$questionArray = array();
-			$questionArray["text"] = $questionRow["text"];
-			$questionArray["correctFacebookId"] = $questionRow["correctFacebookId"];
-			$questionArray["chosenFacebookId"] = $questionRow["chosenFacebookId"];
-			
-			$questionsArray[] = $questionArray;
-		}
-
-		return array_values($questionsArray);
+		return API::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
 	}
 
 	private static function getFriendAnswerCounts() {
