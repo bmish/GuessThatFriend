@@ -56,6 +56,7 @@
 		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
+		4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */; };
 		4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */; };
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
 		93BA120914F9B10100248763 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120814F9B10100248763 /* Category.m */; };
@@ -159,6 +160,8 @@
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
+		4DFC3A9015400CE200648D9A /* StatsBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsBaseViewController.h; sourceTree = "<group>"; };
+		4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBaseViewController.m; sourceTree = "<group>"; };
 		4DFD9A9815352ECD00BB8F92 /* FriendStatsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatsObject.h; sourceTree = "<group>"; };
 		4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatsObject.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GuessThatFriend-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -450,8 +453,7 @@
 		4D8D7A0A14EBA63300CAA606 /* CommonViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BA6F95931533DE3600C875F1 /* StatsViewController.h */,
-				BA6F95941533DE3600C875F1 /* StatsViewController.m */,
+				4DFC3A9415400CEF00648D9A /* StatsViewControllers */,
 				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
 				BA8F71A51535063F000C7458 /* StatsCustomCell.h */,
@@ -488,6 +490,17 @@
 				4DA0E9D615074FEF002AFFBB /* JSONKit.m */,
 			);
 			name = JSONKit;
+			sourceTree = "<group>";
+		};
+		4DFC3A9415400CEF00648D9A /* StatsViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DFC3A9015400CE200648D9A /* StatsBaseViewController.h */,
+				4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */,
+				BA6F95931533DE3600C875F1 /* StatsViewController.h */,
+				BA6F95941533DE3600C875F1 /* StatsViewController.m */,
+			);
+			name = StatsViewControllers;
 			sourceTree = "<group>";
 		};
 		93E21C01150DBDD000A475DC /* UnitTesting */ = {
@@ -673,6 +686,7 @@
 				BA6F95961533DE3600C875F1 /* StatsViewController.m in Sources */,
 				BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */,
 				4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */,
+				4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

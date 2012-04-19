@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StatsBaseViewController.h"
 
-@interface StatsViewController : UIViewController {
-    UITableView *friendsTable;
-    NSMutableArray *friendsList;
+@interface StatsViewController : StatsBaseViewController {
+    
 }
-
-@property (nonatomic, retain) IBOutlet UITableView *friendsTable;
-@property (nonatomic, retain) NSMutableArray *friendsList;
 
 @end

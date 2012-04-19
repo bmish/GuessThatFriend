@@ -18,46 +18,24 @@
 
 @implementation StatsViewController
 
-@synthesize friendsList;
-@synthesize friendsTable;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        friendsList = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
 
-- (IBAction)backItemPressed:(id)sender {
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [UIView beginAnimations:@"back from stats" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.75];
-    [delegate.navController popViewControllerAnimated:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delegate.navController.view cache:NO];
-    [UIView commitAnimations];
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
-    self.friendsTable = nil;
 }
 
 - (void)dealloc {
-    [friendsTable release];
-    [friendsList release];
-    
     [super dealloc];
 }
 
