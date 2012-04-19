@@ -128,20 +128,19 @@ class FacebookAPI	{
 		if (!$result || mysql_num_rows($result) == 0) {
 			return false;
 		}
-		else {
-			$pages = array();
-			$checkedPages = array();
-			while (sizeof($pages) < $count)	{
-				mysql_data_seek ($result, rand(0,mysql_num_rows($result)-1));
-				$page = mysql_fetch_assoc($result);
-				$pagefacebookId = $page['facebookId'];
-				if (!in_array($pagefacebookId, $checkedPages))	{
-					if (($faceboookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
-						$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
-						$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
-					}
-					$checkedPages[] = $pagefacebookId;
+		
+		$pages = array();
+		$checkedPages = array();
+		while (sizeof($pages) < $count)	{
+			mysql_data_seek ($result, rand(0,mysql_num_rows($result)-1));
+			$page = mysql_fetch_assoc($result);
+			$pagefacebookId = $page['facebookId'];
+			if (!in_array($pagefacebookId, $checkedPages))	{
+				if (($faceboookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
+					$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
+					$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
 				}
+				$checkedPages[] = $pagefacebookId;
 			}
 		}
 		
@@ -161,7 +160,7 @@ class FacebookAPI	{
 					return null;
 				}
 				$like = $this->getRandomElement($likes);
-			} while(!$like->category->enoughRandomPagesOfSameCategory());
+			} while($like->nameIsLikelyASentence() || !$like->category->enoughRandomPagesOfSameCategory());
 			return $like;
 		}	
 

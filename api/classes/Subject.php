@@ -71,5 +71,11 @@ class Subject
 	public function isPerson() {
 		return ($this->category == null);
 	}
+	
+	public function nameIsLikelyASentence() {
+		$NAME_MAX_WORDS = 7;
+		
+		return str_word_count($this->name) > $NAME_MAX_WORDS;
+	}
 }
 ?>
