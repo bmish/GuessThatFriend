@@ -77,7 +77,11 @@
     // Set up the two bar items on this view.
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    delegate.navController.navigationBar.topItem.title = @"GTF";
+    // Choose what the initial title is.
+    if ([delegate.navController.navigationBar.topItem.title length] == 0) {
+        delegate.navController.navigationBar.topItem.title = @"0/0";
+    }
+    
     
     UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
                                          initWithTitle:@"Settings" 
