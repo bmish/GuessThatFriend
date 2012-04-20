@@ -16,13 +16,11 @@
 	UITextView *questionTextView;
     UIImageView *topicImage;
     SettingsViewController *settingsViewController;
-    StatsViewController *statsViewController;
 }
 
 @property int questionID;
 @property (nonatomic, retain) IBOutlet UITextView *questionTextView;
-@property (nonatomic, retain) SettingsViewController *settingsViewController;
 @property (nonatomic, retain) IBOutlet UIImageView *topicImage;
-@property (nonatomic, retain) StatsViewController *statsViewController;
+@property (nonatomic, retain) SettingsViewController *settingsViewController;
 
 @end

@@ -18,6 +18,7 @@
 
 @implementation StatsViewController
 
+/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -25,6 +26,7 @@
     }
     return self;
 }
+*/
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +87,7 @@
         getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
         [getRequest appendString:@"?cmd=getStatistics"];
         
-        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate*)
+        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
         [[UIApplication sharedApplication] delegate];
         
         [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
@@ -137,6 +139,7 @@
 #pragma mark Table View Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"Table cell count: %i", [self.friendsList count]);
 	return [self.friendsList count];
 }
 

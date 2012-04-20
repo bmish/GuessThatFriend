@@ -14,15 +14,15 @@
 @synthesize friendsList;
 @synthesize friendsTable;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+/*
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        friendsList = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
+*/
 
 - (IBAction)backItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -33,6 +33,11 @@
     [delegate.navController popViewControllerAnimated:YES];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delegate.navController.view cache:NO];
     [UIView commitAnimations];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    friendsList = [[NSMutableArray alloc] initWithCapacity:10];
 }
 
 - (void)viewDidUnload {

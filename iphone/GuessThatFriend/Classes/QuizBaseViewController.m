@@ -9,15 +9,13 @@
 #import "QuizBaseViewController.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "SettingsViewController.h"
-#import "StatsViewController.h"
 
 @implementation QuizBaseViewController
 
 @synthesize questionID;
 @synthesize questionTextView;
-@synthesize settingsViewController;
 @synthesize topicImage;
-@synthesize statsViewController;
+@synthesize settingsViewController;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -54,20 +52,14 @@
     [UIView commitAnimations];
 }
 
-- (IBAction)viewStatsItemPressed:(id)sender {    
-    if (statsViewController == nil) {
-		StatsViewController *statsController = [[StatsViewController alloc] 
-                                                      initWithNibName:@"StatsViewController" bundle:nil];
-		self.statsViewController = statsController;
-		[statsController release];
-	}
+- (IBAction)viewStatsItemPressed:(id)sender {
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     [UIView beginAnimations:@"stats" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.75];
-    [delegate.navController pushViewController:self.statsViewController animated:YES];
+    [delegate.navController pushViewController:delegate.tabController animated:YES];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
     [UIView commitAnimations];
 }
@@ -120,14 +112,12 @@
 	self.questionTextView = nil;	
     self.topicImage = nil;
     self.settingsViewController = nil;
-    self.statsViewController = nil;
 }
 
 - (void)dealloc {
 	[questionTextView release];
     [settingsViewController release];
 	[topicImage release];
-    [statsViewController release];
     
     [super dealloc];
 }

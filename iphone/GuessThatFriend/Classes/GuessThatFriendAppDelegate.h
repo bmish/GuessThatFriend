@@ -16,6 +16,8 @@
     
     UIWindow *window;
     UINavigationController *navController;
+    UITabBarController *tabController;
+    
     UIBarButtonItem *settingsItem;
     UIBarButtonItem *doneItem;
     QuizBaseViewController *viewController;
@@ -35,6 +37,8 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabController;
+
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *settingsItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *doneItem;
 
@@ -45,4 +49,3 @@
 @property (nonatomic, retain) NSDate *responseTimer;
 
 @end
-

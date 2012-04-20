@@ -20,6 +20,7 @@
 
 @synthesize window;
 @synthesize navController;
+@synthesize tabController;
 @synthesize settingsItem;
 @synthesize doneItem;
 @synthesize viewController;
@@ -231,6 +232,7 @@
 - (void)dealloc {
     [viewController release];
     [navController release];
+    [tabController release];
     [settingsItem release];
     [doneItem release];
     [window release];

@@ -10,7 +10,6 @@
 #import "StatsBaseViewController.h"
 
 @interface StatsViewController : StatsBaseViewController {
-    
 }
 
 @end
