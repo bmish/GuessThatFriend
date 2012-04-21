@@ -28,6 +28,7 @@
 @synthesize nextButton;
 @synthesize quizManager;
 @synthesize responseTimer;
+@synthesize statsNeedsUpdate;
 
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
@@ -69,6 +70,8 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    
+    statsNeedsUpdate = YES;
     
     responseTimer = [NSDate date];
     [responseTimer retain];

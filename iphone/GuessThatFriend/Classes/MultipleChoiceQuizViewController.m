@@ -147,7 +147,7 @@
     // Check if selected option is correct
     if ([option.subject.facebookId isEqualToString:correctFacebookId]) {
         cell.backgroundColor = [UIColor greenColor];
-        //Adding 1 to the running count for correct answers
+        // Adding 1 to the running count for correct answers
         delegate->correctAnswers++;
     }
     else {
@@ -158,7 +158,7 @@
     
     delegate.navController.navigationBar.topItem.title = scoreLabelString;
     
-    //construct the request string
+    // construct the request string
     NSMutableString *getRequest;
     
     getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
@@ -174,13 +174,16 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     NSLog(@"%@\n", request);
     
-    //The follow creates a aSynchronousRequest so that the UI would not be hogged
+    // The follow creates a aSynchronousRequest so that the UI would not be hogged
     [NSURLConnection connectionWithRequest:request delegate:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //disables the tableView from being further selected
+    // disables the tableView from being further selected
     tableView.allowsSelection = NO;
+    
+    // New question answered, the stats is dirty now.
+    delegate.statsNeedsUpdate = YES;
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

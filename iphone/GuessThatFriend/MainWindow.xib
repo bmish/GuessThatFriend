@@ -66,7 +66,6 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIViewController" id="307016887">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="704394824">
-							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">GTF!</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -100,7 +99,6 @@
 							<string key="NSResourceName">tab4.png</string>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUITabBar" ref="469579065"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="705638881"/>
 					<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -121,7 +119,6 @@
 								<string key="NSResourceName">tab1.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="469579065"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="705638881"/>
 						<string key="IBUINibName">StatsViewController</string>
@@ -140,7 +137,6 @@
 								<string key="NSResourceName">tab2.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="469579065"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="705638881"/>
 						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
@@ -158,7 +154,6 @@
 								<string key="NSResourceName">tab3.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="469579065"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="705638881"/>
 						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -176,7 +171,6 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView"/>
 					<string key="NSReuseIdentifierKey">_NS:29</string>
 					<object class="NSColor" key="IBUIBackgroundColor">
@@ -184,14 +178,6 @@
 						<bytes key="NSWhite">MCAwAA</bytes>
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					<object class="NSMutableArray" key="IBUIItems">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<reference ref="156619339"/>
-						<reference ref="155269289"/>
-						<reference ref="136581182"/>
-						<reference ref="914863939"/>
-					</object>
-					<reference key="IBUISelectedItem" ref="914863939"/>
 				</object>
 			</object>
 			<object class="IBUIWindow" id="117978783">
@@ -199,7 +185,6 @@
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>

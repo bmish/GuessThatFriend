@@ -112,7 +112,14 @@
 
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
-    [self requestStatisticsFromServer:NO];
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Only update the stats when we have to.
+    if (delegate.statsNeedsUpdate) {
+        [self requestStatisticsFromServer:NO];
+        delegate.statsNeedsUpdate = NO;
+    }
     
     [super viewWillAppear:animated];
 }

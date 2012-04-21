@@ -33,6 +33,8 @@
     int totalNumOfQuestions;
     
     QuizManager *quizManager;
+    
+    BOOL statsNeedsUpdate;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -47,5 +49,7 @@
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) QuizManager *quizManager;
 @property (nonatomic, retain) NSDate *responseTimer;
+
+@property BOOL statsNeedsUpdate;
 
 @end
