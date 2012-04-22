@@ -8,6 +8,7 @@
 
 #import "StatsBaseViewController.h"
 #import "GuessThatFriendAppDelegate.h"
+#import "UIBarButtonItem+Image.h"
 
 @implementation StatsBaseViewController
 
@@ -43,6 +44,24 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     self.friendsTable = nil;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    delegate.navController.navigationBar.topItem.title = @"Statistics";
+    delegate.navController.navigationBar.topItem.hidesBackButton = YES;
+    
+    UIImage *backImage = [UIImage imageNamed:@"Button_Back.png"];
+    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc]
+                                         initWithImage:backImage
+                                         title:@"" target:self
+                                         action:@selector(backItemPressed:)];
+    delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
+    
+    [super viewDidAppear:animated];
 }
 
 - (void)dealloc {

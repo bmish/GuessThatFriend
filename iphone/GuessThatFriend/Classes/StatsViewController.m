@@ -124,24 +124,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    delegate.navController.navigationBar.topItem.title = @"Statistics";
-    
-    delegate.navController.navigationBar.topItem.hidesBackButton = YES;
-    
-    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
-                                         initWithTitle:@"Back" 
-                                         style:UIBarButtonItemStylePlain target:self 
-                                         action:@selector(backItemPressed:)];
-    delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
-    [leftCornerButton release];
-    
-    [super viewDidAppear:animated];
-}
-
 #pragma mark -
 #pragma mark Table View Data Source Methods
 

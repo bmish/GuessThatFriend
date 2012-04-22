@@ -9,6 +9,7 @@
 #import "QuizBaseViewController.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "SettingsViewController.h"
+#import "UIBarButtonItem+Image.h"
 
 @implementation QuizBaseViewController
 
@@ -65,6 +66,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     // Set up the two bar items on this view.
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -74,22 +76,19 @@
         delegate.navController.navigationBar.topItem.title = @"0/0";
     }
     
-    
-    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
-                                         initWithTitle:@"Settings" 
-                                         style:UIBarButtonItemStylePlain target:self 
+    UIImage *settingsImage = [UIImage imageNamed:@"Button_Setting.png"];
+    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc]
+                                         initWithImage:settingsImage
+                                         title:@"" target:self
                                          action:@selector(settingsItemPressed:)];
     delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
-    [leftCornerButton release];
     
-    UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc] 
-                                          initWithTitle:@"Statistics" 
-                                          style:UIBarButtonItemStylePlain target:self 
+    UIImage *statsImage = [UIImage imageNamed:@"Button_Statistic.png"];
+    UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc]
+                                          initWithImage:statsImage
+                                          title:@"" target:self
                                           action:@selector(viewStatsItemPressed:)];
     delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
-    [rightCornerButton release];
-    
-    [super viewDidAppear:animated];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

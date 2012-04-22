@@ -69,31 +69,38 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (void)setNavBarBackground {
+    if([[UINavigationBar class] respondsToSelector:@selector(appearance)])  //iOS >= 5.0 
+    {
+        [[UINavigationBar appearance] setFrame:CGRectMake(0, 20, 320, 44)];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"] forBarMetrics:UIBarMetricsDefault]; 
+    }
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {   
+    
+    [self setNavBarBackground];
     
     statsNeedsUpdate = YES;
-    
+        
     responseTimer = [NSDate date];
     [responseTimer retain];
     
     // Set up the 'Next' button.
-    nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    CGRect buttonRect = CGRectMake(24, 359, 270, 37);
+    nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect buttonRect = CGRectMake(10, 350, 300, 60);
     nextButton.frame = buttonRect;
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setTitle:@"" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     //UIBUtton nextButton is enabled / disabled! @see code after alloc-ing QuizManager
     
-    
     // Set button images.
-    UIImage *buttonImageNormal = [UIImage imageNamed:@"whiteButton.png"];
-	UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[nextButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+    UIImage *buttonImageNormal = [UIImage imageNamed:@"Button_Next.png"];
+	[nextButton setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
 	
-	UIImage *buttonImagePressed = [UIImage imageNamed:@"blueButton.png"];
-	UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[nextButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+	UIImage *buttonImagePressed = [UIImage imageNamed:@"Button_NextPressed.png"];
+	[nextButton setBackgroundImage:buttonImagePressed forState:UIControlStateHighlighted];
     
     // Add the view controller's view as the root view controller of the navigation controller.
     if (viewController == nil) {
@@ -246,4 +253,12 @@
     [super dealloc];
 }
 
+@end
+
+// For setting up nav bar background image for iOS < 5.0
+@implementation UINavigationBar (CustomImage)
+- (void)drawRect:(CGRect)rect {
+    UIImage *image = [UIImage imageNamed: @"NavBar.png"];
+    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+}
 @end
