@@ -12,7 +12,7 @@
 #import "JSONKit.h"
 #import "FriendStatsObject.h"
 
-#define SAMPLE_GET_STATISTICS_ANSWER_COUNTS_ADDR    "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics-answerCounts.json"
+#define SAMPLE_GET_STATISTICS_ANSWER_COUNTS_ADDR    "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics-friends.json"
 #define SAMPLE_GET_STATISTICS_HISTORY_ADDR          "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics-history.json"
 #define BASE_URL_ADDR                               "http://guessthatfriend.jasonsze.com/api/"
 
@@ -91,7 +91,7 @@
         [[UIApplication sharedApplication] delegate];
         
         [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-        [getRequest appendFormat:@"&type=answerCounts"];
+        [getRequest appendFormat:@"&type=friends"];
     }
     
     NSLog(@"STATS Request string: %@", getRequest);

@@ -77,8 +77,8 @@ class API {
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
-			if ($type == "answerCounts") {
-				API::outputExampleJSON("getStatistics-answerCounts.json");
+			if ($type == "friends") {
+				API::outputExampleJSON("getStatistics-friends.json");
 			} elseif ($type == "history") {
 				API::outputExampleJSON("getStatistics-history.json");
 			} elseif ($type == "responseTimes") {
@@ -89,7 +89,7 @@ class API {
 		
 		// Use defaults if necessary.
 		if (empty($type)) {
-			$type = "answerCounts";
+			$type = "friends";
 		}
 
 		// Build object to represent the JSON we will display.
@@ -97,7 +97,7 @@ class API {
 		$output["success"] = true;
 
 		// Choose what kind of statistics to generate.
-		if ($type == "answerCounts") {
+		if ($type == "friends") {
 			$output["friends"] = API::getFriendAnswerCounts();
 		} elseif ($type == "history") {
 			$output["questions"] = API::getQuestionHistory();
