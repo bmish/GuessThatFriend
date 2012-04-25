@@ -81,8 +81,6 @@ class API {
 				API::outputExampleJSON("getStatistics-friends.json");
 			} elseif ($type == "history") {
 				API::outputExampleJSON("getStatistics-history.json");
-			} elseif ($type == "responseTimes") {
-				API::outputExampleJSON("getStatistics-responseTimes.json");
 			}
 			return;
 		}
@@ -98,11 +96,9 @@ class API {
 
 		// Choose what kind of statistics to generate.
 		if ($type == "friends") {
-			$output["friends"] = API::getFriendAnswerCounts();
+			$output["friends"] = API::getFriendStats();
 		} elseif ($type == "history") {
 			$output["questions"] = API::getQuestionHistory();
-		} elseif ($type == "responseTimes") {
-			$output["friends"] = API::getFriendResponseTimes();
 		}
 		$output["duration"] = API::calculateLoadingDuration($timeStart);
 
@@ -119,36 +115,39 @@ class API {
 		return API::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
 	}
 
-	private static function getFriendAnswerCounts() {
+	private static function getFriendStats() {
 		global $facebookAPI;
-		$correctCountResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+		$correctResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId`, MIN(`responseTime`) AS fastest FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` = `correctFacebookId`
 										GROUP BY `topicFacebookId`");
-		$totalCountResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId` FROM questions
+		$totalResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId`, AVG(`responseTime`) AS average FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
-		if (!$correctCountResult || !$totalCountResult) {
+		if (!$correctResult || !$totalResult) {
 			return array();
 		}
 
 		// Store total counts for all friends that user has answered about.
 		$friendsArray = array();
-		while($totalCountRow = mysql_fetch_array($totalCountResult)){
-			$friendSubject = new Subject($totalCountRow["topicFacebookId"]);
+		while($totalRow = mysql_fetch_array($totalResult)){
+			$friendSubject = new Subject($totalRow["topicFacebookId"]);
 			
 			$friendArray = array();
 			$friendArray["subject"] = $friendSubject->jsonSerialize();
 			$friendArray["correctAnswerCount"] = 0;
-			$friendArray["totalAnswerCount"] = $totalCountRow["count"];
+			$friendArray["totalAnswerCount"] = $totalRow["count"];
+			$friendArray["fastestResponseTime"] = 0;
+			$friendArray["averageResponseTime"] = $totalRow["average"];
 			
-			$friendsArray[$totalCountRow["topicFacebookId"]] = $friendArray;
+			$friendsArray[$totalRow["topicFacebookId"]] = $friendArray;
 		}
 
 		// Store correct counts for friends that user has answered any questions correctly about.
-		while($correctCountRow = mysql_fetch_array($correctCountResult)){
-			$friendsArray[$correctCountRow["topicFacebookId"]]["correctAnswerCount"] = $correctCountRow["count"];
+		while($correctRow = mysql_fetch_array($correctResult)){
+			$friendsArray[$correctRow["topicFacebookId"]]["correctAnswerCount"] = $correctRow["count"];
+			$friendsArray[$correctRow["topicFacebookId"]]["fastestResponseTime"] = $correctRow["fastest"];
 		}
 	
 		// Sorts the friends by decreasing percentage of correct answers and then by total correct answers.
@@ -170,52 +169,6 @@ class API {
 		
 		usort($friendsArray, "cmp");
 
-		return array_values($friendsArray);
-	}
-
-	private static function getFriendResponseTimes() {
-		global $facebookAPI;
-		$fastestResponseTime = mysql_query("SELECT MIN(`responseTime`) AS fastest, `topicFacebookId` FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` = `correctFacebookId`
-										GROUP BY `topicFacebookId`");
-		$slowestResponseTime = mysql_query("SELECT MAX(`responseTime`) AS slowest, `topicFacebookId` FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` != ''
-										GROUP BY `topicFacebookId`");
-		$averageResponseTime = mysql_query("SELECT AVG(`responseTime`) AS average, `topicFacebookId` FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` != ''
-										GROUP BY `topicFacebookId`");
-
-		if (!$fastestResponseTime || !$slowestResponseTime || !$averageResponseTime) {
-			return array();
-		}
-
-		// Store fastest response times for friends user has answered questions about correctly.
-		$friendsArray = array();
-		while($averageResponseRow = mysql_fetch_array($averageResponseTime)){
-			$friendSubject = new Subject($averageResponseRow["topicFacebookId"]);
-			
-			$friendArray = array();
-			$friendArray["subject"] = $friendSubject->jsonSerialize();
-			$friendArray["slowestResponseTime"] = 0;
-			$friendArray["fastestResponseTime"] = 0;
-			$friendArray["averageResponseTime"] = $averageResponseRow["average"];
-			
-			$friendsArray[$averageResponseRow["topicFacebookId"]] = $friendArray;
-		}
-
-		// Store slowest response times for friends that user has answered any questions about.
-		while($slowestResponseRow = mysql_fetch_array($slowestResponseTime)){
-			$friendsArray[$slowestResponseRow["topicFacebookId"]]["slowestResponseTime"] = $slowestResponseRow["slowest"];
-		}
-
-		// Store average response times for friends that user has answered any questions about.
-		while($fastestResponseRow = mysql_fetch_array($fastestResponseTime)){
-			$friendsArray[$fastestResponseRow["topicFacebookId"]]["fastestResponseTime"] = $fastestResponseRow["fastest"];
-		}
-		
 		return array_values($friendsArray);
 	}
 
