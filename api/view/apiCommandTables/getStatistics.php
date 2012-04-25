@@ -19,11 +19,11 @@
 			<tr>
 				<td class="colParameter">type</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">&ldquo;friends&rdquo;<br> &ldquo;history&rdquo;<br>&ldquo;DEPRECATED:responseTimes&rdquo;</td>
+				<td class="colValue">&ldquo;friends&rdquo;<br> &ldquo;history&rdquo;</td>
 				<td class="colDefault">Default: &ldquo;friends&rdquo;</td>
 				<td>Type of statistics to generate.</td>
 			</tr>	
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=responseTimes">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=responseTimes</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history</a> - Hardcoded example.</div>
 	</div>
 </div>
