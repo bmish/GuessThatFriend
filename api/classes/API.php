@@ -139,7 +139,7 @@ class API {
 			$friendArray["correctAnswerCount"] = 0;
 			$friendArray["totalAnswerCount"] = $totalRow["count"];
 			$friendArray["fastestResponseTime"] = 0;
-			$friendArray["averageResponseTime"] = $totalRow["average"];
+			$friendArray["averageResponseTime"] = round($totalRow["average"]);
 			
 			$friendsArray[$totalRow["topicFacebookId"]] = $friendArray;
 		}
