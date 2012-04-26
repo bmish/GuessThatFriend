@@ -113,11 +113,21 @@
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
     
+    //SPINNER
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] 
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    spinner.hidesWhenStopped = YES;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    [spinner release];
+    //SPINNER
+    
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Only update the stats when we have to.
     if (delegate.statsNeedsUpdate) {
-        [self requestStatisticsFromServer:NO];
+        [self requestStatisticsFromServer:YES];
         delegate.statsNeedsUpdate = NO;
     }
     
