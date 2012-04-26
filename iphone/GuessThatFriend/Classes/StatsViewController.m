@@ -128,18 +128,22 @@
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
     
-    //SPINNER
-    spinner = [[UIActivityIndicatorView alloc] 
-               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    spinner.hidesWhenStopped = YES;
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
-    [spinner release];
-    //SPINNER
     
-    [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    if (delegate.statsNeedsUpdate) {
+        //SPINNER
+        spinner = [[UIActivityIndicatorView alloc] 
+                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.center = CGPointMake(160, 240);
+        spinner.hidesWhenStopped = YES;
+        [self.view addSubview:spinner];
+        [spinner startAnimating];
+        [spinner release];
+        //SPINNER
+        
+        [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
+    }
     [super viewWillAppear:animated];
 }
 
