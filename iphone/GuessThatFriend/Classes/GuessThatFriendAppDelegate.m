@@ -16,6 +16,9 @@
 #import "MCQuestion.h"
 #import "FillBlankQuestion.h"
 
+#define IMAGEPLISTPATH     @"imageCachePlist"
+
+
 @implementation GuessThatFriendAppDelegate
 
 @synthesize window;
@@ -29,6 +32,7 @@
 @synthesize quizManager;
 @synthesize responseTimer;
 @synthesize statsNeedsUpdate;
+@synthesize plistImageDict;
 
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
@@ -81,6 +85,7 @@
     
     [self setNavBarBackground];
     
+    [self initImagePlist];
     statsNeedsUpdate = YES;
         
     responseTimer = [NSDate date];
@@ -249,8 +254,47 @@
     [nextButton release];
     [quizManager release];
     [responseTimer release];
+    [plistImageDict release];
     
     [super dealloc];
+}
+
+
+- (UIImage*)getPicture:(NSString*)imageURL{
+    
+    //See if it exists in plist, if not then download
+    NSString* imageLocalPath = [plistImageDict objectForKey:imageURL];    
+    UIImage *return_image;
+    NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
+    
+    //value not found, need to download and save to plist
+    if(imageLocalPath==nil){
+        NSURL *url = [NSURL URLWithString:imageURL];
+        return_image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+        
+        NSLog(@"saving jpeg");
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        
+        NSString *jpegFilePath = [NSString stringWithFormat:imageURL,docDir];
+        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(return_image, 1.0f)];//1.0f = 100% quality
+        [data writeToFile:jpegFilePath atomically:YES];
+        
+        //now add to plist
+        [plistImageDict setObject:jpegFilePath forKey:imageURL];
+        [plistImageDict writeToFile:path atomically: YES];
+    }
+    else {
+        //Load UIImage from local path
+        return_image = [UIImage imageWithContentsOfFile:imageLocalPath];
+    }
+    
+    return return_image;
+}
+
+- (void) initImagePlist{
+    NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
+    NSLog(@"%@", path);
+    plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
 }
 
 @end
