@@ -131,7 +131,7 @@
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if (delegate.statsNeedsUpdate) {
+    if (delegate.statsNeedsUpdate && threadIsRunning == NO) {
         //SPINNER
         spinner = [[UIActivityIndicatorView alloc] 
                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -141,6 +141,8 @@
         [spinner startAnimating];
         [spinner release];
         //SPINNER
+        
+        threadIsRunning = YES;
         
         [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
     }
