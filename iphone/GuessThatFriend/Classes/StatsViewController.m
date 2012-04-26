@@ -19,14 +19,14 @@
 @implementation StatsViewController
 
 /*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+ if (self) {
+ // Custom initialization
+ }
+ return self;
+ }
+ */
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -110,12 +110,27 @@
     [responseString release];
 }
 
+- (void)getStatisticsThread {
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Only update the stats when we have to.
+    if (delegate.statsNeedsUpdate) {
+        [self requestStatisticsFromServer:NO];
+        delegate.statsNeedsUpdate = NO;
+    }
+    [spinner stopAnimating];
+    [friendsTable reloadData];
+    
+    NSLog(@"Inside Thread!");
+}
+
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
     
     //SPINNER
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] 
-                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner = [[UIActivityIndicatorView alloc] 
+               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 240);
     spinner.hidesWhenStopped = YES;
     [self.view addSubview:spinner];
@@ -123,16 +138,13 @@
     [spinner release];
     //SPINNER
     
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // Only update the stats when we have to.
-    if (delegate.statsNeedsUpdate) {
-        [self requestStatisticsFromServer:YES];
-        delegate.statsNeedsUpdate = NO;
-    }
+    [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
     
     [super viewWillAppear:animated];
 }
+
+
+
 
 #pragma mark -
 #pragma mark Table View Data Source Methods
@@ -176,7 +188,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-
+    
     return;
 }
 
