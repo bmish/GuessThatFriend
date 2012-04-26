@@ -17,7 +17,7 @@
 #import "FillBlankQuestion.h"
 
 #define IMAGEPLISTPATH     @"imageCachePlist"
-
+#define IMAGEPLISTFULLPATH @"/imageCachePlist.plist"
 
 @implementation GuessThatFriendAppDelegate
 
@@ -261,22 +261,29 @@
 
 - (UIImage *)getPicture:(NSString *)imageURL{
     
+    NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
+    
     // See if it exists in plist, if not then download
     NSString *imageLocalPath = [plistImageDict objectForKey:imageURL];    
     UIImage *returnImage;
-    NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
+    NSString *path = [resourceDocPath stringByAppendingPathComponent:IMAGEPLISTFULLPATH];
     
     // value not found, need to download and save to plist
     if (imageLocalPath == nil) {
-        imageLocalPath = imageURL;
+        // Generate image file local path to save image in.
+        NSArray *stringComps = [imageURL componentsSeparatedByString:@"/"];
+        NSString *filePath = [resourceDocPath stringByAppendingPathComponent:[stringComps objectAtIndex:3]];
+
+        // Download the image.
         NSURL *url = [NSURL URLWithString:imageURL];
         returnImage = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
-                
-        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(returnImage, 1.0f)];  //1.0f = 100% quality
-        [data writeToFile:imageLocalPath atomically:YES];
         
-        // now add to plist
-        [plistImageDict setObject:imageLocalPath forKey:imageURL];
+        // Save image locally
+        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(returnImage, 1.0f)];  // 1.0f = 100% quality
+        [data writeToFile:filePath atomically:YES];
+        
+        // now add to plist & save plist
+        [plistImageDict setObject:filePath forKey:imageURL];
         [plistImageDict writeToFile:path atomically: YES];
     }
     else {
@@ -288,8 +295,18 @@
 }
 
 - (void)initImagePlist {
-    NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
-    plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
+    
+    NSString *plistPath = [resourceDocPath stringByAppendingPathComponent:IMAGEPLISTFULLPATH];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:plistPath] == NO) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
+        plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+        [plistImageDict writeToFile:plistPath atomically:YES];
+    }
+    else {
+        plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    }
 }
 
 @end
