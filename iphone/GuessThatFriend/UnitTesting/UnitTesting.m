@@ -27,19 +27,19 @@
 
 - (void)testRetrieveSampleQuestionsFromAPI
 {
-    QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil andFBToken:@"" andUseSampleData:YES];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:YES];
     STAssertTrue(quizManager.questionArray.count == 1, @"Number of sample questions was not one as expected.");
 }
 
 - (void)testRetrieveQuestionsFromAPIWithEmptyFBToken
 {
-    QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil andFBToken:@"" andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:NO];
     STAssertTrue(quizManager.questionArray.count == 0, @"Number of questions was not zero as expected.");
 }
 
 - (void)testRetrieveQuestionsFromAPIWithBadFBToken
 {
-    QuizManager *quizManager = [[QuizManager alloc] initWithQuizSettings:nil andFBToken:@"badtoken" andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"badtoken" andUseSampleData:NO];
     STAssertTrue(quizManager.questionArray.count == 0, @"Number of questions was not zero as expected.");
 }
 
