@@ -16,7 +16,7 @@
 - (FriendStatsObject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andCorrectCount:(int)cCount andTotalCount:(int)tCount {
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
-    UIImage* image = [delegate getPicture:imagePath];
+    UIImage *image = [delegate getPicture:imagePath];
     
     self.name = friendName;
     self.picture = image;

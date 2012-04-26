@@ -18,16 +18,6 @@
 
 @implementation StatsViewController
 
-/*
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
- if (self) {
- // Custom initialization
- }
- return self;
- }
- */
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -122,12 +112,13 @@
     [spinner stopAnimating];
     [friendsTable reloadData];
     
+    threadIsRunning = NO;
+
     NSLog(@"Inside Thread!");
 }
 
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
-    
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -146,11 +137,9 @@
         
         [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
     }
+    
     [super viewWillAppear:animated];
 }
-
-
-
 
 #pragma mark -
 #pragma mark Table View Data Source Methods

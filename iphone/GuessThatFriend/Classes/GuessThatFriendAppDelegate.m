@@ -259,41 +259,36 @@
     [super dealloc];
 }
 
-
-- (UIImage*)getPicture:(NSString*)imageURL{
+- (UIImage *)getPicture:(NSString *)imageURL{
     
-    //See if it exists in plist, if not then download
-    NSString* imageLocalPath = [plistImageDict objectForKey:imageURL];    
-    UIImage *return_image;
+    // See if it exists in plist, if not then download
+    NSString *imageLocalPath = [plistImageDict objectForKey:imageURL];    
+    UIImage *returnImage;
     NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
     
-    //value not found, need to download and save to plist
-    if(imageLocalPath==nil){
+    // value not found, need to download and save to plist
+    if (imageLocalPath == nil) {
+        imageLocalPath = imageURL;
         NSURL *url = [NSURL URLWithString:imageURL];
-        return_image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+        returnImage = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
+                
+        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(returnImage, 1.0f)];  //1.0f = 100% quality
+        [data writeToFile:imageLocalPath atomically:YES];
         
-        NSLog(@"saving jpeg");
-        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        
-        NSString *jpegFilePath = [NSString stringWithFormat:imageURL,docDir];
-        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(return_image, 1.0f)];//1.0f = 100% quality
-        [data writeToFile:jpegFilePath atomically:YES];
-        
-        //now add to plist
-        [plistImageDict setObject:jpegFilePath forKey:imageURL];
+        // now add to plist
+        [plistImageDict setObject:imageLocalPath forKey:imageURL];
         [plistImageDict writeToFile:path atomically: YES];
     }
     else {
-        //Load UIImage from local path
-        return_image = [UIImage imageWithContentsOfFile:imageLocalPath];
+        // Load UIImage from local path
+        returnImage = [UIImage imageWithContentsOfFile:imageLocalPath];
     }
     
-    return return_image;
+    return returnImage;
 }
 
-- (void) initImagePlist{
+- (void)initImagePlist {
     NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
-    NSLog(@"%@", path);
     plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
 }
 
