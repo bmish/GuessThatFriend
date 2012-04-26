@@ -44,13 +44,9 @@
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
-        
-        NSURL *topicImageURL = [NSURL URLWithString:mcQuestion.topicImage];
-        NSData *imageData = [NSData dataWithContentsOfURL:topicImageURL];
-        UIImage *topicImage = [[UIImage alloc] initWithData:imageData];
-        
+
+        UIImage *topicImage = [self getPicture:mcQuestion.topicImage];        
         quizViewController.topicImage.image = topicImage;
-        [topicImage release];
         
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
