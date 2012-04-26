@@ -1,0 +1,20 @@
+{
+    "success": true,
+    "categories": [
+        {
+            "category": "Food/beverages",
+            "correctAnswerCount": "2",
+            "totalAnswerCount": "2",
+            "fastestResponseTime": "1.0000",
+            "averageResponseTime": "1.0000"
+        },
+        {
+            "category": "Games/toys",
+            "correctAnswerCount": "2",
+            "totalAnswerCount": "2",
+            "fastestResponseTime": "0",
+            "averageResponseTime": "1.5000"
+        }
+    ],
+    "duration": 0.52
+}

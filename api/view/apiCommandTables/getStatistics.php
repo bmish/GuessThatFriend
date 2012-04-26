@@ -24,6 +24,7 @@
 				<td>Type of statistics to generate.</td>
 			</tr>	
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=category">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=category</a> - Hardcoded example.
+  </div>
 	</div>
 </div>
