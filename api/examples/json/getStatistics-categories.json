@@ -1,0 +1,17 @@
+{
+   "success":true,
+   "categories":[
+      {
+         "category":{
+            "categoryId":2,
+            "facebookName":"Movie",
+            "prettyName":"Movies"
+         },
+         "correctAnswerCount":"2",
+         "totalAnswerCount":"2",
+         "fastestResponseTime":"500",
+         "averageResponseTime":"1250"
+      }
+   ],
+   "duration":0.52
+}

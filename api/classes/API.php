@@ -79,10 +79,10 @@ class API {
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			if ($type == "friends") {
 				API::outputExampleJSON("getStatistics-friends.json");
+			} elseif ($type == "categories") {
+				API::outputExampleJSON("getStatistics-categories.json");
 			} elseif ($type == "history") {
 				API::outputExampleJSON("getStatistics-history.json");
-			} elseif ($type == "category") {
-				API::outputExampleJSON("getStatistics-category.json");
 			}
 			return;
 		}
@@ -101,17 +101,17 @@ class API {
 			$output["friends"] = API::getFriendStats();
 		} elseif ($type == "history") {
 			$output["questions"] = API::getQuestionHistory();
-		} elseif ($type == "category") {
-			$output["categories"] = API::getCategoryAnswerCounts();
+		} elseif ($type == "categories") {
+			$output["categories"] = API::getCategoryStats();
 		}
 		$output["duration"] = API::calculateLoadingDuration($timeStart);
 
 		API::outputArrayInJSON($output);
 	}
 	
-  private static function getCategoryAnswerCounts() {
+  private static function getCategoryStats() {
 		global $facebookAPI;
-    $correctCountResult = mysql_query("SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
+    	$correctCountResult = mysql_query("SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` = `correctFacebookId`
 										GROUP BY `categoryId`");
@@ -127,13 +127,13 @@ class API {
 		$categoriesArray = array();
 		while($totalCountRow = mysql_fetch_array($totalCountResult)){
 			$categoryArray = array();
-      $category = new Category($totalCountRow["categoryId"]);
-      
-			$categoryArray["category"] = $category->prettyName;
+			
+      		$category = new Category($totalCountRow["categoryId"]);
+			$categoryArray["category"] = $category->jsonSerialize();
 			$categoryArray["correctAnswerCount"] = 0;
 			$categoryArray["totalAnswerCount"] = $totalCountRow["count"];
-      $categoryArray["fastestResponseTime"] = 0;
-			$categoryArray["averageResponseTime"] = $totalCountRow["average"];
+      		$categoryArray["fastestResponseTime"] = 0;
+			$categoryArray["averageResponseTime"] = round($totalCountRow["average"]);
 			
 			$categoriesArray[$totalCountRow["categoryId"]] = $categoryArray;
 		}
@@ -141,7 +141,7 @@ class API {
 		// Store correct counts for friends that user has answered any questions correctly about.
 		while($correctCountRow = mysql_fetch_array($correctCountResult)){
 			$categoriesArray[$correctCountRow["categoryId"]]["correctAnswerCount"] = $correctCountRow["count"];
-      $categoriesArray[$correctCountRow["categoryId"]]["fastestResponseTime"] = $correctCountRow["fastest"];
+      		$categoriesArray[$correctCountRow["categoryId"]]["fastestResponseTime"] = $correctCountRow["fastest"];
 		}
 	
 		// Sorts the friends by decreasing percentage of correct answers and then by total correct answers.
