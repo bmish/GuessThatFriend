@@ -89,7 +89,7 @@
     
     // Set up the 'Next' button.
     nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect buttonRect = CGRectMake(10, 350, 300, 60);
+    CGRect buttonRect = CGRectMake(-5, 354, 330, 60);
     nextButton.frame = buttonRect;
     [nextButton setTitle:@"" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
