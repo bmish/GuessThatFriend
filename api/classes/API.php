@@ -318,10 +318,10 @@ class API {
 		echo json_encode($json);
 	}
 	
-	public static function outputFailure($error = "") {
+	public static function outputFailure($message = "") {
 		$output = array();
-		if (!empty($error)) {
-			$output["error"] = $error;
+		if (!empty($message)) {
+			$output["message"] = $message;
 		}
 		$output["success"] = false;
 		
