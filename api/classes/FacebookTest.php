@@ -10,13 +10,13 @@ class FacebookTest{
 	private $facebookAPI;
 
 	public function testGetFriends(){
-		$facebookId = "1436983640";				// Colin's facebookId
+		$facebookId = "1436983640";
 		$friends = $this->facebookAPI->getFriendsOf($facebookId);
 		$this->testSubjects($friends);
 	}
 
 	public function testGetLikes(){
-		$facebookId = "1436983640";				// Colin's facebookId
+		$facebookId = "1436983640";
 		$likes = $this->facebookAPI->getLikesOfFriend($facebookId);
 		$this->testSubjects($likes);
 	}

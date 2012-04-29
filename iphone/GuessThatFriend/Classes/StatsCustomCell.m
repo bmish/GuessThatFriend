@@ -2,7 +2,7 @@
 //  StatsCustomCell.m
 //  GuessThatFriend
 //
-//  Created by Arjan Singh Nirh on 4/10/12.
+//  Created on 4/10/12.
 //  Copyright (c) 2012 University of Illinois at Urbana-Champaign. All rights reserved.
 //
 

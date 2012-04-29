@@ -2,7 +2,7 @@
 //  StatsBaseViewController.m
 //  GuessThatFriend
 //
-//  Created by Tianyi Wang on 4/19/12.
+//  Created on 4/19/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
