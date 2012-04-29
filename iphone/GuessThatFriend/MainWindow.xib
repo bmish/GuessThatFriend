@@ -93,7 +93,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 				<object class="IBUIViewController" key="IBUISelectedViewController" id="94104262">
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="914863939">
-						<string key="IBUITitle">Stats 4</string>
+						<string key="IBUITitle">4</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">tab4.png</string>
@@ -113,7 +113,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIViewController" id="58939675">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="156619339">
-							<string key="IBUITitle">Friends Stats</string>
+							<string key="IBUITitle">Friends</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">tab1.png</string>
@@ -131,7 +131,7 @@
 					</object>
 					<object class="IBUIViewController" id="250170806">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="155269289">
-							<string key="IBUITitle">Category Stats</string>
+							<string key="IBUITitle">Category</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">tab2.png</string>
@@ -148,7 +148,7 @@
 					</object>
 					<object class="IBUIViewController" id="1051818203">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="136581182">
-							<string key="IBUITitle">Stats 3</string>
+							<string key="IBUITitle">3</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">tab3.png</string>
