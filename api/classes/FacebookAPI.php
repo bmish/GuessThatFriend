@@ -155,7 +155,7 @@ class FacebookAPI	{
 			$MAX_TRIES = 10;
 			$triesCount = 0;
 			do {
-				if ($triesCount++ == $MAX_TRIES) {
+				if (++$triesCount == $MAX_TRIES) {
 					API::outputFailure("The randomPages database table may not contain a large enough variety of random pages.");
 					return null;
 				}
