@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Guess That Friend API</title>
+<title>GuessThatFriend API</title>
 <link href="view/css/style.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="view/js/fns.js"></script>
@@ -10,8 +10,8 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-		<div id="pageTitle">Guess That Friend API</div>
-		<div id="subtitle"><a target="_blank" href="https://github.com/bmish/GuessThatFriend">github</a> - <a target="_blank" href="/mysql">phpMyAdmin</a> - <a target="_blank" href="/tests">tests</a> - <a target="_blank" href="https://wiki.engr.illinois.edu/display/cs428sp12/bmishk2nirh1">Wiki</a></div>
+		<div id="pageTitle">GuessThatFriend API</div>
+		<div id="subtitle"><a target="_blank" href="https://github.com/bmish/GuessThatFriend">github</a> - <a target="_blank" href="/mysql">phpMyAdmin</a> - <a target="_blank" href="/tests">tests</a> - <a target="_blank" href="https://wiki.engr.illinois.edu/display/cs428sp12/GuessThatFriend">Wiki</a></div>
 	</div>
 	<div id="page">
 		<div id="body">
