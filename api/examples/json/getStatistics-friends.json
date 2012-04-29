@@ -1,33 +1,30 @@
 {
-	"friends": 
-	[
-		{
-			"subject":
-			{
-				"facebookId": "220439",
-				"name": "Bret Taylor",
-				"picture": "http://graph.facebook.com/220439/picture",
-				"link": "https://www.facebook.com/220439"
-			},
-			"correctAnswerCount": 34,
-			"totalAnswerCount": 45,
-			"fastestResponseTime": 1000,
-			"averageResponseTime": 2500
-		},
-		{
-			"subject":
-			{
-				"facebookId": "4",
-				"name": "Mark Zuckerberg",
-				"picture": "https://graph.facebook.com/4/picture",
-				"link": "https://www.facebook.com/4"
-			},
-			"correctAnswerCount": 27,
-			"totalAnswerCount": 35,
-			"fastestResponseTime": 1200,
-			"averageResponseTime": 2000
-		}	
-	],
-	"success": true,
-	"duration": 0.52
+   "friends":[
+      {
+         "subject":{
+            "facebookId":"220439",
+            "name":"Bret Taylor",
+            "picture":"http://graph.facebook.com/220439/picture",
+            "link":"https://www.facebook.com/220439"
+         },
+         "correctAnswerCount":34,
+         "totalAnswerCount":45,
+         "fastestResponseTime":1000,
+         "averageResponseTime":2500
+      },
+      {
+         "subject":{
+            "facebookId":"4",
+            "name":"Mark Zuckerberg",
+            "picture":"https://graph.facebook.com/4/picture",
+            "link":"https://www.facebook.com/4"
+         },
+         "correctAnswerCount":27,
+         "totalAnswerCount":35,
+         "fastestResponseTime":1200,
+         "averageResponseTime":2000
+      }
+   ],
+   "success":true,
+   "duration":0.52
 }

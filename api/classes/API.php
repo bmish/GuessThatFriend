@@ -2,7 +2,7 @@
 class API {
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		global $facebookAPI;
-		
+
 		// Start timing.
 		$timeStart = microtime(true);
 		

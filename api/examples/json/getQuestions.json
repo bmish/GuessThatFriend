@@ -1,54 +1,47 @@
 {
-	"questions": 
-	[
-		{
-			"questionId": 11,
-			"category":
-			{
-				"categoryId": 2,
-				"facebookName": "Movie",
-				"prettyName": "Movies"
-			},
-			"text": "Which of the following two friends likes the movie Ice Age?",
-			"topicSubject":
-			{
-				"facebookId": "IceAge",
-				"name": "Ice Age",
-				"picture": "https://graph.facebook.com/IceAge/picture",
-				"link": "https://www.facebook.com/IceAge"
-			},
-			"correctSubject":
-			{
-				"facebookId": "220439",
-				"name": "Bret Taylor",
-				"picture": "http://graph.facebook.com/220439/picture",
-				"link": "https://www.facebook.com/220439"
-			},
-			"options":
-			[
-				{
-					"optionId": 12,
-					"topicSubject": 
-					{
-						"facebookId": "220439",
-						"name": "Bret Taylor",
-						"picture": "http://graph.facebook.com/220439/picture",
-						"link": "https://www.facebook.com/220439"
-					}
-				},
-				{
-					"optionId": 13,
-					"topicSubject":
-					{
-						"facebookId": "4",
-						"name": "Mark Zuckerberg",
-						"picture": "http://graph.facebook.com/4/picture",
-						"link": "https://www.facebook.com/4"
-					}	
-				}
-			]
-		}
-	],
-	"success": true,
-	"duration": 0.52
+   "questions":[
+      {
+         "questionId":11,
+         "category":{
+            "categoryId":2,
+            "facebookName":"Movie",
+            "prettyName":"Movies"
+         },
+         "text":"Which of the following two friends likes the movie Ice Age?",
+         "topicSubject":{
+            "facebookId":"IceAge",
+            "name":"Ice Age",
+            "picture":"https://graph.facebook.com/IceAge/picture",
+            "link":"https://www.facebook.com/IceAge"
+         },
+         "correctSubject":{
+            "facebookId":"220439",
+            "name":"Bret Taylor",
+            "picture":"http://graph.facebook.com/220439/picture",
+            "link":"https://www.facebook.com/220439"
+         },
+         "options":[
+            {
+               "optionId":12,
+               "topicSubject":{
+                  "facebookId":"220439",
+                  "name":"Bret Taylor",
+                  "picture":"http://graph.facebook.com/220439/picture",
+                  "link":"https://www.facebook.com/220439"
+               }
+            },
+            {
+               "optionId":13,
+               "topicSubject":{
+                  "facebookId":"4",
+                  "name":"Mark Zuckerberg",
+                  "picture":"http://graph.facebook.com/4/picture",
+                  "link":"https://www.facebook.com/4"
+               }
+            }
+         ]
+      }
+   ],
+   "success":true,
+   "duration":0.52
 }
