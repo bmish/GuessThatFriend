@@ -9,7 +9,7 @@
          },
          "correctAnswerCount":"2",
          "totalAnswerCount":"2",
-         "fastestResponseTime":"500",
+         "fastestCorrectResponseTime":"500",
          "averageResponseTime":"1250"
       }
    ],

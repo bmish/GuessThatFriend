@@ -124,7 +124,7 @@ class API {
 			return;
 		}
 
-		// Store total counts for all friends that user has answered about.
+		// Store total counts for all categories that user has answered about.
 		$categoriesArray = array();
 		while($totalCountRow = mysql_fetch_array($totalCountResult)){
 			$categoryArray = array();
@@ -133,19 +133,19 @@ class API {
 			$categoryArray["category"] = $category->jsonSerialize();
 			$categoryArray["correctAnswerCount"] = 0;
 			$categoryArray["totalAnswerCount"] = $totalCountRow["count"];
-      		$categoryArray["fastestResponseTime"] = 0;
+      		$categoryArray["fastestCorrectResponseTime"] = -1;
 			$categoryArray["averageResponseTime"] = round($totalCountRow["average"]);
 			
 			$categoriesArray[$totalCountRow["categoryId"]] = $categoryArray;
 		}
 
-		// Store correct counts for friends that user has answered any questions correctly about.
+		// Store correct counts for categories that user has answered any questions correctly about.
 		while($correctCountRow = mysql_fetch_array($correctCountResult)){
 			$categoriesArray[$correctCountRow["categoryId"]]["correctAnswerCount"] = $correctCountRow["count"];
-      		$categoriesArray[$correctCountRow["categoryId"]]["fastestResponseTime"] = $correctCountRow["fastest"];
+      		$categoriesArray[$correctCountRow["categoryId"]]["fastestCorrectResponseTime"] = $correctCountRow["fastest"];
 		}
 	
-		// Sorts the friends by decreasing percentage of correct answers and then by total correct answers.
+		// Sorts the categories by decreasing percentage of correct answers and then by total correct answers.
 		function cmp($a, $b) {
 			$totalA = $a["totalAnswerCount"];
 			$totalB = $b["totalAnswerCount"];
@@ -201,7 +201,7 @@ class API {
 			$friendArray["subject"] = $friendSubject->jsonSerialize();
 			$friendArray["correctAnswerCount"] = 0;
 			$friendArray["totalAnswerCount"] = $totalRow["count"];
-			$friendArray["fastestResponseTime"] = 0;
+			$friendArray["fastestCorrectResponseTime"] = -1;
 			$friendArray["averageResponseTime"] = round($totalRow["average"]);
 			
 			$friendsArray[$totalRow["topicFacebookId"]] = $friendArray;
@@ -210,7 +210,7 @@ class API {
 		// Store correct counts for friends that user has answered any questions correctly about.
 		while($correctRow = mysql_fetch_array($correctResult)){
 			$friendsArray[$correctRow["topicFacebookId"]]["correctAnswerCount"] = $correctRow["count"];
-			$friendsArray[$correctRow["topicFacebookId"]]["fastestResponseTime"] = $correctRow["fastest"];
+			$friendsArray[$correctRow["topicFacebookId"]]["fastestCorrectResponseTime"] = $correctRow["fastest"];
 		}
 	
 		// Sorts the friends by decreasing percentage of correct answers and then by total correct answers.
