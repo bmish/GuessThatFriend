@@ -75,6 +75,8 @@
 	[targetFriendEditButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
 	[categoryEditButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
     
+    quizOptionSegmentedControl.selectedSegmentIndex = 4;
+    
     [super viewDidLoad];
 }
 
