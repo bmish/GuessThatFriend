@@ -31,7 +31,7 @@
     @public
     int correctAnswers;
     int totalNumOfQuestions;
-    
+    NSMutableDictionary* plistImageDict;
     QuizManager *quizManager;
     
     BOOL statsNeedsUpdate;
@@ -49,7 +49,9 @@
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) QuizManager *quizManager;
 @property (nonatomic, retain) NSDate *responseTimer;
+@property (nonatomic, retain) NSMutableDictionary* plistImageDict;
 
 @property BOOL statsNeedsUpdate;
 
+- (UIImage*) getPicture:(NSString*)imageURL;
 @end

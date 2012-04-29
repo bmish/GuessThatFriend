@@ -84,6 +84,7 @@
 		BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsViewController.xib */; };
 		BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsCustomCell.m */; };
 		BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsCustomCell.xib */; };
+		BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA983F751548C2EC001D59B0 /* imageCachePlist.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		BA8F71A51535063F000C7458 /* StatsCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCustomCell.h; sourceTree = "<group>"; };
 		BA8F71A61535063F000C7458 /* StatsCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCustomCell.m; sourceTree = "<group>"; };
 		BA8F71A81535079C000C7458 /* StatsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCustomCell.xib; sourceTree = "<group>"; };
+		BA983F751548C2EC001D59B0 /* imageCachePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = imageCachePlist.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA983F741548C2C3001D59B0 /* plist */,
 				4D8D797314EB91C900CAA606 /* Images */,
 				4D8D797214EB91B500CAA606 /* Nibs */,
 				4D1A373114DB289F00BEB8B8 /* Icon */,
@@ -577,6 +580,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BA983F741548C2C3001D59B0 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				BA983F751548C2EC001D59B0 /* imageCachePlist.plist */,
+			);
+			name = plist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -687,6 +698,7 @@
 				4D6479901543890000402CF7 /* Button_Back.png in Resources */,
 				4D6479941543895F00402CF7 /* Button_Setting.png in Resources */,
 				4D6479981543896900402CF7 /* Button_Statistic.png in Resources */,
+				BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

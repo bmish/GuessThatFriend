@@ -7,6 +7,7 @@
 //
 
 #import "FriendStatsObject.h"
+#import "GuessThatFriendAppDelegate.h"
 
 @implementation FriendStatsObject
 
@@ -14,9 +15,8 @@
 
 - (FriendStatsObject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andCorrectCount:(int)cCount andTotalCount:(int)tCount {
     
-    // Download the subject's image from the 'imagePath'
-    NSURL *url = [NSURL URLWithString:imagePath];
-    UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
+    UIImage *image = [delegate getPicture:imagePath];
     
     self.name = friendName;
     self.picture = image;

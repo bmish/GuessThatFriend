@@ -16,6 +16,9 @@
 #import "MCQuestion.h"
 #import "FillBlankQuestion.h"
 
+#define IMAGEPLISTPATH     @"imageCachePlist"
+#define IMAGEPLISTFULLPATH @"/imageCachePlist.plist"
+
 @implementation GuessThatFriendAppDelegate
 
 @synthesize window;
@@ -29,6 +32,7 @@
 @synthesize quizManager;
 @synthesize responseTimer;
 @synthesize statsNeedsUpdate;
+@synthesize plistImageDict;
 
 - (void)nextButtonPressed:(id)sender {
 	Question *nextQuestion = [quizManager getNextQuestion];
@@ -40,13 +44,9 @@
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
-        
-        NSURL *topicImageURL = [NSURL URLWithString:mcQuestion.topicImage];
-        NSData *imageData = [NSData dataWithContentsOfURL:topicImageURL];
-        UIImage *topicImage = [[UIImage alloc] initWithData:imageData];
-        
+
+        UIImage *topicImage = [self getPicture:mcQuestion.topicImage];        
         quizViewController.topicImage.image = topicImage;
-        [topicImage release];
         
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
@@ -81,6 +81,7 @@
     
     [self setNavBarBackground];
     
+    [self initImagePlist];
     statsNeedsUpdate = YES;
         
     responseTimer = [NSDate date];
@@ -249,8 +250,59 @@
     [nextButton release];
     [quizManager release];
     [responseTimer release];
+    [plistImageDict release];
     
     [super dealloc];
+}
+
+- (UIImage *)getPicture:(NSString *)imageURL{
+    
+    NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
+    
+    // See if it exists in plist, if not then download
+    NSString *imageLocalPath = [plistImageDict objectForKey:imageURL];    
+    UIImage *returnImage;
+    NSString *path = [resourceDocPath stringByAppendingPathComponent:IMAGEPLISTFULLPATH];
+    
+    // value not found, need to download and save to plist
+    if (imageLocalPath == nil) {
+        // Generate image file local path to save image in.
+        NSArray *stringComps = [imageURL componentsSeparatedByString:@"/"];
+        NSString *filePath = [resourceDocPath stringByAppendingPathComponent:[stringComps objectAtIndex:3]];
+
+        // Download the image.
+        NSURL *url = [NSURL URLWithString:imageURL];
+        returnImage = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
+        
+        // Save image locally
+        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(returnImage, 1.0f)];  // 1.0f = 100% quality
+        [data writeToFile:filePath atomically:YES];
+        
+        // now add to plist & save plist
+        [plistImageDict setObject:filePath forKey:imageURL];
+        [plistImageDict writeToFile:path atomically: YES];
+    }
+    else {
+        // Load UIImage from local path
+        returnImage = [UIImage imageWithContentsOfFile:imageLocalPath];
+    }
+    
+    return returnImage;
+}
+
+- (void)initImagePlist {
+    NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
+    
+    NSString *plistPath = [resourceDocPath stringByAppendingPathComponent:IMAGEPLISTFULLPATH];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:plistPath] == NO) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
+        plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+        [plistImageDict writeToFile:plistPath atomically:YES];
+    }
+    else {
+        plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    }
 }
 
 @end

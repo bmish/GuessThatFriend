@@ -18,16 +18,6 @@
 
 @implementation StatsViewController
 
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -110,25 +100,42 @@
     [responseString release];
 }
 
-/* Everytime this view will appear, we ask the server for stats jason */
-- (void)viewWillAppear:(BOOL)animated {
-    
-    //SPINNER
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] 
-                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    spinner.hidesWhenStopped = YES;
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
-    [spinner release];
-    //SPINNER
+- (void)getStatisticsThread {
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Only update the stats when we have to.
     if (delegate.statsNeedsUpdate) {
-        [self requestStatisticsFromServer:YES];
+        [self requestStatisticsFromServer:NO];
         delegate.statsNeedsUpdate = NO;
+    }
+    [spinner stopAnimating];
+    [friendsTable reloadData];
+    
+    threadIsRunning = NO;
+
+    NSLog(@"Inside Thread!");
+}
+
+/* Everytime this view will appear, we ask the server for stats jason */
+- (void)viewWillAppear:(BOOL)animated {
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (delegate.statsNeedsUpdate && threadIsRunning == NO) {
+        //SPINNER
+        spinner = [[UIActivityIndicatorView alloc] 
+                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.center = CGPointMake(160, 240);
+        spinner.hidesWhenStopped = YES;
+        [self.view addSubview:spinner];
+        [spinner startAnimating];
+        [spinner release];
+        //SPINNER
+        
+        threadIsRunning = YES;
+        
+        [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
     }
     
     [super viewWillAppear:animated];
@@ -176,7 +183,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-
+    
     return;
 }
 
