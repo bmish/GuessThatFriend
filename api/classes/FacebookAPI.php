@@ -121,7 +121,7 @@ class FacebookAPI	{
 		if (!$category) {
 			$selectQuery = "SELECT * FROM randomPages";
 		} else {
-			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".API::cleanInputForDatabase($category->facebookName)."'";
+			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".DB::cleanInputForDatabase($category->facebookName)."'";
 		}
 
 		$result = mysql_query($selectQuery);
@@ -272,7 +272,7 @@ class FacebookAPI	{
 	// Log user in with given access token. Return user ID if login is successful, or false if no logged-in user.
 	public function authenticate($facebookAccessToken) {
 		$this->facebook->setAccessToken($facebookAccessToken);
-		$this->facebookAccessToken = API::cleanInputForDatabase($facebookAccessToken);
+		$this->facebookAccessToken = DB::cleanInputForDatabase($facebookAccessToken);
 		
 		// Invalid access token?
 		if (!$this->getLoggedInUserId()) {

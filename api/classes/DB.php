@@ -17,5 +17,13 @@ class DB {
 		global $con;
 		mysql_close($con);
 	}
+	
+	public static function cleanInputForDatabase($input) {
+		return addslashes(trim($input));
+	}
+
+	public static function cleanOutputFromDatabase($output) {
+		return stripslashes($output);
+	}
 }
 ?>

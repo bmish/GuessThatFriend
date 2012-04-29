@@ -24,21 +24,21 @@ $facebookAPI = new FacebookAPI();
 // Handle an API request.
 $cmd = $_GET['cmd'];
 if ($cmd == 'getQuestions') {
-	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
+	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionCount = intval($_GET['questionCount']);
 	$optionCount = intval($_GET['optionCount']);
-	//$topicFacebookId = API::cleanInputForDatabase($_GET['topicFacebookId']);
+	//$topicFacebookId = DB::cleanInputForDatabase($_GET['topicFacebookId']);
 	//$categoryId = intval($_GET['categoryId']);
 	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId);
 } else if ($cmd == 'submitQuestions') {
-	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
+	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionAnswers = API::getQuestionAnswersFromGETVars();
 	$questionTimes = API::getQuestionTimesFromGETVars();
 	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();
 } else if ($cmd == 'getStatistics') {
-	$facebookAccessToken = API::cleanInputForDatabase($_GET['facebookAccessToken']);
+	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$type = $_GET['type'];
 	API::getStatistics($facebookAccessToken, $type);
 } else {

@@ -343,7 +343,7 @@ class API {
 				$pair = array();
 				$questionId = substr($parameterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
 				$pair["questionId"] = intval($questionId);
-				$pair["facebookId"] = API::cleanInputForDatabase($facebookId);
+				$pair["facebookId"] = DB::cleanInputForDatabase($facebookId);
 				
 				// Add this pair to our list.
 				if ($pair["questionId"] > 0) {
@@ -375,18 +375,6 @@ class API {
 			}
 		}
 		return $questionTimes;
-	}
-	
-	public static function cleanInputForDatabase($input) {
-		return addslashes(trim($input));
-	}
-
-	public static function cleanInputForDisplay($input) {
-		return htmlentities(trim($input), ENT_QUOTES, 'UTF-8');
-	}
-
-	public static function cleanOutputFromDatabase($output) {
-		return stripslashes($output);
 	}
 }
 ?>
