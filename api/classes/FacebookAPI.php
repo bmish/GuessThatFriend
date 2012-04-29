@@ -60,7 +60,7 @@ class FacebookAPI	{
 		$triesCount = 0;
 		do {
 			if ($triesCount++ == $MAX_TRIES) {
-				API::outputFailure("Could not find a friend with sufficient likes.");
+				API::outputFailure("Could not find a friend with a sufficient number of likes.");
 				return null;
 			}
 			
@@ -156,7 +156,7 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if ($triesCount++ == $MAX_TRIES) {
-					API::outputFailure("Could not find a page with sufficient matching category pages.");
+					API::outputFailure("The randomPages database table may not contain a large enough variety of random pages.");
 					return null;
 				}
 				$like = $this->getRandomElement($likes);

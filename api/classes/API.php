@@ -48,7 +48,6 @@ class API {
 		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
 		API::saveQuestionTimes($questionTimes);
 
-		
 		// Build object to represent the JSON we will display.
 		$output = array();
 		$output["questionIds"] = $questionIdsOfSavedAnswers;
@@ -62,6 +61,7 @@ class API {
 		// Get categories from database.
 		$result = mysql_query("SELECT * FROM categories");
 		if (!$result || mysql_num_rows($result) == 0) {
+			API::outputFailure("No categories found in database.");
 			return;
 		}
 
@@ -75,6 +75,11 @@ class API {
 		// Start timing.
 		$timeStart = microtime(true);
 		
+		// Use defaults if necessary.
+		if (empty($type) || ($type != "friends" && $type != "categories" && $type != "history")) {
+			$type = "friends";
+		}
+		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			if ($type == "friends") {
@@ -85,11 +90,6 @@ class API {
 				API::outputExampleJSON("getStatistics-history.json");
 			}
 			return;
-		}
-		
-		// Use defaults if necessary.
-		if (empty($type)) {
-			$type = "friends";
 		}
 
 		// Build object to represent the JSON we will display.
@@ -120,7 +120,8 @@ class API {
 										AND `chosenFacebookId` != ''
 										GROUP BY `categoryId`");
 		if (!$correctCountResult || !$totalCountResult) {
-			return array();
+			API::outputFailure("Statistics database query failed.");
+			return;
 		}
 
 		// Store total counts for all friends that user has answered about.
@@ -187,7 +188,8 @@ class API {
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
 		if (!$correctResult || !$totalResult) {
-			return array();
+			API::outputFailure("Statistics database query failed.");
+			return;
 		}
 
 		// Store total counts for all friends that user has answered about.
@@ -283,7 +285,6 @@ class API {
 			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			mysql_query($updateQuery);
 		}
-		return;
 	}
 	
 	private static function getArrayOfDBResult($result) {
