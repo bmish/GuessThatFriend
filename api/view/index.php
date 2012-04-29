@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Guess That Friend API</title>
 <link href="view/css/style.css" rel="stylesheet" type="text/css">
-<script src="view/js/jquery-1.7.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="view/js/fns.js"></script>
 </head>
 <body>
