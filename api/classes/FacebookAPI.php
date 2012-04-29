@@ -324,7 +324,7 @@ class FacebookAPI	{
 	}
 	
 	private function cacheTextToFile($filepath, $text) {
-		file_put_contents($filepath, $text);
+		file_put_contents($filepath, $text, LOCK_EX);
 	}
 	
 	private function checkFileForText($filepath, $secondsToExpire) {
@@ -339,7 +339,7 @@ class FacebookAPI	{
 		}
 		
 		// Cache is empty?
-		$contents = file_get_contents($filepath);
+		$contents = file_get_contents($filepath, LOCK_EX);
 		if (empty($contents)) {
 			return false;
 		}
