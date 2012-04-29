@@ -89,6 +89,7 @@ class API {
 			} elseif ($type == "history") {
 				API::outputExampleJSON("getStatistics-history.json");
 			}
+			
 			return;
 		}
 
@@ -121,7 +122,7 @@ class API {
 										GROUP BY `categoryId`");
 		if (!$correctCountResult || !$totalCountResult) {
 			API::outputFailure("Statistics database query failed.");
-			return;
+			return array();
 		}
 
 		// Store total counts for all categories that user has answered about.
@@ -189,7 +190,7 @@ class API {
 										GROUP BY `topicFacebookId`");
 		if (!$correctResult || !$totalResult) {
 			API::outputFailure("Statistics database query failed.");
-			return;
+			return array();
 		}
 
 		// Store total counts for all friends that user has answered about.

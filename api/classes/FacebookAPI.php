@@ -59,7 +59,7 @@ class FacebookAPI	{
 		$MAX_TRIES = 10;
 		$triesCount = 0;
 		do {
-			if ($triesCount++ == $MAX_TRIES) {
+			if (++$triesCount == $MAX_TRIES) {
 				API::outputFailure("Could not find a friend with a sufficient number of likes.");
 				return null;
 			}
@@ -77,15 +77,15 @@ class FacebookAPI	{
 	 * @param likeFlag boolean flag indicating whether the returned friend should like or not like the page
 	 * @return the random friend (subject)
 	 */
-	public function getRandomFriendWhoLikes($facebookId = "", $likeFlag) {
-		if ($facebookId == "")	{
+	public function getRandomFriendWhoLikes($pageFacebookId = "", $likeFlag) {
+		if ($pageFacebookId == "")	{
 			return $this->getRandomFriend();
 		}
 		
 		$friendsWhoLike = array();
 		$friends = $this->getFriendsOf($this->getLoggedInUserId());
 		foreach ($friends as $friend)	{
-			if (likesPage($friend->facebookId, $facebookId) == $likeFlag) {
+			if (likesPage($friend->facebookId, $pageFacebookId) == $likeFlag) {
 				$friendsWhoLike[] = $friend;
 			}
 		}
@@ -121,7 +121,7 @@ class FacebookAPI	{
 		if (!$category) {
 			$selectQuery = "SELECT * FROM randomPages";
 		} else {
-			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".$category->facebookName."'";
+			$selectQuery = "SELECT facebookId, name FROM randomPages WHERE categoryFacebookName = '".API::cleanInputForDatabase($category->facebookName)."'";
 		}
 
 		$result = mysql_query($selectQuery);
