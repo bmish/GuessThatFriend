@@ -6,6 +6,7 @@ require_once('classes/MCQuestion.php');
 
 // Misc includes.
 require_once('classes/API.php');
+require_once('classes/Cache.php');
 require_once('classes/Category.php');
 require_once('classes/Option.php');
 require_once('classes/DB.php');
