@@ -16,9 +16,6 @@
 @interface StatsBaseViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     UITableView *table;
     NSMutableArray *list;
-    
-    UIActivityIndicatorView *spinner;
-    BOOL threadIsRunning;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *table;

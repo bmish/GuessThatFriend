@@ -10,7 +10,8 @@
 #import "StatsBaseViewController.h"
 
 @interface StatsCategoriesViewController : StatsBaseViewController {
-    
+    UIActivityIndicatorView *spinner;
+    BOOL threadIsRunning;
 }
 
 @end

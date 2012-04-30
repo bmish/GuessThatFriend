@@ -10,8 +10,12 @@
 
 @implementation StatsHistoryCustomCell
 
-@synthesize text, picture, correctAnswer, chosenAnswer;
-@synthesize date, responseTime;
+@synthesize text;
+@synthesize picture;
+@synthesize correctAnswer;
+@synthesize chosenAnswer;
+@synthesize date;
+@synthesize responseTime;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,6 +31,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (oneway void)release {
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
+    } else {
+        [super release];
+    }
 }
 
 - (void)dealloc {

@@ -108,7 +108,7 @@
     }
 }
 
-- (void)getStatisticsThread {
+- (void)getStatisticsThread2 {
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -118,7 +118,6 @@
         delegate.statsCategoriesNeedsUpdate = NO;
     }
     [spinner stopAnimating];
-    [table reloadData];
     
     threadIsRunning = NO;    
 }
@@ -141,10 +140,22 @@
         
         threadIsRunning = YES;
         
-        [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
+        [NSThread detachNewThreadSelector:@selector(getStatisticsThread2) toTarget:self withObject:nil];
+        
+        while (threadIsRunning) {
+        }
+        [table reloadData];
     }
     
     [super viewWillAppear:animated];
+}
+
+- (oneway void)release {
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
+    } else {
+        [super release];
+    }
 }
 
 #pragma mark -
