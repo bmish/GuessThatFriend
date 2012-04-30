@@ -68,6 +68,8 @@
 		4DB4F52C1541C5E300106D78 /* tab2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52A1541C5E300106D78 /* tab2.png */; };
 		4DB4F52D1541C5E300106D78 /* tab3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52B1541C5E300106D78 /* tab3.png */; };
 		4DB708731541E2D400FD0517 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB708741541E2D400FD0517 /* MainWindow.xib */; };
+		4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */; };
+		4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27808154E776D00603D4A /* StatsHistoryViewController.m */; };
 		4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */; };
 		4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */; };
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
@@ -185,6 +187,10 @@
 		4DB4F52A1541C5E300106D78 /* tab2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab2.png; sourceTree = "<group>"; };
 		4DB4F52B1541C5E300106D78 /* tab3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab3.png; sourceTree = "<group>"; };
 		4DB708741541E2D400FD0517 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		4DF27804154E775D00603D4A /* StatsCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCategoriesViewController.h; sourceTree = "<group>"; };
+		4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoriesViewController.m; sourceTree = "<group>"; };
+		4DF27807154E776D00603D4A /* StatsHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StatsHistoryViewController.h; sourceTree = "<group>"; };
+		4DF27808154E776D00603D4A /* StatsHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHistoryViewController.m; sourceTree = "<group>"; };
 		4DFC3A9015400CE200648D9A /* StatsBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsBaseViewController.h; sourceTree = "<group>"; };
 		4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBaseViewController.m; sourceTree = "<group>"; };
 		4DFD9A9815352ECD00BB8F92 /* FriendStatsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatsObject.h; sourceTree = "<group>"; };
@@ -205,7 +211,7 @@
 		93E21C0A150DBDD000A475DC /* UnitTesting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTesting-Prefix.pch"; sourceTree = "<group>"; };
 		93FC73C414F9AE15002EB781 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		93FC73C514F9AE15002EB781 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
-		BA6F95931533DE3600C875F1 /* StatsFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StatsFriendsViewController.h; sourceTree = "<group>"; };
+		BA6F95931533DE3600C875F1 /* StatsFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsFriendsViewController.h; sourceTree = "<group>"; };
 		BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsFriendsViewController.m; sourceTree = "<group>"; };
 		BA6F95951533DE3600C875F1 /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = Classes/StatsViewController.xib; sourceTree = "<group>"; };
 		BA8F71A51535063F000C7458 /* StatsCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCustomCell.h; sourceTree = "<group>"; };
@@ -553,6 +559,10 @@
 				4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */,
 				BA6F95931533DE3600C875F1 /* StatsFriendsViewController.h */,
 				BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */,
+				4DF27804154E775D00603D4A /* StatsCategoriesViewController.h */,
+				4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */,
+				4DF27807154E776D00603D4A /* StatsHistoryViewController.h */,
+				4DF27808154E776D00603D4A /* StatsHistoryViewController.m */,
 			);
 			name = StatsViewControllers;
 			sourceTree = "<group>";
@@ -761,6 +771,8 @@
 				4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */,
 				4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */,
 				4D2E99DA154391BA0047F418 /* UIBarButtonItem+Image.m in Sources */,
+				4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */,
+				4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
