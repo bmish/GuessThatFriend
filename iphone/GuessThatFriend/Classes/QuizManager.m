@@ -37,48 +37,56 @@
 }
 
 - (void)requestQuestionsFromServer {
-    
-    // Create GET request.
-    NSMutableString *getRequest;
-    
-    if (useSampleData) { // Retrieve sample data.
-        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_QUESTIONS_ADDR];
-    } else { // Make a real request.
-        QuizSettings *quizSettings = [QuizSettings quizSettingObject];
+    // Keep requesting until success is true.
+    BOOL success = NO;
+    while (success == NO) {
+        // Create GET request.
+        NSMutableString *getRequest;
         
-        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-        [getRequest appendString:@"?cmd=getQuestions"];
-        [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
-        [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];
-        [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
-        [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
+        if (useSampleData) { // Retrieve sample data.
+            getRequest = [NSMutableString stringWithString:@SAMPLE_GET_QUESTIONS_ADDR];
+        } else { // Make a real request.
+            QuizSettings *quizSettings = [QuizSettings quizSettingObject];
+            
+            getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+            [getRequest appendString:@"?cmd=getQuestions"];
+            [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
+            [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];
+            [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
+            [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
+        }
+        
+        NSLog(@"Request string: %@", getRequest);
+        
+        // Send the GET request to the server.
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+        
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"RESPONSE STRING: %@ \n",responseString);
+        
+        // Initialize array of questions from the server's response.
+        success = [self createQuestionsFromServerResponse:responseString];
+        
+        [responseString release];
     }
-    
-    NSLog(@"Request string: %@", getRequest);
-    
-    // Send the GET request to the server.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"RESPONSE STRING: %@ \n",responseString);
-    
-    // Initialize array of questions from the server's response.
-    [self createQuestionsFromServerResponse:responseString];
-    
-    [responseString release];
 }
 
-- (void)createQuestionsFromServerResponse:(NSString *)response {
+- (BOOL)createQuestionsFromServerResponse:(NSString *)response {
     
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
     // Check if valid JSON response
     if (responseDictionary == nil) {
-        [self requestQuestionsFromServer]; // Just ask for more questions
-        return;
+        [self requestQuestionsFromServer];  // Just ask for more questions
+        return NO;
+    }
+    
+    BOOL success = [[responseDictionary objectForKey:@"success"] boolValue];
+    if (success == false) {
+        return NO;
     }
     
     NSArray *questionsArray = [responseDictionary objectForKey:@"questions"];
@@ -129,12 +137,13 @@
         
         [question release];
     }
+    
+    return YES;
 }
 
 // getQuestionThread handles the getQuestion prior to running out of questions.
 // called in getNextQuestion.
 - (void)getQuestionThread {
-    NSLog(@"Inside Thread!");
     [self requestQuestionsFromServer];
     threadRunning = NO;
 }
@@ -150,8 +159,6 @@
         [getQuestionThread start];
     }
     
-    NSLog(@"question count: %d\n", questionArray.count);
-
     [questionArrayLock lock];
     while (questionArray.count == 0) {
         [questionArrayLock wait];

@@ -32,16 +32,20 @@
     [super dealloc];
 }
 
-- (void)createStatsFromServerResponse:(NSString *)response {
-    
-    // Empty the current list
-    [friendsList removeAllObjects];
+- (BOOL)createStatsFromServerResponse:(NSString *)response {
     
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
-    NSArray *friendsArray = [responseDictionary objectForKey:@"friends"];
+    BOOL success = [[responseDictionary objectForKey:@"success"] boolValue];
+    if (success == false) {
+        return NO;
+    }
     
+    // Empty the current list
+    [friendsList removeAllObjects];
+    
+    NSArray *friendsArray = [responseDictionary objectForKey:@"friends"];
     NSEnumerator *friendEnumerator = [friendsArray objectEnumerator];
     NSDictionary *curFriend;
     
@@ -63,42 +67,48 @@
         
         [statsObj release];
     }
+    
+    return YES;
 }
 
 - (void)requestStatisticsFromServer:(BOOL)useSampleData{
     
-    // Create GET request.
-    NSMutableString *getRequest;
+    BOOL success = NO;
     
-    if (useSampleData) {    // Retrieve sample data.
-        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_FRIENDS_ADDR];
-    } else { 
-        // Make a real request.
+    while (success == NO) {
+        // Create GET request.
+        NSMutableString *getRequest;
         
-        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-        [getRequest appendString:@"?cmd=getStatistics"];
+        if (useSampleData) {    // Retrieve sample data.
+            getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_FRIENDS_ADDR];
+        } else { 
+            // Make a real request.
+            
+            getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+            [getRequest appendString:@"?cmd=getStatistics"];
+            
+            GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
+            [[UIApplication sharedApplication] delegate];
+            
+            [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
+            [getRequest appendFormat:@"&type=friends"];
+        }
         
-        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
-        [[UIApplication sharedApplication] delegate];
+        NSLog(@"STATS Request string: %@", getRequest);
         
-        [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-        [getRequest appendFormat:@"&type=friends"];
+        // Send the GET request to the server.
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+        
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"STATS RESPONSE STRING: %@ \n",responseString);
+        
+        // Initialize array of questions from the server's response.
+        success = [self createStatsFromServerResponse:responseString];
+        
+        [responseString release];
     }
-    
-    NSLog(@"STATS Request string: %@", getRequest);
-    
-    // Send the GET request to the server.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"STATS RESPONSE STRING: %@ \n",responseString);
-    
-    // Initialize array of questions from the server's response.
-    [self createStatsFromServerResponse:responseString];
-    
-    [responseString release];
 }
 
 - (void)getStatisticsThread {
