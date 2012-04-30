@@ -18,12 +18,6 @@
 @synthesize topicImage;
 @synthesize settingsViewController;
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
 - (IBAction)settingsItemPressed:(id)sender {
     if(settingsViewController == nil) {
 		SettingsViewController *settingsController = [[SettingsViewController alloc] 
