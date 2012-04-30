@@ -1,0 +1,12 @@
+[
+   {
+      "categoryId":"2",
+      "facebookName":"Movie",
+      "prettyName":"Movies"
+   },
+   {
+      "categoryId":"3",
+      "facebookName":"Tv show",
+      "prettyName":"TV Shows"
+   }
+]
