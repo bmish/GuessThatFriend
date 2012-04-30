@@ -79,7 +79,7 @@
     }
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {   
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self setNavBarBackground];
     
@@ -96,7 +96,7 @@
     [nextButton setTitle:@"" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //UIBUtton nextButton is enabled / disabled! @see code after alloc-ing QuizManager
+    // UIBUtton nextButton is enabled / disabled! @see code after alloc-ing QuizManager
     
     // Set button images.
     UIImage *buttonImageNormal = [UIImage imageNamed:@"Button_Next.png"];
@@ -120,6 +120,17 @@
     [self.window makeKeyAndVisible];
     
     // Setup for Facebook login.
+    [self fbLogin];
+    
+    // Initializing the values for the score keeping
+    // @see MultipleChoiceQuestionViewController
+    correctAnswers = 0;
+    totalNumOfQuestions = 0;
+    
+    return YES;
+}
+
+- (void)fbLogin {
     facebook = [[Facebook alloc] initWithAppId:@"178461392264777" andDelegate:self];
     
     // Check for previsouly saved access token.
@@ -142,20 +153,13 @@
     else {
         //???
     }
-
-    if(facebook.accessToken !=nil){
+    
+    if(facebook.accessToken != nil){
         // Now we have facebook token, use it to initialize the quiz manager.
         quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
-    
+        
         [self nextButtonPressed:nil];
     }
-    
-    //Initializing the values for the score keeping
-    //@see MultipleChoiceQuestionViewController
-    correctAnswers = 0;
-    totalNumOfQuestions = 0;
-    
-    return YES;
 }
 
 // Pre 4.2 support
@@ -180,7 +184,6 @@
     quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
     
     [self nextButtonPressed:nil];
-    
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
@@ -188,7 +191,10 @@
 }
 
 - (void)fbDidLogout {
-
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    
+    [self fbLogin];
 }
 
 - (void)fbDidExtendToken:(NSString*)accessToken
