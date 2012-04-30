@@ -49,14 +49,18 @@
         NSDictionary *subjectDict = [curFriend objectForKey:@"subject"];
         NSString *correctCountStr = [curFriend objectForKey:@"correctAnswerCount"];
         NSString *totalCountStr = [curFriend objectForKey:@"totalAnswerCount"];
+        NSString *fastestRTStr = [curFriend objectForKey:@"fastestCorrectResponseTime"];
+        NSString *averageRTStr = [curFriend objectForKey:@"averageResponseTime"];
         
         int correctCount = [correctCountStr intValue];
         int totalCount = [totalCountStr intValue];
+        int fastestRT = [fastestRTStr intValue];
+        int averageRT = [averageRTStr intValue];
         
         NSString *name = [subjectDict objectForKey:@"name"];
         NSString *picURL = [subjectDict objectForKey:@"picture"];
         
-        FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithName:name andImagePath:picURL andCorrectCount:correctCount andTotalCount:totalCount];
+        FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithName:name andImagePath:picURL andCorrectCount:correctCount andTotalCount:totalCount andFastestRT:fastestRT andAverageRT:averageRT];
         
         [list addObject:statsObj];
         
@@ -115,7 +119,6 @@
         [self requestStatisticsFromServer:NO];
         delegate.statsFriendsNeedsUpdate = NO;
     }
-    [spinner stopAnimating];
     
     threadIsRunning = NO;
 }
@@ -142,6 +145,7 @@
         
         while (threadIsRunning) {
         }
+        [spinner stopAnimating];
         [table reloadData];
     }
     
@@ -188,6 +192,9 @@
     float percentage = (float)obj.correctCount / obj.totalCount;
     cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 
 	[cell.progressBar setProgress:percentage animated:NO];
+    
+    cell.fastestCorrectRT.text = [NSString stringWithFormat:@"%0.2fs", obj.fastestCorrectRT];
+    cell.averageRT.text = [NSString stringWithFormat:@"%0.2fs", obj.averageRT];
     
 	return cell;
 }

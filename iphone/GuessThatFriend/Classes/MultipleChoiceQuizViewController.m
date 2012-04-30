@@ -163,6 +163,8 @@
     
     // New question answered, the stats is dirty now.
     delegate.statsFriendsNeedsUpdate = YES;
+    delegate.statsCategoriesNeedsUpdate = YES;
+    delegate.statsHistoryNeedsUpdate = YES;
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -14,6 +14,8 @@
 @synthesize progressBar;
 @synthesize name;
 @synthesize picture;
+@synthesize fastestCorrectRT;
+@synthesize averageRT;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -44,6 +46,8 @@
     [percentageLabel release];
     [progressBar release];
     [name release];
+    [fastestCorrectRT release];
+    [averageRT release];
 
     [super dealloc];
 }

@@ -116,7 +116,6 @@
         [self requestStatisticsFromServer:NO];
         delegate.statsHistoryNeedsUpdate = NO;
     }
-    [spinner stopAnimating];
     
     threadIsRunning = NO;    
 }
@@ -143,6 +142,7 @@
         
         while (threadIsRunning) {
         }
+        [spinner stopAnimating];
         [table reloadData];
     }
     
