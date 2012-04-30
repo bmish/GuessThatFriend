@@ -5,6 +5,15 @@ class Category
 	private $facebookName;		// The name that Facebook gives to this category.
 	private $prettyName;		// The pretty name that we give to this category.
 	
+	/**
+	 * __construct:
+	 *
+	 * @param $categoryId: ID of category to be created.
+	 * @param $facebookName: Category name used by Facebook.
+	 * @param $prettyName: Pretty/User friendly category name.
+	 * @return None.
+	 *
+	 */	
 	public function __construct($categoryId, $facebookName = "", $prettyName = "")	{
 		$this->categoryId = $categoryId;
 		$this->facebookName = $facebookName;
@@ -36,6 +45,14 @@ class Category
 		return new Category(mysql_insert_id(), $facebookName, $facebookName);
 	}
 	
+	/**
+	 * getCategoryByFacebookName:
+	 * 
+	 * @param $facebookName: Category name used by Facebook.
+	 * 
+	 * @return Category with the supplied facebookName
+	 * 
+	 */
 	public static function getCategoryByFacebookName($facebookName)	{
 		$query = "SELECT * FROM categories WHERE facebookName = '".DB::cleanInputForDatabase($facebookName)."' LIMIT 1";
 		$queryResult = mysql_query($query);
@@ -48,6 +65,12 @@ class Category
 		return Category::addFacebookNameToDB($facebookName);
 	}
 	
+	/**
+	 * jsonSerialize:
+	 * 
+	 * @return Array formatted for JSON output.
+	 * 
+	 */
 	public function jsonSerialize() {
 		$obj = array();
 		$obj["categoryId"] = $this->categoryId;
@@ -57,6 +80,12 @@ class Category
 		return $obj;
 	}
 
+	/**
+	 * enoughRandomPagesOfSameCategory:
+	 *
+	 * @return True if there are enough pages for this category, false otherwise.
+	 *
+	 */	
 	public function enoughRandomPagesOfSameCategory() {
 		$MIN_PAGES_OF_SAME_CATEGORY = 6;
 		
