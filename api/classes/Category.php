@@ -21,26 +21,33 @@ class Category
 	
 	private function fillInFieldsFromDB()	{
 		$nameQuery = "SELECT facebookName, prettyName FROM categories WHERE categoryId = ".$this->categoryId." LIMIT 1";
-		$queryResult = mysql_query($nameQuery);
+		$result = mysql_query($nameQuery);
 		
-		if ($queryResult && mysql_num_rows($queryResult) == 1) {
-			$row = mysql_fetch_array($queryResult);
+		if ($result && mysql_num_rows($result) == 1) {
+			$row = mysql_fetch_array($result);
 			
 			$this->facebookName = DB::cleanOutputFromDatabase($row["facebookName"]);
 			$this->prettyName = DB::cleanOutputFromDatabase($row["prettyName"]);
+			
+			return true;
 		}
+		
+		return false;
 	}
 	
 	private static function addFacebookNameToDB($facebookName) {
-		mysql_query("INSERT INTO categories (facebookName, prettyName) VALUES ('".DB::cleanInputForDatabase($facebookName)."', '".DB::cleanInputForDatabase($facebookName)."')");
+		$insertQuery = "INSERT INTO categories (facebookName, prettyName) VALUES ('".DB::cleanInputForDatabase($facebookName)."', '".DB::cleanInputForDatabase($facebookName)."')";
+		$result = mysql_query($insertQuery);
+		if (!result)
+			return false;
 		return new Category(mysql_insert_id(), $facebookName, $facebookName);
 	}
 	
 	public static function getCategoryByFacebookName($facebookName)	{
 		$query = "SELECT * FROM categories WHERE facebookName = '".DB::cleanInputForDatabase($facebookName)."' LIMIT 1";
-		$queryResult = mysql_query($query);
-		if ($queryResult && mysql_num_rows($queryResult) == 1) { // Category is already in database.
-			$row = mysql_fetch_array($queryResult);
+		$result = mysql_query($query);
+		if ($result && mysql_num_rows($result) == 1) { // Category is already in database.
+			$row = mysql_fetch_array($result);
 			return new Category($row["categoryId"], $row["facebookName"], $row["prettyName"]);
 		}
 		

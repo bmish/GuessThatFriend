@@ -59,14 +59,17 @@ class API {
 	
 	public static function getCategories() {
 		// Get categories from database.
-		$result = mysql_query("SELECT * FROM categories");
+		$categoryQuery = "SELECT * FROM categories";
+		$result = mysql_query($categoryQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			JSON::outputFailure("No categories found in database.");
-			return;
+			return false;
 		}
 
 		$arr = DB::getArrayOfDBResult($result);
 		JSON::outputArrayInJSON($arr);
+		
+		return true;
 	}
 
 	public static function getStatistics($facebookAccessToken, $type){
@@ -112,14 +115,19 @@ class API {
 	
   private static function getCategoryStats() {
 		$facebookAPI = FacebookAPI::singleton();
-    	$correctCountResult = mysql_query("SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` = `correctFacebookId`
-										GROUP BY `categoryId`");
-		$totalCountResult = mysql_query("SELECT COUNT(*) AS count, `categoryId`, AVG(`responseTime`) AS average FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` != ''
-										GROUP BY `categoryId`");
+		
+		$correctCountQuery = "SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
+							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+							AND `chosenFacebookId` = `correctFacebookId`
+							GROUP BY `categoryId`";
+    	$correctCountResult = mysql_query($correctCountQuery);
+		
+		$totalCountQuery = "SELECT COUNT(*) AS count, `categoryId`, AVG(`responseTime`) AS average FROM questions
+							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+							AND `chosenFacebookId` != ''
+							GROUP BY `categoryId`";
+		$totalCountResult = mysql_query($totalCountQuery);
+		
 		if (!$correctCountResult || !$totalCountResult) {
 			JSON::outputFailure("Statistics database query failed.");
 			return array();
@@ -176,14 +184,19 @@ class API {
 
 	private static function getFriendStats() {
 		$facebookAPI = FacebookAPI::singleton();
-		$correctResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId`, MIN(`responseTime`) AS fastest FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` = `correctFacebookId`
-										GROUP BY `topicFacebookId`");
-		$totalResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId`, AVG(`responseTime`) AS average FROM questions
-										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
-										AND `chosenFacebookId` != ''
-										GROUP BY `topicFacebookId`");
+		
+		$correctQuery = "SELECT COUNT(*) AS count, `topicFacebookId`, MIN(`responseTime`) AS fastest FROM questions
+						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+						AND `chosenFacebookId` = `correctFacebookId`
+						GROUP BY `topicFacebookId`";
+		$correctResult = mysql_query($correctQuery);
+		
+		$totalQuery = "SELECT COUNT(*) AS count, `topicFacebookId`, AVG(`responseTime`) AS average FROM questions
+						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+						AND `chosenFacebookId` != ''
+						GROUP BY `topicFacebookId`";
+		$totalResult = mysql_query($totalQuery);
+		
 		if (!$correctResult || !$totalResult) {
 			JSON::outputFailure("Statistics database query failed.");
 			return array();
@@ -275,13 +288,18 @@ class API {
 	private static function saveQuestionTimes($questionTimes){
 		$facebookAPI = FacebookAPI::singleton();
 
+		$success = false;
 		for($i = 0; $i <count($questionTimes); $i++){
 			$questionId = $questionTimes[$i]["questionId"];
 			$responseTime = $questionTimes[$i]["responseTime"];
 
 			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
-			mysql_query($updateQuery);
+			$result = mysql_query($updateQuery);
+
+			if ($result)
+				$success = true;
 		}
+		return $success;
 	}
 	
 	public static function getQuestionAnswersFromGETVars() {

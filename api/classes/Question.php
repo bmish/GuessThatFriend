@@ -112,7 +112,8 @@ abstract class Question
 	
 	// Get questions from the database that the owner has answered.
 	public static function getQuestionsFromDB($ownerFacebookId) {
-		$result = mysql_query("SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId != ''");
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId != ''";
+		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();
 		}

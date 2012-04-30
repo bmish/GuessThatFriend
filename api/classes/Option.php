@@ -21,9 +21,9 @@ class Option
 
 	private function saveToDB()	{
 		$insertQuery = "INSERT INTO options (questionId, topicFacebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
-		$queryResult = mysql_query($insertQuery);
+		$result = mysql_query($insertQuery);
 		
-		if (!$queryResult) {
+		if (!$result) {
 			JSON::outputFailure("Unable to save question options to database.");
 			
 			return false;
@@ -35,7 +35,8 @@ class Option
 	}
 	
 	public static function getOptionsFromDB($questionId) {
-		$result = mysql_query("SELECT * FROM options WHERE questionId = '$questionId' ORDER BY optionId");
+		$optionQuery = "SELECT * FROM options WHERE questionId = '$questionId' ORDER BY optionId";
+		$result = mysql_query($optionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();
 		}

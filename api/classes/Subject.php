@@ -59,9 +59,10 @@ class Subject
 	
 	private function saveToDB()	{
 		$insertQuery = "INSERT INTO subjects (facebookId, name, picture, link) VALUES ('".$this->facebookId."', '".$this->name."', '".$this->picture."', '".$this->link."')";
-		$queryResult = mysql_query($insertQuery);
+		$result = mysql_query($insertQuery);
 		
-		if (!$queryResult) {
+		if (!$result) {
+			JSON::outputFailure("Unable to save subject to database.");
 			return false;
 		}
 

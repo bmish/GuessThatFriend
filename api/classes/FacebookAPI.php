@@ -289,8 +289,19 @@ class FacebookAPI	{
 	}
 	
 	public function updateLoggedInUserDatabaseRecord() {
-		mysql_query("INSERT INTO users (facebookId) VALUES ('".$this->getLoggedInUserId()."')"); // This query won't affect anything if the user already exists in the database.
-		mysql_query("UPDATE users SET lastVisitedAt = NOW() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1");
+		$insertQuery = "INSERT INTO users (facebookId) VALUES ('".$this->getLoggedInUserId()."')";
+		$result = mysql_query($insertQuery); // This query won't affect anything if the user already exists in the database.
+		if (!result)	{
+			return false;
+		}
+		
+		$updateQuery = "UPDATE users SET lastVisitedAt = NOW() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1";
+		$result = mysql_query($updateQuery);
+		if (!$result)	{
+			JSON::outputFailure("Unable to update logged in user in database.");
+			return false;
+		}
+		return true;
 	}
 	
 	public function getLoggedInUserId() {
@@ -309,8 +320,10 @@ class FacebookAPI	{
 		$result = mysql_query($replaceQuery);
 		
 		if (!$result) {
-			echo "Error - unable to insert page ".$subject->facebookId;
+			JSON::outputFailure("Unable to save page to database.");
+			return false;
 		}
+		return true;
 	}
 	
 	
