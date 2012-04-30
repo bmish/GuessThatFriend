@@ -8,7 +8,7 @@ class Subject
 	private $category;
 	
 	public function __construct($facebookId, $name = "", $category = null) {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		$this->facebookId = $facebookId;
 		$this->name = $name;

@@ -44,7 +44,7 @@ abstract class Question
 	}
 	
 	protected function pickTopic()	{
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		// Was the topic provided to us?
 		if (!$this->topicSubject) {
@@ -58,7 +58,7 @@ abstract class Question
 	}
 	
 	protected function pickAnswer() {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		if ($this->topicSubject->isPerson()) {
 			$this->correctSubject = $facebookAPI->getRandomLikedPage($this->topicSubject->facebookId, $this->category); // Generate a random page of the desired category.

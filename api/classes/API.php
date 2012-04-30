@@ -1,7 +1,7 @@
 <?php
 class API {
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 
 		// Start timing.
 		$timeStart = microtime(true);
@@ -33,7 +33,7 @@ class API {
 	}
 
 	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes) {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		// Start timing.
 		$timeStart = microtime(true);
@@ -70,7 +70,7 @@ class API {
 	}
 
 	public static function getStatistics($facebookAccessToken, $type){
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		// Start timing.
 		$timeStart = microtime(true);
@@ -111,7 +111,7 @@ class API {
 	}
 	
   private static function getCategoryStats() {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
     	$correctCountResult = mysql_query("SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` = `correctFacebookId`
@@ -173,13 +173,13 @@ class API {
 	}
 	
 	private static function getQuestionHistory() {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		return API::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
 	}
 
 	private static function getFriendStats() {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		$correctResult = mysql_query("SELECT COUNT(*) AS count, `topicFacebookId`, MIN(`responseTime`) AS fastest FROM questions
 										WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 										AND `chosenFacebookId` = `correctFacebookId`
@@ -237,7 +237,7 @@ class API {
 	}
 
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		// Build a list of questions depending upon the type of questions desired.
 		$questions = array();
@@ -257,7 +257,7 @@ class API {
 	
 	// Take an array of questions and their answers and update those questions in the database.
 	private static function saveQuestionAnswers($questionAnswers) {
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 		
 		$questionIdsOfSavedAnswers = array();
 		for($i = 0; $i < count($questionAnswers); $i++) {
@@ -277,7 +277,7 @@ class API {
 	}
 
 	private static function saveQuestionTimes($questionTimes){
-		global $facebookAPI;
+		$facebookAPI = FacebookAPI::singleton();
 
 		for($i = 0; $i <count($questionTimes); $i++){
 			$questionId = $questionTimes[$i]["questionId"];
