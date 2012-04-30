@@ -65,9 +65,8 @@
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
 		4DB4F5281541C5DB00106D78 /* tab1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F5261541C5DB00106D78 /* tab1.png */; };
-		4DB4F5291541C5DB00106D78 /* tab2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F5271541C5DB00106D78 /* tab2.png */; };
-		4DB4F52C1541C5E300106D78 /* tab3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52A1541C5E300106D78 /* tab3.png */; };
-		4DB4F52D1541C5E300106D78 /* tab4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52B1541C5E300106D78 /* tab4.png */; };
+		4DB4F52C1541C5E300106D78 /* tab2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52A1541C5E300106D78 /* tab2.png */; };
+		4DB4F52D1541C5E300106D78 /* tab3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52B1541C5E300106D78 /* tab3.png */; };
 		4DB708731541E2D400FD0517 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB708741541E2D400FD0517 /* MainWindow.xib */; };
 		4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */; };
 		4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */; };
@@ -183,9 +182,8 @@
 		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
 		4DB4F5261541C5DB00106D78 /* tab1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1.png; sourceTree = "<group>"; };
-		4DB4F5271541C5DB00106D78 /* tab2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab2.png; sourceTree = "<group>"; };
-		4DB4F52A1541C5E300106D78 /* tab3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab3.png; sourceTree = "<group>"; };
-		4DB4F52B1541C5E300106D78 /* tab4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab4.png; sourceTree = "<group>"; };
+		4DB4F52A1541C5E300106D78 /* tab2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab2.png; sourceTree = "<group>"; };
+		4DB4F52B1541C5E300106D78 /* tab3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab3.png; sourceTree = "<group>"; };
 		4DB708741541E2D400FD0517 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4DFC3A9015400CE200648D9A /* StatsBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsBaseViewController.h; sourceTree = "<group>"; };
 		4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBaseViewController.m; sourceTree = "<group>"; };
@@ -533,9 +531,8 @@
 			isa = PBXGroup;
 			children = (
 				4DB4F5261541C5DB00106D78 /* tab1.png */,
-				4DB4F5271541C5DB00106D78 /* tab2.png */,
-				4DB4F52A1541C5E300106D78 /* tab3.png */,
-				4DB4F52B1541C5E300106D78 /* tab4.png */,
+				4DB4F52A1541C5E300106D78 /* tab2.png */,
+				4DB4F52B1541C5E300106D78 /* tab3.png */,
 			);
 			name = TabImages;
 			sourceTree = "<group>";
@@ -685,9 +682,8 @@
 				BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */,
 				BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */,
 				4DB4F5281541C5DB00106D78 /* tab1.png in Resources */,
-				4DB4F5291541C5DB00106D78 /* tab2.png in Resources */,
-				4DB4F52C1541C5E300106D78 /* tab3.png in Resources */,
-				4DB4F52D1541C5E300106D78 /* tab4.png in Resources */,
+				4DB4F52C1541C5E300106D78 /* tab2.png in Resources */,
+				4DB4F52D1541C5E300106D78 /* tab3.png in Resources */,
 				4D6479801543774800402CF7 /* GTFIcon.png in Resources */,
 				4D647982154377C200402CF7 /* Default.png in Resources */,
 				4D6479841543780700402CF7 /* Graphic_GameBackground.png in Resources */,
