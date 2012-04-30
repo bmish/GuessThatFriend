@@ -1,5 +1,5 @@
 //
-//  StatsViewController.h
+//  StatsFriendsViewController.h
 //  GuessThatFriend
 //
 //  Created on 4/9/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StatsBaseViewController.h"
 
-@interface StatsViewController : StatsBaseViewController {
+@interface StatsFriendsViewController : StatsBaseViewController {
     UIActivityIndicatorView *spinner;
     BOOL threadIsRunning;
 }

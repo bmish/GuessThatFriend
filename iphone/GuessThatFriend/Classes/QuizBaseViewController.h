@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class SettingsViewController;
-@class StatsViewController;
 
 @interface QuizBaseViewController : UIViewController {
 	int questionID;

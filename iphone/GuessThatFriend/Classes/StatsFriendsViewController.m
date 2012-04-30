@@ -1,12 +1,12 @@
 //
-//  StatsViewController.m
+//  StatsFriendsViewController.m
 //  GuessThatFriend
 //
 //  Created on 4/9/12.
 //  Copyright (c) 2012 University of Illinois at Urbana-Champaign. All rights reserved.
 //
 
-#import "StatsViewController.h"
+#import "StatsFriendsViewController.h"
 #import "StatsCustomCell.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "JSONKit.h"
@@ -17,7 +17,7 @@
 #define SAMPLE_GET_STATISTICS_HISTORY_ADDR          "http://guessthatfriend.jasonsze.com/api/examples/json/getStatistics-history.json"
 #define BASE_URL_ADDR                               "http://guessthatfriend.jasonsze.com/api/"
 
-@implementation StatsViewController
+@implementation StatsFriendsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
