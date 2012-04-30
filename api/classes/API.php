@@ -1,5 +1,16 @@
 <?php
 class API {
+	/**
+	 * getQuestions:
+	 *
+	 * @param $facebookAccessToken: The users access token.
+	 * @param $questionCount: The number of questions requested.
+	 * @param $optionCount: The number of answer options per question.
+	 * @param $topicFacebookId: The Facebook ID of who questions should focus on.
+	 * @param $categoryId: The category the questions should focus on.
+	 * @return JSON output containing the newly created questions.
+	 *
+	 */	
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 
@@ -32,6 +43,15 @@ class API {
 		JSON::outputArrayInJSON($output);
 	}
 
+	/**
+	 * submitQuestions:
+	 *
+	 * @param $facebookAccessToken: The users access token.
+	 * @param $questionAnswers: Array containing the answers for the submitted questions.
+	 * @param $questionTimes: Array containing the response time for the submitted questions.
+	 * @return JSON output confirming the submitted questions.
+	 *
+	 */	
 	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes) {
 		$facebookAPI = FacebookAPI::singleton();
 		
@@ -57,6 +77,12 @@ class API {
 		JSON::outputArrayInJSON($output);
 	}
 	
+	/**
+	 * getCategories:
+	 *
+	 * @return JSON output containing all of the categories.
+	 * 
+	 */	
 	public static function getCategories() {
 		// Get categories from database.
 		$categoryQuery = "SELECT * FROM categories";
@@ -72,6 +98,14 @@ class API {
 		return true;
 	}
 
+	/**
+	 * getStatistics:
+	 *
+	 * @param $facebookAccessToken: The users access token.
+	 * @param $type: The type of statistics to generate.
+	 * @return JSON output containing the requested statistics.
+	 *
+	 */	
 	public static function getStatistics($facebookAccessToken, $type){
 		$facebookAPI = FacebookAPI::singleton();
 		

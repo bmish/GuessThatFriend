@@ -187,7 +187,7 @@
     cell.chosenAnswer.text = obj.yourAnswer;
     cell.date.text = obj.date;
     cell.picture.image = obj.picture;
-    cell.responseTime.text = [NSString stringWithFormat:@"%0.2fs", obj.responseTime];
+    cell.responseTime.text = [NSString stringWithFormat:@"in %0.2fs", obj.responseTime];
     
 	return cell;
 }
