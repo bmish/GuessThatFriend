@@ -132,7 +132,7 @@
     if (![facebook isSessionValid]) {
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"user_likes", 
-                                @"friends_likes", 
+                                @"friends_likes",
                                 nil];
         [facebook authorize:permissions];
         [permissions release];
