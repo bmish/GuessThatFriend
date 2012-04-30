@@ -1,13 +1,14 @@
 <?php
 class DB {
 	public static function connect() {
-		global $con,$dbHost,$dbUser,$dbPass,$dbName;
-		$con = mysql_connect($dbHost,$dbUser,$dbPass);
+		global $con;
+		
+		$con = mysql_connect(DB_HOST,DB_USER,DB_PASS);
 		if (!$con) {
 			echo 'Could not connect: '.mysql_error();
 		}
 		
-		$dbSelected = mysql_select_db($dbName, $con);
+		$dbSelected = mysql_select_db(DB_NAME, $con);
 		if (!$dbSelected) {
 		    echo 'Can\'t select database: '.mysql_error();
 		}

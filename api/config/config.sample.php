@@ -3,10 +3,10 @@
 date_default_timezone_set('America/Chicago');
 
 // Database:
-$dbHost = '127.0.0.1';
-$dbUser = '';
-$dbPass = '';
-$dbName = 'GuessThatFriend';
+const DB_HOST = '127.0.0.1';
+const DB_USER = '';
+const DB_PASS = '';
+const DB_NAME = 'GuessThatFriend';
 
 // Facebook:
 const FB_APP_ID = '';
