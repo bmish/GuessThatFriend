@@ -123,9 +123,7 @@
     threadIsRunning = NO;
 }
 
-/* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewWillAppear:(BOOL)animated {
-    
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     if (delegate.statsFriendsNeedsUpdate && threadIsRunning == NO) {
@@ -142,14 +140,20 @@
         threadIsRunning = YES;
         
         [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
-        
-        while (threadIsRunning) {
-        }
-        [spinner stopAnimating];
-        [table reloadData];
     }
     
     [super viewWillAppear:animated];
+}
+
+/* Everytime this view will appear, we ask the server for stats jason */
+- (void)viewDidAppear:(BOOL)animated {
+    
+    while (threadIsRunning) {
+    }
+    [spinner stopAnimating];
+    [table reloadData];
+    
+    [super viewDidAppear:animated];
 }
 
 - (oneway void)release {
