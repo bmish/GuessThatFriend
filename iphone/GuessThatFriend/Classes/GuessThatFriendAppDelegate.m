@@ -41,6 +41,8 @@
     if ([nextQuestion isKindOfClass:[MCQuestion class]]) {      // Multiple Choice Question.
         
         MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+        [quizViewController.friendsTable setScrollEnabled:YES];
+        
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;

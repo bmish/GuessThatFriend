@@ -90,12 +90,15 @@
 #pragma mark Table Delegate Methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-    //Find response time for question answered
+    
+    // Disable scrolling, this is re-enabled when user click next button.
+    [self.friendsTable setScrollEnabled:NO];
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
     
+    // Find response time for question answered.
     NSTimeInterval responseTimeInterval = [delegate.responseTimer timeIntervalSinceNow];
+    
     // responseTimer is before the current date, so negate the interval.
     responseTimeInterval *= -1;
     
