@@ -66,6 +66,7 @@
 		4D922B57154EF24E0092B5F4 /* StatsCategoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */; };
 		4D922B5A154EF25E0092B5F4 /* StatsHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */; };
 		4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */; };
+		4D922B5E154EFABA0092B5F4 /* StatsHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */; };
 		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
@@ -192,6 +193,7 @@
 		4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryCustomCell.h; sourceTree = "<group>"; };
 		4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHistoryCustomCell.m; sourceTree = "<group>"; };
 		4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCategoryViewController.xib; sourceTree = "<group>"; };
+		4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsHistoryViewController.xib; sourceTree = "<group>"; };
 		4DA0E9D515074FEF002AFFBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		4DA0E9D615074FEF002AFFBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
 				BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */,
 				4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */,
+				4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */,
 				BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */,
 				4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */,
 				4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */,
@@ -737,6 +740,7 @@
 				4D922B51154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib in Resources */,
 				4D922B54154EF1D50092B5F4 /* StatsHistoryCustomCell.xib in Resources */,
 				4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */,
+				4D922B5E154EFABA0092B5F4 /* StatsHistoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

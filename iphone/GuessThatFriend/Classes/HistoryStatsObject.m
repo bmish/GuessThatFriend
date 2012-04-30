@@ -24,6 +24,9 @@
     self.yourAnswer = yAnswer;
     self.date = theDate;
     self.responseTime = ((float)rt) / 1000.0;
+    if (self.responseTime < 0) {
+        self.responseTime *= -1;
+    }
     
     return [super init];
 }

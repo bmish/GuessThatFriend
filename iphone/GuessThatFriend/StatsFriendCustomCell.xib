@@ -156,7 +156,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<reference key="IBUIContentView" ref="1027354834"/>
 				<string key="IBUIReuseIdentifier">StatsFriendCustomCellIdentifier</string>
-				<real value="68" key="IBUIRowHeight"/>
+				<real value="55" key="IBUIRowHeight"/>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">

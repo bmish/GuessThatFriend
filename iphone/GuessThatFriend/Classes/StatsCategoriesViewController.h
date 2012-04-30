@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "StatsBaseViewController.h"
 
-@interface StatsCategoriesViewController : StatsBaseViewController
+@interface StatsCategoriesViewController : StatsBaseViewController {
+    
+}
 
 @end

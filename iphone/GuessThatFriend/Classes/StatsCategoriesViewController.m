@@ -43,7 +43,7 @@
     NSEnumerator *categoryEnumerator = [categoriesArray objectEnumerator];
     NSDictionary *curCategory;
     
-    // Go through all FRIENDS
+    // Go through all CATEGORIES
     while (curCategory = [categoryEnumerator nextObject]) {
         NSDictionary *categoryDict = [curCategory objectForKey:@"category"];
         NSString *correctCountStr = [curCategory objectForKey:@"correctAnswerCount"];
