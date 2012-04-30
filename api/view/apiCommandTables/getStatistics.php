@@ -19,12 +19,12 @@
 			<tr>
 				<td class="colParameter">type</td>
 				<td class="colType fontCode">string</td>
-				<td class="colValue">&ldquo;friends&rdquo;<br>&ldquo;categories&rdquo;<br>&ldquo;history&rdquo;</td>
-				<td class="colDefault">Default: &ldquo;friends&rdquo;</td>
+				<td class="colValue">&ldquo;<?php echo StatisticType::FRIENDS; ?>&rdquo;<br>&ldquo;<?php echo StatisticType::CATEGORIES; ?>&rdquo;<br>&ldquo;<?php echo StatisticType::HISTORY; ?>&rdquo;</td>
+				<td class="colDefault">Default: &ldquo;<?php echo StatisticType::DEFAULT_TYPE; ?>&rdquo;</td>
 				<td>Type of statistics to generate.</td>
 			</tr>	
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=friends</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=categories">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=categories</a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=history</a> - Hardcoded example.
+		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::FRIENDS; ?>">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::FRIENDS; ?></a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::CATEGORIES; ?>">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::CATEGORIES; ?></a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::HISTORY; ?>">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::HISTORY; ?></a> - Hardcoded example.
   </div>
 	</div>
 </div>

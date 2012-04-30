@@ -26,9 +26,9 @@
 			<tr>
 				<td class="colParameter">optionCount</td>
 				<td class="colType fontCode">int</td>
-				<td class="colValue">-1: Random<br />0: Fill in the blank<br />2-6: Multiple choice</td>
-				<td class="colDefault">Default: 4</td>
-				<td>How many options (if any) should come with each question? Specifying '-1' means that each question will have a random number of options.</td>
+				<td class="colValue"><?php echo OptionType::RANDOM; ?>: Random<br /><?php echo OptionType::FILL_IN_THE_BLANK; ?>: Fill in the blank<br /><?php echo OptionType::MC_MIN; ?>-<?php echo OptionType::MC_MAX; ?>: Multiple choice</td>
+				<td class="colDefault">Default: <?php echo OptionType::DEFAULT_TYPE; ?></td>
+				<td>How many options (if any) should come with each question?</td>
 			</tr>
 			<tr>
 				<td class="colParameter">topicFacebookId</td>
@@ -45,6 +45,6 @@
 				<td>Should the questions focus on a particular category of likes like books or movies?</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getQuestions&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2">?cmd=getQuestions&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=2&amp;categoryId=2</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getQuestions&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=<?php echo OptionType::MC_2; ?>&amp;categoryId=2">?cmd=getQuestions&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=<?php echo OptionType::MC_2; ?>&amp;categoryId=2</a> - Hardcoded example.</div>
 	</div>
 </div>

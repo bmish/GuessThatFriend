@@ -16,8 +16,8 @@ class API {
 		if ($questionCount == "") {
 			$questionCount = 10;
 		}
-		if ($optionCount == "" || $optionCount < -1 || $optionCount == 0 || $optionCount == 1 || $optionCount > 6) {
-			$optionCount = 4;
+		if (!OptionType::isValid($optionCount)) {
+			$optionCount = OptionType::DEFAULT_TYPE;
 		}
 		
 		// Create questions.
@@ -76,17 +76,17 @@ class API {
 		$timeStart = microtime(true);
 		
 		// Use defaults if necessary.
-		if (empty($type) || ($type != "friends" && $type != "categories" && $type != "history")) {
-			$type = "friends";
+		if (!StatisticType::isValid($type)) {
+			$type = StatisticType::DEFAULT_TYPE;
 		}
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
-			if ($type == "friends") {
+			if ($type == StatisticType::FRIENDS) {
 				API::outputExampleJSON("getStatistics-friends.json");
-			} elseif ($type == "categories") {
+			} elseif ($type == StatisticType::CATEGORIES) {
 				API::outputExampleJSON("getStatistics-categories.json");
-			} elseif ($type == "history") {
+			} elseif ($type == StatisticType::HISTORY) {
 				API::outputExampleJSON("getStatistics-history.json");
 			}
 			
@@ -98,12 +98,12 @@ class API {
 		$output["success"] = true;
 
 		// Choose what kind of statistics to generate.
-		if ($type == "friends") {
+		if ($type == StatisticType::FRIENDS) {
 			$output["friends"] = API::getFriendStats();
-		} elseif ($type == "history") {
-			$output["questions"] = API::getQuestionHistory();
-		} elseif ($type == "categories") {
+		} elseif ($type == StatisticType::CATEGORIES) {
 			$output["categories"] = API::getCategoryStats();
+		} elseif ($type == StatisticType::HISTORY) {
+			$output["questions"] = API::getQuestionHistory();
 		}
 		$output["duration"] = API::calculateLoadingDuration($timeStart);
 
@@ -242,10 +242,10 @@ class API {
 		// Build a list of questions depending upon the type of questions desired.
 		$questions = array();
 		for ($i = 0; $i < $questionCount; $i++) { 
-			if ($optionCount == 0) { // Fill in the blank.
+			if ($optionCount == OptionType::FILL_IN_THE_BLANK) {
 				$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
-			} elseif ($optionCount == -1) { // Random type.
-				$optionCountForQuestion = rand(2, 6);
+			} elseif ($optionCount == OptionType::RANDOM) {
+				$optionCountForQuestion = rand(OptionType::MC_MIN, OptionType::MC_MAX);
 				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCountForQuestion);
 			} else { // Multiple choice.
 				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
