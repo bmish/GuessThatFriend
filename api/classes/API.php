@@ -8,7 +8,7 @@ class API {
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
-			API::outputExampleJSON("getQuestions.json");
+			JSON::outputExampleJSON("getQuestions.json");
 			return;
 		}
 		
@@ -25,11 +25,11 @@ class API {
 
 		// Build object to represent the JSON we will display.
 		$output = array();
-		$output["questions"] = API::jsonSerializeArray($questions);
+		$output["questions"] = JSON::jsonSerializeArray($questions);
 		$output["success"] = true;
-		$output["duration"] = API::calculateLoadingDuration($timeStart);
+		$output["duration"] = Util::calculateLoadingDuration($timeStart);
 		
-		API::outputArrayInJSON($output);
+		JSON::outputArrayInJSON($output);
 	}
 
 	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes) {
@@ -40,7 +40,7 @@ class API {
 		
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
-			API::outputExampleJSON("submitQuestions.json");
+			JSON::outputExampleJSON("submitQuestions.json");
 			return;
 		}
 		
@@ -52,21 +52,21 @@ class API {
 		$output = array();
 		$output["questionIds"] = $questionIdsOfSavedAnswers;
 		$output["success"] = true;
-		$output["duration"] = API::calculateLoadingDuration($timeStart);
+		$output["duration"] = Util::calculateLoadingDuration($timeStart);
  		
-		API::outputArrayInJSON($output);
+		JSON::outputArrayInJSON($output);
 	}
 	
 	public static function getCategories() {
 		// Get categories from database.
 		$result = mysql_query("SELECT * FROM categories");
 		if (!$result || mysql_num_rows($result) == 0) {
-			API::outputFailure("No categories found in database.");
+			JSON::outputFailure("No categories found in database.");
 			return;
 		}
 
-		$arr = API::getArrayOfDBResult($result);
-		API::outputArrayInJSON($arr);
+		$arr = DB::getArrayOfDBResult($result);
+		JSON::outputArrayInJSON($arr);
 	}
 
 	public static function getStatistics($facebookAccessToken, $type){
@@ -83,11 +83,11 @@ class API {
 		// Check authentication.
 		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
 			if ($type == StatisticType::FRIENDS) {
-				API::outputExampleJSON("getStatistics-friends.json");
+				JSON::outputExampleJSON("getStatistics-friends.json");
 			} elseif ($type == StatisticType::CATEGORIES) {
-				API::outputExampleJSON("getStatistics-categories.json");
+				JSON::outputExampleJSON("getStatistics-categories.json");
 			} elseif ($type == StatisticType::HISTORY) {
-				API::outputExampleJSON("getStatistics-history.json");
+				JSON::outputExampleJSON("getStatistics-history.json");
 			}
 			
 			return;
@@ -105,9 +105,9 @@ class API {
 		} elseif ($type == StatisticType::HISTORY) {
 			$output["questions"] = API::getQuestionHistory();
 		}
-		$output["duration"] = API::calculateLoadingDuration($timeStart);
+		$output["duration"] = Util::calculateLoadingDuration($timeStart);
 
-		API::outputArrayInJSON($output);
+		JSON::outputArrayInJSON($output);
 	}
 	
   private static function getCategoryStats() {
@@ -121,7 +121,7 @@ class API {
 										AND `chosenFacebookId` != ''
 										GROUP BY `categoryId`");
 		if (!$correctCountResult || !$totalCountResult) {
-			API::outputFailure("Statistics database query failed.");
+			JSON::outputFailure("Statistics database query failed.");
 			return array();
 		}
 
@@ -167,15 +167,11 @@ class API {
 
 		return array_values($categoriesArray);
 	}
-  
-	private static function calculateLoadingDuration($timeStart) {
-		return round(microtime(true) - $timeStart, 2);
-	}
 	
 	private static function getQuestionHistory() {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		return API::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
+		return JSON::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
 	}
 
 	private static function getFriendStats() {
@@ -189,7 +185,7 @@ class API {
 										AND `chosenFacebookId` != ''
 										GROUP BY `topicFacebookId`");
 		if (!$correctResult || !$totalResult) {
-			API::outputFailure("Statistics database query failed.");
+			JSON::outputFailure("Statistics database query failed.");
 			return array();
 		}
 
@@ -286,50 +282,6 @@ class API {
 			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			mysql_query($updateQuery);
 		}
-	}
-	
-	private static function getArrayOfDBResult($result) {
-		$arr = array();
-		while ($row = mysql_fetch_assoc($result)) {
-			$arr[] = $row;
-		}
-		
-		return $arr;
-	}
-	
-	// Input an array and return a new one out that is ready to be converted to JSON.
-	// php 5.4.0 will bring automatic JsonSerializable functionality.
-	public static function jsonSerializeArray($array) {
-		$ret = array();
-		
-		for ($i = 0; $i < count($array); $i++) {
-			$ret[] = $array[$i]->jsonSerialize();
-		}
-		
-		return $ret;
-	}
-	
-	private static function outputExampleJSON($filename) {
-		header('Content-type: application/json');
-		require_once("examples/json/".$filename);
-	}
-	
-	private static function outputArrayInJSON($json) {
-		header('Content-type: application/json');
-		echo json_encode($json);
-	}
-	
-	public static function outputFailure($message = "") {
-		$output = array();
-		if (!empty($message)) {
-			$output["message"] = $message;
-		}
-		$output["success"] = false;
-		
-		header('Content-type: application/json');
-		echo json_encode($output);
-		
-		exit;
 	}
 	
 	public static function getQuestionAnswersFromGETVars() {

@@ -37,7 +37,7 @@ class MCQuestion extends Question
 	
 	public function jsonSerialize() {
 		$obj = parent::jsonSerialize();
-		$obj["options"] = API::jsonSerializeArray($this->options);
+		$obj["options"] = JSON::jsonSerializeArray($this->options);
 		
 		return $obj;
 	}

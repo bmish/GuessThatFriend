@@ -100,7 +100,7 @@ abstract class Question
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {
-			API::outputFailure("Unable to save question to database.");
+			JSON::outputFailure("Unable to save question to database.");
 			
 			return false;
 		}

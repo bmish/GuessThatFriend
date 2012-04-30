@@ -26,5 +26,14 @@ class DB {
 	public static function cleanOutputFromDatabase($output) {
 		return stripslashes($output);
 	}
+	
+	public static function getArrayOfDBResult($result) {
+		$arr = array();
+		while ($row = mysql_fetch_assoc($result)) {
+			$arr[] = $row;
+		}
+		
+		return $arr;
+	}
 }
 ?>

@@ -71,11 +71,11 @@ class FacebookAPI	{
 		$triesCount = 0;
 		do {
 			if (++$triesCount == $MAX_TRIES) {
-				API::outputFailure("Could not find a friend with a sufficient number of likes.");
+				JSON::outputFailure("Could not find a friend with a sufficient number of likes.");
 				return null;
 			}
 			
-			$friend = $this->getRandomElement($friends);
+			$friend = Util::getRandomElement($friends);
 			$likesSubjects = $this->getLikesOfFriend($friend->facebookId);
 		} while (count($likesSubjects) < $MIN_ACCEPTABLE_LIKES);
 		
@@ -101,7 +101,7 @@ class FacebookAPI	{
 			}
 		}
 		
-		return $this->getRandomElement($friendsWhoLike);
+		return Util::getRandomElement($friendsWhoLike);
 	}
 		
 	/*
@@ -167,10 +167,10 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if (++$triesCount == $MAX_TRIES) {
-					API::outputFailure("The randomPages database table may not contain a large enough variety of random pages.");
+					JSON::outputFailure("The randomPages database table may not contain a large enough variety of random pages.");
 					return null;
 				}
-				$like = $this->getRandomElement($likes);
+				$like = Util::getRandomElement($likes);
 			} while($like->nameIsLikelyASentence() || !$like->category->enoughRandomPagesOfSameCategory());
 			return $like;
 		}	
@@ -183,15 +183,7 @@ class FacebookAPI	{
 			}
 		}
 		
-		return $this->getRandomElement($likesOfCategory);
-	}
-	
-	private function getRandomElement($arr = null)	{
-		if ($arr && count($arr) > 0) {
-			return $arr[array_rand($arr, 1)];
-		}
-		
-		return null;
+		return Util::getRandomElement($likesOfCategory);
 	}
 		
 	public function getRandomSubject($category = null) {

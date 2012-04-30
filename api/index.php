@@ -8,12 +8,15 @@ require_once('classes/MCQuestion.php');
 require_once('classes/API.php');
 require_once('classes/Cache.php');
 require_once('classes/Category.php');
+require_once('classes/DB.php');
+require_once('classes/FacebookAPI.php');
+require_once('classes/JSON.php');
 require_once('classes/Option.php');
 require_once('classes/OptionType.php');
-require_once('classes/DB.php');
 require_once('classes/StatisticType.php');
 require_once('classes/Subject.php');
-require_once('classes/FacebookAPI.php');
+require_once('classes/Util.php');
+
 require_once('config/config.php');
 require_once('../references/facebook-php-sdk/src/facebook.php');
 

@@ -24,7 +24,7 @@ class Option
 		$queryResult = mysql_query($insertQuery);
 		
 		if (!$queryResult) {
-			API::outputFailure("Unable to save question options to database.");
+			JSON::outputFailure("Unable to save question options to database.");
 			
 			return false;
 		}
