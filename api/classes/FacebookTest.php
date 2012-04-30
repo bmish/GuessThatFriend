@@ -60,7 +60,7 @@ class FacebookTest{
 	}
 	
 	public function FacebookTest() {
-		$this->facebookAPI = new FacebookAPI();
+		$this->facebookAPI = FacebookAPI::singleton();
 		$this->facebookAPI->authenticate("");
 	}
 }

@@ -2,6 +2,8 @@
 // https://developers.facebook.com/docs/reference/php/
 
 class FacebookAPI	{
+	private static $instance;
+	
 	private $facebook;
 	private $facebookId;
 	private $likesCache;
@@ -9,7 +11,7 @@ class FacebookAPI	{
 	private $namesCache;
 	private $facebookAccessToken;
 	
-	public function __construct() {
+	private function __construct() {
 		$this->facebook = new Facebook(array(
 			'appId' => FB_APP_ID,
 			'secret' => FB_SECRET,
@@ -18,6 +20,15 @@ class FacebookAPI	{
 		$this->likesCache = array(); // Cache any likes we request.
 		$this->friendsCache = array(); // Cache any friends we request.
 		$this->namesCache = array(); // Cache any names we request.
+	}
+	
+	public static function singleton() {
+		if (!isset(self::$instance)) {
+			$className = __CLASS__;
+			self::$instance = new $className;
+		}
+		
+		return self::$instance;
 	}
 	
 	/* 

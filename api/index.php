@@ -19,7 +19,7 @@ require_once('../references/facebook-php-sdk/src/facebook.php');
 DB::connect();
 
 // Setup Facebook API.
-$facebookAPI = new FacebookAPI();
+$facebookAPI = FacebookAPI::singleton();
 
 // Handle an API request.
 $cmd = $_GET['cmd'];
