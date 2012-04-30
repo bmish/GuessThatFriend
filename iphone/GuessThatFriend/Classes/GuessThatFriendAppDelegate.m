@@ -31,7 +31,9 @@
 @synthesize nextButton;
 @synthesize quizManager;
 @synthesize responseTimer;
-@synthesize statsNeedsUpdate;
+@synthesize statsFriendsNeedsUpdate;
+@synthesize statsCategoriesNeedsUpdate;
+@synthesize statsHistoryNeedsUpdate;
 @synthesize plistImageDict;
 
 - (void)nextButtonPressed:(id)sender {
@@ -84,7 +86,9 @@
     [self setNavBarBackground];
     
     [self initImagePlist];
-    statsNeedsUpdate = YES;
+    statsFriendsNeedsUpdate = YES;
+    statsCategoriesNeedsUpdate = YES;
+    statsHistoryNeedsUpdate = YES;
         
     responseTimer = [NSDate date];
     [responseTimer retain];

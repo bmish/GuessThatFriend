@@ -61,6 +61,11 @@
 		4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */; };
 		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
+		4D922B51154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */; };
+		4D922B54154EF1D50092B5F4 /* StatsHistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */; };
+		4D922B57154EF24E0092B5F4 /* StatsCategoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */; };
+		4D922B5A154EF25E0092B5F4 /* StatsHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */; };
+		4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */; };
 		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
@@ -84,7 +89,7 @@
 		93E21C09150DBDD000A475DC /* UnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E21C08150DBDD000A475DC /* UnitTesting.m */; };
 		93FC73C614F9AE15002EB781 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC73C514F9AE15002EB781 /* Question.m */; };
 		BA6F95961533DE3600C875F1 /* StatsFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */; };
-		BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsViewController.xib */; };
+		BA6F95971533DE3600C875F1 /* StatsFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */; };
 		BA8F71A71535063F000C7458 /* StatsFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */; };
 		BA8F71A91535079C000C7458 /* StatsFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */; };
 		BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA983F751548C2EC001D59B0 /* imageCachePlist.plist */; };
@@ -180,6 +185,13 @@
 		4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizManager.m; sourceTree = "<group>"; };
 		4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSettings.h; sourceTree = "<group>"; };
 		4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizSettings.m; sourceTree = "<group>"; };
+		4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCategoryCustomCell.xib; sourceTree = "<group>"; };
+		4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsHistoryCustomCell.xib; sourceTree = "<group>"; };
+		4D922B55154EF24E0092B5F4 /* StatsCategoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCategoryCustomCell.h; sourceTree = "<group>"; };
+		4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoryCustomCell.m; sourceTree = "<group>"; };
+		4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryCustomCell.h; sourceTree = "<group>"; };
+		4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHistoryCustomCell.m; sourceTree = "<group>"; };
+		4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCategoryViewController.xib; sourceTree = "<group>"; };
 		4DA0E9D515074FEF002AFFBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		4DA0E9D615074FEF002AFFBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -219,8 +231,8 @@
 		93FC73C514F9AE15002EB781 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		BA6F95931533DE3600C875F1 /* StatsFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsFriendsViewController.h; sourceTree = "<group>"; };
 		BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsFriendsViewController.m; sourceTree = "<group>"; };
-		BA6F95951533DE3600C875F1 /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = Classes/StatsViewController.xib; sourceTree = "<group>"; };
-		BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StatsFriendCustomCell.h; sourceTree = "<group>"; };
+		BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsFriendViewController.xib; path = Classes/StatsFriendViewController.xib; sourceTree = "<group>"; };
+		BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsFriendCustomCell.h; sourceTree = "<group>"; };
 		BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsFriendCustomCell.m; sourceTree = "<group>"; };
 		BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsFriendCustomCell.xib; sourceTree = "<group>"; };
 		BA983F751548C2EC001D59B0 /* imageCachePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = imageCachePlist.plist; sourceTree = "<group>"; };
@@ -518,6 +530,10 @@
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
 				BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */,
 				BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */,
+				4D922B55154EF24E0092B5F4 /* StatsCategoryCustomCell.h */,
+				4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */,
+				4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */,
+				4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */,
 			);
 			name = CommonViewControllers;
 			sourceTree = "<group>";
@@ -527,8 +543,11 @@
 			children = (
 				4DB708741541E2D400FD0517 /* MainWindow.xib */,
 				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
-				BA6F95951533DE3600C875F1 /* StatsViewController.xib */,
+				BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */,
+				4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */,
 				BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */,
+				4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */,
+				4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */,
 			);
 			name = "Common Nibs";
 			sourceTree = "<group>";
@@ -699,7 +718,7 @@
 				4D3F818A14F98E9500245D4F /* subclasses.pbxbtree in Resources */,
 				4D3F818B14F98E9500245D4F /* symbols0.pbxsymbols in Resources */,
 				4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */,
-				BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */,
+				BA6F95971533DE3600C875F1 /* StatsFriendViewController.xib in Resources */,
 				BA8F71A91535079C000C7458 /* StatsFriendCustomCell.xib in Resources */,
 				4DB4F5281541C5DB00106D78 /* tab1.png in Resources */,
 				4DB4F52C1541C5E300106D78 /* tab2.png in Resources */,
@@ -715,6 +734,9 @@
 				4D6479941543895F00402CF7 /* Button_Setting.png in Resources */,
 				4D6479981543896900402CF7 /* Button_Statistic.png in Resources */,
 				BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */,
+				4D922B51154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib in Resources */,
+				4D922B54154EF1D50092B5F4 /* StatsHistoryCustomCell.xib in Resources */,
+				4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +807,8 @@
 				4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */,
 				4DF2780C154E7AFF00603D4A /* CategoryStatsObject.m in Sources */,
 				4DF2780F154E7B1100603D4A /* HistoryStatsObject.m in Sources */,
+				4D922B57154EF24E0092B5F4 /* StatsCategoryCustomCell.m in Sources */,
+				4D922B5A154EF25E0092B5F4 /* StatsHistoryCustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,15 +12,15 @@
     NSString *name;         // Full name.
     int correctCount;
     int totalCount;
-    int fastestCorrectResponseTime;
-    int averageResponseTime;
+    float fastestCorrectResponseTime;
+    float averageResponseTime;
 }
 
 @property (nonatomic, retain) NSString *name;
 @property int correctCount;
 @property int totalCount;
-@property int fastestCorrectResponseTime;
-@property int averageResponseTime;
+@property float fastestCorrectResponseTime;
+@property float averageResponseTime;
 
 - (CategoryStatsObject *)initWithName:(NSString *)categoryName andCorrectCount:(int)cCount andTotalCount:(int)tCount andCorrectRT:(int)cRT andAverageRT:(int)aRT;
 

@@ -111,16 +111,14 @@
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Only update the stats when we have to.
-    if (delegate.statsNeedsUpdate) {
+    if (delegate.statsFriendsNeedsUpdate) {
         [self requestStatisticsFromServer:NO];
-        delegate.statsNeedsUpdate = NO;
+        delegate.statsFriendsNeedsUpdate = NO;
     }
     [spinner stopAnimating];
     [table reloadData];
     
     threadIsRunning = NO;
-
-    NSLog(@"Inside Thread!");
 }
 
 /* Everytime this view will appear, we ask the server for stats jason */
@@ -128,7 +126,7 @@
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if (delegate.statsNeedsUpdate && threadIsRunning == NO) {
+    if (delegate.statsFriendsNeedsUpdate && threadIsRunning == NO) {
         //SPINNER
         spinner = [[UIActivityIndicatorView alloc] 
                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

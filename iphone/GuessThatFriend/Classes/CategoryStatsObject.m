@@ -17,8 +17,14 @@
     self.name = categoryName;
     self.correctCount = cCount;
     self.totalCount = tCount;
-    self.fastestCorrectResponseTime = cRT;
-    self.averageResponseTime = aRT;
+    self.fastestCorrectResponseTime = ((float)cRT) / 1000.0;
+    if (self.fastestCorrectResponseTime < 0) {
+        self.fastestCorrectResponseTime *= -1;
+    }
+    self.averageResponseTime = ((float)aRT) / 1000.0;
+    if (self.averageResponseTime < 0) {
+        self.averageResponseTime *= -1;
+    }
     
     return [super init];
 }

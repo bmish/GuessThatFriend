@@ -14,7 +14,7 @@
     NSString *correctAnswer;
     NSString *yourAnswer;
     NSString *date;
-    int responseTime;
+    float responseTime;
 }
 
 @property (nonatomic, retain) NSString *question;
@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSString *correctAnswer;
 @property (nonatomic, retain) NSString *yourAnswer;
 @property (nonatomic, retain) NSString *date;
-@property int responseTime;
+@property float responseTime;
 
 - (HistoryStatsObject *)initWithQuestion:(NSString *)text andImagePath:(NSString *)imagePath andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt;
 

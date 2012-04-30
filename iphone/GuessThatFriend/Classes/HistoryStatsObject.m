@@ -23,7 +23,7 @@
     self.correctAnswer = cAnswer;
     self.yourAnswer = yAnswer;
     self.date = theDate;
-    self.responseTime = rt;
+    self.responseTime = ((float)rt) / 1000.0;
     
     return [super init];
 }

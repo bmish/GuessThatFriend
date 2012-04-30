@@ -162,7 +162,7 @@
     tableView.allowsSelection = NO;
     
     // New question answered, the stats is dirty now.
-    delegate.statsNeedsUpdate = YES;
+    delegate.statsFriendsNeedsUpdate = YES;
 }
 
 - (CGFloat) tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

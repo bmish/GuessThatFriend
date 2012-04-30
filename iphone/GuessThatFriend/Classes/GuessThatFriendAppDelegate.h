@@ -34,7 +34,9 @@
     NSMutableDictionary* plistImageDict;
     QuizManager *quizManager;
     
-    BOOL statsNeedsUpdate;
+    BOOL statsFriendsNeedsUpdate;
+    BOOL statsCategoriesNeedsUpdate;
+    BOOL statsHistoryNeedsUpdate;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -51,7 +53,9 @@
 @property (nonatomic, retain) NSDate *responseTimer;
 @property (nonatomic, retain) NSMutableDictionary* plistImageDict;
 
-@property BOOL statsNeedsUpdate;
+@property BOOL statsFriendsNeedsUpdate;
+@property BOOL statsCategoriesNeedsUpdate;
+@property BOOL statsHistoryNeedsUpdate;
 
 - (UIImage*) getPicture:(NSString*)imageURL;
 @end
