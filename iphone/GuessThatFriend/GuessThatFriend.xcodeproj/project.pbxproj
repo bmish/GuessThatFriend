@@ -85,8 +85,8 @@
 		93FC73C614F9AE15002EB781 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC73C514F9AE15002EB781 /* Question.m */; };
 		BA6F95961533DE3600C875F1 /* StatsFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */; };
 		BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsViewController.xib */; };
-		BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsCustomCell.m */; };
-		BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsCustomCell.xib */; };
+		BA8F71A71535063F000C7458 /* StatsFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */; };
+		BA8F71A91535079C000C7458 /* StatsFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */; };
 		BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA983F751548C2EC001D59B0 /* imageCachePlist.plist */; };
 /* End PBXBuildFile section */
 
@@ -220,9 +220,9 @@
 		BA6F95931533DE3600C875F1 /* StatsFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsFriendsViewController.h; sourceTree = "<group>"; };
 		BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsFriendsViewController.m; sourceTree = "<group>"; };
 		BA6F95951533DE3600C875F1 /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = Classes/StatsViewController.xib; sourceTree = "<group>"; };
-		BA8F71A51535063F000C7458 /* StatsCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCustomCell.h; sourceTree = "<group>"; };
-		BA8F71A61535063F000C7458 /* StatsCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCustomCell.m; sourceTree = "<group>"; };
-		BA8F71A81535079C000C7458 /* StatsCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCustomCell.xib; sourceTree = "<group>"; };
+		BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StatsFriendCustomCell.h; sourceTree = "<group>"; };
+		BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsFriendCustomCell.m; sourceTree = "<group>"; };
+		BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsFriendCustomCell.xib; sourceTree = "<group>"; };
 		BA983F751548C2EC001D59B0 /* imageCachePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = imageCachePlist.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -516,8 +516,8 @@
 				4DFC3A9415400CEF00648D9A /* StatsViewControllers */,
 				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
-				BA8F71A51535063F000C7458 /* StatsCustomCell.h */,
-				BA8F71A61535063F000C7458 /* StatsCustomCell.m */,
+				BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */,
+				BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */,
 			);
 			name = CommonViewControllers;
 			sourceTree = "<group>";
@@ -528,7 +528,7 @@
 				4DB708741541E2D400FD0517 /* MainWindow.xib */,
 				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
 				BA6F95951533DE3600C875F1 /* StatsViewController.xib */,
-				BA8F71A81535079C000C7458 /* StatsCustomCell.xib */,
+				BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */,
 			);
 			name = "Common Nibs";
 			sourceTree = "<group>";
@@ -700,7 +700,7 @@
 				4D3F818B14F98E9500245D4F /* symbols0.pbxsymbols in Resources */,
 				4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */,
 				BA6F95971533DE3600C875F1 /* StatsViewController.xib in Resources */,
-				BA8F71A91535079C000C7458 /* StatsCustomCell.xib in Resources */,
+				BA8F71A91535079C000C7458 /* StatsFriendCustomCell.xib in Resources */,
 				4DB4F5281541C5DB00106D78 /* tab1.png in Resources */,
 				4DB4F52C1541C5E300106D78 /* tab2.png in Resources */,
 				4DB4F52D1541C5E300106D78 /* tab3.png in Resources */,
@@ -777,7 +777,7 @@
 				938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */,
 				4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */,
 				BA6F95961533DE3600C875F1 /* StatsFriendsViewController.m in Sources */,
-				BA8F71A71535063F000C7458 /* StatsCustomCell.m in Sources */,
+				BA8F71A71535063F000C7458 /* StatsFriendCustomCell.m in Sources */,
 				4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */,
 				4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */,
 				4D2E99DA154391BA0047F418 /* UIBarButtonItem+Image.m in Sources */,

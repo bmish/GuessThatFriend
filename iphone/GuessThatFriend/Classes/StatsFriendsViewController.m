@@ -7,7 +7,7 @@
 //
 
 #import "StatsFriendsViewController.h"
-#import "StatsCustomCell.h"
+#import "StatsFriendCustomCell.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "JSONKit.h"
 #import "FriendStatsObject.h"
@@ -157,10 +157,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	StatsCustomCell *cell = (StatsCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"StatsCustomCellIdentifier"];
+	StatsFriendCustomCell *cell = (StatsFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"StatsFriendCustomCellIdentifier"];
 	
 	if(cell == nil) {
-		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StatsCustomCell" owner:self options:nil];
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StatsFriendCustomCell" owner:self options:nil];
 		cell = [nib objectAtIndex:0];
 	}
 	

@@ -1,5 +1,5 @@
 //
-//  StatsCustomCell.h
+//  StatsFriendCustomCell.h
 //  GuessThatFriend
 //
 //  Created on 4/10/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StatsCustomCell : UITableViewCell {
+@interface StatsFriendCustomCell : UITableViewCell {
 	UIImageView *picture;
 	UILabel *name;
     UIProgressView *progressBar;

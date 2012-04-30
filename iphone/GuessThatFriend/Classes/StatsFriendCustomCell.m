@@ -1,14 +1,14 @@
 //
-//  StatsCustomCell.m
+//  StatsFriendCustomCell.m
 //  GuessThatFriend
 //
 //  Created on 4/10/12.
 //  Copyright (c) 2012 University of Illinois at Urbana-Champaign. All rights reserved.
 //
 
-#import "StatsCustomCell.h"
+#import "StatsFriendCustomCell.h"
 
-@implementation StatsCustomCell
+@implementation StatsFriendCustomCell
 
 @synthesize percentageLabel;
 @synthesize progressBar;
