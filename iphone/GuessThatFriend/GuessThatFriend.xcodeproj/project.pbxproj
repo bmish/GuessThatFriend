@@ -70,6 +70,8 @@
 		4DB708731541E2D400FD0517 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB708741541E2D400FD0517 /* MainWindow.xib */; };
 		4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */; };
 		4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27808154E776D00603D4A /* StatsHistoryViewController.m */; };
+		4DF2780C154E7AFF00603D4A /* CategoryStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2780B154E7AFF00603D4A /* CategoryStatsObject.m */; };
+		4DF2780F154E7B1100603D4A /* HistoryStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2780E154E7B1100603D4A /* HistoryStatsObject.m */; };
 		4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */; };
 		4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */; };
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
@@ -189,8 +191,12 @@
 		4DB708741541E2D400FD0517 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4DF27804154E775D00603D4A /* StatsCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCategoriesViewController.h; sourceTree = "<group>"; };
 		4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoriesViewController.m; sourceTree = "<group>"; };
-		4DF27807154E776D00603D4A /* StatsHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = StatsHistoryViewController.h; sourceTree = "<group>"; };
+		4DF27807154E776D00603D4A /* StatsHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryViewController.h; sourceTree = "<group>"; };
 		4DF27808154E776D00603D4A /* StatsHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHistoryViewController.m; sourceTree = "<group>"; };
+		4DF2780A154E7AFF00603D4A /* CategoryStatsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryStatsObject.h; sourceTree = "<group>"; };
+		4DF2780B154E7AFF00603D4A /* CategoryStatsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryStatsObject.m; sourceTree = "<group>"; };
+		4DF2780D154E7B1100603D4A /* HistoryStatsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryStatsObject.h; sourceTree = "<group>"; };
+		4DF2780E154E7B1100603D4A /* HistoryStatsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryStatsObject.m; sourceTree = "<group>"; };
 		4DFC3A9015400CE200648D9A /* StatsBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsBaseViewController.h; sourceTree = "<group>"; };
 		4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBaseViewController.m; sourceTree = "<group>"; };
 		4DFD9A9815352ECD00BB8F92 /* FriendStatsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatsObject.h; sourceTree = "<group>"; };
@@ -333,6 +339,10 @@
 				93BA120B14F9BAF000248763 /* Subject.m */,
 				4DFD9A9815352ECD00BB8F92 /* FriendStatsObject.h */,
 				4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */,
+				4DF2780A154E7AFF00603D4A /* CategoryStatsObject.h */,
+				4DF2780B154E7AFF00603D4A /* CategoryStatsObject.m */,
+				4DF2780D154E7B1100603D4A /* HistoryStatsObject.h */,
+				4DF2780E154E7B1100603D4A /* HistoryStatsObject.m */,
 				4D2E99D8154391BA0047F418 /* UIBarButtonItem+Image.h */,
 				4D2E99D9154391BA0047F418 /* UIBarButtonItem+Image.m */,
 			);
@@ -773,6 +783,8 @@
 				4D2E99DA154391BA0047F418 /* UIBarButtonItem+Image.m in Sources */,
 				4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */,
 				4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */,
+				4DF2780C154E7AFF00603D4A /* CategoryStatsObject.m in Sources */,
+				4DF2780F154E7B1100603D4A /* HistoryStatsObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,8 +12,13 @@
 
 @implementation StatsBaseViewController
 
-@synthesize friendsList;
-@synthesize friendsTable;
+@synthesize list;
+@synthesize table;
+
+- (void)getStatisticsThread {
+    // Not used.
+    // Should be implemented by inherited classes.
+}
 
 - (IBAction)backItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -28,12 +33,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    friendsList = [[NSMutableArray alloc] initWithCapacity:10];
+    list = [[NSMutableArray alloc] initWithCapacity:10];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    self.friendsTable = nil;
+    self.table = nil;
 }
 
 
@@ -55,8 +60,8 @@
 }
 
 - (void)dealloc {
-    [friendsTable release];
-    [friendsList release];
+    [table release];
+    [list release];
     
     [super dealloc];
 }

@@ -38,7 +38,7 @@
     }
     
     // Empty the current list
-    [friendsList removeAllObjects];
+    [list removeAllObjects];
     
     NSArray *friendsArray = [responseDictionary objectForKey:@"friends"];
     NSEnumerator *friendEnumerator = [friendsArray objectEnumerator];
@@ -58,7 +58,7 @@
         
         FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithName:name andImagePath:picURL andCorrectCount:correctCount andTotalCount:totalCount];
         
-        [friendsList addObject:statsObj];
+        [list addObject:statsObj];
         
         [statsObj release];
     }
@@ -116,7 +116,7 @@
         delegate.statsNeedsUpdate = NO;
     }
     [spinner stopAnimating];
-    [friendsTable reloadData];
+    [table reloadData];
     
     threadIsRunning = NO;
 
@@ -151,8 +151,8 @@
 #pragma mark Table View Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"Table cell count: %i", [self.friendsList count]);
-	return [self.friendsList count];
+    NSLog(@"Table cell count: %i", [self.list count]);
+	return [self.list count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -166,7 +166,7 @@
 	
 	NSUInteger row = [indexPath row];
 	
-    FriendStatsObject *obj = [friendsList objectAtIndex:row];
+    FriendStatsObject *obj = [list objectAtIndex:row];
     cell.picture.image = obj.picture;
 	
     // Make sure the name is valid.

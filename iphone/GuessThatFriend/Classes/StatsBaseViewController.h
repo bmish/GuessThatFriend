@@ -14,14 +14,16 @@
 #define BASE_URL_ADDR                               "http://guessthatfriend.jasonsze.com/api/"
 
 @interface StatsBaseViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    UITableView *friendsTable;
-    NSMutableArray *friendsList;
+    UITableView *table;
+    NSMutableArray *list;
     
     UIActivityIndicatorView *spinner;
     BOOL threadIsRunning;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *friendsTable;
-@property (nonatomic, retain) NSMutableArray *friendsList;
+@property (nonatomic, retain) IBOutlet UITableView *table;
+@property (nonatomic, retain) NSMutableArray *list;
+
+- (void)getStatisticsThread;
 
 @end
