@@ -1,8 +1,25 @@
 <?php
-class MCQuestion extends Question
-{
+/**
+ * This class implements a fill-in-the-blanks question in the GuessThatFriend app.
+ *
+ * @property array $options
+ *
+ * @copyright  2012 GuessThatFriend
+ */
+class MCQuestion extends Question	{
+
 	private $options;
 
+	/**
+	 * __construct
+	 *
+	 * @param string $ownerFacebookId Facebook ID of question owner (app user)
+	 * @param string $topicFacebookId Facebook ID of the question topic
+	 * @param int $categoryId ID of topic category
+	 * @param int $optionCount Number of options
+	 * @param int $questionId ID of question
+	 * @return void
+	 */
 	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $optionCount, $questionId = -1) {
 		parent::__construct($ownerFacebookId, $topicFacebookId, $categoryId, $questionId);
 
@@ -14,11 +31,22 @@ class MCQuestion extends Question
 		}
 	}
 	
+	/**
+	 * Makes question text based on the type of question.
+	 *
+	 * @see Question::makeQuestionText()
+	 * @todo Modify question to depend on subject type (person v.s. page)
+	 */
 	public function makeQuestionText() {
-		// TODO: modify question to depend on subject type (person v.s. page)
 		$this->text = "Which of the following ".strtolower($this->category->prettyName)." does ".$this->topicSubject->name." like?";
 	}
 	
+	/**
+	 * Generate list of options.
+	 *
+	 * @param int $optionCount The number of options to generate
+	 * @return void
+	 */
 	private function makeOptions($optionCount)	{
 		// Build a list of random pages to use for our incorrect options.
 		$randomPages = FacebookAPI::getRandomPage($this->category, $optionCount - 1, $topicSubject->facebookId);
@@ -35,6 +63,11 @@ class MCQuestion extends Question
 		}
 	}
 	
+	/**
+	 * Specify data which should be serialized to JSON.
+	 *
+	 * @return array Array formatted for JSON output
+	 */
 	public function jsonSerialize() {
 		$obj = parent::jsonSerialize();
 		$obj["options"] = JSON::jsonSerializeArray($this->options);

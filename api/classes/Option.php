@@ -1,10 +1,23 @@
 <?php
-class Option
-{
+/**
+ * This class implements an option (for a question) in the GuessThatFriend app.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
+class Option	{
+
 	private $optionId;
 	private $questionId;		// ID of the question that this option is part of.
 	private $topicSubject;		// The person or page that this option is about.
 	
+	/**
+	 * __construct
+	 *
+	 * @param int $questionId ID of the question which this option belongs to
+	 * @param Subject $topicSubject The topic subject of the option
+	 * @param int $optionId ID of the option
+	 * @return void
+	 */	
 	public function __construct($questionId, $topicSubject, $optionId = -1)	{
 		$this->optionId = $optionId;
 		$this->questionId = $questionId;
@@ -15,10 +28,21 @@ class Option
 		}
 	}
 
+	/**
+	 * Generic getter method.
+	 *
+	 * @param string $field Name of field
+	 * @return object Value of field
+	 */
 	public function __get($field) {
 		return $this->$field;
 	}
 
+	/**
+	 * Save option to database.
+	 *
+	 * @return bool True on successful query, false otherwise
+	 */
 	private function saveToDB()	{
 		$insertQuery = "INSERT INTO options (questionId, topicFacebookId) VALUES ('".$this->questionId."', '".$this->topicSubject->facebookId."')";
 		$result = mysql_query($insertQuery);
@@ -34,6 +58,13 @@ class Option
 		return true;
 	}
 	
+	/**
+	 * Get the options for a particular question from the database.
+	 *
+	 * @param int $questionId ID of the question
+	 * @return array Array of Options
+	 *
+	 */
 	public static function getOptionsFromDB($questionId) {
 		$optionQuery = "SELECT * FROM options WHERE questionId = '$questionId' ORDER BY optionId";
 		$result = mysql_query($optionQuery);
@@ -51,6 +82,11 @@ class Option
 		return $options;
 	}
 	
+	/**
+	 * Specify data which should be serialized to JSON.
+	 *
+	 * @return array Array formatted for JSON output
+	 */
 	public function jsonSerialize() {
 		$obj = array();
 		$obj["optionId"] = $this->optionId;

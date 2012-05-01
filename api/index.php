@@ -1,4 +1,10 @@
 <?php
+/**
+ * GuessThatFriend entry page.
+ *
+ * @copyright 2012 GuessThatFriend
+ */
+
 // Question includes.
 require_once('classes/Question.php');
 require_once('classes/FillBlankQuestion.php');

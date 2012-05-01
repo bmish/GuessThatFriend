@@ -1,5 +1,14 @@
 <?php
+/**
+ * This class implements the API functions for connecting to the database server.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
 class DB {
+
+	/**
+	 * Opens a connection to the database.
+	 */
 	public static function connect() {
 		global $con;
 		
@@ -14,19 +23,40 @@ class DB {
 		}
 	}
 
+	/**
+	 * Closes the connection to the database.
+	 */
 	public static function close() {
 		global $con;
 		mysql_close($con);
 	}
 	
+	/**
+	 * Cleans input for database.
+	 *
+	 * @param string $input Input text to be cleaned
+	 * @return string Cleaned input
+	 */
 	public static function cleanInputForDatabase($input) {
 		return addslashes(trim($input));
 	}
 
+	/**
+	 * Cleans output from database.
+	 *
+	 * @param string $output Output text to be cleaned
+	 * @return string Cleaned output
+	 */
 	public static function cleanOutputFromDatabase($output) {
 		return stripslashes($output);
 	}
 	
+	/**
+	 * Parses database result into an array.
+	 *
+	 * @param resource $result Database result
+	 * @return array Result in array form
+	 */
 	public static function getArrayOfDBResult($result) {
 		$arr = array();
 		while ($row = mysql_fetch_assoc($result)) {

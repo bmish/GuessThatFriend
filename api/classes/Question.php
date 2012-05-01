@@ -1,6 +1,13 @@
 <?php
-abstract class Question
-{
+/**
+ * This class models a question in the GuessThatFriend app.
+ *
+ * Abstract class to be extended by specific question types.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
+abstract class Question	{
+
 	protected $questionId;
 	protected $category; 			// Category of this Question (like books or movies). TODO: This will become redundant because it will be stored inside topicSubject.
 	protected $text; 				// Question text.
@@ -13,6 +20,15 @@ abstract class Question
 	protected $answeredAt;			// The date and time that the user answered the question in string format.
 	protected $responseTime;		// The number of milliseconds that the user took to answer the question.
 	
+	/**
+	 * __construct
+	 *
+	 * @param string $ownerFacebookId Facebook ID of question owner (app user)
+	 * @param string $topicFacebookId Facebook ID of the question topic
+	 * @param int $categoryId ID of topic category
+	 * @param int $questionId ID of question
+	 * @return void
+	 */	
 	public function __construct($ownerFacebookId, $topicFacebookId, $categoryId, $questionId = -1) {
 		$this->questionId = $questionId;
 		$this->category = empty($categoryId) ? null : new Category($categoryId);
@@ -39,10 +55,19 @@ abstract class Question
 		}
 	}
 	
+	/**
+	 * Generic getter method.
+	 *
+	 * @param string $field Name of field
+	 * @return object Value of field
+	 */
 	public function __get($field)	{
         return $this->$field;
 	}
 	
+	/**
+	 * Pick the question topic.
+	 */
 	protected function pickTopic()	{
 		$facebookAPI = FacebookAPI::singleton();
 		
@@ -57,6 +82,9 @@ abstract class Question
 		}
 	}
 	
+	/**
+	 * Pick a correct answer.
+	 */
 	protected function pickAnswer() {
 		$facebookAPI = FacebookAPI::singleton();
 		
@@ -68,10 +96,8 @@ abstract class Question
 		}
 	}
 	
-	/*
+	/**
 	 * Makes question text based on the type of question.
-	 * @param like : the chosen 'like'
-	 * @return the question text
 	 */
 	protected abstract function makeQuestionText();
 	
@@ -95,6 +121,11 @@ abstract class Question
 		return $obj;
 	}
 	
+	/**
+	 * Save question to database.
+	 *
+	 * @return bool True on successful query, false otherwise
+	 */
 	protected function saveToDB()	{
 		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, topicFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".DB::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->topicSubject->facebookId."','".$this->correctSubject->facebookId."')";
 		$result = mysql_query($insertQuery);
@@ -110,7 +141,13 @@ abstract class Question
 		return true;
 	}
 	
-	// Get questions from the database that the owner has answered.
+	/**
+	 * Get questions from the database that the owner has answered.
+	 *
+	 * @param string $ownerFacebookId Facebook ID of question owner (app user)
+	 * @return array Array of Questions
+	 *
+	 */
 	public static function getQuestionsFromDB($ownerFacebookId) {
 		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId != ''";
 		$result = mysql_query($questionQuery);

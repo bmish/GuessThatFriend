@@ -1,4 +1,9 @@
 <?php
+/**
+ * An enumeration for the type of options.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
 class OptionType {
 	const RANDOM = -1;
 	const FILL_IN_THE_BLANK = 0;
@@ -12,6 +17,12 @@ class OptionType {
 	const MC_MAX = OptionType::MC_6;
 	const DEFAULT_TYPE = OptionType::MC_4;
 	
+	/**
+	 * Checks if a type is valid.
+	 *
+	 * @param integer $type Type to check
+	 * @return bool True if the type is valid, false otherwise
+	 */
 	public static function isValid($type) {
 		return $type != "" && ($type == OptionType::RANDOM || $type == OptionType::FILL_IN_THE_BLANK || ($type >= OptionType::MC_MIN && $type <= OptionType::MC_MAX));
 	}

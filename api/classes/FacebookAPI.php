@@ -1,6 +1,14 @@
 <?php
-// https://developers.facebook.com/docs/reference/php/
-
+/**
+ * This class implements the API functions for communicating with the Facebook server.
+ *
+ * It uses the Singleton pattern. The Singleton ensures that there can be only one instance
+ * of a Class and provides a global access point to that instance. Singleton is a "Gang of
+ * Four" Creational Pattern.
+ *
+ * @copyright  2012 GuessThatFriend
+ * @see	https://developers.facebook.com/docs/reference/php/
+ */
 class FacebookAPI	{
 	private static $instance;
 	
@@ -11,6 +19,9 @@ class FacebookAPI	{
 	private $namesCache;
 	private $facebookAccessToken;
 	
+	/**
+	 * __construct
+	 */	
 	private function __construct() {
 		$this->facebook = new Facebook(array(
 			'appId' => FB_APP_ID,
@@ -22,6 +33,11 @@ class FacebookAPI	{
 		$this->namesCache = array(); // Cache any names we request.
 	}
 	
+	/**
+	 * Provides a global access point to the one and only instance of this class.
+	 *
+	 * @return FacebookAPI The one and only instance of this class
+	 */
 	public static function singleton() {
 		if (!isset(self::$instance)) {
 			$className = __CLASS__;
@@ -31,8 +47,11 @@ class FacebookAPI	{
 		return self::$instance;
 	}
 	
-	/* 
+	/**
 	 * Returns the user's friends.
+	 *
+	 * @param string $facebookId Facebook ID of user to get friends for
+	 * @return array Array of Subjects
 	 */
 	public function getFriendsOf($facebookId = "") {
 		if ($facebookId == "")	{
@@ -54,6 +73,12 @@ class FacebookAPI	{
 		return $this->friendsCache[$facebookId];
 	}
 	
+	/**
+	 * Returns a random friend.
+	 *
+	 * @param string $facebookId Facebook ID of user to get a friend for
+	 * @return Subject A random friend
+	 */
 	public function getRandomFriend($facebookId = "") {
 		if ($facebookId == "")	{
 			$facebookId = $this->getLoggedInUserId();
@@ -65,6 +90,12 @@ class FacebookAPI	{
 		return $this->chooseFriendWithSufficientLikes($friends);
 	}
 	
+	/**
+	 * Choose a friend with sufficient likes.
+	 *
+	 * @param array $friends List of friends to choose from
+	 * @return Subject A friend with sufficient likes
+	 */
 	private function chooseFriendWithSufficientLikes($friends) {
 		$MIN_ACCEPTABLE_LIKES = 2;
 		$MAX_TRIES = 10;
@@ -82,11 +113,12 @@ class FacebookAPI	{
 		return $friend;
 	}
 	
-	/*
+	/**
 	 * Returns a random friend who likes/ not like a page.
-	 * @param facebookId facebook id of the page
-	 * @param likeFlag boolean flag indicating whether the returned friend should like or not like the page
-	 * @return the random friend (subject)
+	 *
+	 * @param string $facebookId Facebook ID of the page
+	 * @param bool $likeFlag True if the chosen friend should like the page, false otherwise
+	 * @return Subject A random friend
 	 */
 	public function getRandomFriendWhoLikes($pageFacebookId = "", $likeFlag) {
 		if ($pageFacebookId == "")	{
@@ -104,11 +136,12 @@ class FacebookAPI	{
 		return Util::getRandomElement($friendsWhoLike);
 	}
 		
-	/*
+	/**
 	 * Returns whether a person likes a particular page.
-	 * @param facebookId - the facebook Id of the person
-	 * @param pageFacebookId - the facebook Id of the page
-	 * @return true if the person likes the page, false otherwise
+	 *
+	 * @param string $facebookId Facebook ID of the person
+	 * @param string $pageFacebookId Facebook ID of the page
+	 * @return bool True if the person likes the page, false otherwise
 	 */
 	public function likesPage($facebookId, $pageFacebookId)	{
 		$likes = $this->getLikesOfFriend($facebookId);
@@ -121,12 +154,13 @@ class FacebookAPI	{
 		return false;
 	}
 	
-	/*
+	/**
 	 * Returns a list of random pages.
-	 * @param category - the category of pages to return
-	 * @param count - the number of pages to return; default to 1
-	 * @param facebookId - the facebook Id of the friend to check for 'likes' condition; null if no check required
-	 * @return the list of random pages
+	 *
+	 * @param Category $category Category of pages to return
+	 * @param int $count Number of pages to return
+	 * @param string|null $facebookId Facebook ID of the friend to check for 'likes' condition; null if no check required
+	 * @return array Array of random pages
 	 */
 	public function getRandomPage($category = null, $count = 1, $facebookId = null) {
 		if (!$category) {
@@ -158,6 +192,14 @@ class FacebookAPI	{
 		return $pages;
 	}
 	
+	/**
+	 * Returns a random like (page) for a particular person.
+	 *
+	 * @param string $facebookId Facebook ID of the person
+	 * @param Category $category Specific category to look for
+	 * @return Subject Random page
+	 * @todo May need to deal with insufficient data for requested category
+	 */
 	public function getRandomLikedPage($facebookId = "", $category = null)	{
 		$likes = $this->getLikesOfFriend($facebookId);
 		
@@ -185,7 +227,13 @@ class FacebookAPI	{
 		
 		return Util::getRandomElement($likesOfCategory);
 	}
-		
+	
+	/**
+	 * Returns a random subject (person or page).
+	 *
+	 * @param Category $category Specific page category to look for; null if none specified or requesting a person
+	 * @return Subject Random subject
+	 */
 	public function getRandomSubject($category = null) {
 		if ($category) {
 			$randomPages = $this->getRandomPage($category);
@@ -195,6 +243,12 @@ class FacebookAPI	{
 		return $this->getRandomFriend();
 	}
 	
+	/**
+	 * Parses JSON string into subjects.
+	 *
+	 * @param string $json JSON string to parse
+	 * @return array Array of Subjects
+	 */
 	private static function jsonToSubjects($json) {
 		$subjects = array();
 		for ($i = 0; $i < sizeof($json); $i++)	{
@@ -207,6 +261,9 @@ class FacebookAPI	{
 	
 	/*
 	 * Returns a particular friend's likes.
+	 *
+	 * @param string $facebookId Facebook ID of user to get likes for
+	 * @return array Array of likes
 	 */
 	public function getLikesOfFriend($facebookId = "") {
 		if ($facebookId == "") { // Use logged in user's id.
@@ -229,9 +286,12 @@ class FacebookAPI	{
 	}
 	
 	/*
-	 * Returns the facebook object's name for a given ID.
+	 * Returns the facebook subject's name for a given ID.
+	 *
+	 * @param string $facebookId Facebook ID for the subject
+	 * @return string Name of the subject
 	 */
-	public function getNameFromId($facebookId) {
+	public function getNameFromId($facebookId = "") {
 		if ($facebookId == "")	{
 			$facebookId = $this->getLoggedInUserId();
 		}
@@ -253,6 +313,8 @@ class FacebookAPI	{
 
 	/*
 	 * Returns the facebook app URL.
+	 *
+	 * @return string App URL
 	 */
 	public function getAppURL() {
 		return $this->getFacebookURL(FB_APP_ID);
@@ -260,9 +322,12 @@ class FacebookAPI	{
 	
 	/*
 	 * Returns a facebook object's URL.
+	 *
+	 * @param string $facebookId Facebook ID of the object
+	 * @return string|bool URL if it exists, false otherwise
 	 */
-	public function getFacebookURL($id)	{
-		$content = file_get_contents('https://graph.facebook.com/'.$id);
+	public function getFacebookURL($facebookId)	{
+		$content = file_get_contents('https://graph.facebook.com/'.$facebookId);
 		$content = json_decode($content);
 		
 		if ($content->link) {
@@ -272,7 +337,12 @@ class FacebookAPI	{
 		return false;
 	}	
 	
-	// Log user in with given access token. Return user ID if login is successful, or false if no logged-in user.
+	/**
+	 * Log user in with given access token.
+	 * 
+	 * @param string $facebookAccessToken Facebook Access Token
+	 * @return string|bool User Facebook ID if login is successful, false if no logged-in user.
+	 */
 	public function authenticate($facebookAccessToken) {
 		$this->facebook->setAccessToken($facebookAccessToken);
 		$this->facebookAccessToken = DB::cleanInputForDatabase($facebookAccessToken);
@@ -288,6 +358,11 @@ class FacebookAPI	{
 		return $this->getLoggedInUserId();
 	}
 	
+	/**
+	 * Updates logged-in user's database record.
+	 *
+	 * @return bool True on successful query, false otherwise
+	 */
 	public function updateLoggedInUserDatabaseRecord() {
 		$insertQuery = "INSERT INTO users (facebookId) VALUES ('".$this->getLoggedInUserId()."')";
 		$result = mysql_query($insertQuery); // This query won't affect anything if the user already exists in the database.
@@ -298,12 +373,17 @@ class FacebookAPI	{
 		$updateQuery = "UPDATE users SET lastVisitedAt = NOW() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1";
 		$result = mysql_query($updateQuery);
 		if (!$result)	{
-			JSON::outputFailure("Unable to update logged in user in database.");
+			JSON::outputFailure("Unable to update logged in user's database record.");
 			return false;
 		}
 		return true;
 	}
 	
+	/**
+	 * Returns the logged-in user's Facebook ID.
+	 *
+	 * @return string Facebook ID
+	 */
 	public function getLoggedInUserId() {
 		if (!$this->facebookId) {
 			$this->facebookId = $this->facebook->getUser();
@@ -312,8 +392,11 @@ class FacebookAPI	{
 		return $this->facebookId;
 	}
 	
-	/*
-	 * Store a page in the database.
+	/**
+	 * Saves page to database.
+	 *
+	 * @param Subject $subject Page to be saved
+	 * @return bool True on successful query, false otherwise
 	 */
 	public function insertPageIntoDatabase($subject)	{
 		$replaceQuery = "REPLACE INTO pages SET id = '".$subject->facebookId."', name = '".$subject->name."', category = '".$subject->category->facebookName."';";

@@ -1,18 +1,22 @@
 <?php
-class Category
-{
+/**
+ * This class implements a page category in the GuessThatFriend app.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
+class Category	{
+
 	private $categoryId;		// ID of category as stored in server database.
 	private $facebookName;		// The name that Facebook gives to this category.
 	private $prettyName;		// The pretty name that we give to this category.
 	
 	/**
-	 * __construct:
+	 * __construct
 	 *
-	 * @param $categoryId: ID of category to be created.
-	 * @param $facebookName: Category name used by Facebook.
-	 * @param $prettyName: Pretty/User friendly category name.
-	 * @return None.
-	 *
+	 * @param int $categoryId ID of category to be created
+	 * @param string $facebookName Category name used by Facebook
+	 * @param string $prettyName Pretty/User friendly category name
+	 * @return void
 	 */	
 	public function __construct($categoryId, $facebookName = "", $prettyName = "")	{
 		$this->categoryId = $categoryId;
@@ -24,10 +28,21 @@ class Category
 		}
 	}
 	
+	/**
+	 * Generic getter method.
+	 *
+	 * @param string $field Name of field
+	 * @return object Value of field
+	 */
 	public function __get($field)	{
 		return $this->$field;
 	}
 	
+	/**
+	 * Fill in class fields using data from the database.
+	 *
+	 * @return bool True on successful query, false otherwise
+	 */
 	private function fillInFieldsFromDB()	{
 		$nameQuery = "SELECT facebookName, prettyName FROM categories WHERE categoryId = ".$this->categoryId." LIMIT 1";
 		$result = mysql_query($nameQuery);
@@ -44,6 +59,12 @@ class Category
 		return false;
 	}
 	
+	/**
+	 * Add new category to database.
+	 *
+	 * @param string $facebookName The name that Facebook gives to this category
+	 * @return Category The newly created category
+	 */
 	private static function addFacebookNameToDB($facebookName) {
 		$insertQuery = "INSERT INTO categories (facebookName, prettyName) VALUES ('".DB::cleanInputForDatabase($facebookName)."', '".DB::cleanInputForDatabase($facebookName)."')";
 		$result = mysql_query($insertQuery);
@@ -53,12 +74,10 @@ class Category
 	}
 	
 	/**
-	 * getCategoryByFacebookName:
+	 * Returns the Category corresponding to a category name used by Facebook.
 	 * 
-	 * @param $facebookName: Category name used by Facebook.
-	 * 
-	 * @return Category with the supplied facebookName
-	 * 
+	 * @param string $facebookName Category name used by Facebook.
+	 * @return Category Category with the supplied facebookName
 	 */
 	public static function getCategoryByFacebookName($facebookName)	{
 		$query = "SELECT * FROM categories WHERE facebookName = '".DB::cleanInputForDatabase($facebookName)."' LIMIT 1";
@@ -73,10 +92,9 @@ class Category
 	}
 	
 	/**
-	 * jsonSerialize:
-	 * 
-	 * @return Array formatted for JSON output.
-	 * 
+	 * Specify data which should be serialized to JSON.
+	 *
+	 * @return array Array formatted for JSON output
 	 */
 	public function jsonSerialize() {
 		$obj = array();
@@ -88,10 +106,9 @@ class Category
 	}
 
 	/**
-	 * enoughRandomPagesOfSameCategory:
+	 * Checks if there are enough pages for this category.
 	 *
-	 * @return True if there are enough pages for this category, false otherwise.
-	 *
+	 * @return bool True if there are enough pages, false otherwise.
 	 */	
 	public function enoughRandomPagesOfSameCategory() {
 		$MIN_PAGES_OF_SAME_CATEGORY = 6;

@@ -1,15 +1,19 @@
 <?php
+/**
+ * This class implements the API functions for the GuessThatFriend app.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
 class API {
 	/**
-	 * getQuestions:
+	 * Gets a specified number of questions from the server. On success, prints JSON output containing the newly created questions.
 	 *
-	 * @param $facebookAccessToken: The users access token.
-	 * @param $questionCount: The number of questions requested.
-	 * @param $optionCount: The number of answer options per question.
-	 * @param $topicFacebookId: The Facebook ID of who questions should focus on.
-	 * @param $categoryId: The category the questions should focus on.
-	 * @return JSON output containing the newly created questions.
-	 *
+	 * @param string $facebookAccessToken The users access token.
+	 * @param integer $questionCount The number of questions requested.
+	 * @param integer $optionCount The number of answer options per question.
+	 * @param string $topicFacebookId The Facebook ID of who questions should focus on.
+	 * @param integer $categoryId The category the questions should focus on.
+	 * @return void
 	 */	
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
@@ -44,13 +48,12 @@ class API {
 	}
 
 	/**
-	 * submitQuestions:
+	 * Submits questions to the server. On success, prints JSON output confirming the submitted questions.
 	 *
-	 * @param $facebookAccessToken: The users access token.
-	 * @param $questionAnswers: Array containing the answers for the submitted questions.
-	 * @param $questionTimes: Array containing the response time for the submitted questions.
-	 * @return JSON output confirming the submitted questions.
-	 *
+	 * @param string $facebookAccessToken The users access token.
+	 * @param array $questionAnswers Array containing the answers for the submitted questions.
+	 * @param array $questionTimes Array containing the response time for the submitted questions.
+	 * @return void
 	 */	
 	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes) {
 		$facebookAPI = FacebookAPI::singleton();
@@ -78,10 +81,9 @@ class API {
 	}
 	
 	/**
-	 * getCategories:
+	 * Prints JSON output containing all of the categories.
 	 *
-	 * @return JSON output containing all of the categories.
-	 * 
+	 * @return bool True if query is successful, false otherwise 
 	 */	
 	public static function getCategories() {
 		// Get categories from database.
@@ -99,12 +101,11 @@ class API {
 	}
 
 	/**
-	 * getStatistics:
+	 * Prints JSON output containing the requested statistics.
 	 *
-	 * @param $facebookAccessToken: The users access token.
-	 * @param $type: The type of statistics to generate.
-	 * @return JSON output containing the requested statistics.
-	 *
+	 * @param string $facebookAccessToken The users access token.
+	 * @param int $type The type of statistics to generate.
+	 * @return void
 	 */	
 	public static function getStatistics($facebookAccessToken, $type){
 		$facebookAPI = FacebookAPI::singleton();
@@ -147,7 +148,12 @@ class API {
 		JSON::outputArrayInJSON($output);
 	}
 	
-  private static function getCategoryStats() {
+	/**
+	 * Returns statistics sorted by categories.
+	 *
+	 * @return array Array of statistics
+	 */
+	private static function getCategoryStats() {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		$correctCountQuery = "SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
@@ -210,12 +216,22 @@ class API {
 		return array_values($categoriesArray);
 	}
 	
+	/**
+	 * Returns question history.
+	 *
+	 * @return array Array of Questions
+	 */
 	private static function getQuestionHistory() {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		return JSON::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
 	}
 
+	/**
+	 * Returns statistics sorted by friends.
+	 *
+	 * @return array Array of statistics
+	 */
 	private static function getFriendStats() {
 		$facebookAPI = FacebookAPI::singleton();
 		
@@ -279,6 +295,15 @@ class API {
 		return array_values($friendsArray);
 	}
 
+	/**
+	 * Builds a list of questions.
+	 *
+	 * @param int $questionCount Number of questions to build
+	 * @param int $optionCount Number of options to build
+	 * @param string $topicFacebookId Facebook ID of question topic
+	 * @param int $categoryId ID of topic category
+	 * @return array Array of Questions
+	 */
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 		
@@ -298,7 +323,12 @@ class API {
 		return $questions;
 	}
 	
-	// Take an array of questions and their answers and update those questions in the database.
+	/**
+	 * Takes an array of questions and their answers and update those questions in the database.
+	 *
+	 * @param array $questionAnswers Array of question-answer pairs
+	 * @return void
+	 */
 	private static function saveQuestionAnswers($questionAnswers) {
 		$facebookAPI = FacebookAPI::singleton();
 		
@@ -319,6 +349,12 @@ class API {
 		return $questionIdsOfSavedAnswers;
 	}
 
+	/**
+	 * Saves question response times to database.
+	 *
+	 * @param array $questionTimes Array of response times
+	 * @return bool True if at least one response time is saved, false otherwise
+	 */
 	private static function saveQuestionTimes($questionTimes){
 		$facebookAPI = FacebookAPI::singleton();
 
@@ -336,6 +372,11 @@ class API {
 		return $success;
 	}
 	
+	/**
+	 * Gets answers to questions from GET vars.
+	 *
+	 * @return array Array of answers
+	 */
 	public static function getQuestionAnswersFromGETVars() {
 		$frontOfParameterName = "facebookIdOfQuestion";
 		$questionAnswers = array();
@@ -359,6 +400,11 @@ class API {
 		return $questionAnswers;
 	}
 
+	/**
+	 * Gets response times of questions from GET vars.
+	 *
+	 * @return array Array of response times
+	 */
 	public static function getQuestionTimesFromGETVars() {
 		$frontOfParameterName = "responseTimeOfQuestion";
 		$questionTimes = array();

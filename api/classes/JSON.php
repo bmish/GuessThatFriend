@@ -1,7 +1,18 @@
 <?php
+/**
+ * This class implements JSON utility functions.
+ *
+ * @copyright  2012 GuessThatFriend
+ */
 class JSON {
-	// Input an array and return a new one out that is ready to be converted to JSON.
-	// php 5.4.0 will bring automatic JsonSerializable functionality.
+
+	/**
+	 * Input an array and return a new one out that is ready to be converted to JSON.
+	 * php 5.4.0 will bring automatic JsonSerializable functionality.
+	 *
+	 * @param array $array Array of objects
+	 * @return array Array ready to be converted to JSON
+	 */
 	public static function jsonSerializeArray($array) {
 		$ret = array();
 
@@ -12,16 +23,34 @@ class JSON {
 		return $ret;
 	}
 
+	/**
+	 * Outputs a sample JSON file.
+	 *
+	 * @param string $filename Filename of the sample JSON file
+	 * @return void
+	 */
 	public static function outputExampleJSON($filename) {
 		header('Content-type: application/json');
 		require_once("examples/json/".$filename);
 	}
 
+	/**
+	 * Outputs an array as a JSON string.
+	 *
+	 * @param array $json Array to encode as JSON
+	 * @return void
+	 */
 	public static function outputArrayInJSON($json) {
 		header('Content-type: application/json');
 		echo json_encode($json);
 	}
 
+	/**
+	 * Outputs a failure message in JSON.
+	 *
+	 * @param string $message Failure message
+	 * @return void
+	 */
 	public static function outputFailure($message = "") {
 		$output = array();
 		if (!empty($message)) {
