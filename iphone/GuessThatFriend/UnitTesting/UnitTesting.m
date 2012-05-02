@@ -10,6 +10,9 @@
 #import "QuizManager.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "QuizSettings.h"
+#import "StatsFriendsViewController.h"
+#import "StatsCategoriesViewController.h"
+#import "StatsHistoryViewController.h"
 
 @implementation UnitTesting
 
@@ -82,5 +85,65 @@
 
 #pragma mark -
 #pragma mark Retrieving Statistics Tests
+
+- (void)testRetrieveSampleFriendsStatsFromAPI {
+    StatsFriendsViewController *viewController = [[StatsFriendsViewController alloc] init];
+    viewController.list = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    STAssertTrue(viewController.list.count == 0, @"Number of stats was not zero as expected.");
+    [viewController requestStatisticsFromServer:YES];
+    
+    // wait until stats is returned.
+    while (viewController.threadIsRunning) {
+    }
+    
+    STAssertTrue(viewController.list.count == 11, @"Number of stats was %i, not 11 as expected.", viewController.list.count);
+}
+
+- (void)testRetrieveSampleCategoriesStatsFromAPI {
+    StatsCategoriesViewController *viewController = [[StatsCategoriesViewController alloc] init];
+    viewController.list = [[NSMutableArray alloc] initWithCapacity:10];
+
+    STAssertTrue(viewController.list.count == 0, @"Number of stats was not zero as expected.");
+    [viewController requestStatisticsFromServer:YES];
+    
+    // wait until stats is returned.
+    while (viewController.threadIsRunning) {
+    }
+    
+    STAssertTrue(viewController.list.count == 1, @"Number of stats was %i, not 1 as expected.", viewController.list.count);
+}
+
+- (void)testRetrieveSampleHistoryStatsFromAPI {
+    StatsHistoryViewController *viewController = [[StatsHistoryViewController alloc] init];
+    viewController.list = [[NSMutableArray alloc] initWithCapacity:10];
+
+    STAssertTrue(viewController.list.count == 0, @"Number of stats was not zero as expected.");
+    [viewController requestStatisticsFromServer:YES];
+    
+    // wait until stats is returned.
+    while (viewController.threadIsRunning) {
+    }
+    
+    STAssertTrue(viewController.list.count == 1, @"Number of stats was %i, not 1 as expected.", viewController.list.count);
+}
+
+/*
+- (void)testRetrieveQuestionsFromAPIWithEmptyFBToken {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:NO];
+    STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
+}
+
+- (void)testRetrieveQuestionsFromAPIWithBadFBToken {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"badtoken" andUseSampleData:NO];
+    STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
+}
+
+// Simply initialize the quiz manager, this should give us 'QUESTION_COUNT' number of questions.
+- (void)testRetrieveQuestionsFromAPIWithValidFBToken {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
+}
+*/
 
 @end

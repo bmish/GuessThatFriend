@@ -23,7 +23,9 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *table;
 @property (nonatomic, retain) NSMutableArray *list;
+@property BOOL threadIsRunning;
 
 - (void)getStatisticsThread;
+- (void)requestStatisticsFromServer:(BOOL)useSampleData;
 
 @end

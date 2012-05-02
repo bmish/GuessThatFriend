@@ -14,8 +14,14 @@
 
 @synthesize list;
 @synthesize table;
+@synthesize threadIsRunning;
 
 - (void)getStatisticsThread {
+    // Not used.
+    // Should be implemented by inherited classes.
+}
+
+- (void)requestStatisticsFromServer:(BOOL)useSampleData {
     // Not used.
     // Should be implemented by inherited classes.
 }
