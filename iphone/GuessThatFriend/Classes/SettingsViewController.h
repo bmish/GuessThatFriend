@@ -18,5 +18,6 @@
 
 - (IBAction)switchViewToFBLogin:(id)sender;
 - (IBAction)shareOnFacebook:(id)sender;
+- (void)facebookLogout;
 
 @end
