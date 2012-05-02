@@ -55,17 +55,13 @@
             [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
             [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
         }
-        
-        NSLog(@"Request string: %@", getRequest);
-        
+                
         // Send the GET request to the server.
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
         
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"RESPONSE STRING: %@ \n",responseString);
-        
+                
         // Initialize array of questions from the server's response.
         success = [self createQuestionsFromServerResponse:responseString];
         

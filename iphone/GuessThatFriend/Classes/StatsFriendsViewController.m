@@ -92,17 +92,13 @@
             [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
             [getRequest appendFormat:@"&type=friends"];
         }
-        
-        NSLog(@"STATS Request string: %@", getRequest);
-        
+                
         // Send the GET request to the server.
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
         
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"STATS RESPONSE STRING: %@ \n",responseString);
-        
+                
         // Initialize array of questions from the server's response.
         success = [self createStatsFromServerResponse:responseString];
         
@@ -168,7 +164,6 @@
 #pragma mark Table View Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"Table cell count: %i", [self.list count]);
 	return [self.list count];
 }
 

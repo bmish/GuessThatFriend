@@ -113,7 +113,6 @@
             UITableViewCell* cellItr = [tableView cellForRowAtIndexPath:cellPath];
             //do stuff with 'cell'
             Option *optionItr = [optionsList objectAtIndex:row];
-            NSLog(@"Option:%@",optionItr.subject.facebookId);
             if ([optionItr.subject.facebookId isEqual:[NSNull null]]) {
             } else if ([optionItr.subject.facebookId isEqualToString:correctFacebookId]) {
                 cellItr.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -146,12 +145,7 @@
     [getRequest appendFormat:@"&facebookIdOfQuestion%i=%@", questionID, option.subject.facebookId];
     [getRequest appendFormat:@"&responseTimeOfQuestion%i=%i", questionID, (int)(responseTimeInterval * 1000)];
     
-    NSLog(@"Response time= %f\n", responseTimeInterval);
-    
-    NSLog(@"Request: %@\n", getRequest);
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    NSLog(@"%@\n", request);
     
     // The follow creates a aSynchronousRequest so that the UI would not be hogged
     [NSURLConnection connectionWithRequest:request delegate:nil];
