@@ -181,7 +181,7 @@ class FacebookAPI	{
 			$page = mysql_fetch_assoc($result);
 			$pagefacebookId = $page['facebookId'];
 			if (!in_array($pagefacebookId, $checkedPages))	{
-				if (($faceboookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
+				if (($facebookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
 					$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
 					$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
 				}
