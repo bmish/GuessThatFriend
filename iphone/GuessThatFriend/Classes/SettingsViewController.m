@@ -78,15 +78,14 @@
     [url release];
 }
 
-- (IBAction)switchViewToFBLogin:(id)sender {
+- (void)facebookLogout {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [delegate.facebook logout:delegate];
-    
-    NSHTTPCookieStorage *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
-        [cookies deleteCookie:cookie];
-    }
+    [delegate fbLogout];
+}
+
+- (IBAction)switchViewToFBLogin:(id)sender {
+    [self facebookLogout];
     
     [self backItemPressed:nil];
 }

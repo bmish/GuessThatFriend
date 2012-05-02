@@ -59,4 +59,6 @@
 
 - (UIImage *) getPicture:(NSString*)imageURL;
 
+- (void)fbLogout;
+
 @end

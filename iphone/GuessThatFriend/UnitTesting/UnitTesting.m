@@ -50,18 +50,46 @@
 
 // Simply initialize the quiz manager, this should give us 'QUESTION_COUNT' number of questions.
 - (void)testRetrieveQuestionsFromAPIWithValidFBToken {
+    if ([delegate.facebook isSessionValid] == NO) {
+        // can't test w/o valid token.
+        return;
+    }
+
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
+    
+    // wait until prefetching is done.
+    while (quizManager.threadRunning) {
+    }
+    
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was %i, not %i as expected.", 
+                 quizManager.questionArray.count, QUESTION_COUNT);
 }
 
 // Simply initialize the quiz manager, this should give us 'QUESTION_COUNT' number of questions.
 // Then ask for more question once, this should double the number of questions.
 - (void)testRetrieveQuestionsFromAPIWithValidFBToken2 {
+    if ([delegate.facebook isSessionValid] == NO) {
+        // can't test w/o valid token.
+        return;
+    }
+    
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
+    
+    // wait until prefetching is done.
+    while (quizManager.threadRunning) {
+    }
+    
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was %i, not %i as expected.", 
+                 quizManager.questionArray.count, QUESTION_COUNT);
     
     [quizManager requestQuestionsFromServer];
-    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT * 2, @"Number of questions was not %i as expected.", QUESTION_COUNT * 2);
+    
+    // wait until prefetching is done.
+    while (quizManager.threadRunning) {
+    }
+    
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT * 2, @"Number of questions was %i, not %i as expected.", 
+                 quizManager.questionArray.count, QUESTION_COUNT * 2);
 }
 
 // IPhone app would request for more questions long before the questions run out, this test case tests that.
@@ -128,22 +156,57 @@
     STAssertTrue(viewController.list.count == 1, @"Number of stats was %i, not 1 as expected.", viewController.list.count);
 }
 
-/*
-- (void)testRetrieveQuestionsFromAPIWithEmptyFBToken {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
+- (void)testRetrieveFriendsStatsFromAPI {
+    StatsFriendsViewController *viewController = [[StatsFriendsViewController alloc] init];
+    viewController.list = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    STAssertTrue(viewController.list.count == 0, @"Number of stats was not zero as expected.");
+    [viewController requestStatisticsFromServer:NO];
+    
+    // wait until stats is returned.
+    while (viewController.threadIsRunning) {
+    }
+    
+    STAssertTrue(viewController.list.count >= 0, @"Number of stats was not >= 0 as expected.", viewController.list.count);
 }
 
-- (void)testRetrieveQuestionsFromAPIWithBadFBToken {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"badtoken" andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
+- (void)testRetrieveCategoriesStatsFromAPI {
+    StatsCategoriesViewController *viewController = [[StatsCategoriesViewController alloc] init];
+    viewController.list = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    STAssertTrue(viewController.list.count == 0, @"Number of stats was not zero as expected.");
+    [viewController requestStatisticsFromServer:NO];
+    
+    // wait until stats is returned.
+    while (viewController.threadIsRunning) {
+    }
+    
+    STAssertTrue(viewController.list.count >= 0, @"Number of stats was not >= 0 as expected.", viewController.list.count);
 }
 
-// Simply initialize the quiz manager, this should give us 'QUESTION_COUNT' number of questions.
-- (void)testRetrieveQuestionsFromAPIWithValidFBToken {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
+- (void)testRetrieveHistoryStatsFromAPI {
+    StatsHistoryViewController *viewController = [[StatsHistoryViewController alloc] init];
+    viewController.list = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    STAssertTrue(viewController.list.count == 0, @"Number of stats was not zero as expected.");
+    [viewController requestStatisticsFromServer:NO];
+    
+    // wait until stats is returned.
+    while (viewController.threadIsRunning) {
+    }
+    
+    STAssertTrue(viewController.list.count >= 0, @"Number of stats was not >= 0 as expected.", viewController.list.count);
 }
-*/
+
+#pragma mark -
+#pragma mark Test Facebook logout
+
+- (void)testFacebookLogout {
+    if ([delegate.facebook isSessionValid]) {
+        [delegate fbLogout];
+        
+        STAssertTrue([delegate.facebook isSessionValid] == NO, @"Session is not invalid as expected.");
+    }
+}
 
 @end

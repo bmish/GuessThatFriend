@@ -163,6 +163,15 @@
     }
 }
 
+- (void)fbLogout {
+    [facebook logout:self];
+    
+    NSHTTPCookieStorage *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+        [cookies deleteCookie:cookie];
+    }
+}
+
 // Pre 4.2 support
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return [facebook handleOpenURL:url]; 
