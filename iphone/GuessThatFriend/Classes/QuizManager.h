@@ -26,9 +26,11 @@
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
 @property (nonatomic, retain) NSString *bufferedFBToken;
+@property BOOL threadRunning;
 
 - (QuizManager *)initWithFBToken:(NSString *)token andUseSampleData:(BOOL)useSampleData;
 - (Question *)getNextQuestion;
 - (void)getQuestionThread;
+- (void)requestQuestionsFromServer;
 
 @end

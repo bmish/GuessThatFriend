@@ -15,7 +15,4 @@
     NSString *facebookToken;
 }
 
-@property (nonatomic, retain) GuessThatFriendAppDelegate *delegate;
-@property (nonatomic, retain) NSString *facebookToken;
-
 @end

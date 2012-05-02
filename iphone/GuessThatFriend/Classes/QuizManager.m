@@ -19,6 +19,7 @@
 
 @synthesize questionArray;
 @synthesize bufferedFBToken;
+@synthesize threadRunning;
 
 - (QuizManager *)initWithFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
     

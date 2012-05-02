@@ -13,9 +13,6 @@
 
 @implementation UnitTesting
 
-@synthesize delegate;
-@synthesize facebookToken;
-
 - (void)setUp {
     [super setUp];
     
@@ -26,11 +23,12 @@
 
 - (void)tearDown {
     // Tear-down code here.
-    self.facebookToken = nil;
-    self.delegate = nil;
     
     [super tearDown];
 }
+
+#pragma mark -
+#pragma mark QuizManager Tests
 
 - (void)testRetrieveSampleQuestionsFromAPI {
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:YES];
@@ -47,9 +45,42 @@
     STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
 }
 
+// Simply initialize the quiz manager, this should give us 'QUESTION_COUNT' number of questions.
 - (void)testRetrieveQuestionsFromAPIWithValidFBToken {
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
     STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
 }
+
+// Simply initialize the quiz manager, this should give us 'QUESTION_COUNT' number of questions.
+// Then ask for more question once, this should double the number of questions.
+- (void)testRetrieveQuestionsFromAPIWithValidFBToken2 {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
+    
+    [quizManager requestQuestionsFromServer];
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT * 2, @"Number of questions was not %i as expected.", QUESTION_COUNT * 2);
+}
+
+// IPhone app would request for more questions long before the questions run out, this test case tests that.
+- (void)testPrefetchingQuestions {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    [quizManager requestQuestionsFromServer];
+    
+    // Now, there should be QUESTION_COUNT * 2 questions in the array, we take out (QUESTION_COUNT * 2) of them.
+    for (int i = 0; i < QUESTION_COUNT * 2 - 1; i++) {
+        Question *question = [quizManager getNextQuestion];
+        STAssertTrue(question != nil, @"Question was not valid as expected");
+    }
+    
+    // wait until prefetching is done.
+    while (quizManager.threadRunning) {
+    }
+    
+    // there should be more than one questions in the question array due to prefetching.
+    STAssertTrue(quizManager.questionArray.count > 1, @"Number of questions was not greater than 1 as expected.");
+}
+
+#pragma mark -
+#pragma mark Retrieving Statistics Tests
 
 @end

@@ -68,7 +68,7 @@
     return YES;
 }
 
-- (void)requestStatisticsFromServer:(BOOL)useSampleData{
+- (void)requestStatisticsFromServer:(BOOL)useSampleData {
     
     BOOL success = NO;
     
