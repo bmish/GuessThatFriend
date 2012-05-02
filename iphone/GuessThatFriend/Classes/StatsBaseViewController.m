@@ -41,7 +41,6 @@
     self.table = nil;
 }
 
-
 - (void)viewDidAppear:(BOOL)animated {
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];

@@ -57,5 +57,6 @@
 @property BOOL statsCategoriesNeedsUpdate;
 @property BOOL statsHistoryNeedsUpdate;
 
-- (UIImage*) getPicture:(NSString*)imageURL;
+- (UIImage *) getPicture:(NSString*)imageURL;
+
 @end

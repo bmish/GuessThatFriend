@@ -108,7 +108,7 @@
     }
 }
 
-- (void)getStatisticsThread2 {
+- (void)getStatisticsThread {
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -137,7 +137,7 @@
         
         threadIsRunning = YES;
         
-        [NSThread detachNewThreadSelector:@selector(getStatisticsThread2) toTarget:self withObject:nil];
+        [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
     }
     
     [super viewWillAppear:animated];

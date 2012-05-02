@@ -154,9 +154,6 @@
         [facebook authorize:permissions];
         [permissions release];
     }
-    else {
-        //???
-    }
     
     if(facebook.accessToken != nil){
         // Now we have facebook token, use it to initialize the quiz manager.
