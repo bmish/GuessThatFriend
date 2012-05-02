@@ -8,39 +8,48 @@
 
 #import "UnitTesting.h"
 #import "QuizManager.h"
+#import "GuessThatFriendAppDelegate.h"
+#import "QuizSettings.h"
 
 @implementation UnitTesting
 
-- (void)setUp
-{
+@synthesize delegate;
+@synthesize facebookToken;
+
+- (void)setUp {
     [super setUp];
     
     // Set-up code here.
+    delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
+    facebookToken = delegate.facebook.accessToken;
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
     // Tear-down code here.
+    self.facebookToken = nil;
+    self.delegate = nil;
     
     [super tearDown];
 }
 
-- (void)testRetrieveSampleQuestionsFromAPI
-{
+- (void)testRetrieveSampleQuestionsFromAPI {
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:YES];
-    STAssertTrue(quizManager.questionArray.count == 1, @"Number of sample questions was not one as expected.");
+    STAssertTrue(quizManager.questionArray.count == 4, @"Number of sample questions was not four as expected.");
 }
 
-- (void)testRetrieveQuestionsFromAPIWithEmptyFBToken
-{
+- (void)testRetrieveQuestionsFromAPIWithEmptyFBToken {
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == 0, @"Number of questions was not zero as expected.");
+    STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
 }
 
-- (void)testRetrieveQuestionsFromAPIWithBadFBToken
-{
+- (void)testRetrieveQuestionsFromAPIWithBadFBToken {
     QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"badtoken" andUseSampleData:NO];
-    STAssertTrue(quizManager.questionArray.count == 0, @"Number of questions was not zero as expected.");
+    STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
+}
+
+- (void)testRetrieveQuestionsFromAPIWithValidFBToken {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was not %i as expected.", QUESTION_COUNT);
 }
 
 @end

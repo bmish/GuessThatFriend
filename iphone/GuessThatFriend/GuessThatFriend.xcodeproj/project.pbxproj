@@ -332,6 +332,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4D007C5C1551DE2A008F2384 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */,
+				BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */,
+				4D922B55154EF24E0092B5F4 /* StatsCategoryCustomCell.h */,
+				4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */,
+				4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */,
+				4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */,
+			);
+			name = CustomCells;
+			sourceTree = "<group>";
+		};
 		4D12199814F5BB740051646B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,12 +543,6 @@
 				4DFC3A9415400CEF00648D9A /* StatsViewControllers */,
 				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
 				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
-				BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */,
-				BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */,
-				4D922B55154EF24E0092B5F4 /* StatsCategoryCustomCell.h */,
-				4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */,
-				4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */,
-				4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */,
 			);
 			name = CommonViewControllers;
 			sourceTree = "<group>";
@@ -587,6 +594,7 @@
 		4DFC3A9415400CEF00648D9A /* StatsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D007C5C1551DE2A008F2384 /* CustomCells */,
 				4DFC3A9015400CE200648D9A /* StatsBaseViewController.h */,
 				4DFC3A9115400CE200648D9A /* StatsBaseViewController.m */,
 				BA6F95931533DE3600C875F1 /* StatsFriendsViewController.h */,

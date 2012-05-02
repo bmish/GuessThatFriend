@@ -10,6 +10,8 @@
 
 //	This is a singleton object.
 
+#define QUESTION_COUNT  3
+
 @interface QuizSettings : NSObject {
     int questionCount;
     int option;

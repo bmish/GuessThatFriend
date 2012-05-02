@@ -8,6 +8,14 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface UnitTesting : SenTestCase
+@class GuessThatFriendAppDelegate;
+
+@interface UnitTesting : SenTestCase {
+    GuessThatFriendAppDelegate *delegate;
+    NSString *facebookToken;
+}
+
+@property (nonatomic, retain) GuessThatFriendAppDelegate *delegate;
+@property (nonatomic, retain) NSString *facebookToken;
 
 @end

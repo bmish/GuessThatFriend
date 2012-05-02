@@ -30,7 +30,7 @@ static QuizSettings *quizSettingsObject = nil;
     if (self = [super init]) {
         // Initialize quiz settings
         
-        questionCount = 3;
+        questionCount = QUESTION_COUNT;
         option = 4;
         categoryID = 2;
         friendFacebookID = nil;
