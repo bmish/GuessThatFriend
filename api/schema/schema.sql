@@ -16,6 +16,13 @@ CREATE TABLE IF NOT EXISTS `categories` (
   PRIMARY KEY (`categoryId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `facebookAPICache` (
+  `request` varchar(50) NOT NULL,
+  `response` text NOT NULL,
+  `timestamp` int(11) NOT NULL,
+  PRIMARY KEY (`request`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
 CREATE TABLE IF NOT EXISTS `options` (
   `optionId` int(11) NOT NULL AUTO_INCREMENT,
   `questionId` int(11) NOT NULL,

@@ -60,11 +60,8 @@ class FacebookAPI	{
 		
 		// Check current in-memory cache.
 		if (!isset($this->friendsCache[$facebookId])) {
-			// Check filesystem cache.
-			if (!($friendsResponse = Cache::checkForCachedAPIRequest('/'.$facebookId.'/friends'))) {
-				$friendsResponse = $this->facebook->api('/'.$facebookId.'/friends');
-				Cache::cacheAPIRequest('/'.$facebookId.'/friends', $friendsResponse);
-			}
+			// Get API response.
+			$friendsResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/friends');
 
 			// Store friend's friends so we won't have to look it up again.
 			$this->friendsCache[$facebookId] = FacebookAPI::jsonToSubjects($friendsResponse['data']);
@@ -272,11 +269,8 @@ class FacebookAPI	{
 		
 		// Check current in-memory cache.
 		if (!isset($this->likesCache[$facebookId])) {
-			// Check filesystem cache.
-			if (!($likesResponse = Cache::checkForCachedAPIRequest('/'.$facebookId.'/likes'))) {
-				$likesResponse = $this->facebook->api('/'.$facebookId.'/likes');
-				Cache::cacheAPIRequest('/'.$facebookId.'/likes', $likesResponse);
-			}
+			// Get API response.
+			$likesResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/likes');
 
 			// Store friend's likes so we won't have to look it up again.
 			$this->likesCache[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse['data']);
@@ -298,11 +292,8 @@ class FacebookAPI	{
 		
 		// Check current in-memory cache.
 		if (!isset($namesCache[$facebookId])) {
-			// Check filesystem cache.
-			if (!($personResponse = Cache::checkForCachedAPIRequest('/'.$facebookId))) {
-				$personResponse = $this->facebook->api('/'.$facebookId);
-				Cache::cacheAPIRequest('/'.$facebookId, $personResponse);
-			}
+			// Get API response.
+			$personResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId);
 			
 			// Store friend's name so we won't have to look it up again.
 			$this->namesCache[$facebookId] = $personResponse['name'];
@@ -409,6 +400,8 @@ class FacebookAPI	{
 		return true;
 	}
 	
-	
+	public function api($requestString) {
+		return $this->facebook->api($requestString);
+	}
 }
 ?>

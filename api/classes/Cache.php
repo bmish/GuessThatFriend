@@ -4,70 +4,42 @@
  *
  * @copyright  2012 GuessThatFriend
  */
-class Cache {
 
-	/**
-	 * Processes a cache request.
-	 *
-	 * @param string $apiRequest API request
-	 * @param string $jsonObj JSON object
-	 * @return void
-	 */
-	public static function cacheAPIRequest($apiRequest, $jsonObj) {
-		$filename = sha1($apiRequest).".json";
-		Cache::cacheTextToFile("cache/".$filename, json_encode($jsonObj));
-	}
-	
-	/**
-	 * Checks if an API request exists in the cache.
-	 *
-	 * @param string $apiRequest API request
-	 * @return object Decoded JSON object
-	 */
-	public static function checkForCachedAPIRequest($apiRequest) {
-		$filename = sha1($apiRequest).".json";
-		$secondsInTwoWeeks = 60 * 60 * 24 * 7 * 2;
+class Cache {
+	public static function requestFacebookAPIWithCaching($requestString) {
+		$facebookAPI = FacebookAPI::singleton();
+		$requestString = DB::cleanInputForDatabase($requestString);
 		
-		$jsonText = Cache::checkFileForText("cache/".$filename, $secondsInTwoWeeks);
-		return json_decode($jsonText, true);
-	}
-	
-	/**
-	 * Saves text to file.
-	 *
-	 * @param string $filepath Filepath to save to
-	 * @param string $text Text to save
-	 * @return void
-	 */
-	public static function cacheTextToFile($filepath, $text) {
-		file_put_contents($filepath, $text, LOCK_EX);
-	}
-	
-	/**
-	 * Checks if a file exists.
-	 *
-	 * @param string $filepath Filepath to check for
-	 * @param int $secondsToExpire Duration before cache expires in seconds
-	 * @return string|bool Contents of the file if it exists, false otherwise
-	 */
-	public static function checkFileForText($filepath, $secondsToExpire) {
-		if (!file_exists($filepath)) {
-			return false;
-		}
-	
-		// Cache is too old to use?
-		$mtime = filemtime($filepath);
-		if (time() - $mtime > $secondsToExpire) {
-			return false;
+		// Is there an unexpired cached response in the database?
+		$cachedResponse = Cache::checkDatabaseForCachedResponse($requestString);
+		if ($cachedResponse) {
+			return $cachedResponse;
 		}
 		
-		// Cache is empty?
-		$contents = file_get_contents($filepath, LOCK_EX);
-		if (empty($contents)) {
-			return false;
+		// Response is not cached or it was expired so send the request to Facebook.
+		$responseObj = $facebookAPI->api($requestString);
+		$responseString = DB::cleanInputForDatabase(json_encode($responseObj));
+		
+		// Cache the response.
+		$sql = "INSERT INTO facebookAPICache (request, response, timestamp) VALUES ('$requestString','$responseString',UNIX_TIMESTAMP()) ON DUPLICATE KEY UPDATE response = '$responseString', timestamp = UNIX_TIMESTAMP()";
+		$result = mysql_query($sql);
+		
+		return $responseObj;
+	}
+	
+	private static function checkDatabaseForCachedResponse($requestString) {
+		$SECONDS_PER_WEEK = 60*60*24*7;
+		$secondsBeforeExpiring = $SECONDS_PER_WEEK * 2;
+		$minUnixTimestamp = time() - $secondsBeforeExpiring;
+		$sql = "SELECT response FROM facebookAPICache WHERE request = '$requestString' AND timestamp > '$minUnixTimestamp' LIMIT 1";
+		$result = mysql_query($sql);
+		if ($result && mysql_num_rows($result) == 1) { // Found an unexpired cached response.
+			$row = mysql_fetch_array($result);
+			
+			return json_decode($row["response"], true);
 		}
 		
-		return $contents;
+		return null;
 	}
 }
 ?>

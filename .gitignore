@@ -3,4 +3,3 @@ config.php
 *.swp
 xcuserdata/
 build/
-cache/
