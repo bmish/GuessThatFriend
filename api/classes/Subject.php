@@ -92,7 +92,7 @@ class Subject	{
 	 * @return bool True on successful query, false otherwise
 	 */
 	private function saveToDB()	{
-		$insertQuery = "INSERT INTO subjects (facebookId, name, picture, link) VALUES ('".$this->facebookId."', '".$this->name."', '".$this->picture."', '".$this->link."')";
+		$insertQuery = "INSERT INTO subjects (facebookId, name, picture, link) VALUES ('".$this->facebookId."', '".DB::cleanInputForDatabase($this->name)."', '".$this->picture."', '".$this->link."')";
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {

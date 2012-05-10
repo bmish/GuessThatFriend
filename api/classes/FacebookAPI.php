@@ -14,9 +14,6 @@ class FacebookAPI	{
 	
 	private $facebook;
 	private $facebookId;
-	private $likesCache;
-	private $friendsCache;
-	private $namesCache;
 	private $facebookAccessToken;
 	
 	/**
@@ -27,10 +24,6 @@ class FacebookAPI	{
 			'appId' => FB_APP_ID,
 			'secret' => FB_SECRET,
 		));
-		
-		$this->likesCache = array(); // Cache any likes we request.
-		$this->friendsCache = array(); // Cache any friends we request.
-		$this->namesCache = array(); // Cache any names we request.
 	}
 	
 	/**
@@ -58,16 +51,10 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
-		// Check current in-memory cache.
-		if (!isset($this->friendsCache[$facebookId])) {
-			// Get API response.
-			$friendsResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/friends');
-
-			// Store friend's friends so we won't have to look it up again.
-			$this->friendsCache[$facebookId] = FacebookAPI::jsonToSubjects($friendsResponse['data']);
-		}
+		// Get API response.
+		$friendsResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/friends');
 		
-		return $this->friendsCache[$facebookId];
+		return FacebookAPI::jsonToSubjects($friendsResponse['data']);
 	}
 	
 	/**
@@ -267,16 +254,10 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
-		// Check current in-memory cache.
-		if (!isset($this->likesCache[$facebookId])) {
-			// Get API response.
-			$likesResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/likes');
-
-			// Store friend's likes so we won't have to look it up again.
-			$this->likesCache[$facebookId] = FacebookAPI::jsonToSubjects($likesResponse['data']);
-		}
+		// Get API response.
+		$likesResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/likes');
 		
-		return $this->likesCache[$facebookId];
+		return FacebookAPI::jsonToSubjects($likesResponse['data']);
 	}
 	
 	/*
@@ -290,16 +271,10 @@ class FacebookAPI	{
 			$facebookId = $this->getLoggedInUserId();
 		}
 		
-		// Check current in-memory cache.
-		if (!isset($namesCache[$facebookId])) {
-			// Get API response.
-			$personResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId);
-			
-			// Store friend's name so we won't have to look it up again.
-			$this->namesCache[$facebookId] = $personResponse['name'];
-		}
-			
-		return $this->namesCache[$facebookId];
+		// Get API response.
+		$personResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId);
+		
+		return $personResponse['name'];
 	}
 
 	/*
@@ -390,7 +365,7 @@ class FacebookAPI	{
 	 * @return bool True on successful query, false otherwise
 	 */
 	public function insertPageIntoDatabase($subject)	{
-		$replaceQuery = "REPLACE INTO pages SET id = '".$subject->facebookId."', name = '".$subject->name."', category = '".$subject->category->facebookName."';";
+		$replaceQuery = "REPLACE INTO pages SET id = '".$subject->facebookId."', name = '".DB::cleanInputForDatabase($subject->name)."', category = '".DB::cleanInputForDatabase($subject->category->facebookName)."';";
 		$result = mysql_query($replaceQuery);
 		
 		if (!$result) {

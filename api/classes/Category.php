@@ -84,7 +84,7 @@ class Category	{
 		$result = mysql_query($query);
 		if ($result && mysql_num_rows($result) == 1) { // Category is already in database.
 			$row = mysql_fetch_array($result);
-			return new Category($row["categoryId"], $row["facebookName"], $row["prettyName"]);
+			return new Category($row["categoryId"], DB::cleanOutputFromDatabase($row["facebookName"]), DB::cleanOutputFromDatabase($row["prettyName"]));
 		}
 		
 		// Add new category to database.
@@ -113,7 +113,7 @@ class Category	{
 	public function enoughRandomPagesOfSameCategory() {
 		$MIN_PAGES_OF_SAME_CATEGORY = 6;
 		
-		$query = "SELECT COUNT(*) AS count FROM randomPages WHERE categoryFacebookName = '".$this->facebookName."' LIMIT 1";
+		$query = "SELECT COUNT(*) AS count FROM randomPages WHERE categoryFacebookName = '".DB::cleanInputForDatabase($this->facebookName)."' LIMIT 1";
 		$result = mysql_query($query);
 		if ($result && mysql_num_rows($result) == 1) {
 			$row = mysql_fetch_array($result);

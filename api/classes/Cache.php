@@ -18,10 +18,10 @@ class Cache {
 		
 		// Response is not cached or it was expired so send the request to Facebook.
 		$responseObj = $facebookAPI->api($requestString);
-		$responseString = DB::cleanInputForDatabase(json_encode($responseObj));
+		$responseString = json_encode($responseObj);
 		
 		// Cache the response.
-		$sql = "INSERT INTO facebookAPICache (request, response, timestamp) VALUES ('$requestString','$responseString',UNIX_TIMESTAMP()) ON DUPLICATE KEY UPDATE response = '$responseString', timestamp = UNIX_TIMESTAMP()";
+		$sql = "INSERT INTO facebookAPICache (request, response, timestamp) VALUES ('".DB::cleanInputForDatabase($requestString)."','".DB::cleanInputForDatabase($responseString)."',UNIX_TIMESTAMP()) ON DUPLICATE KEY UPDATE response = '$responseString', timestamp = UNIX_TIMESTAMP()";
 		$result = mysql_query($sql);
 		
 		return $responseObj;
@@ -31,12 +31,12 @@ class Cache {
 		$SECONDS_PER_WEEK = 60*60*24*7;
 		$secondsBeforeExpiring = $SECONDS_PER_WEEK * 2;
 		$minUnixTimestamp = time() - $secondsBeforeExpiring;
-		$sql = "SELECT response FROM facebookAPICache WHERE request = '$requestString' AND timestamp > '$minUnixTimestamp' LIMIT 1";
+		$sql = "SELECT response FROM facebookAPICache WHERE request = '".DB::cleanInputForDatabase($requestString)."' AND timestamp > '$minUnixTimestamp' LIMIT 1";
 		$result = mysql_query($sql);
 		if ($result && mysql_num_rows($result) == 1) { // Found an unexpired cached response.
 			$row = mysql_fetch_array($result);
 			
-			return json_decode($row["response"], true);
+			return json_decode(DB::cleanOutputFromDatabase($row["response"]), true);
 		}
 		
 		return null;

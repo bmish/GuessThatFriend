@@ -160,7 +160,7 @@ abstract class Question	{
 			$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
 			
 			// Fill in remaining fields that constructor didn't handle.
-			$question->text = $row["text"];
+			$question->text = DB::cleanOutputFromDatabase($row["text"]);
 			$question->correctSubject = new Subject($row["correctFacebookId"]);
 			$question->chosenSubject = new Subject($row["chosenFacebookId"]);
 			$question->answeredAt = $row["answeredAt"];
