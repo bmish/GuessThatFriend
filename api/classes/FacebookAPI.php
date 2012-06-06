@@ -129,8 +129,8 @@ class FacebookAPI	{
 	 */
 	public function likesPage($facebookId, $pageFacebookId)	{
 		$likes = $this->getLikesOfFriend($facebookId);
-		foreach ($likes as $like)	{
-			if ($like->facebookId == $facebookId)	{
+		foreach ($likes as $like) {
+			if ($like->facebookId == $pageFacebookId) {
 				return true;
 			}
 		}
@@ -163,13 +163,13 @@ class FacebookAPI	{
 		while (sizeof($pages) < $count)	{
 			mysql_data_seek ($result, rand(0,mysql_num_rows($result)-1));
 			$page = mysql_fetch_assoc($result);
-			$pagefacebookId = $page['facebookId'];
-			if (!in_array($pagefacebookId, $checkedPages))	{
-				if (($facebookId == null) || (!likesPage($facebookId, $pagefacebookId)))	{
+			$pageFacebookId = $page['facebookId'];
+			if (!in_array($pageFacebookId, $checkedPages)) { // Ignore pages that have already been checked.
+				if ($facebookId == null || !$this->likesPage($facebookId, $pageFacebookId)) { // Only find pages not liked by $facebookId.
 					$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
-					$pages[] = new Subject($pagefacebookId, $page['name'], $pageCategory);
+					$pages[] = new Subject($pageFacebookId, $page['name'], $pageCategory);
 				}
-				$checkedPages[] = $pagefacebookId;
+				$checkedPages[] = $pageFacebookId;
 			}
 		}
 		

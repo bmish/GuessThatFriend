@@ -48,8 +48,10 @@ class MCQuestion extends Question	{
 	 * @return void
 	 */
 	private function makeOptions($optionCount)	{
+		$facebookAPI = FacebookAPI::singleton();
+		
 		// Build a list of random pages to use for our incorrect options.
-		$randomPages = FacebookAPI::getRandomPage($this->category, $optionCount - 1, $topicSubject->facebookId);
+		$randomPages = $facebookAPI->getRandomPage($this->category, $optionCount - 1, $this->topicSubject->facebookId);
 		$currentRandomPageIndex = 0;
 		
 		$this->options = array();
@@ -61,6 +63,22 @@ class MCQuestion extends Question	{
 				$this->options[$i] = new Option($this->questionId, $randomPages[$currentRandomPageIndex++]);
 			}
 		}
+		
+		if ($this->duplicateOptionsExist($this->options)) {
+			JSON::outputFailure("Detected duplicate options in the following question: ".json_encode($this->jsonSerialize()));
+		}
+	}
+	
+	private function duplicateOptionsExist() {
+		for ($index = 0; $index < count($this->options); $index++) {
+			for ($index2 = 0; $index2 < count($this->options), $index2 != $index; $index2++) {
+				if ($this->options[$index]->topicSubject->facebookId == $this->options[$index2]->topicSubject->facebookId) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	/**
