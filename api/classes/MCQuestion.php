@@ -65,7 +65,7 @@ class MCQuestion extends Question	{
 		}
 		
 		if ($this->duplicateOptionsExist($this->options)) {
-			JSON::outputFatalErrorAndExit("Detected duplicate options in question #".$this->questionId.'.');
+			throw new Exception("Detected duplicate options.");
 		}
 	}
 	

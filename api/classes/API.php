@@ -309,14 +309,18 @@ class API {
 		
 		// Build a list of questions depending upon the type of questions desired.
 		$questions = array();
-		for ($i = 0; $i < $questionCount; $i++) { 
-			if ($optionCount == OptionType::FILL_IN_THE_BLANK) {
-				$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
-			} elseif ($optionCount == OptionType::RANDOM) {
-				$optionCountForQuestion = rand(OptionType::MC_MIN, OptionType::MC_MAX);
-				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCountForQuestion);
-			} else { // Multiple choice.
-				$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
+		for ($i = 0; $i < $questionCount; $i++) {
+			try {
+				if ($optionCount == OptionType::FILL_IN_THE_BLANK) {
+					$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
+				} elseif ($optionCount == OptionType::RANDOM) {
+					$optionCountForQuestion = rand(OptionType::MC_MIN, OptionType::MC_MAX);
+					$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCountForQuestion);
+				} else { // Multiple choice.
+					$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
+				}
+			} catch (Exception $e) { // If we fail to generate a question, record the error, and continue.
+				Error::saveErrorToDB($e->getMessage());
 			}
 		}
 		
