@@ -16,6 +16,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
   PRIMARY KEY (`categoryId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `errors` (
+  `errorId` int(11) NOT NULL AUTO_INCREMENT,
+  `msg` varchar(250) NOT NULL,
+  `occurredAt` datetime NOT NULL,
+  `facebookId` varchar(250) NOT NULL,
+  PRIMARY KEY (`errorId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 CREATE TABLE IF NOT EXISTS `facebookAPICache` (
   `request` varchar(50) NOT NULL,
   `response` text NOT NULL,

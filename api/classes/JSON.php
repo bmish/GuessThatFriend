@@ -52,11 +52,17 @@ class JSON {
 	 * @return void
 	 */
 	public static function outputFailure($message = "") {
+		$facebookAPI = FacebookAPI::singleton();
+		
 		$output = array();
 		if (!empty($message)) {
 			$output["message"] = $message;
 		}
 		$output["success"] = false;
+		
+		// Record error in database.
+		$errorQuery = "INSERT INTO errors (msg, occurredAt, facebookId) VALUES ('".DB::cleanInputForDatabase($message)."',NOW(),'".$facebookAPI->getLoggedInUserId()."')";
+		mysql_query($errorQuery);
 
 		header('Content-type: application/json');
 		echo json_encode($output);
