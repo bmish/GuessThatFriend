@@ -86,7 +86,7 @@ class FacebookAPI	{
 		$triesCount = 0;
 		do {
 			if (++$triesCount == $MAX_TRIES) {
-				JSON::outputFailure("Could not find a friend with a sufficient number of likes.");
+				JSON::outputFatalErrorAndExit("Could not find a friend with a sufficient number of likes.");
 				return null;
 			}
 			
@@ -193,7 +193,7 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if (++$triesCount == $MAX_TRIES) {
-					JSON::outputFailure("The randomPages database table may not contain a large enough variety of random pages.");
+					JSON::outputFatalErrorAndExit("The randomPages database table may not contain a large enough variety of random pages.");
 					return null;
 				}
 				$like = Util::getRandomElement($likes);
@@ -339,7 +339,7 @@ class FacebookAPI	{
 		$updateQuery = "UPDATE users SET lastVisitedAt = NOW() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1";
 		$result = mysql_query($updateQuery);
 		if (!$result)	{
-			JSON::outputFailure("Unable to update logged in user's database record.");
+			JSON::outputFatalErrorAndExit("Unable to update logged in user's database record.");
 			return false;
 		}
 		return true;
@@ -369,7 +369,7 @@ class FacebookAPI	{
 		$result = mysql_query($replaceQuery);
 		
 		if (!$result) {
-			JSON::outputFailure("Unable to save page to database.");
+			JSON::outputFatalErrorAndExit("Unable to save page to database.");
 			return false;
 		}
 		return true;

@@ -15,6 +15,7 @@ require_once('classes/API.php');
 require_once('classes/Cache.php');
 require_once('classes/Category.php');
 require_once('classes/DB.php');
+require_once('classes/Error.php');
 require_once('classes/FacebookAPI.php');
 require_once('classes/JSON.php');
 require_once('classes/Option.php');

@@ -65,7 +65,7 @@ class MCQuestion extends Question	{
 		}
 		
 		if ($this->duplicateOptionsExist($this->options)) {
-			JSON::outputFailure("Detected duplicate options in the following question: ".json_encode($this->jsonSerialize()));
+			JSON::outputFatalErrorAndExit("Detected duplicate options in question #".$this->questionId.'.');
 		}
 	}
 	

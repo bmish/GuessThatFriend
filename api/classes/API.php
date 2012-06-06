@@ -90,7 +90,7 @@ class API {
 		$categoryQuery = "SELECT * FROM categories";
 		$result = mysql_query($categoryQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
-			JSON::outputFailure("No categories found in database.");
+			JSON::outputFatalErrorAndExit("No categories found in database.");
 			return false;
 		}
 
@@ -169,7 +169,7 @@ class API {
 		$totalCountResult = mysql_query($totalCountQuery);
 		
 		if (!$correctCountResult || !$totalCountResult) {
-			JSON::outputFailure("Statistics database query failed.");
+			JSON::outputFatalErrorAndExit("Statistics database query failed.");
 			return array();
 		}
 
@@ -248,7 +248,7 @@ class API {
 		$totalResult = mysql_query($totalQuery);
 		
 		if (!$correctResult || !$totalResult) {
-			JSON::outputFailure("Statistics database query failed.");
+			JSON::outputFatalErrorAndExit("Statistics database query failed.");
 			return array();
 		}
 

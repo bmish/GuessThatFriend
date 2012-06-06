@@ -131,7 +131,7 @@ abstract class Question	{
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {
-			JSON::outputFailure("Unable to save question to database.");
+			JSON::outputFatalErrorAndExit("Unable to save question to database.");
 			
 			return false;
 		}

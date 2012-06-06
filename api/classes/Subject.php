@@ -96,7 +96,7 @@ class Subject	{
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {
-			JSON::outputFailure("Unable to save subject to database.");
+			JSON::outputFatalErrorAndExit("Unable to save subject to database.");
 			return false;
 		}
 

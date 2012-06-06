@@ -48,7 +48,7 @@ class Option	{
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {
-			JSON::outputFailure("Unable to save question options to database.");
+			JSON::outputFatalErrorAndExit("Unable to save question options to database.");
 			
 			return false;
 		}
