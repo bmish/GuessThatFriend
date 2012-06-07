@@ -18,13 +18,7 @@
 
 - (IBAction)backItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [UIView beginAnimations:@"back from settings" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.75];
     [delegate.navController popViewControllerAnimated:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
-    [UIView commitAnimations];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

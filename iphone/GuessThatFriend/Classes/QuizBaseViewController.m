@@ -26,26 +26,12 @@
 		[settingsController release];
 	}
     
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    [UIView beginAnimations:@"settings" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.75];
-    [delegate.navController pushViewController:self.settingsViewController animated:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delegate.navController.view cache:NO];
-    [UIView commitAnimations];
+    [self.navigationController pushViewController:self.settingsViewController animated:YES];
 }
 
 - (IBAction)viewStatsItemPressed:(id)sender {
-    
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [UIView beginAnimations:@"stats" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.75];
-    [delegate.navController pushViewController:delegate.tabController animated:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
-    [UIView commitAnimations];
+    [self.navigationController pushViewController:delegate.tabController animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

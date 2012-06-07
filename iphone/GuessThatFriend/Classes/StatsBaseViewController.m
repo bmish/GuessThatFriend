@@ -27,13 +27,7 @@
 
 - (IBAction)backItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    [UIView beginAnimations:@"back from stats" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.75];
     [delegate.navController popViewControllerAnimated:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:delegate.navController.view cache:NO];
-    [UIView commitAnimations];
 }
 
 - (void)viewDidLoad {
