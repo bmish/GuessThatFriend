@@ -132,7 +132,7 @@
         cell.backgroundColor = [UIColor redColor];
     }
     
-    scoreLabelString = [NSMutableString stringWithFormat:@"%i/%i", delegate->correctAnswers, delegate->totalNumOfQuestions];
+    scoreLabelString = [NSMutableString stringWithFormat:@"%i / %i", delegate->correctAnswers, delegate->totalNumOfQuestions];
     
     delegate.navController.navigationBar.topItem.title = scoreLabelString;
     

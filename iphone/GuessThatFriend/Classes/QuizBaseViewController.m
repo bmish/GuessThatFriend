@@ -62,7 +62,7 @@
     
     // Choose what the initial title is.
     if ([delegate.navController.navigationBar.topItem.title length] == 0) {
-        delegate.navController.navigationBar.topItem.title = @"0/0";
+        delegate.navController.navigationBar.topItem.title = @"0 / 0";
     }
     
     UIImage *settingsImage = [UIImage imageNamed:@"Button_Setting.png"];
