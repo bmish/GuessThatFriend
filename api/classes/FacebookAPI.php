@@ -272,7 +272,6 @@ class FacebookAPI	{
 		
 		// Get API response.
 		$personResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId);
-		
 		return $personResponse['name'];
 	}
 
@@ -375,7 +374,13 @@ class FacebookAPI	{
 	}
 	
 	public function api($requestString) {
-		return $this->facebook->api($requestString);
+		try {
+			return $this->facebook->api($requestString);
+		} catch (Exception $e) {
+			Error::saveErrorToDB($e);
+		}
+		
+		return null;
 	}
 }
 ?>
