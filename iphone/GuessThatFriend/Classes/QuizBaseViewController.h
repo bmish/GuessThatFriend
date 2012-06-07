@@ -12,13 +12,13 @@
 
 @interface QuizBaseViewController : UIViewController {
 	int questionID;
-	UITextView *questionTextView;
+	UILabel *questionLabel;
     UIImageView *topicImage;
     SettingsViewController *settingsViewController;
 }
 
 @property int questionID;
-@property (nonatomic, retain) IBOutlet UITextView *questionTextView;
+@property (nonatomic, retain) IBOutlet UILabel *questionLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *topicImage;
 @property (nonatomic, retain) SettingsViewController *settingsViewController;
 

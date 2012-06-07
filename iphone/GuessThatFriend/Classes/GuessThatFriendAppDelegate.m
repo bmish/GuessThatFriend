@@ -56,7 +56,7 @@
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
         [quizViewController.friendsTable reloadData];
         quizViewController.questionID = mcQuestion.questionId;
-        [quizViewController.questionTextView setText: quizViewController.questionString];
+        [quizViewController.questionLabel setText: quizViewController.questionString];
                 
     } else {                                                    // Fill in blank Question.
         

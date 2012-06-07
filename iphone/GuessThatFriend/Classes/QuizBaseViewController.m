@@ -14,7 +14,7 @@
 @implementation QuizBaseViewController
 
 @synthesize questionID;
-@synthesize questionTextView;
+@synthesize questionLabel;
 @synthesize topicImage;
 @synthesize settingsViewController;
 
@@ -46,6 +46,12 @@
     [delegate.navController pushViewController:delegate.tabController animated:YES];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:delegate.navController.view cache:NO];
     [UIView commitAnimations];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.questionLabel.backgroundColor = [UIColor whiteColor];
+    self.questionLabel.adjustsFontSizeToFitWidth = YES;
+    self.questionLabel.numberOfLines = 5;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -91,13 +97,13 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 	
-	self.questionTextView = nil;	
+	self.questionLabel = nil;	
     self.topicImage = nil;
     self.settingsViewController = nil;
 }
 
 - (void)dealloc {
-	[questionTextView release];
+	[questionLabel release];
     [settingsViewController release];
 	[topicImage release];
     
