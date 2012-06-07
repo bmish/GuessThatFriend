@@ -59,14 +59,6 @@ CREATE TABLE IF NOT EXISTS `questions` (
   PRIMARY KEY (`questionId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `subjects` (
-  `facebookId` varchar(250) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `picture` varchar(250) NOT NULL,
-  `link` varchar(250) NOT NULL,
-  PRIMARY KEY (`facebookId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 CREATE TABLE IF NOT EXISTS `users` (
   `facebookId` varchar(250) NOT NULL,
   `joinedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

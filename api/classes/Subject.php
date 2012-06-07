@@ -30,10 +30,8 @@ class Subject	{
 		$this->category = $category;
 		
 		// Get these fields from Facebook if we haven't stored them yet.
-		if (empty($this->name) && !$this->fillInFieldsFromDB()) {
+		if (empty($this->name)) {
 			$this->name = $facebookAPI->getNameFromId($facebookId);
-			
-			$this->saveToDB();
 		}
 	}
 	
@@ -63,44 +61,6 @@ class Subject	{
 		}
 		
 		return $obj;
-	}
-	
-	/**
-	 * Fill in class fields using data from the database.
-	 *
-	 * @return bool True on successful query, false otherwise
-	 */
-	private function fillInFieldsFromDB() {
-		$query = "SELECT name, picture, link FROM subjects WHERE facebookId = '".$this->facebookId."' LIMIT 1";
-		$result = mysql_query($query);
-		if ($result && mysql_num_rows($result) == 1) {
-			$row = mysql_fetch_array($result);
-			
-			$this->name = DB::cleanOutputFromDatabase($row["name"]);
-			$this->picture = DB::cleanOutputFromDatabase($row["picture"]);
-			$this->link = DB::cleanOutputFromDatabase($row["link"]);
-			
-			return true;
-		}
-		
-		return false;
-	}
-	
-	/**
-	 * Save subject to database.
-	 *
-	 * @return bool True on successful query, false otherwise
-	 */
-	private function saveToDB()	{
-		$insertQuery = "INSERT INTO subjects (facebookId, name, picture, link) VALUES ('".$this->facebookId."', '".DB::cleanInputForDatabase($this->name)."', '".$this->picture."', '".$this->link."')";
-		$result = mysql_query($insertQuery);
-		
-		if (!$result) {
-			JSON::outputFatalErrorAndExit("Unable to save subject to database.");
-			return false;
-		}
-
-		return true;
 	}
 	
 	/**
