@@ -324,6 +324,12 @@ class API {
 			}
 		}
 		
+		// Check if we generated enough questions.
+		$ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
+		if (count($questions) < $questionCount * (1 - $ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE)) {
+			JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
+		}
+		
 		return $questions;
 	}
 	
