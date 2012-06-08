@@ -3,7 +3,6 @@
 //  GuessThatFriend
 //
 //  Created on 4/10/12.
-//  Copyright (c) 2012 University of Illinois at Urbana-Champaign. All rights reserved.
 //
 
 #import "StatsFriendCustomCell.h"

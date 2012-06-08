@@ -2,7 +2,7 @@
 /**
  * An enumeration for the type of statistics.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class StatisticType {
 	const FRIENDS = "friends";

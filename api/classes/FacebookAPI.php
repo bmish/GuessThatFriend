@@ -6,7 +6,7 @@
  * of a Class and provides a global access point to that instance. Singleton is a "Gang of
  * Four" Creational Pattern.
  *
- * @copyright  2012 GuessThatFriend
+ *
  * @see	https://developers.facebook.com/docs/reference/php/
  */
 class FacebookAPI	{

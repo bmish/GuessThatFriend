@@ -2,7 +2,7 @@
 /**
  * This class implements the API functions for connecting to the database server.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class DB {
 

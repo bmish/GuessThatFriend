@@ -2,7 +2,7 @@
 /**
  * This class implements JSON utility functions.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class JSON {
 

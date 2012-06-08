@@ -4,7 +4,7 @@
  *
  * @property array $options
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class MCQuestion extends Question	{
 

@@ -2,7 +2,7 @@
 /**
  * This class implements a page category in the GuessThatFriend app.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class Category	{
 

@@ -3,7 +3,6 @@
 //  GuessThatFriend
 //
 //  Created on 2/2/12.
-//  Copyright 2012. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

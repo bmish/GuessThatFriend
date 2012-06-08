@@ -2,7 +2,7 @@
 /**
  * This class implements an option (for a question) in the GuessThatFriend app.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class Option	{
 

@@ -2,7 +2,7 @@
 /**
  * An enumeration for the type of options.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class OptionType {
 	const RANDOM = -1;

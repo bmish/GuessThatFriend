@@ -4,7 +4,7 @@
  *
  * Abstract class to be extended by specific question types.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 abstract class Question	{
 

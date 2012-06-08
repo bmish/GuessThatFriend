@@ -2,7 +2,7 @@
 /**
  * GuessThatFriend entry page.
  *
- * @copyright 2012 GuessThatFriend
+ * @ * 2012 GuessThatFriend
  */
 
 // Question includes.

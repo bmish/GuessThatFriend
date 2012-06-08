@@ -2,7 +2,7 @@
 /**
  * This class implements general utility functions.
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class Util {
 

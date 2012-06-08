@@ -5,7 +5,7 @@
  * @property string $correctAnswerText
  * @property string $chosenAnswertext
  *
- * @copyright  2012 GuessThatFriend
+ *
  */
 class FillBlankQuestion extends Question	{
 
