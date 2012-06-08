@@ -41,8 +41,8 @@ if ($cmd == 'getQuestions') {
 	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId);
 } else if ($cmd == 'submitQuestions') {
 	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
-	$questionAnswers = API::getQuestionAnswersFromGETVars();
-	$questionTimes = API::getQuestionTimesFromGETVars();
+	$questionAnswers = API::getIDPairsFromGETVars("facebookIdOfQuestion", false);
+	$questionTimes = API::getIDPairsFromGETVars("responseTimeOfQuestion", true);
 	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();

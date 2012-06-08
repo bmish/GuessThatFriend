@@ -347,8 +347,8 @@ class API {
 		
 		$questionIdsOfSavedAnswers = array();
 		for($i = 0; $i < count($questionAnswers); $i++) {
-			$questionId = $questionAnswers[$i]["questionId"];
-			$facebookId = $questionAnswers[$i]["facebookId"]; // What the user chose.
+			$questionId = $questionAnswers[$i]["id"];
+			$facebookId = $questionAnswers[$i]["value"]; // What the user chose.
 			
 			// Update the user's answer for this question.
 			// Note: We only update the answer if the user owned and had not already answered the question.
@@ -373,71 +373,38 @@ class API {
 
 		$success = false;
 		for($i = 0; $i <count($questionTimes); $i++){
-			$questionId = $questionTimes[$i]["questionId"];
-			$responseTime = $questionTimes[$i]["responseTime"];
+			$questionId = $questionTimes[$i]["id"];
+			$responseTime = $questionTimes[$i]["value"];
 
 			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			$result = mysql_query($updateQuery);
 
-			if ($result)
+			if ($result) {
 				$success = true;
+			}
 		}
 		return $success;
 	}
-	
-	/**
-	 * Gets answers to questions from GET vars.
-	 *
-	 * @return array Array of answers
-	 */
-	public static function getQuestionAnswersFromGETVars() {
-		$frontOfParameterName = "facebookIdOfQuestion";
-		$questionAnswers = array();
+
+	public static function getIDPairsFromGETVars($parameterPrefix, $valueIsInt = true) {
+		$pairs = array();
 		
-		foreach ($_GET as $parameterName => $facebookId) {
-			// Is this parameter name in the form of "facebookIdOfQuestion[X]"?
-			if (strncmp($parameterName, $frontOfParameterName, strlen($frontOfParameterName)) == 0) {
-				// Create a pair of the questionId and the facebookId (what the user chose for that question).
+		foreach ($_GET as $parameterName => $value) {
+			// Is this parameter name in the form of "$parameterPrefix[X]"?
+			if (strncmp($parameterName, $parameterPrefix, strlen($parameterPrefix)) == 0){
+				// Create a pair of the id and the value.
 				$pair = array();
-				$questionId = substr($parameterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
-				$pair["questionId"] = intval($questionId);
-				$pair["facebookId"] = DB::cleanInputForDatabase($facebookId);
-				
+				$id = substr($parameterName, strlen($parameterPrefix), strlen($parameterName) - strlen($parameterPrefix));
+				$pair["id"] = intval($id);
+				$pair["value"] = $valueIsInt ? intval($value) : DB::cleanInputForDatabase($value);
+
 				// Add this pair to our list.
-				if ($pair["questionId"] > 0) {
-					$questionAnswers[] = $pair;
+				if ($pair["id"] > 0) {
+					$pairs[] = $pair;
 				}
 			}
 		}
-		
-		return $questionAnswers;
-	}
-
-	/**
-	 * Gets response times of questions from GET vars.
-	 *
-	 * @return array Array of response times
-	 */
-	public static function getQuestionTimesFromGETVars() {
-		$frontOfParameterName = "responseTimeOfQuestion";
-		$questionTimes = array();
-		
-		foreach ($_GET as $parameterName => $responseTime) {
-			// Is this parameter name in the form of "responseTimeOfQuestion[X]"?
-			if (strncmp($parameterName, $frontOfParameterName, strlen($frontOfParameterName)) == 0){
-				// Create a pair of the questionId and the responseTime.
-				$pair = array();
-				$questionId = substr($parameterName, strlen($frontOfParameterName), strlen($parameterName) - strlen($frontOfParameterName));
-				$pair["questionId"] = intval($questionId);
-				$pair["responseTime"] = intval($responseTime);
-
-				// Add this pair to our list.
-				if ($pair["questionId"] > 0) {
-					$questionTimes[] = $pair;
-				}
-			}
-		}
-		return $questionTimes;
+		return $pairs;
 	}
 }
 ?>
