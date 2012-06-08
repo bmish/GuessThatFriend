@@ -12,7 +12,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		4D2E99DA154391BA0047F418 /* UIBarButtonItem+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E99D9154391BA0047F418 /* UIBarButtonItem+Image.m */; };
 		4D3F818014F98E9500245D4F /* categories.pbxbtree in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815214F98E9500245D4F /* categories.pbxbtree */; };
 		4D3F818114F98E9500245D4F /* cdecls.pbxbtree in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815314F98E9500245D4F /* cdecls.pbxbtree */; };
 		4D3F818214F98E9500245D4F /* decls.pbxbtree in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815414F98E9500245D4F /* decls.pbxbtree */; };
@@ -43,9 +42,6 @@
 		4D64798815437CB800402CF7 /* Button_Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798615437CB800402CF7 /* Button_Next.png */; };
 		4D64798915437CB800402CF7 /* Button_NextPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798715437CB800402CF7 /* Button_NextPressed.png */; };
 		4D64798D1543842D00402CF7 /* NavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798C1543842D00402CF7 /* NavBar.png */; };
-		4D6479901543890000402CF7 /* Button_Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798E1543890000402CF7 /* Button_Back.png */; };
-		4D6479941543895F00402CF7 /* Button_Setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6479921543895F00402CF7 /* Button_Setting.png */; };
-		4D6479981543896900402CF7 /* Button_Statistic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6479961543896900402CF7 /* Button_Statistic.png */; };
 		4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797914EB91FA00CAA606 /* whiteButton.png */; };
 		4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797B14EB91FE00CAA606 /* blueButton.png */; };
 		4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */; };
@@ -114,8 +110,6 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessThatFriend_Prefix.pch; sourceTree = "<group>"; };
-		4D2E99D8154391BA0047F418 /* UIBarButtonItem+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Image.h"; sourceTree = "<group>"; };
-		4D2E99D9154391BA0047F418 /* UIBarButtonItem+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Image.m"; sourceTree = "<group>"; };
 		4D3F815214F98E9500245D4F /* categories.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = categories.pbxbtree; sourceTree = "<group>"; };
 		4D3F815314F98E9500245D4F /* cdecls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = cdecls.pbxbtree; sourceTree = "<group>"; };
 		4D3F815414F98E9500245D4F /* decls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = decls.pbxbtree; sourceTree = "<group>"; };
@@ -159,9 +153,6 @@
 		4D64798615437CB800402CF7 /* Button_Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Next.png; sourceTree = "<group>"; };
 		4D64798715437CB800402CF7 /* Button_NextPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_NextPressed.png; sourceTree = "<group>"; };
 		4D64798C1543842D00402CF7 /* NavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBar.png; sourceTree = "<group>"; };
-		4D64798E1543890000402CF7 /* Button_Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Back.png; sourceTree = "<group>"; };
-		4D6479921543895F00402CF7 /* Button_Setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Setting.png; sourceTree = "<group>"; };
-		4D6479961543896900402CF7 /* Button_Statistic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Statistic.png; sourceTree = "<group>"; };
 		4D8D797914EB91FA00CAA606 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
 		4D8D797B14EB91FE00CAA606 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCustomCell.h; sourceTree = "<group>"; };
@@ -368,8 +359,6 @@
 				4DF2780B154E7AFF00603D4A /* CategoryStatsObject.m */,
 				4DF2780D154E7B1100603D4A /* HistoryStatsObject.h */,
 				4DF2780E154E7B1100603D4A /* HistoryStatsObject.m */,
-				4D2E99D8154391BA0047F418 /* UIBarButtonItem+Image.h */,
-				4D2E99D9154391BA0047F418 /* UIBarButtonItem+Image.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -480,9 +469,6 @@
 			isa = PBXGroup;
 			children = (
 				4D64798C1543842D00402CF7 /* NavBar.png */,
-				4D6479921543895F00402CF7 /* Button_Setting.png */,
-				4D64798E1543890000402CF7 /* Button_Back.png */,
-				4D6479961543896900402CF7 /* Button_Statistic.png */,
 				4D6479831543780700402CF7 /* Graphic_GameBackground.png */,
 				4D64798615437CB800402CF7 /* Button_Next.png */,
 				4D64798715437CB800402CF7 /* Button_NextPressed.png */,
@@ -737,9 +723,6 @@
 				4D64798815437CB800402CF7 /* Button_Next.png in Resources */,
 				4D64798915437CB800402CF7 /* Button_NextPressed.png in Resources */,
 				4D64798D1543842D00402CF7 /* NavBar.png in Resources */,
-				4D6479901543890000402CF7 /* Button_Back.png in Resources */,
-				4D6479941543895F00402CF7 /* Button_Setting.png in Resources */,
-				4D6479981543896900402CF7 /* Button_Statistic.png in Resources */,
 				BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */,
 				4D922B51154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib in Resources */,
 				4D922B54154EF1D50092B5F4 /* StatsHistoryCustomCell.xib in Resources */,
@@ -810,7 +793,6 @@
 				BA8F71A71535063F000C7458 /* StatsFriendCustomCell.m in Sources */,
 				4DFD9A9A15352ECD00BB8F92 /* FriendStatsObject.m in Sources */,
 				4DFC3A9215400CE200648D9A /* StatsBaseViewController.m in Sources */,
-				4D2E99DA154391BA0047F418 /* UIBarButtonItem+Image.m in Sources */,
 				4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */,
 				4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */,
 				4DF2780C154E7AFF00603D4A /* CategoryStatsObject.m in Sources */,

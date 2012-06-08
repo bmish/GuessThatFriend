@@ -9,7 +9,6 @@
 #import "QuizBaseViewController.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "SettingsViewController.h"
-#import "UIBarButtonItem+Image.h"
 
 @implementation QuizBaseViewController
 
@@ -51,19 +50,19 @@
         delegate.navController.navigationBar.topItem.title = @"0 / 0";
     }
     
-    UIImage *settingsImage = [UIImage imageNamed:@"Button_Setting.png"];
-    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc]
-                                         initWithImage:settingsImage
-                                         title:@"" target:self
-                                         action:@selector(settingsItemPressed:)];
-    delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
+    // About button.
+    UIButton *aboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+	[aboutButton addTarget:self
+                        action:@selector(settingsItemPressed:)
+              forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutButton];
+	self.navigationItem.leftBarButtonItem = aboutBarButtonItem;
+	[aboutBarButtonItem release];
     
-    UIImage *statsImage = [UIImage imageNamed:@"Button_Statistic.png"];
-    UIBarButtonItem *rightCornerButton = [[UIBarButtonItem alloc]
-                                          initWithImage:statsImage
-                                          title:@"" target:self
-                                          action:@selector(viewStatsItemPressed:)];
-    delegate.navController.navigationBar.topItem.rightBarButtonItem = rightCornerButton;
+    // Statistics button.
+    UIBarButtonItem *statsButton = [[UIBarButtonItem alloc] initWithTitle:@"Statistics" style:UIBarButtonItemStylePlain target:self action:@selector(viewStatsItemPressed:)];
+    self.navigationItem.rightBarButtonItem = statsButton;
+    [statsButton release];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

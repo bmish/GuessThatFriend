@@ -9,7 +9,6 @@
 #import "SettingsViewController.h"
 #import "GuessThatFriendAppDelegate.h"
 #import "QuizSettings.h"
-#import "UIBarButtonItem+Image.h"
 
 @implementation SettingsViewController
 
@@ -26,15 +25,8 @@
     // Set up the two bar items on this view.
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    delegate.navController.navigationBar.topItem.title = @"Settings";
-    delegate.navController.navigationBar.topItem.hidesBackButton = YES;
-    
-    UIImage *backImage = [UIImage imageNamed:@"Button_Back.png"];
-    UIBarButtonItem *leftCornerButton = [[UIBarButtonItem alloc] 
-                                         initWithImage:backImage 
-                                         title:@"" target:self
-                                         action:@selector(backItemPressed:)];
-    delegate.navController.navigationBar.topItem.leftBarButtonItem = leftCornerButton;
+    delegate.navController.navigationBar.topItem.title = @"About";
+    delegate.navController.navigationBar.topItem.hidesBackButton = NO;
      
     [super viewDidAppear:animated];
 }
