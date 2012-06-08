@@ -21,7 +21,7 @@ class Cache {
 		$responseString = json_encode($responseObj);
 		
 		// Cache the response.
-		$sql = "INSERT INTO facebookAPICache (request, response, timestamp) VALUES ('".DB::cleanInputForDatabase($requestString)."','".DB::cleanInputForDatabase($responseString)."',UNIX_TIMESTAMP()) ON DUPLICATE KEY UPDATE response = '$responseString', timestamp = UNIX_TIMESTAMP()";
+		$sql = "INSERT INTO facebookAPICache (request, response, timestamp) VALUES ('".DB::cleanInputForDatabase($requestString)."','".DB::cleanInputForDatabase($responseString)."',UNIX_TIMESTAMP()) ON DUPLICATE KEY UPDATE response = '".DB::cleanInputForDatabase($responseString)."', timestamp = UNIX_TIMESTAMP()";
 		$result = mysql_query($sql);
 		
 		return $responseObj;
@@ -33,7 +33,7 @@ class Cache {
 		if ($result && mysql_num_rows($result) == 1) { // Found an unexpired cached response.
 			$row = mysql_fetch_array($result);
 			
-			return json_decode(DB::cleanOutputFromDatabase($row["response"]), true);
+			return json_decode($row["response"], true);
 		}
 		
 		return null;
