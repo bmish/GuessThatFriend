@@ -148,7 +148,7 @@ abstract class Question	{
 	 * @return array Array of Questions
 	 *
 	 */
-	public static function getQuestionsFromDB($ownerFacebookId) {
+	public static function getAnsweredQuestionsFromDB($ownerFacebookId) {
 		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId != ''";
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
@@ -165,6 +165,27 @@ abstract class Question	{
 			$question->chosenSubject = new Subject($row["chosenFacebookId"]);
 			$question->answeredAt = $row["answeredAt"];
 			$question->responseTime = $row["responseTime"];
+				
+			$questions[] = $question;
+		}
+		
+		return $questions;
+	}
+	
+	public static function getUnansweredQuestionsFromDB($ownerFacebookId, $questionCount) {
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId = '' LIMIT ".$questionCount;
+		$result = mysql_query($questionQuery);
+		if (!$result || mysql_num_rows($result) == 0) {
+			return array();
+		}
+		
+		$questions = array();
+		while ($row = mysql_fetch_array($result)) {
+			$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
+			
+			// Fill in remaining fields that constructor didn't handle.
+			$question->text = DB::cleanOutputFromDatabase($row["text"]);
+			$question->correctSubject = new Subject($row["correctFacebookId"]);
 				
 			$questions[] = $question;
 		}

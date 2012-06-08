@@ -224,7 +224,7 @@ class API {
 	private static function getQuestionHistory() {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		return JSON::jsonSerializeArray(Question::getQuestionsFromDB($facebookAPI->getLoggedInUserId()));
+		return JSON::jsonSerializeArray(Question::getAnsweredQuestionsFromDB($facebookAPI->getLoggedInUserId()));
 	}
 
 	/**
@@ -307,9 +307,12 @@ class API {
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 		
+		// Get existing questions if available.
+		$questions = Question::getUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount);
+		
 		// Build a list of questions depending upon the type of questions desired.
-		$questions = array();
-		for ($i = 0; $i < $questionCount; $i++) {
+		$questionsNeededCount = $questionCount - count($questions);
+		for ($i = 0; $i < $questionsNeededCount; $i++) {
 			try {
 				if ($optionCount == OptionType::FILL_IN_THE_BLANK) {
 					$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
