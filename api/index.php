@@ -43,7 +43,8 @@ if ($cmd == 'getQuestions') {
 	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionAnswers = API::getIDPairsFromGETVars("facebookIdOfQuestion", false);
 	$questionTimes = API::getIDPairsFromGETVars("responseTimeOfQuestion", true);
-	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes);
+	$skipQuestionIds = DB::cleanArrayForDatabase($_GET['skipQuestionIds'], true);
+	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes, $skipQuestionIds);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();
 } else if ($cmd == 'getStatistics') {

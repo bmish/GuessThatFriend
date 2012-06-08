@@ -55,7 +55,7 @@ class API {
 	 * @param array $questionTimes Array containing the response time for the submitted questions.
 	 * @return void
 	 */	
-	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes) {
+	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes, $skipQuestionIds) {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Start timing.
@@ -70,10 +70,12 @@ class API {
 		// Update the user's answers for the given questions.
 		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
 		API::saveQuestionTimes($questionTimes);
+		$skippedQuestionIds = API::skipQuestionIds($skipQuestionIds);
 
 		// Build object to represent the JSON we will display.
 		$output = array();
 		$output["questionIds"] = $questionIdsOfSavedAnswers;
+		$output["skippedQuestionIds"] = $skippedQuestionIds;
 		$output["success"] = true;
 		$output["duration"] = Util::calculateLoadingDuration($timeStart);
  		
@@ -158,12 +160,14 @@ class API {
 		
 		$correctCountQuery = "SELECT COUNT(*) AS count, `categoryId`, MIN(`responseTime`) AS fastest FROM questions
 							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+							AND skipped = false
 							AND `chosenFacebookId` = `correctFacebookId`
 							GROUP BY `categoryId`";
     	$correctCountResult = mysql_query($correctCountQuery);
 		
 		$totalCountQuery = "SELECT COUNT(*) AS count, `categoryId`, AVG(`responseTime`) AS average FROM questions
 							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+							AND skipped = false
 							AND `chosenFacebookId` != ''
 							GROUP BY `categoryId`";
 		$totalCountResult = mysql_query($totalCountQuery);
@@ -237,12 +241,14 @@ class API {
 		
 		$correctQuery = "SELECT COUNT(*) AS count, `topicFacebookId`, MIN(`responseTime`) AS fastest FROM questions
 						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+						AND skipped = false
 						AND `chosenFacebookId` = `correctFacebookId`
 						GROUP BY `topicFacebookId`";
 		$correctResult = mysql_query($correctQuery);
 		
 		$totalQuery = "SELECT COUNT(*) AS count, `topicFacebookId`, AVG(`responseTime`) AS average FROM questions
 						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+						AND skipped = false
 						AND `chosenFacebookId` != ''
 						GROUP BY `topicFacebookId`";
 		$totalResult = mysql_query($totalQuery);
@@ -352,7 +358,7 @@ class API {
 			
 			// Update the user's answer for this question.
 			// Note: We only update the answer if the user owned and had not already answered the question.
-			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = NOW() WHERE chosenFacebookId = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = NOW() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			mysql_query($updateQuery);
 			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
 				$questionIdsOfSavedAnswers[] = $questionId;
@@ -360,6 +366,23 @@ class API {
 		}
 		
 		return $questionIdsOfSavedAnswers;
+	}
+	
+	private static function skipQuestionIds($questionIds) {
+		$facebookAPI = FacebookAPI::singleton();
+		
+		$skippedQuestionIds = array();
+		for($i = 0; $i < count($questionIds); $i++) {
+			$questionId = $questionIds[$i];
+			
+			$updateQuery = "UPDATE questions SET skipped = true, answeredAt = NOW() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			mysql_query($updateQuery);
+			if (mysql_affected_rows() == 1) { // Keep track of which questions we successfully skipped.
+				$skippedQuestionIds[] = $questionId;
+			}
+		}
+		
+		return $skippedQuestionIds;
 	}
 
 	/**
@@ -376,14 +399,9 @@ class API {
 			$questionId = $questionTimes[$i]["id"];
 			$responseTime = $questionTimes[$i]["value"];
 
-			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			$result = mysql_query($updateQuery);
-
-			if ($result) {
-				$success = true;
-			}
 		}
-		return $success;
 	}
 
 	public static function getIDPairsFromGETVars($parameterPrefix, $valueIsInt = true) {

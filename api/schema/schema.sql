@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `answeredAt` datetime NOT NULL,
   `responseTime` int(11) NOT NULL,
+  `skipped` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`questionId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

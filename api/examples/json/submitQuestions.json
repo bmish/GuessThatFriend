@@ -2,6 +2,10 @@
    "questionIds":[
       11
    ],
+   "skipQuestionIds":[
+      12,
+      13
+   ],
    "success":true,
    "duration":0.52
 }

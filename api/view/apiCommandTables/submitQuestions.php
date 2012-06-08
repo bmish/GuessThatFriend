@@ -20,8 +20,8 @@
 				<td class="colParameter">facebookIdOfQuestion[X]</td>
 				<td class="colType fontCode">int</td>
 				<td class="colValue">Chosen facebookId</td>
-				<td class="colDefault">Default: Skipped</td>
-				<td>The facebookId of the option that was chosen for questionId X. Questions that were skipped can be excluded.</td>
+				<td class="colDefault"></td>
+				<td>The facebookId of the option that was chosen for questionId X.</td>
 			</tr>
 			<tr>
 				<td class="colParameter">responseTimeOfQuestion[X]</td>
@@ -29,7 +29,15 @@
 				<td class="colValue">User's response time in milliseconds</td>
 				<td class="colDefault"></td>
 				<td>The time it took the user to answer the question.</td>
+			</tr>
+			<tr>
+				<td class="colParameter">skipQuestionIds[]</td>
+				<td class="colType fontCode">int</td>
+				<td class="colValue">QuestionId to skip</td>
+				<td class="colDefault"></td>
+				<td>The questions that the user chose to skip (one per parameter).</td>
+			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skipQuestionIds[]=12&amp;skipQuestionIds[]=13">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skipQuestionIds[]=12&amp;skipQuestionIds[]=13</a> - Hardcoded example.</div>
 	</div>
 </div>

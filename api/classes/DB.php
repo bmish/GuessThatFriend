@@ -40,6 +40,18 @@ class DB {
 	public static function cleanInputForDatabase($input) {
 		return addslashes(trim($input));
 	}
+	
+	public static function cleanArrayForDatabase($array, $isIntValues = false) {
+		if (!is_array($array)) {
+			return;
+		}
+		
+		for ($index = 0; $index < count($array); $index++) {
+			$array[$index] = $isIntValues ? intval($array[$index]) : DB::cleanInputForDatabase($array[$index]);
+		}
+		
+		return $array;
+	}
 
 	/**
 	 * Cleans output from database.

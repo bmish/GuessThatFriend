@@ -149,7 +149,7 @@ abstract class Question	{
 	 *
 	 */
 	public static function getAnsweredQuestionsFromDB($ownerFacebookId) {
-		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId != ''";
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId != ''";
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();
@@ -173,7 +173,7 @@ abstract class Question	{
 	}
 	
 	public static function getUnansweredQuestionsFromDB($ownerFacebookId, $questionCount) {
-		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND chosenFacebookId = '' LIMIT ".$questionCount;
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId = '' LIMIT ".$questionCount;
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();
