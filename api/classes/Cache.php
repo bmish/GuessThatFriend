@@ -28,10 +28,7 @@ class Cache {
 	}
 	
 	private static function checkDatabaseForCachedResponse($requestString) {
-		$SECONDS_PER_WEEK = 60*60*24*7;
-		$secondsBeforeExpiring = $SECONDS_PER_WEEK * 2;
-		$minUnixTimestamp = time() - $secondsBeforeExpiring;
-		$sql = "SELECT response FROM facebookAPICache WHERE request = '".DB::cleanInputForDatabase($requestString)."' AND timestamp > '$minUnixTimestamp' LIMIT 1";
+		$sql = "SELECT response FROM facebookAPICache WHERE request = '".DB::cleanInputForDatabase($requestString)."' AND timestamp > '".Cache::minUnexpiredUnixTimestamp()."' LIMIT 1";
 		$result = mysql_query($sql);
 		if ($result && mysql_num_rows($result) == 1) { // Found an unexpired cached response.
 			$row = mysql_fetch_array($result);
@@ -40,6 +37,12 @@ class Cache {
 		}
 		
 		return null;
+	}
+	
+	public static function minUnexpiredUnixTimestamp() {
+		$SECONDS_PER_WEEK = 60*60*24*7;
+		$secondsBeforeExpiring = $SECONDS_PER_WEEK * 2;
+		return time() - $secondsBeforeExpiring;
 	}
 }
 ?>
