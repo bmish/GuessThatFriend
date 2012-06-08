@@ -307,7 +307,7 @@ class API {
 	private static function getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		// Get existing questions if available.
+		// Get existing unanswered questions if available.
 		$questions = Question::getUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount);
 		
 		// Build a list of questions depending upon the type of questions desired.
