@@ -31,13 +31,13 @@
 				<td>The time it took the user to answer the question.</td>
 			</tr>
 			<tr>
-				<td class="colParameter">skipQuestionIds[]</td>
+				<td class="colParameter">skippedQuestionIds[]</td>
 				<td class="colType fontCode">int</td>
-				<td class="colValue">QuestionId to skip</td>
+				<td class="colValue">Skipped questionId</td>
 				<td class="colDefault"></td>
 				<td>The questions that the user chose to skip (one per parameter).</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skipQuestionIds[]=12&amp;skipQuestionIds[]=13">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skipQuestionIds[]=12&amp;skipQuestionIds[]=13</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skippedQuestionIds[]=12&amp;skippedQuestionIds[]=13">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skippedQuestionIds[]=12&amp;skippedQuestionIds[]=13</a> - Hardcoded example.</div>
 	</div>
 </div>

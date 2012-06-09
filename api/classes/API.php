@@ -55,7 +55,7 @@ class API {
 	 * @param array $questionTimes Array containing the response time for the submitted questions.
 	 * @return void
 	 */	
-	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes, $skipQuestionIds) {
+	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes, $skippedQuestionIds) {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Start timing.
@@ -70,12 +70,12 @@ class API {
 		// Update the user's answers for the given questions.
 		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
 		API::saveQuestionTimes($questionTimes);
-		$skippedQuestionIds = API::skipQuestionIds($skipQuestionIds);
+		$skippedQuestionIdsSucceeded = API::skippedQuestionIds($skippedQuestionIds);
 
 		// Build object to represent the JSON we will display.
 		$output = array();
 		$output["questionIds"] = $questionIdsOfSavedAnswers;
-		$output["skippedQuestionIds"] = $skippedQuestionIds;
+		$output["skippedQuestionIds"] = $skippedQuestionIdsSucceeded;
 		$output["success"] = true;
 		$output["duration"] = Util::calculateLoadingDuration($timeStart);
  		
@@ -368,7 +368,7 @@ class API {
 		return $questionIdsOfSavedAnswers;
 	}
 	
-	private static function skipQuestionIds($questionIds) {
+	private static function skippedQuestionIds($questionIds) {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		$skippedQuestionIds = array();

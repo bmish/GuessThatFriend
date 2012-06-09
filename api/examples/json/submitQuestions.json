@@ -2,7 +2,7 @@
    "questionIds":[
       11
    ],
-   "skipQuestionIds":[
+   "skippedQuestionIds":[
       12,
       13
    ],
