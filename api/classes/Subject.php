@@ -53,7 +53,7 @@ class Subject	{
 	public function jsonSerialize() {
 		$obj = array();
 		$obj["facebookId"] = $this->facebookId;
-		$obj["name"] = $this->name;
+		$obj["name"] = $this->name ? $this->name : "N/A";
 		$obj["picture"] = $this->picture;
 		$obj["link"] = $this->link;
 		if ($this->category) {
