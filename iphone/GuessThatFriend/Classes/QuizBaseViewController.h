@@ -12,12 +12,14 @@
 
 @interface QuizBaseViewController : UIViewController {
 	int questionID;
+    bool isQuestionAnswered;
 	UILabel *questionLabel;
     UIImageView *topicImage;
     SettingsViewController *settingsViewController;
 }
 
 @property int questionID;
+@property bool isQuestionAnswered;
 @property (nonatomic, retain) IBOutlet UILabel *questionLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *topicImage;
 @property (nonatomic, retain) SettingsViewController *settingsViewController;

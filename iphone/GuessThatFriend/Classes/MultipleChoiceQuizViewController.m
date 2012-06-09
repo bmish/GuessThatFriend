@@ -135,6 +135,7 @@
     scoreLabelString = [NSMutableString stringWithFormat:@"%i / %i", delegate->correctAnswers, delegate->totalNumOfQuestions];
     
     delegate.navController.navigationBar.topItem.title = scoreLabelString;
+    self.isQuestionAnswered = true;
     
     // construct the request string
     NSMutableString *getRequest;

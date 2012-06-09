@@ -13,6 +13,7 @@
 @implementation QuizBaseViewController
 
 @synthesize questionID;
+@synthesize isQuestionAnswered;
 @synthesize questionLabel;
 @synthesize topicImage;
 @synthesize settingsViewController;
@@ -37,6 +38,7 @@
     self.questionLabel.backgroundColor = [UIColor whiteColor];
     self.questionLabel.adjustsFontSizeToFitWidth = YES;
     self.questionLabel.numberOfLines = 5;
+    self.isQuestionAnswered = false;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

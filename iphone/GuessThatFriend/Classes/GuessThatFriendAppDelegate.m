@@ -18,6 +18,7 @@
 
 #define IMAGEPLISTPATH     @"imageCachePlist"
 #define IMAGEPLISTFULLPATH @"/imageCachePlist.plist"
+#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
 
 @implementation GuessThatFriendAppDelegate
 
@@ -37,12 +38,16 @@
 @synthesize plistImageDict;
 
 - (void)nextButtonPressed:(id)sender {
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    
+    // If the current question was skipped by the user, let the API know.
+    if ([self didUserSkipCurrentQuestion]) {
+        [self notifyAPIThatCurrentQuestionWasSkipped];
+    }
+    
 	Question *nextQuestion = [quizManager getNextQuestion];
-	
     // Determine the type of this question.
     if ([nextQuestion isKindOfClass:[MCQuestion class]]) {      // Multiple Choice Question.
-        
-        MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
         [quizViewController.friendsTable setScrollEnabled:YES];
         
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
@@ -56,6 +61,7 @@
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
         [quizViewController.friendsTable reloadData];
         quizViewController.questionID = mcQuestion.questionId;
+        quizViewController.isQuestionAnswered = false;
         [quizViewController.questionLabel setText: quizViewController.questionString];
                 
     } else {                                                    // Fill in blank Question.
@@ -68,6 +74,28 @@
     [responseTimer release];
     responseTimer = [NSDate date];
     [responseTimer retain];    
+}
+
+- (bool) didUserSkipCurrentQuestion {
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    
+    return quizViewController.questionID > 0 && !quizViewController.isQuestionAnswered;
+}
+
+- (void) notifyAPIThatCurrentQuestionWasSkipped {
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
+    
+    // Construct the request string.
+    NSMutableString *getRequest;
+    getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    [getRequest appendString:@"?cmd=submitQuestions"];
+    [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
+    [getRequest appendFormat:@"&skippedQuestionIds[]=%i", quizViewController.questionID];
+    
+    // Create an aSynchronousRequest so that the UI isn't hogged.
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+    [NSURLConnection connectionWithRequest:request delegate:nil];
 }
 
 #pragma mark -
