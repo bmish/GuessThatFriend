@@ -98,7 +98,7 @@
         NSDictionary *correctSubject = [curQuestion objectForKey:@"correctSubject"];
         NSString *correctFbId = [correctSubject objectForKey:@"facebookId"];
         NSDictionary *topicDict = [curQuestion objectForKey:@"topicSubject"];
-        NSString *topicPicture = [topicDict objectForKey:@"picture"];
+        NSString *topicFacebookId = [topicDict objectForKey:@"facebookId"];
         
         int questionId = [[curQuestion objectForKey:@"questionId"] intValue]; 
         
@@ -110,20 +110,20 @@
         while (curOption = [optionEnumerator nextObject]) {
             NSDictionary *subjectDict = [curOption objectForKey:@"topicSubject"];
             NSString *subjectName = [subjectDict objectForKey:@"name"];
-            NSString *subjectImageURL = [subjectDict objectForKey:@"picture"];
             NSString *subjectFacebookId = [subjectDict objectForKey:@"facebookId"];
-            NSString *subjectLink = [subjectDict objectForKey:@"link"];
             
-            Option *option = [[Option alloc] initWithName:subjectName andImagePath:subjectImageURL andFacebookId:subjectFacebookId andLink:subjectLink];
+            Option *option = [[Option alloc] initWithName:subjectName andFacebookId:subjectFacebookId];
             [optionArray addObject:option];
             [option release];
         }
+        
+        // Create a Subject object for the topic of the question.
         
         Question *question = [[MCQuestion alloc] initQuestionWithOptions:optionArray];
         question.text = text;
         question.correctFacebookId = correctFbId;
         question.questionId = questionId;
-        question.topicImage = topicPicture;
+        question.topicImage = [Subject getPictureURLFromFacebookID:topicFacebookId];
         
         [optionArray release];
         

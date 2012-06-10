@@ -10,33 +10,25 @@
          "text":"Which of the following two friends likes the movie Ice Age?",
          "topicSubject":{
             "facebookId":"IceAge",
-            "name":"Ice Age",
-            "picture":"https://graph.facebook.com/IceAge/picture",
-            "link":"https://www.facebook.com/IceAge"
+            "name":"Ice Age"
          },
          "correctSubject":{
             "facebookId":"220439",
-            "name":"Bret Taylor",
-            "picture":"http://graph.facebook.com/220439/picture",
-            "link":"https://www.facebook.com/220439"
+            "name":"Bret Taylor"
          },
          "options":[
             {
                "optionId":12,
                "topicSubject":{
                   "facebookId":"220439",
-                  "name":"Bret Taylor",
-                  "picture":"http://graph.facebook.com/220439/picture",
-                  "link":"https://www.facebook.com/220439"
+                  "name":"Bret Taylor"
                }
             },
             {
                "optionId":13,
                "topicSubject":{
                   "facebookId":"4",
-                  "name":"Mark Zuckerberg",
-                  "picture":"http://graph.facebook.com/4/picture",
-                  "link":"https://www.facebook.com/4"
+                  "name":"Mark Zuckerberg"
                }
             }
          ]

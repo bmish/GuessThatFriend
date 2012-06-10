@@ -6,23 +6,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Subject.h"
 
 @interface FriendStatsObject : NSObject {
-    NSString *name;         // Full name.
-    UIImage *picture;       // Link to profile picture.
+    Subject *subject;
     int correctCount;
     int totalCount;
     float fastestCorrectRT;
     float averageRT;
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) UIImage *picture;
+@property (nonatomic, retain) Subject *subject;
 @property int correctCount;
 @property int totalCount;
 @property float fastestCorrectRT;
 @property float averageRT;
 
-- (FriendStatsObject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andCorrectCount:(int)cCount andTotalCount:(int)tCount andFastestRT:(int)fRT andAverageRT:(int)aRT;
+- (FriendStatsObject *)initWithSubject:(Subject *)mySubject andCorrectCount:(int)cCount andTotalCount:(int)tCount andFastestRT:(int)fRT andAverageRT:(int)aRT;
 
 @end

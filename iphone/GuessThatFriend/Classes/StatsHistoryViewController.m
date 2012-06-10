@@ -11,6 +11,7 @@
 #import "JSONKit.h"
 #import "HistoryStatsObject.h"
 #import "StatsHistoryCustomCell.h"
+#import "Subject.h"
 
 @implementation StatsHistoryViewController
 
@@ -47,7 +48,6 @@
     while (curHistory = [historyEnumerator nextObject]) {
         NSString *questionString = [curHistory objectForKey:@"text"];
         NSDictionary *topicDict = [curHistory objectForKey:@"topicSubject"];
-        NSString *picLink= [topicDict objectForKey:@"picture"];
         NSDictionary *correctDict = [curHistory objectForKey:@"correctSubject"];
         NSString *correctName= [correctDict objectForKey:@"name"];
         NSDictionary *chosenDict = [curHistory objectForKey:@"chosenSubject"];
@@ -57,7 +57,10 @@
         NSString *rtStr = [curHistory objectForKey:@"responseTime"];
         int rt = [rtStr intValue];
         
-        HistoryStatsObject *statsObj = [[HistoryStatsObject alloc] initWithQuestion:questionString andImagePath:picLink andCorrectAnswer:correctName andYourAnswer:chosenName andDate:answeredDate andResponseTime:rt];
+        Subject *subject = [[Subject alloc] initWithName:[topicDict objectForKey:@"name"] andFacebookId:[topicDict objectForKey:@"facebookId"]];
+        
+        
+        HistoryStatsObject *statsObj = [[HistoryStatsObject alloc] initWithQuestion:questionString andSubject:subject andCorrectAnswer:correctName andYourAnswer:chosenName andDate:answeredDate andResponseTime:rt];
         
         [list addObject:statsObj];
         

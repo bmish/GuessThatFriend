@@ -21,9 +21,8 @@
 @property (nonatomic, retain) Question *question;
 @property (nonatomic, retain) Subject *subject;
 
-- (Option *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath  
-             andFacebookId:(NSString *)facebookId
-                 andLink:(NSString *)link;
+- (Option *)initWithName:(NSString *)friendName
+           andFacebookId:(NSString *)facebookId;
 - (id)copyWithZone:(NSZone *)zone;
 
 @end

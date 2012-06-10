@@ -25,11 +25,9 @@ class Subject	{
 		
 		$this->facebookId = $facebookId;
 		$this->name = $name;
-		$this->picture = 'https://graph.facebook.com/'.$facebookId.'/picture';
-		$this->link = 'https://www.facebook.com/'.$facebookId;
 		$this->category = $category;
 		
-		// Get these fields from Facebook if we haven't stored them yet.
+		// Get the name from Facebook if we haven't stored it yet.
 		if (empty($this->name)) {
 			$this->name = $facebookAPI->getNameFromId($facebookId);
 		}
@@ -54,8 +52,6 @@ class Subject	{
 		$obj = array();
 		$obj["facebookId"] = $this->facebookId;
 		$obj["name"] = $this->name ? $this->name : "N/A";
-		$obj["picture"] = $this->picture;
-		$obj["link"] = $this->link;
 		if ($this->category) {
 			$obj["category"] = $this->category->jsonSerialize();
 		}

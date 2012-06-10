@@ -7,19 +7,16 @@
 
 #import "FriendStatsObject.h"
 #import "GuessThatFriendAppDelegate.h"
+#import "Subject.h"
 
 @implementation FriendStatsObject
 
-@synthesize name, picture, correctCount, totalCount;
+@synthesize subject, correctCount, totalCount;
 @synthesize fastestCorrectRT, averageRT;
 
-- (FriendStatsObject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andCorrectCount:(int)cCount andTotalCount:(int)tCount andFastestRT:(int)fRT andAverageRT:(int)aRT {
+- (FriendStatsObject *)initWithSubject:(Subject *)mySubject andCorrectCount:(int)cCount andTotalCount:(int)tCount andFastestRT:(int)fRT andAverageRT:(int)aRT {
     
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
-    UIImage *image = [delegate getPicture:imagePath];
-    
-    self.name = friendName;
-    self.picture = image;
+    self.subject = mySubject;
     self.correctCount = cCount;
     self.totalCount = tCount;
     self.fastestCorrectRT = ((float)fRT) / 1000.0;
@@ -35,8 +32,7 @@
 }
 
 - (void)dealloc {
-    [name release];
-    [picture release];
+    [subject release];
     
 	[super dealloc];
 }

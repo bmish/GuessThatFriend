@@ -11,7 +11,7 @@
 @interface Subject : NSObject {
     NSString *facebookId;   // FacebookID of this person or page.
     NSString *name;         // Full name.
-    UIImage *picture;       // Link to profile picture.
+    UIImage *picture;       // Profile picture.
     NSString *link;         // Link to profile.
 }
 
@@ -20,8 +20,9 @@
 @property (nonatomic, retain) UIImage *picture;
 @property (nonatomic, retain) NSString *link;
 
-- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath 
-            andFacebookId:(NSString *)facebookId
-                  andLink:(NSString *)link;
+- (Subject *)initWithName:(NSString *)friendName 
+            andFacebookId:(NSString *)facebookId;
+
++ (NSString *) getPictureURLFromFacebookID:(NSString *)facebookId;
 
 @end

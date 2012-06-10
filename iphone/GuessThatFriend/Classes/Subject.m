@@ -12,17 +12,26 @@
 
 @synthesize facebookId, name, picture, link;
 
-- (Subject *)initWithName:(NSString *)friendName andImagePath:(NSString *)imagePath andFacebookId:(NSString *)myfacebookId andLink:(NSString *)mylink {
-    // Download the subject's image from the 'imagePath'
+- (Subject *)initWithName:(NSString *)friendName andFacebookId:(NSString *)myfacebookId {
+    // Create the image path and download the subject's image.
+    NSString *imagePath = [Subject getPictureURLFromFacebookID:myfacebookId];
     NSURL *url = [NSURL URLWithString:imagePath];
     UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
     
     self.name = friendName;
 	self.picture = image;
     self.facebookId = myfacebookId;
-    self.link = mylink;
+    self.link = [Subject getProfileURLFromFacebookID:myfacebookId];
     
 	return [super init];
+}
+
++ (NSString *) getPictureURLFromFacebookID:(NSString *)facebookId {
+    return [NSString stringWithFormat:@"%@%@%@", @"https://graph.facebook.com/", facebookId, @"/picture"];
+}
+
++ (NSString *) getProfileURLFromFacebookID:(NSString *)facebookId {
+    return [NSString stringWithFormat:@"%@%@", @"https://www.facebook.com/", facebookId];
 }
 
 - (void)dealloc {

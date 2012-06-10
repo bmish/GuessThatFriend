@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CategoryStatsObject : NSObject {
-    NSString *name;         // Full name.
+    NSString *name;
     int correctCount;
     int totalCount;
     float fastestCorrectResponseTime;

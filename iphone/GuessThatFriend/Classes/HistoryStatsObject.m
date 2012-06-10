@@ -7,18 +7,16 @@
 
 #import "HistoryStatsObject.h"
 #import "GuessThatFriendAppDelegate.h"
+#import "Subject.h"
 
 @implementation HistoryStatsObject
 
 @synthesize question, picture, correctAnswer, yourAnswer, date, responseTime;
 
-- (HistoryStatsObject *)initWithQuestion:(NSString *)text andImagePath:(NSString *)imagePath andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt {
-    
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
-    UIImage *image = [delegate getPicture:imagePath];
+- (HistoryStatsObject *)initWithQuestion:(NSString *)text andSubject:(Subject *)subject andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt {
     
     self.question = text;
-    self.picture = image;
+    self.picture = subject.picture;
     self.correctAnswer = cAnswer;
     self.yourAnswer = yAnswer;
     self.date = theDate;

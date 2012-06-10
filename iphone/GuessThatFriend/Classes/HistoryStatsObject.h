@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Subject.h"
 
 @interface HistoryStatsObject : NSObject {
     NSString *question;
@@ -23,6 +24,6 @@
 @property (nonatomic, retain) NSString *date;
 @property float responseTime;
 
-- (HistoryStatsObject *)initWithQuestion:(NSString *)text andImagePath:(NSString *)imagePath andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt;
+- (HistoryStatsObject *)initWithQuestion:(NSString *)text andSubject:(Subject *)subject andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt;
 
 @end

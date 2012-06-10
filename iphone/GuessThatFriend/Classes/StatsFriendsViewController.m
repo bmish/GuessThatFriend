@@ -10,6 +10,7 @@
 #import "GuessThatFriendAppDelegate.h"
 #import "JSONKit.h"
 #import "FriendStatsObject.h"
+#import "Subject.h"
 
 @implementation StatsFriendsViewController
 
@@ -56,10 +57,9 @@
         int fastestRT = [fastestRTStr intValue];
         int averageRT = [averageRTStr intValue];
         
-        NSString *name = [subjectDict objectForKey:@"name"];
-        NSString *picURL = [subjectDict objectForKey:@"picture"];
+        Subject *subject = [[Subject alloc] initWithName:[subjectDict objectForKey:@"name"] andFacebookId:[subjectDict objectForKey:@"facebookId"]];
         
-        FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithName:name andImagePath:picURL andCorrectCount:correctCount andTotalCount:totalCount andFastestRT:fastestRT andAverageRT:averageRT];
+        FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithSubject:subject andCorrectCount:correctCount andTotalCount:totalCount andFastestRT:fastestRT andAverageRT:averageRT];
         
         [list addObject:statsObj];
         
@@ -178,10 +178,10 @@
 	NSUInteger row = [indexPath row];
 	
     FriendStatsObject *obj = [list objectAtIndex:row];
-    cell.picture.image = obj.picture;
+    cell.picture.image = obj.subject.picture;
 	
     // Make sure the name is valid.
-    NSString *name = obj.name;
+    NSString *name = obj.subject.name;
     if (name == (id)[NSNull null] || name.length == 0) {
         name = @"Something is wrong";
     }
