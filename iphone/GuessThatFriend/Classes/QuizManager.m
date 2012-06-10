@@ -90,6 +90,7 @@
     
     NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];
     NSDictionary *curQuestion;
+    int questionsCount = 0;
     
     //Go through all QUESTIONS ie the QUESTIONS ARRAY
     while (curQuestion = [questionEnumerator nextObject]) {
@@ -133,6 +134,14 @@
         [questionArrayLock unlock];
         
         [question release];
+        
+        questionsCount++;
+    }
+    
+    // if server's response does not have any question, return NO so that
+    // client will request again.
+    if (questionsCount == 0) {
+        return NO;
     }
     
     return YES;
