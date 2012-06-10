@@ -89,7 +89,7 @@ class API {
 	 */	
 	public static function getCategories() {
 		// Get categories from database.
-		$categoryQuery = "SELECT * FROM categories";
+		$categoryQuery = "SELECT * FROM categories ORDER BY facebookName";
 		$result = mysql_query($categoryQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			JSON::outputFatalErrorAndExit("No categories found in database.");
