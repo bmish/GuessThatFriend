@@ -73,7 +73,7 @@
     // Start timer for this question.
     [responseTimer release];
     responseTimer = [NSDate date];
-    [responseTimer retain];    
+    [responseTimer retain];
 }
 
 - (bool) didUserSkipCurrentQuestion {

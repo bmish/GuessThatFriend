@@ -75,7 +75,7 @@
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
-    // Check if valid JSON response
+    // Check for valid JSON response.
     if (responseDictionary == nil) {
         [self requestQuestionsFromServer];  // Just ask for more questions
         return NO;
@@ -92,7 +92,7 @@
     NSDictionary *curQuestion;
     int questionsCount = 0;
     
-    //Go through all QUESTIONS ie the QUESTIONS ARRAY
+    // Go through all questions in the JSON response.
     while (curQuestion = [questionEnumerator nextObject]) {
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
@@ -101,13 +101,18 @@
         NSDictionary *topicDict = [curQuestion objectForKey:@"topicSubject"];
         NSString *topicFacebookId = [topicDict objectForKey:@"facebookId"];
         
-        int questionId = [[curQuestion objectForKey:@"questionId"] intValue]; 
+        int questionId = [[curQuestion objectForKey:@"questionId"] intValue];
+        
+        // Ignore this question if we've already seen it.
+        if (![self isNewlyFetchedQuestion:questionId]) {
+            continue;
+        }
         
         NSEnumerator *optionEnumerator = [options objectEnumerator];
         NSDictionary *curOption;
         NSMutableArray *optionArray = [[NSMutableArray alloc] initWithCapacity:8];
         
-        //Go through all OPTIONS for current Question ie the OPTIONS ARRAY
+        // Go through all options for current question.
         while (curOption = [optionEnumerator nextObject]) {
             NSDictionary *subjectDict = [curOption objectForKey:@"topicSubject"];
             NSString *subjectName = [subjectDict objectForKey:@"name"];
@@ -138,13 +143,23 @@
         questionsCount++;
     }
     
-    // if server's response does not have any question, return NO so that
+    // If server's response does not have any question, return NO so that
     // client will request again.
     if (questionsCount == 0) {
         return NO;
     }
     
     return YES;
+}
+
+// True if new question has a greater ID than any existing question.
+- (BOOL)isNewlyFetchedQuestion:(int)questionId {
+    if (!questionArray || questionArray.count == 0) {
+        return true;
+    }
+    
+    Question *lastQuestion = [questionArray objectAtIndex:questionArray.count - 1];
+    return questionId > lastQuestion.questionId;
 }
 
 // getQuestionThread handles the getQuestion prior to running out of questions.
@@ -170,9 +185,10 @@
         [questionArrayLock wait];
     }
     
-    Question *question = [questionArray objectAtIndex:questionArray.count - 1];
+    // Remove the current question from the questions array.
+    Question *question = [questionArray objectAtIndex:0];
     [question retain];
-    [questionArray removeLastObject];
+    [questionArray removeObjectAtIndex:0];
     
     [questionArrayLock unlock];
     
