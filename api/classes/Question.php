@@ -192,5 +192,16 @@ abstract class Question	{
 		
 		return $questions;
 	}
+	
+	public static function countUnansweredQuestionsFromDB($ownerFacebookId) {
+		$questionQuery = "SELECT COUNT(*) FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId = ''";
+		$result = mysql_query($questionQuery);
+		if (!$result || mysql_num_rows($result) == 0) {
+			return 0;
+		}
+		
+		$row = mysql_fetch_array($result);
+		return $row["COUNT(*)"];
+	}
 }
 ?>

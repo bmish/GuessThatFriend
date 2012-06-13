@@ -46,6 +46,36 @@ class API {
 		
 		JSON::outputArrayInJSON($output);
 	}
+	
+	public static function refillUnansweredQuestions($facebookAccessToken) {
+		$facebookAPI = FacebookAPI::singleton();
+		
+		// Start timing.
+		$timeStart = microtime(true);
+		
+		// Check authentication.
+		if (!$facebookAPI->authenticate($facebookAccessToken)) { // Show example if not authenticated.
+			JSON::outputExampleJSON("refillUnansweredQuestions.json");
+			return;
+		}
+		
+		// Determine how many questions to generate.
+		$MIN_UNANSWERED_QUESTIONS = 15;
+		$unansweredQuestionCount = Question::countUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId());
+		$questionsToGenerateCount = 0;
+		if ($unansweredQuestionCount < $MIN_UNANSWERED_QUESTIONS) {
+			$questionsToGenerateCount = $MIN_UNANSWERED_QUESTIONS - $unansweredQuestionCount;
+			$questionsNew = API::generateQuestions($questionsToGenerateCount, OptionType::DEFAULT_TYPE, null, null);
+		}
+		
+		// Build object to represent the JSON we will display.
+		$output = array();
+		$output["questionsGenerated"] = $questionsToGenerateCount;
+		$output["success"] = true;
+		$output["duration"] = Util::calculateLoadingDuration($timeStart);
+		
+		JSON::outputArrayInJSON($output);
+	}
 
 	/**
 	 * Submits questions to the server. On success, prints JSON output confirming the submitted questions.
@@ -314,11 +344,29 @@ class API {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Get existing unanswered questions if available.
-		$questions = Question::getUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount);
+		$questionsExisting = Question::getUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount);
 		
 		// Build a list of questions depending upon the type of questions desired.
-		$questionsNeededCount = $questionCount - count($questions);
-		for ($i = 0; $i < $questionsNeededCount; $i++) {
+		$questionsNeededCount = $questionCount - count($questionsExisting);
+		$questionsNew = API::generateQuestions($questionsNeededCount, $optionCount, $topicFacebookId, $categoryId);
+		
+		// Combine existing and new questions.
+		$questions = array_merge($questionsExisting, $questionsNew);
+		
+		// Check if we generated enough questions.
+		$ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
+		if (count($questions) < $questionCount * (1 - $ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE)) {
+			JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
+		}
+		
+		return $questions;
+	}
+	
+	private static function generateQuestions($questionCount, $optionCount, $topicFacebookId, $categoryId) {
+		$facebookAPI = FacebookAPI::singleton();
+		
+		$questions = array();
+		for ($i = 0; $i < $questionCount; $i++) {
 			try {
 				if ($optionCount == OptionType::FILL_IN_THE_BLANK) {
 					$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
@@ -331,12 +379,6 @@ class API {
 			} catch (Exception $e) { // If we fail to generate a question, record the error, and continue.
 				Error::saveErrorToDB($e->getMessage());
 			}
-		}
-		
-		// Check if we generated enough questions.
-		$ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
-		if (count($questions) < $questionCount * (1 - $ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE)) {
-			JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
 		}
 		
 		return $questions;
