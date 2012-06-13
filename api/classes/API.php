@@ -45,6 +45,21 @@ class API {
 		$output["duration"] = Util::calculateLoadingDuration($timeStart);
 		
 		JSON::outputArrayInJSON($output);
+		
+		// Refill questions.
+		API::sendAsyncRefillUnansweredQuestionsRequest();
+	}
+	
+	private static function sendAsyncRefillUnansweredQuestionsRequest() {
+		$facebookAPI = FacebookAPI::singleton();
+		
+		$requestURL = Util::curPageURLWithoutGETParams();
+		
+		$params = array();
+		$params["cmd"] = 'refillUnansweredQuestions';
+		$params["facebookAccessToken"] = $facebookAPI->getAccessToken();
+		
+		Util::curl_request_async($requestURL,$params,"GET");
 	}
 	
 	public static function refillUnansweredQuestions($facebookAccessToken) {
@@ -60,7 +75,7 @@ class API {
 		}
 		
 		// Determine how many questions to generate.
-		$MIN_UNANSWERED_QUESTIONS = 15;
+		$MIN_UNANSWERED_QUESTIONS = 25;
 		$unansweredQuestionCount = Question::countUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId());
 		$questionsToGenerateCount = 0;
 		if ($unansweredQuestionCount < $MIN_UNANSWERED_QUESTIONS) {

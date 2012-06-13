@@ -382,5 +382,9 @@ class FacebookAPI	{
 		
 		return null;
 	}
+	
+	public function getAccessToken() {
+		return $this->facebookAccessToken;
+	}
 }
 ?>
