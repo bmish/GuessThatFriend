@@ -172,7 +172,7 @@
 // Call should also free the returned object.
 - (Question *)getNextQuestion {
     
-    if (questionArray.count < 3 && threadRunning == NO) { // modified it into go fetch question on the 2nd last question
+    if (questionArray.count < MIN_AVAILABLE_QUESTION_COUNT && threadRunning == NO) { // modified it into go fetch question on the 2nd last question
         
         threadRunning = YES;
         
