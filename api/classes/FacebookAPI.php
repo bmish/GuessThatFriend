@@ -166,7 +166,12 @@ class FacebookAPI	{
 			if (!in_array($pageFacebookId, $checkedPages)) { // Ignore pages that have already been checked.
 				if ($facebookId == null || !$this->likesPage($facebookId, $pageFacebookId)) { // Only find pages not liked by $facebookId.
 					$pageCategory = ($category == null) ? Category::getCategoryByFacebookName($page['categoryFacebookName']) : $category;
-					$pages[] = new Subject($pageFacebookId, $page['name'], $pageCategory);
+					try {
+						$pages[] = new Subject($pageFacebookId, $page['name'], $pageCategory);
+					} catch (Exception $e) {
+						Error::saveErrorToDB($e);
+						continue;
+					}
 				}
 				$checkedPages[] = $pageFacebookId;
 			}
@@ -236,7 +241,12 @@ class FacebookAPI	{
 		$subjects = array();
 		for ($i = 0; $i < sizeof($json); $i++)	{
 			$category = isset($json[$i]['category']) ? Category::getCategoryByFacebookName($json[$i]['category']) : null;
-			$subjects[$i] = new Subject($json[$i]['id'], $json[$i]['name'], $category);
+			try {
+				$subjects[] = new Subject($json[$i]['id'], $json[$i]['name'], $category);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 		}
 		
 		return $subjects;

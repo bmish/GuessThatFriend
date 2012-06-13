@@ -75,7 +75,12 @@ class Option	{
 		$options = array();
 		while ($row = mysql_fetch_array($result)) {
 			$optionId = $row["optionId"];
-			$topicSubject = new Subject($row["topicFacebookId"]);
+			try {
+				$topicSubject = new Subject($row["topicFacebookId"]);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 			$options[] = new Option($questionId, $topicSubject, $optionId);
 		}
 		

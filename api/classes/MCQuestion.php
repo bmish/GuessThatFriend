@@ -58,9 +58,9 @@ class MCQuestion extends Question	{
 		$correctOptionIndex = rand(0, $optionCount-1);
 		for ($i = 0; $i < $optionCount; $i++)	{
 			if ($i == $correctOptionIndex)	{ // This should be the correct option.
-				$this->options[$i] = new Option($this->questionId, $this->correctSubject);
+				$this->options[] = new Option($this->questionId, $this->correctSubject);
 			} else	{ // This should be an incorrect option.
-				$this->options[$i] = new Option($this->questionId, $randomPages[$currentRandomPageIndex++]);
+				$this->options[] = new Option($this->questionId, $randomPages[$currentRandomPageIndex++]);
 			}
 		}
 		

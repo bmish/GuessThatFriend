@@ -306,7 +306,12 @@ class API {
 		// Store total counts for all friends that user has answered about.
 		$friendsArray = array();
 		while($totalRow = mysql_fetch_array($totalResult)){
-			$friendSubject = new Subject($totalRow["topicFacebookId"]);
+			try {
+				$friendSubject = new Subject($totalRow["topicFacebookId"]);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 			
 			$friendArray = array();
 			$friendArray["subject"] = $friendSubject->jsonSerialize();
@@ -393,6 +398,7 @@ class API {
 				}
 			} catch (Exception $e) { // If we fail to generate a question, record the error, and continue.
 				Error::saveErrorToDB($e->getMessage());
+				continue;
 			}
 		}
 		

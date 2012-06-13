@@ -30,6 +30,11 @@ class Subject	{
 		// Get the name from Facebook if we haven't stored it yet.
 		if (empty($this->name)) {
 			$this->name = $facebookAPI->getNameFromId($facebookId);
+			
+			// Got nothing from Facebook?
+			if (empty($this->name)) {
+				throw new Exception("Failed to retrieve name of ".$this->facebookId." from Facebook.");
+			}
 		}
 	}
 	

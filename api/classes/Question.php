@@ -157,12 +157,22 @@ abstract class Question	{
 		
 		$questions = array();
 		while ($row = mysql_fetch_array($result)) {
-			$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
+			try {
+				$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 			
 			// Fill in remaining fields that constructor didn't handle.
 			$question->text = DB::cleanOutputFromDatabase($row["text"]);
-			$question->correctSubject = new Subject($row["correctFacebookId"]);
-			$question->chosenSubject = new Subject($row["chosenFacebookId"]);
+			try {
+				$question->correctSubject = new Subject($row["correctFacebookId"]);
+				$question->chosenSubject = new Subject($row["chosenFacebookId"]);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 			$question->answeredAt = $row["answeredAt"];
 			$question->responseTime = $row["responseTime"];
 				
@@ -181,11 +191,21 @@ abstract class Question	{
 		
 		$questions = array();
 		while ($row = mysql_fetch_array($result)) {
-			$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
+			try {
+				$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 			
 			// Fill in remaining fields that constructor didn't handle.
 			$question->text = DB::cleanOutputFromDatabase($row["text"]);
-			$question->correctSubject = new Subject($row["correctFacebookId"]);
+			try {
+				$question->correctSubject = new Subject($row["correctFacebookId"]);
+			} catch (Exception $e) {
+				Error::saveErrorToDB($e);
+				continue;
+			}
 				
 			$questions[] = $question;
 		}
