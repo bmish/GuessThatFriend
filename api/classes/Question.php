@@ -183,7 +183,7 @@ abstract class Question	{
 	}
 	
 	public static function getUnansweredQuestionsFromDB($ownerFacebookId, $questionCount) {
-		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId = '' ORDER BY questionId LIMIT ".$questionCount;
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND answeredAt = 0 AND createdAt >= ".Cache::minUnexpiredUnixTimestamp()." ORDER BY questionId LIMIT ".$questionCount;
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();
@@ -214,7 +214,7 @@ abstract class Question	{
 	}
 	
 	public static function countUnansweredQuestionsFromDB($ownerFacebookId) {
-		$questionQuery = "SELECT COUNT(*) FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId = ''";
+		$questionQuery = "SELECT COUNT(*) FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND answeredAt = 0 AND createdAt >= ".Cache::minUnexpiredUnixTimestamp();
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return 0;
