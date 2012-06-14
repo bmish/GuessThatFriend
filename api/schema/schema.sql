@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `categoryId` int(11) NOT NULL AUTO_INCREMENT,
   `facebookName` varchar(50) NOT NULL,
   `prettyName` varchar(50) NOT NULL,
+  `hasOrDoes` varchar(50) NOT NULL DEFAULT 'does',
+  `verb` varchar(50) NOT NULL DEFAULT 'like',
   PRIMARY KEY (`categoryId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
