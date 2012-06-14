@@ -20,7 +20,7 @@
             "facebookId":"220439",
             "name":"Bret Taylor"
          },
-         "answeredAt":"2012-04-01 12:30:15",
+         "answeredAt":"2012-04-01T12:30:15-05:00",
          "responseTime":2500,
          "options":[
             {

@@ -338,13 +338,13 @@ class FacebookAPI	{
 	 * @return bool True on successful query, false otherwise
 	 */
 	public function updateLoggedInUserDatabaseRecord() {
-		$insertQuery = "INSERT INTO users (facebookId) VALUES ('".$this->getLoggedInUserId()."')";
+		$insertQuery = "INSERT INTO users (facebookId,joinedAt) VALUES ('".$this->getLoggedInUserId()."',UNIX_TIMESTAMP())";
 		$result = mysql_query($insertQuery); // This query won't affect anything if the user already exists in the database.
 		if (!result)	{
 			return false;
 		}
 		
-		$updateQuery = "UPDATE users SET lastVisitedAt = NOW() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1";
+		$updateQuery = "UPDATE users SET lastVisitedAt = UNIX_TIMESTAMP() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1";
 		$result = mysql_query($updateQuery);
 		if (!$result)	{
 			JSON::outputFatalErrorAndExit("Unable to update logged in user's database record.");

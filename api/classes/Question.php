@@ -112,7 +112,7 @@ abstract class Question	{
 			$obj["chosenSubject"] = $this->chosenSubject->jsonSerialize();
 		}
 		if ($this->answeredAt) {
-			$obj["answeredAt"] = $this->answeredAt;
+			$obj["answeredAt"] = date("c", $this->answeredAt);
 		}
 		if ($this->responseTime > 0) {
 			$obj["responseTime"] = $this->responseTime;
@@ -127,7 +127,7 @@ abstract class Question	{
 	 * @return bool True on successful query, false otherwise
 	 */
 	protected function saveToDB()	{
-		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, topicFacebookId, correctFacebookId) VALUES ('".$this->category->categoryId."', '".DB::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->topicSubject->facebookId."','".$this->correctSubject->facebookId."')";
+		$insertQuery = "INSERT INTO questions (categoryId, text, ownerFacebookId, topicFacebookId, correctFacebookId, createdAt) VALUES ('".$this->category->categoryId."', '".DB::cleanInputForDatabase($this->text)."', '".$this->ownerSubject->facebookId."','".$this->topicSubject->facebookId."','".$this->correctSubject->facebookId."',UNIX_TIMESTAMP())";
 		$result = mysql_query($insertQuery);
 		
 		if (!$result) {

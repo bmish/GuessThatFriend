@@ -421,7 +421,7 @@ class API {
 			
 			// Update the user's answer for this question.
 			// Note: We only update the answer if the user owned and had not already answered the question.
-			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = NOW() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = UNIX_TIMESTAMP() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			mysql_query($updateQuery);
 			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
 				$questionIdsOfSavedAnswers[] = $questionId;
@@ -438,7 +438,7 @@ class API {
 		for($i = 0; $i < count($questionIds); $i++) {
 			$questionId = $questionIds[$i];
 			
-			$updateQuery = "UPDATE questions SET skipped = true, answeredAt = NOW() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			$updateQuery = "UPDATE questions SET skipped = true, answeredAt = UNIX_TIMESTAMP() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
 			mysql_query($updateQuery);
 			if (mysql_affected_rows() == 1) { // Keep track of which questions we successfully skipped.
 				$skippedQuestionIds[] = $questionId;

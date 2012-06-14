@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 CREATE TABLE IF NOT EXISTS `errors` (
   `errorId` int(11) NOT NULL AUTO_INCREMENT,
   `msg` varchar(250) NOT NULL,
-  `occurredAt` datetime NOT NULL,
+  `occurredAt` int(11) NOT NULL,
   `facebookId` varchar(250) NOT NULL,
   PRIMARY KEY (`errorId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `errors` (
 CREATE TABLE IF NOT EXISTS `facebookAPICache` (
   `request` varchar(50) NOT NULL,
   `response` text NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `retrievedAt` int(11) NOT NULL,
   PRIMARY KEY (`request`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `topicFacebookId` varchar(250) NOT NULL,
   `correctFacebookId` varchar(250) NOT NULL,
   `chosenFacebookId` varchar(250) NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `answeredAt` datetime NOT NULL,
+  `createdAt` int(11) NOT NULL,
+  `answeredAt` int(11) NOT NULL,
   `responseTime` int(11) NOT NULL,
   `skipped` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`questionId`)
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `questions` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `facebookId` varchar(250) NOT NULL,
-  `joinedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastVisitedAt` datetime NOT NULL,
+  `joinedAt` int(11) NOT NULL,
+  `lastVisitedAt` int(11) NOT NULL,
   PRIMARY KEY (`facebookId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
