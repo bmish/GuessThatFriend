@@ -45,9 +45,9 @@ if ($cmd == 'getQuestions') {
 } else if ($cmd == 'submitQuestions') {
 	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionAnswers = API::getIDPairsFromGETVars("facebookIdOfQuestion", false);
-	$questionTimes = API::getIDPairsFromGETVars("responseTimeOfQuestion", true);
+	$questionResponseTimes = API::getIDPairsFromGETVars("responseTimeOfQuestion", true);
 	$skippedQuestionIds = DB::cleanArrayForDatabase($_GET['skippedQuestionIds'], true);
-	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes, $skippedQuestionIds);
+	API::submitQuestions($facebookAccessToken, $questionAnswers, $questionResponseTimes, $skippedQuestionIds);
 } else if ($cmd == 'getCategories') {
 	API::getCategories();
 } else if ($cmd == 'getStatistics') {

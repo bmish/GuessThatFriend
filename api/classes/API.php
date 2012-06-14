@@ -97,10 +97,10 @@ class API {
 	 *
 	 * @param string $facebookAccessToken The users access token.
 	 * @param array $questionAnswers Array containing the answers for the submitted questions.
-	 * @param array $questionTimes Array containing the response time for the submitted questions.
+	 * @param array $questionResponseTimes Array containing the response time for the submitted questions.
 	 * @return void
 	 */	
-	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionTimes, $skippedQuestionIds) {
+	public static function submitQuestions($facebookAccessToken, $questionAnswers, $questionResponseTimes, $skippedQuestionIds) {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Start timing.
@@ -113,13 +113,12 @@ class API {
 		}
 		
 		// Update the user's answers for the given questions.
-		$questionIdsOfSavedAnswers = API::saveQuestionAnswers($questionAnswers);
-		API::saveQuestionTimes($questionTimes);
+		$questionIdsOfSavedAnswers = API::saveQuestionAnswersAndResponseTimes($questionAnswers, $questionResponseTimes);
 		$skippedQuestionIdsSucceeded = API::skippedQuestionIds($skippedQuestionIds);
 
 		// Build object to represent the JSON we will display.
 		$output = array();
-		$output["questionIds"] = $questionIdsOfSavedAnswers;
+		$output["savedQuestionIds"] = $questionIdsOfSavedAnswers;
 		$output["skippedQuestionIds"] = $skippedQuestionIdsSucceeded;
 		$output["success"] = true;
 		$output["duration"] = Util::calculateLoadingDuration($timeStart);
@@ -411,17 +410,16 @@ class API {
 	 * @param array $questionAnswers Array of question-answer pairs
 	 * @return void
 	 */
-	private static function saveQuestionAnswers($questionAnswers) {
+	private static function saveQuestionAnswersAndResponseTimes($questionAnswers, $questionResponseTimes) {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		$questionIdsOfSavedAnswers = array();
-		for($i = 0; $i < count($questionAnswers); $i++) {
-			$questionId = $questionAnswers[$i]["id"];
-			$facebookId = $questionAnswers[$i]["value"]; // What the user chose.
+		foreach ($questionAnswers as $questionId => $facebookId) {
+			$responseTime = $questionResponseTimes[$questionId];
 			
 			// Update the user's answer for this question.
 			// Note: We only update the answer if the user owned and had not already answered the question.
-			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', answeredAt = UNIX_TIMESTAMP() WHERE chosenFacebookId = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
+			$updateQuery = "UPDATE questions SET chosenFacebookId = '$facebookId', responseTime = '$responseTime', answeredAt = UNIX_TIMESTAMP() WHERE questionId = '$questionId' AND answeredAt = 0 AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' LIMIT 1";
 			mysql_query($updateQuery);
 			if (mysql_affected_rows() == 1) { // Keep track of which questions we saved the answer for correctly.
 				$questionIdsOfSavedAnswers[] = $questionId;
@@ -448,25 +446,6 @@ class API {
 		return $skippedQuestionIds;
 	}
 
-	/**
-	 * Saves question response times to database.
-	 *
-	 * @param array $questionTimes Array of response times
-	 * @return bool True if at least one response time is saved, false otherwise
-	 */
-	private static function saveQuestionTimes($questionTimes){
-		$facebookAPI = FacebookAPI::singleton();
-
-		$success = false;
-		for($i = 0; $i <count($questionTimes); $i++){
-			$questionId = $questionTimes[$i]["id"];
-			$responseTime = $questionTimes[$i]["value"];
-
-			$updateQuery = "UPDATE questions SET responseTime = '$responseTime' WHERE responseTime = '' AND skipped = false AND ownerFacebookId = '".$facebookAPI->getLoggedInUserId()."' AND questionId = '$questionId' LIMIT 1";
-			$result = mysql_query($updateQuery);
-		}
-	}
-
 	public static function getIDPairsFromGETVars($parameterPrefix, $valueIsInt = true) {
 		$pairs = array();
 		
@@ -474,14 +453,11 @@ class API {
 			// Is this parameter name in the form of "$parameterPrefix[X]"?
 			if (strncmp($parameterName, $parameterPrefix, strlen($parameterPrefix)) == 0){
 				// Create a pair of the id and the value.
-				$pair = array();
-				$id = substr($parameterName, strlen($parameterPrefix), strlen($parameterName) - strlen($parameterPrefix));
-				$pair["id"] = intval($id);
-				$pair["value"] = $valueIsInt ? intval($value) : DB::cleanInputForDatabase($value);
+				$id = intval(substr($parameterName, strlen($parameterPrefix), strlen($parameterName) - strlen($parameterPrefix)));
 
 				// Add this pair to our list.
-				if ($pair["id"] > 0) {
-					$pairs[] = $pair;
+				if ($id > 0) {
+					$pairs[$id] = $valueIsInt ? intval($value) : DB::cleanInputForDatabase($value);
 				}
 			}
 		}
