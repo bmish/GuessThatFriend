@@ -59,7 +59,7 @@ class JSON {
 		$output["success"] = false;
 		
 		// Record error in database.
-		Error::saveExceptionToDB($message);
+		Error::saveErrorToDB($message);
 
 		header('Content-type: application/json');
 		echo json_encode($output);
