@@ -15,6 +15,9 @@ class API {
 	 * @param integer $categoryId The category the questions should focus on.
 	 * @return void
 	 */	
+ 	
+	const OUTLIER_RESPONSE_TIME_MS_THRESHOLD = 30000;
+	
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 
@@ -208,8 +211,16 @@ class API {
 							AND `chosenFacebookId` = `correctFacebookId`
 							GROUP BY `categoryId`";
     	$correctCountResult = mysql_query($correctCountQuery);
+
+		$averageQuery = "SELECT `categoryId`, AVG(`responseTime`) AS average FROM questions
+							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+							AND skipped = false
+							AND `chosenFacebookId` != ''
+							AND responseTime < ".API::OUTLIER_RESPONSE_TIME_MS_THRESHOLD."
+							GROUP BY `categoryId`";
+		$averageResult = mysql_query($averageQuery);
 		
-		$totalCountQuery = "SELECT COUNT(*) AS count, `categoryId`, AVG(`responseTime`) AS average FROM questions
+		$totalCountQuery = "SELECT COUNT(*) AS count, `categoryId` FROM questions
 							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 							AND skipped = false
 							AND `chosenFacebookId` != ''
@@ -231,9 +242,14 @@ class API {
 			$categoryArray["correctAnswerCount"] = 0;
 			$categoryArray["totalAnswerCount"] = $totalCountRow["count"];
       		$categoryArray["fastestCorrectResponseTime"] = -1;
-			$categoryArray["averageResponseTime"] = round($totalCountRow["average"]);
+			$categoryArray["averageResponseTime"] = -1;
 			
 			$categoriesArray[$totalCountRow["categoryId"]] = $categoryArray;
+		}
+		
+		// Fill in the averages.
+		while($averageRow = mysql_fetch_array($averageResult)){
+			$categoriesArray[$averageRow["categoryId"]]["averageResponseTime"] = round($averageRow["average"]);
 		}
 
 		// Store correct counts for categories that user has answered any questions correctly about.
@@ -290,6 +306,14 @@ class API {
 						GROUP BY `topicFacebookId`";
 		$correctResult = mysql_query($correctQuery);
 		
+		$averageQuery = "SELECT `topicFacebookId`, AVG(`responseTime`) AS average FROM questions
+						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
+						AND skipped = false
+						AND `chosenFacebookId` != ''
+						AND responseTime < ".API::OUTLIER_RESPONSE_TIME_MS_THRESHOLD."
+						GROUP BY `topicFacebookId`";
+		$averageResult = mysql_query($averageQuery);
+		
 		$totalQuery = "SELECT COUNT(*) AS count, `topicFacebookId`, AVG(`responseTime`) AS average FROM questions
 						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 						AND skipped = false
@@ -297,7 +321,7 @@ class API {
 						GROUP BY `topicFacebookId`";
 		$totalResult = mysql_query($totalQuery);
 		
-		if (!$correctResult || !$totalResult) {
+		if (!$correctResult || !$averageQuery || !$totalResult) {
 			JSON::outputFatalErrorAndExit("Statistics database query failed.");
 			return array();
 		}
@@ -317,9 +341,14 @@ class API {
 			$friendArray["correctAnswerCount"] = 0;
 			$friendArray["totalAnswerCount"] = $totalRow["count"];
 			$friendArray["fastestCorrectResponseTime"] = -1;
-			$friendArray["averageResponseTime"] = round($totalRow["average"]);
+			$friendArray["averageResponseTime"] = -1;
 			
 			$friendsArray[$totalRow["topicFacebookId"]] = $friendArray;
+		}
+		
+		// Fill in the averages.
+		while($averageRow = mysql_fetch_array($averageResult)){
+			$friendsArray[$averageRow["topicFacebookId"]]["averageResponseTime"] = round($averageRow["average"]);
 		}
 
 		// Store correct counts for friends that user has answered any questions correctly about.
