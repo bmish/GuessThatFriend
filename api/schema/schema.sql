@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
 
 CREATE TABLE IF NOT EXISTS `errors` (
   `errorId` int(11) NOT NULL AUTO_INCREMENT,
-  `msg` varchar(250) NOT NULL,
+  `message` varchar(250) NOT NULL,
+  `trace` text NOT NULL,
   `occurredAt` int(11) NOT NULL,
   `facebookId` varchar(250) NOT NULL,
   PRIMARY KEY (`errorId`)

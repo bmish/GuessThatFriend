@@ -86,7 +86,7 @@ class FacebookAPI	{
 		$triesCount = 0;
 		do {
 			if (++$triesCount == $MAX_TRIES) {
-				throw new Exception("FacebookAPI chooseFriendWithSufficientLikes(): Could not find a friend with a sufficient number of likes.");
+				throw new Exception("Could not find a friend with a sufficient number of likes.");
 			}
 			
 			$friend = Util::getRandomElement($friends);
@@ -169,7 +169,7 @@ class FacebookAPI	{
 					try {
 						$pages[] = new Subject($pageFacebookId, $page['name'], $pageCategory);
 					} catch (Exception $e) {
-						Error::saveErrorToDB($e);
+						Error::saveExceptionToDB($e);
 						continue;
 					}
 				}
@@ -197,7 +197,7 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if (++$triesCount == $MAX_TRIES) {
-					throw new Exception("FacebookAPI getRandomLikedPage(): The randomPages database table may not contain a large enough variety of random pages.");
+					throw new Exception("The randomPages database table may not contain a large enough variety of random pages.");
 				}
 				
 				$like = Util::getRandomElement($likes);
@@ -244,7 +244,7 @@ class FacebookAPI	{
 			try {
 				$subjects[] = new Subject($json[$i]['id'], $json[$i]['name'], $category);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 		}
@@ -387,7 +387,7 @@ class FacebookAPI	{
 		try {
 			return $this->facebook->api($requestString);
 		} catch (Exception $e) {
-			Error::saveErrorToDB($e);
+			Error::saveExceptionToDB($e);
 		}
 		
 		return null;

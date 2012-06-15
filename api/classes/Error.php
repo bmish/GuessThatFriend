@@ -1,9 +1,12 @@
 <?php
 class Error {
-	public static function saveErrorToDB($msg) {
+	public static function saveExceptionToDB($e) {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		$errorQuery = "INSERT INTO errors (msg, occurredAt, facebookId) VALUES ('".DB::cleanInputForDatabase($msg)."',UNIX_TIMESTAMP(),'".$facebookAPI->getLoggedInUserId()."')";
+		$message = DB::cleanInputForDatabase($e->getMessage());
+		$trace = DB::cleanInputForDatabase($e->getTraceAsString());
+		
+		$errorQuery = "INSERT INTO errors (message, trace, occurredAt, facebookId) VALUES ('".DB::cleanInputForDatabase($message)."','".DB::cleanInputForDatabase($trace)."',UNIX_TIMESTAMP(),'".$facebookAPI->getLoggedInUserId()."')";
 		mysql_query($errorQuery);
 	}
 }

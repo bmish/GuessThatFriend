@@ -308,7 +308,7 @@ class API {
 			try {
 				$friendSubject = new Subject($totalRow["topicFacebookId"]);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 			
@@ -396,7 +396,7 @@ class API {
 					$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCount);
 				}
 			} catch (Exception $e) { // If we fail to generate a question, record the error, and continue.
-				Error::saveErrorToDB($e->getMessage());
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 		}

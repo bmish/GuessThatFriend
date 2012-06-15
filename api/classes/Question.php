@@ -160,7 +160,7 @@ abstract class Question	{
 			try {
 				$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 			
@@ -170,7 +170,7 @@ abstract class Question	{
 				$question->correctSubject = new Subject($row["correctFacebookId"]);
 				$question->chosenSubject = new Subject($row["chosenFacebookId"]);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 			$question->answeredAt = $row["answeredAt"];
@@ -194,7 +194,7 @@ abstract class Question	{
 			try {
 				$question = new MCQuestion($ownerFacebookId, $row["topicFacebookId"], $row["categoryId"], -1, $row["questionId"]);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 			
@@ -203,7 +203,7 @@ abstract class Question	{
 			try {
 				$question->correctSubject = new Subject($row["correctFacebookId"]);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 				

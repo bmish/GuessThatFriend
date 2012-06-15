@@ -78,7 +78,7 @@ class Option	{
 			try {
 				$topicSubject = new Subject($row["topicFacebookId"]);
 			} catch (Exception $e) {
-				Error::saveErrorToDB($e);
+				Error::saveExceptionToDB($e);
 				continue;
 			}
 			$options[] = new Option($questionId, $topicSubject, $optionId);
