@@ -65,7 +65,7 @@ class MCQuestion extends Question	{
 		}
 		
 		if ($this->duplicateOptionsExist($this->options)) {
-			throw new Exception("Detected duplicate options.");
+			throw new Exception("MCQuestion makeOptions(): Detected duplicate options.");
 		}
 	}
 	

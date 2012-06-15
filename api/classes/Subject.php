@@ -33,7 +33,7 @@ class Subject	{
 			
 			// Got nothing from Facebook?
 			if (empty($this->name)) {
-				throw new Exception("Failed to retrieve name of ".$this->facebookId." from Facebook.");
+				throw new Exception("Subject __construct(): Failed to retrieve name of ".$this->facebookId." from Facebook.");
 			}
 		}
 	}

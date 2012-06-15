@@ -86,7 +86,7 @@ class FacebookAPI	{
 		$triesCount = 0;
 		do {
 			if (++$triesCount == $MAX_TRIES) {
-				throw new Exception("Could not find a friend with a sufficient number of likes.");
+				throw new Exception("FacebookAPI chooseFriendWithSufficientLikes(): Could not find a friend with a sufficient number of likes.");
 			}
 			
 			$friend = Util::getRandomElement($friends);
@@ -197,7 +197,7 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if (++$triesCount == $MAX_TRIES) {
-					throw new Exception("The randomPages database table may not contain a large enough variety of random pages.");
+					throw new Exception("FacebookAPI getRandomLikedPage(): The randomPages database table may not contain a large enough variety of random pages.");
 				}
 				
 				$like = Util::getRandomElement($likes);
