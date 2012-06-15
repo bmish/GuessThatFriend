@@ -43,7 +43,7 @@ INSERT INTO `categories` (`categoryId`, `facebookName`, `prettyName`, `hasOrDoes
 (34, 'Attractions/things to do', 'attractions', 'has', 'seen'),
 (35, 'Local business', 'local businesses', 'does', 'like'),
 (36, 'Website', 'websites', 'does', 'use'),
-(37, 'Food/beverages', 'food or beverages', 'does', 'like'),
+(37, 'Food/beverages', 'food or beverages', 'does', 'consume'),
 (38, 'Non-profit organization', 'non-profit organizations', 'does', 'like'),
 (39, 'Food/grocery', 'food or groceries', 'does', 'like'),
 (40, 'Sports/recreation/activities', 'sports or activities', 'does', 'like'),
