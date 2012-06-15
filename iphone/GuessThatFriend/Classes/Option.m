@@ -13,10 +13,13 @@
 @synthesize optionId, question, subject;
 
 - (Option *)initWithName:(NSString *)friendName andFacebookId:(NSString *)facebookId {
-	
-    self.subject = [[Subject alloc] initWithName:friendName andFacebookId:facebookId];
+	self = [super init];
     
-	return [super init];
+    if (self) {
+        self.subject = [[[Subject alloc] initWithName:friendName andFacebookId:facebookId] autorelease];
+    }
+    
+	return self;
 }
 
 - (id)copyWithZone:(NSZone *)zone {

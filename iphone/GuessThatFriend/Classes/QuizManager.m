@@ -118,9 +118,8 @@
             NSString *subjectName = [subjectDict objectForKey:@"name"];
             NSString *subjectFacebookId = [subjectDict objectForKey:@"facebookId"];
             
-            Option *option = [[Option alloc] initWithName:subjectName andFacebookId:subjectFacebookId];
+            Option *option = [[[Option alloc] initWithName:subjectName andFacebookId:subjectFacebookId] autorelease];
             [optionArray addObject:option];
-            [option release];
         }
         
         // Create a Subject object for the topic of the question.

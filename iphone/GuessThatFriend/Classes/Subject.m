@@ -13,17 +13,21 @@
 @synthesize facebookId, name, picture, link;
 
 - (Subject *)initWithName:(NSString *)friendName andFacebookId:(NSString *)myfacebookId {
-    // Create the image path and download the subject's image.
-    NSString *imagePath = [Subject getPictureURLFromFacebookID:myfacebookId];
-    NSURL *url = [NSURL URLWithString:imagePath];
-    UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+    self = [super init];
     
-    self.name = friendName;
-	self.picture = image;
-    self.facebookId = myfacebookId;
-    self.link = [Subject getProfileURLFromFacebookID:myfacebookId];
+    if (self) {
+        // Create the image path and download the subject's image.
+        NSString *imagePath = [Subject getPictureURLFromFacebookID:myfacebookId];
+        NSURL *url = [NSURL URLWithString:imagePath];
+        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+        
+        self.name = friendName;
+        self.picture = image;
+        self.facebookId = myfacebookId;
+        self.link = [Subject getProfileURLFromFacebookID:myfacebookId]; 
+    }
     
-	return [super init];
+	return self;
 }
 
 + (NSString *) getPictureURLFromFacebookID:(NSString *)facebookId {

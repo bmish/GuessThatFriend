@@ -68,8 +68,6 @@
         
     }
     
-    [nextQuestion release];
-    
     // Start timer for this question.
     [responseTimer release];
     responseTimer = [NSDate date];
@@ -336,6 +334,8 @@
         returnImage = [UIImage imageWithContentsOfFile:imageLocalPath];
     }
     
+    [resourceDocPath release];
+    
     return returnImage;
 }
 
@@ -352,6 +352,8 @@
     else {
         plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     }
+    
+    [resourceDocPath release];
 }
 
 @end

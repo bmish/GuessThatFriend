@@ -57,7 +57,7 @@
         NSString *rtStr = [curHistory objectForKey:@"responseTime"];
         int rt = [rtStr intValue];
         
-        Subject *subject = [[Subject alloc] initWithName:[topicDict objectForKey:@"name"] andFacebookId:[topicDict objectForKey:@"facebookId"]];
+        Subject *subject = [[[Subject alloc] initWithName:[topicDict objectForKey:@"name"] andFacebookId:[topicDict objectForKey:@"facebookId"]] autorelease];
         
         
         HistoryStatsObject *statsObj = [[HistoryStatsObject alloc] initWithQuestion:questionString andSubject:subject andCorrectAnswer:correctName andYourAnswer:chosenName andDate:answeredDate andResponseTime:rt];
