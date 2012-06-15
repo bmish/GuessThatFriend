@@ -38,7 +38,7 @@ class MCQuestion extends Question	{
 	 * @todo Modify question to depend on subject type (person v.s. page)
 	 */
 	public function makeQuestionText() {
-		$this->text = "Which of the following ".strtolower($this->category->prettyName)." ".$this->category->hasOrDoes." ".$this->topicSubject->name." ".$this->category->verb."?";
+		$this->text = "Which of the following ".$this->category->prettyName." ".$this->category->hasOrDoes." ".$this->topicSubject->name." ".$this->category->verb."?";
 	}
 	
 	/**
