@@ -149,7 +149,7 @@ abstract class Question	{
 	 *
 	 */
 	public static function getAnsweredQuestionsFromDB($ownerFacebookId) {
-		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId != '' ORDER BY questionId";
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId != '' ORDER BY questionId DESC";
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();
