@@ -56,7 +56,7 @@
         int fastestCorrectRT = [fastestCorrectRTStr intValue];
         int averageTR = [averageTRStr intValue];
         
-        NSString *name = [categoryDict objectForKey:@"prettyName"];
+        NSString *name = [categoryDict objectForKey:@"facebookName"];
         
         CategoryStatsObject *statsObj = [[CategoryStatsObject alloc] initWithName:name andCorrectCount:correctCount andTotalCount:totalCount andCorrectRT:fastestCorrectRT andAverageRT:averageTR];
         
