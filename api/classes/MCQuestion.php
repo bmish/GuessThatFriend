@@ -27,7 +27,12 @@ class MCQuestion extends Question	{
 			$this->options = Option::getOptionsFromDB($questionId);
 			$this->optionCount = count($this->options);
 		} else { // New question.
-			$this->makeOptions($optionCount);
+			try {
+				$this->makeOptions($optionCount);
+			} catch (Exception $e) { // Delete half-finished question if any of the options fail.
+				$this->removeFromDB();
+				throw $e;
+			}
 		}
 	}
 	
