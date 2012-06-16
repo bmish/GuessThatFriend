@@ -257,25 +257,8 @@ class API {
 			$categoriesArray[$correctCountRow["categoryId"]]["correctAnswerCount"] = $correctCountRow["count"];
       		$categoriesArray[$correctCountRow["categoryId"]]["fastestCorrectResponseTime"] = $correctCountRow["fastest"];
 		}
-	
-		// Sorts the categories by decreasing percentage of correct answers and then by total correct answers.
-		function cmp($a, $b) {
-			$totalA = $a["totalAnswerCount"];
-			$totalB = $b["totalAnswerCount"];
-			$fractionA = $a["correctAnswerCount"]/$totalA;
-			$fractionB = $b["correctAnswerCount"]/$totalB;
-			if ($fractionA == $fractionB) { // Defer to second sorting criteria.
-				if ($totalA == $totalB) {
-					return 0;
-				}
-				
-				return ($totalA > $totalB) ? -1 : 1;
-			}
-			
-			return ($fractionA > $fractionB) ? -1 : 1;
-		}
 		
-		usort($categoriesArray, "cmp");
+		usort($categoriesArray, "API::cmpFriendsOrCategories");
 
 		return array_values($categoriesArray);
 	}
@@ -357,26 +340,33 @@ class API {
 			$friendsArray[$correctRow["topicFacebookId"]]["fastestCorrectResponseTime"] = $correctRow["fastest"];
 		}
 	
-		// Sorts the friends by decreasing percentage of correct answers and then by total correct answers.
-		function cmp($a, $b) {
-			$totalA = $a["totalAnswerCount"];
-			$totalB = $b["totalAnswerCount"];
-			$fractionA = $a["correctAnswerCount"]/$totalA;
-			$fractionB = $b["correctAnswerCount"]/$totalB;
-			if ($fractionA == $fractionB) { // Defer to second sorting criteria.
-				if ($totalA == $totalB) {
-					return 0;
-				}
-				
-				return ($totalA > $totalB) ? -1 : 1;
-			}
-			
-			return ($fractionA > $fractionB) ? -1 : 1;
-		}
-		
-		usort($friendsArray, "cmp");
+		usort($friendsArray, "API::cmpFriendsOrCategories");
 
 		return array_values($friendsArray);
+	}
+	
+	// Sorts by decreasing percentage of correct answers, then by total correct answers, then by names alphabetically.
+	private static function cmpFriendsOrCategories($a, $b) {
+		$totalA = $a["totalAnswerCount"];
+		$totalB = $b["totalAnswerCount"];
+		$fractionA = $a["correctAnswerCount"]/$totalA;
+		$fractionB = $b["correctAnswerCount"]/$totalB;
+		
+		// Handle either an object with a category or subject.
+		$hasCategory = isset($a["category"]);
+		$nameA = $hasCategory ? $a["category"]["facebookName"] : $a["subject"]["name"];
+		$nameB = $hasCategory ? $b["category"]["facebookName"] : $b["subject"]["name"];
+
+		// Check sorting criteria.
+		if ($fractionA == $fractionB) { // Defer to second sorting criterion.
+			if ($totalA == $totalB) { // Defer to third sorting criterion.
+				return strcmp($nameA, $nameB); // Third sorting criterion.
+			}
+			
+			return ($totalA > $totalB) ? -1 : 1; // Second sorting criterion.
+		}
+		
+		return ($fractionA > $fractionB) ? -1 : 1; // First sorting criterion.
 	}
 
 	/**
