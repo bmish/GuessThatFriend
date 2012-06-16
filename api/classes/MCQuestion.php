@@ -92,5 +92,20 @@ class MCQuestion extends Question	{
 		
 		return $obj;
 	}
+	
+	protected function removeFromDB() {
+		parent::removeFromDB();
+		
+		$deleteQuery = "DELETE FROM options WHERE questionId = ".$this->questionId;
+		$result = mysql_query($deleteQuery);
+		
+		if (!$result) {
+			Error::saveErrorToDB("Unable to delete options for question #".$this->questionId." from database.");
+			
+			return false;
+		}
+		
+		return true;
+	}
 }
 ?>

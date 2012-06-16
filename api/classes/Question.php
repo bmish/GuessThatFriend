@@ -141,6 +141,23 @@ abstract class Question	{
 		return true;
 	}
 	
+	protected function removeFromDB() {
+		if ($this->questionId < 1) {
+			return false;
+		}
+		
+		$deleteQuery = "DELETE FROM questions WHERE questionId = ".$this->questionId." LIMIT 1";
+		$result = mysql_query($deleteQuery);
+		
+		if (!$result) {
+			Error::saveErrorToDB("Unable to delete question #".$this->questionId." from database.");
+			
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Get questions from the database that the owner has answered.
 	 *
