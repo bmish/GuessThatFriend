@@ -1,5 +1,5 @@
 <?php
-require_once('simpletest/autorun.php');
+require_once('../libraries/simpletest/autorun.php');
 
 class APIIntegrationTests extends UnitTestCase {
 	var $fbtok;

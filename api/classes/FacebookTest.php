@@ -2,7 +2,7 @@
 <body>
 <h1>PHP Tests</h1>
 <?php
-require_once "../../references/facebook-php-sdk/src/facebook.php";
+require_once "../libraries/facebook-php-sdk/src/facebook.php";
 require_once 'Subject.php';
 //require_once 'PHPUnit/Framework.php';
 

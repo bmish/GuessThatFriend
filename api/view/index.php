@@ -11,7 +11,7 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="pageTitle">GuessThatFriend API</div>
-		<div id="subtitle"><a target="_blank" href="https://github.com/bmish/GuessThatFriend">github</a> - <a target="_blank" href="/mysql">phpMyAdmin</a> - <a target="_blank" href="/tests">tests</a> - <a target="_blank" href="https://wiki.engr.illinois.edu/display/cs428sp12/GuessThatFriend">Wiki</a></div>
+		<div id="subtitle"><a target="_blank" href="https://github.com/bmish/GuessThatFriend">github</a> - <a target="_blank" href="/mysql">phpMyAdmin</a> - <a target="_blank" href="tests/">tests</a> - <a target="_blank" href="https://wiki.engr.illinois.edu/display/cs428sp12/GuessThatFriend">Wiki</a></div>
 	</div>
 	<div id="page">
 		<div id="body">

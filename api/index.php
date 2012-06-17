@@ -25,7 +25,7 @@ require_once('classes/Subject.php');
 require_once('classes/Util.php');
 
 require_once('config/config.php');
-require_once('../references/facebook-php-sdk/src/facebook.php');
+require_once('libraries/facebook-php-sdk/src/facebook.php');
 
 // Connect to database.
 DB::connect();
