@@ -45,7 +45,6 @@
 		4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797914EB91FA00CAA606 /* whiteButton.png */; };
 		4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797B14EB91FE00CAA606 /* blueButton.png */; };
 		4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */; };
-		4D8D79BD14EB994100CAA606 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D79BC14EB994100CAA606 /* Notes */; };
 		4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */; };
 		4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */; };
 		4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */; };
@@ -157,7 +156,6 @@
 		4D8D797B14EB91FE00CAA606 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCustomCell.h; sourceTree = "<group>"; };
 		4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCustomCell.m; sourceTree = "<group>"; };
-		4D8D79BC14EB994100CAA606 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBFriendCustomCell.xib; sourceTree = "<group>"; };
 		4D8D79D414EBA10A00CAA606 /* MultipleChoiceQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleChoiceQuizViewController.h; sourceTree = "<group>"; };
 		4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleChoiceQuizViewController.m; sourceTree = "<group>"; };
@@ -500,7 +498,6 @@
 		4D8D79BB14EB993300CAA606 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
-				4D8D79BC14EB994100CAA606 /* Notes */,
 			);
 			name = Documentation;
 			sourceTree = "<group>";
@@ -695,7 +692,6 @@
 				4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */,
 				4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */,
 				4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */,
-				4D8D79BD14EB994100CAA606 /* Notes in Resources */,
 				4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */,
 				4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */,
 				4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */,
