@@ -2,7 +2,6 @@
 /**
  * An enumeration for the type of options.
  *
- *
  */
 class OptionType {
 	const RANDOM = -1;

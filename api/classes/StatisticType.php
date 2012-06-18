@@ -2,7 +2,6 @@
 /**
  * An enumeration for the type of statistics.
  *
- *
  */
 class StatisticType {
 	const FRIENDS = "friends";

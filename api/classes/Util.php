@@ -2,7 +2,6 @@
 /**
  * This class implements general utility functions.
  *
- *
  */
 class Util {
 

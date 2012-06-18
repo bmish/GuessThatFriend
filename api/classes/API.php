@@ -2,7 +2,6 @@
 /**
  * This class implements the API functions for the GuessThatFriend app.
  *
- *
  */
 class API {
 	/**

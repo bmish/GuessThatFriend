@@ -2,7 +2,6 @@
 /**
  * This class implements the API functions for connecting to the database server.
  *
- *
  */
 class DB {
 

@@ -2,7 +2,6 @@
 /**
  * This class implements the cache API in the GuessThatFriend app.
  *
- *
  */
 
 class Cache {

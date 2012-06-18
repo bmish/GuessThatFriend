@@ -1,7 +1,6 @@
 <?php
 /**
- * This class implements a facebook subject in the GuessThatFriend app.
- *
+ * This class implements a Facebook subject in the GuessThatFriend app.
  *
  */
 class Subject	{

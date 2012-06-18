@@ -1,8 +1,6 @@
 <?php
 /**
  * GuessThatFriend entry page.
- *
- * @ * 2012 GuessThatFriend
  */
 
 // Question includes.

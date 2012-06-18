@@ -4,7 +4,6 @@
  *
  * Abstract class to be extended by specific question types.
  *
- *
  */
 abstract class Question	{
 

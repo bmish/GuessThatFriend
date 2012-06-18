@@ -2,7 +2,6 @@
 /**
  * This class implements JSON utility functions.
  *
- *
  */
 class JSON {
 

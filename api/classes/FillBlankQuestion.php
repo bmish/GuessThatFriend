@@ -5,7 +5,6 @@
  * @property string $correctAnswerText
  * @property string $chosenAnswertext
  *
- *
  */
 class FillBlankQuestion extends Question	{
 

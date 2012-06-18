@@ -1,9 +1,6 @@
 <?php
 /**
- * This class implements a fill-in-the-blanks question in the GuessThatFriend app.
- *
- * @property array $options
- *
+ * This class implements a multiple choice question in the GuessThatFriend app.
  *
  */
 class MCQuestion extends Question	{
