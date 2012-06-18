@@ -5,7 +5,9 @@
          "category":{
             "categoryId":2,
             "facebookName":"Movie",
-            "prettyName":"Movies"
+            "prettyName":"Movies",
+            "hasOrDoes":"has",
+            "verb":"seen"
          },
          "text":"Which of the following two friends likes the movie Ice Age?",
          "topicSubject":{

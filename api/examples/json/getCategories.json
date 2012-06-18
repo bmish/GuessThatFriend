@@ -2,11 +2,15 @@
    {
       "categoryId":"2",
       "facebookName":"Movie",
-      "prettyName":"Movies"
+      "prettyName":"Movies",
+      "hasOrDoes":"has",
+      "verb":"seen"
    },
    {
       "categoryId":"3",
       "facebookName":"Tv show",
-      "prettyName":"TV Shows"
+      "prettyName":"TV shows",
+      "hasOrDoes":"does",
+      "verb":"watch"
    }
 ]
