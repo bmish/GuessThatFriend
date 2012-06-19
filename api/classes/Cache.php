@@ -5,6 +5,9 @@
  */
 
 class Cache {
+	const SECONDS_PER_WEEK = 604800; // 60*60*24*7
+	const SECONDS_BEFORE_EXPIRING = 1209600; // SECONDS_PER_WEEK * 2
+	
 	public static function requestFacebookAPIWithCaching($requestString) {
 		$facebookAPI = FacebookAPI::singleton();
 		$requestString = DB::cleanInputForDatabase($requestString);
@@ -39,9 +42,7 @@ class Cache {
 	}
 	
 	public static function minUnexpiredUnixTimestamp() {
-		$SECONDS_PER_WEEK = 60*60*24*7;
-		$secondsBeforeExpiring = $SECONDS_PER_WEEK * 2;
-		return time() - $secondsBeforeExpiring;
+		return time() - Cache::SECONDS_BEFORE_EXPIRING;
 	}
 }
 ?>

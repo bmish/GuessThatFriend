@@ -11,6 +11,8 @@ class Subject	{
 	private $link;
 	private $category;
 	
+	const MIN_WORDS_IN_TITLE_TO_BE_CONSIDERED_A_SENTENCE = 7;
+	
 	/**
 	 * __construct
 	 *
@@ -78,9 +80,7 @@ class Subject	{
 	 * @return bool True if it is likely a sentence, false otherwise
 	 */
 	public function nameIsLikelyASentence() {
-		$NAME_MAX_WORDS = 7;
-		
-		return str_word_count($this->name) > $NAME_MAX_WORDS;
+		return str_word_count($this->name) > Subject::MIN_WORDS_IN_TITLE_TO_BE_CONSIDERED_A_SENTENCE;
 	}
 }
 ?>

@@ -4,6 +4,11 @@
  *
  */
 class API {
+	const OUTLIER_RESPONSE_TIME_THRESHOLD_MS = 30000;
+	const MIN_UNANSWERED_QUESTION_STOCKPILE_SIZE = 25;
+	const ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
+	const DEFAULT_QUESTION_COUNT = 10;
+	
 	/**
 	 * Gets a specified number of questions from the server. On success, prints JSON output containing the newly created questions.
 	 *
@@ -13,10 +18,7 @@ class API {
 	 * @param string $topicFacebookId The Facebook ID of who questions should focus on.
 	 * @param integer $categoryId The category the questions should focus on.
 	 * @return void
-	 */	
- 	
-	const OUTLIER_RESPONSE_TIME_MS_THRESHOLD = 30000;
-	
+	 */
 	public static function getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 
@@ -31,7 +33,7 @@ class API {
 		
 		// Use defaults if necessary.
 		if ($questionCount == "") {
-			$questionCount = 10;
+			$questionCount = API::DEFAULT_QUESTION_COUNT;
 		}
 		if (!OptionType::isValid($optionCount)) {
 			$optionCount = OptionType::DEFAULT_TYPE;
@@ -77,11 +79,10 @@ class API {
 		}
 		
 		// Determine how many questions to generate.
-		$MIN_UNANSWERED_QUESTIONS = 25;
 		$unansweredQuestionCount = Question::countUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId());
 		$questionsToGenerateCount = 0;
-		if ($unansweredQuestionCount < $MIN_UNANSWERED_QUESTIONS) {
-			$questionsToGenerateCount = $MIN_UNANSWERED_QUESTIONS - $unansweredQuestionCount;
+		if ($unansweredQuestionCount < API::MIN_UNANSWERED_QUESTION_STOCKPILE_SIZE) {
+			$questionsToGenerateCount = API::MIN_UNANSWERED_QUESTION_STOCKPILE_SIZE - $unansweredQuestionCount;
 			$questionsNew = API::generateQuestions($questionsToGenerateCount, OptionType::DEFAULT_TYPE, null, null);
 		}
 		
@@ -215,7 +216,7 @@ class API {
 							WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 							AND skipped = false
 							AND `chosenFacebookId` != ''
-							AND responseTime < ".API::OUTLIER_RESPONSE_TIME_MS_THRESHOLD."
+							AND responseTime < ".API::OUTLIER_RESPONSE_TIME_THRESHOLD_MS."
 							GROUP BY `categoryId`";
 		$averageResult = mysql_query($averageQuery);
 		
@@ -292,7 +293,7 @@ class API {
 						WHERE `ownerFacebookId` = '".$facebookAPI->getLoggedInUserId()."'
 						AND skipped = false
 						AND `chosenFacebookId` != ''
-						AND responseTime < ".API::OUTLIER_RESPONSE_TIME_MS_THRESHOLD."
+						AND responseTime < ".API::OUTLIER_RESPONSE_TIME_THRESHOLD_MS."
 						GROUP BY `topicFacebookId`";
 		$averageResult = mysql_query($averageQuery);
 		
@@ -391,8 +392,7 @@ class API {
 		$questions = array_merge($questionsExisting, $questionsNew);
 		
 		// Check if we generated enough questions.
-		$ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
-		if (count($questions) < $questionCount * (1 - $ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE)) {
+		if (count($questions) < $questionCount * (1 - API::ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE)) {
 			JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
 		}
 		

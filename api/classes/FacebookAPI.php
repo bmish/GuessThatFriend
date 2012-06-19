@@ -15,6 +15,9 @@ class FacebookAPI	{
 	private $facebookId;
 	private $facebookAccessToken;
 	
+	const MIN_ACCEPTABLE_LIKES_PER_FRIEND = 2;
+	const MAX_SUBJECT_SEARCH_ATTEMPTS = 10;
+	
 	/**
 	 * __construct
 	 */	
@@ -80,17 +83,15 @@ class FacebookAPI	{
 	 * @return Subject A friend with sufficient likes
 	 */
 	private function chooseFriendWithSufficientLikes($friends) {
-		$MIN_ACCEPTABLE_LIKES = 2;
-		$MAX_TRIES = 10;
 		$triesCount = 0;
 		do {
-			if (++$triesCount == $MAX_TRIES) {
+			if (++$triesCount == FacebookAPI::MAX_SUBJECT_SEARCH_ATTEMPTS) {
 				throw new Exception("Could not find a friend with a sufficient number of likes.");
 			}
 			
 			$friend = Util::getRandomElement($friends);
 			$likesSubjects = $this->getLikesOfFriend($friend->facebookId);
-		} while (count($likesSubjects) < $MIN_ACCEPTABLE_LIKES);
+		} while (count($likesSubjects) < FacebookAPI::MIN_ACCEPTABLE_LIKES_PER_FRIEND);
 		
 		return $friend;
 	}
@@ -191,11 +192,9 @@ class FacebookAPI	{
 		$likes = $this->getLikesOfFriend($facebookId);
 		
 		if (!$category) { // No specific category.
-			$MIN_ACCEPTABLE_LIKES = 2;
-			$MAX_TRIES = 10;
 			$triesCount = 0;
 			do {
-				if (++$triesCount == $MAX_TRIES) {
+				if (++$triesCount == FacebookAPI::MAX_SUBJECT_SEARCH_ATTEMPTS) {
 					throw new Exception("The randomPages database table may not contain a large enough variety of random pages.");
 				}
 				

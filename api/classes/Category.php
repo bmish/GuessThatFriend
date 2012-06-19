@@ -11,6 +11,8 @@ class Category	{
 	private $hasOrDoes;
 	private $verb;
 	
+	const MIN_ACCEPTABLE_RANDOM_PAGES_PER_CATEGORY = 6;
+	
 	/**
 	 * __construct
 	 *
@@ -120,14 +122,12 @@ class Category	{
 	 * @return bool True if there are enough pages, false otherwise.
 	 */	
 	public function enoughRandomPagesOfSameCategory() {
-		$MIN_PAGES_OF_SAME_CATEGORY = 6;
-		
 		$query = "SELECT COUNT(*) AS count FROM randomPages WHERE categoryFacebookName = '".DB::cleanInputForDatabase($this->facebookName)."' LIMIT 1";
 		$result = mysql_query($query);
 		if ($result && mysql_num_rows($result) == 1) {
 			$row = mysql_fetch_array($result);
 			
-			return $row["count"] >= $MIN_PAGES_OF_SAME_CATEGORY;
+			return $row["count"] >= Category::MIN_ACCEPTABLE_RANDOM_PAGES_PER_CATEGORY;
 		}
 
 		return false;
