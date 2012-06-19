@@ -22,7 +22,7 @@ require_once('../classes/Util.php');
 
 class IntegrationTests extends UnitTestCase {
 	private static function getJSONFromAPI($url) {
-		$contents = file_get_contents('http://localhost/GuessThatFriend/api/?facebookAccessToken='.$_GET['facebookAccessToken'].'&'.$url);
+		$contents = file_get_contents(Util::parentDirectoryURL().'?facebookAccessToken='.$_GET['facebookAccessToken'].'&'.$url,true);
 		$json = json_decode($contents);
 		
 		return $json;

@@ -66,15 +66,24 @@ class Util {
 	
 	 	if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
 	
-	 	$pageURL .= "://";
+	 	$pageURL .= "://".$_SERVER["SERVER_NAME"];
 	
 	 	if ($_SERVER["SERVER_PORT"] != "80") {
-	  		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["SCRIPT_NAME"];
-	 	} else {
-	  		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["SCRIPT_NAME"];
+	  		$pageURL .= ":".$_SERVER["SERVER_PORT"];
 	 	}
+		
+		$pageURL .= $_SERVER["SCRIPT_NAME"];
 	 	
 		return $pageURL;
+	}
+	
+	public static function parentDirectoryURL() {
+		$curPageURL = Util::curPageURLWithoutGETParams();
+		
+		$currDirectory = dirname($curPageURL);
+		$parentDirectory = dirname($currDirectory);
+		
+		return $parentDirectory;
 	}
 }
 ?>
