@@ -338,7 +338,7 @@ class FacebookAPI	{
 	public function updateLoggedInUserDatabaseRecord() {
 		$insertQuery = "INSERT INTO users (facebookId,joinedAt) VALUES ('".$this->getLoggedInUserId()."',UNIX_TIMESTAMP())";
 		$result = mysql_query($insertQuery); // This query won't affect anything if the user already exists in the database.
-		if (!result)	{
+		if (!$result)	{
 			return false;
 		}
 		

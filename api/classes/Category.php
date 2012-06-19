@@ -75,7 +75,7 @@ class Category	{
 	private static function addFacebookNameToDB($facebookName) {
 		$insertQuery = "INSERT INTO categories (facebookName, prettyName) VALUES ('".DB::cleanInputForDatabase($facebookName)."', '".DB::cleanInputForDatabase($facebookName)."')";
 		$result = mysql_query($insertQuery);
-		if (!result){
+		if (!$result){
 			return false;
 		}
 		
