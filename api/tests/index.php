@@ -28,7 +28,7 @@ class IntegrationTests extends UnitTestCase {
 		return $json;
 	}
 	
-	function testGetQuestionsWithQuestionCountOne() {
+	private function getAndTestOneQuestion() {
 		$json = IntegrationTests::getJSONFromAPI("cmd=getQuestions&questionCount=1");
 		
 		$this->assertNotNull($json);
@@ -37,6 +37,12 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json->questions);
 		$this->assertTrue(count($json->questions) == 1);
 		MCQuestion::assert($this, $json->questions[0], OptionType::DEFAULT_TYPE);
+		
+		return $json->questions[0];
+	}
+	
+	function testGetQuestionsWithQuestionCountOne() {
+		$question = IntegrationTests::getAndTestOneQuestion();
 	}
 
 	/*function testGetQuestionsWithQuestionCountOneAndOptionCountTwo() {
@@ -59,6 +65,72 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue(count($json->questions) == API::DEFAULT_QUESTION_COUNT);
 	}
 	
+	function testSubmitQuestionsWithNoParameters() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertTrue(count($json->savedQuestionIds) == 0);
+		$this->assertNotNull($json->skippedQuestionIds);
+		$this->assertTrue(count($json->skippedQuestionIds) == 0);
+		$this->assertTrue($json->duration > 0);
+	}
+	
+	function testSubmitQuestionsWithOneAnsweredQuestionAndResponseTime() {
+		// Get question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		$correctSubjectFacebookId = $question->correctSubject->facebookId;
+		
+		// Submit answer to this question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&facebookIdOfQuestion".$questionId.'='.$correctSubjectFacebookId.'&responseTimeOfQuestion'.$questionId.'=100000');
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertTrue(count($json->savedQuestionIds) == 1);
+		$this->assertTrue($json->savedQuestionIds[0] == $questionId);
+		
+		$this->assertNotNull($json->skippedQuestionIds);
+		$this->assertTrue(count($json->skippedQuestionIds) == 0);
+		$this->assertTrue($json->duration > 0);
+	}
+	
+	function testSubmitQuestionsWithOneResponseTimeOnly() {
+		// Get question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		$correctSubjectFacebookId = $question->correctSubject->facebookId;
+		
+		// Submit answer to this question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&responseTimeOfQuestion".$questionId.'=100000');
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertTrue(count($json->savedQuestionIds) == 0);
+		$this->assertNotNull($json->skippedQuestionIds);
+		$this->assertTrue(count($json->skippedQuestionIds) == 0);
+		$this->assertTrue($json->duration > 0);
+	}
+	
+	function testSubmitQuestionsWithOneSkippedQuestion() {
+		// Get question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		$correctSubjectFacebookId = $question->correctSubject->facebookId;
+		
+		// Skip question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&skippedQuestionIds[]=".$questionId);
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertTrue(count($json->savedQuestionIds) == 0);
+		
+		$this->assertNotNull($json->skippedQuestionIds);
+		$this->assertTrue(count($json->skippedQuestionIds) == 1);
+		$this->assertTrue($json->skippedQuestionIds[0] == $questionId);
+		$this->assertTrue($json->duration > 0);
+	}
+	
 	function testGetCategories() {
 		$json = IntegrationTests::getJSONFromAPI("cmd=getCategories");
 		$this->assertNotNull($json);
@@ -66,6 +138,13 @@ class IntegrationTests extends UnitTestCase {
 		foreach ($json as $category) {
 			Category::assert($this, $category);
 		}
+	}
+	
+	function testGetStatisticsWithNoSetup() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
 	}
 }
 ?>
