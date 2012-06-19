@@ -132,5 +132,14 @@ class Category	{
 
 		return false;
 	}
+	
+	public static function assert($testInstance, $json) {
+		$testInstance->assertNotNull($json);
+		$testInstance->assertTrue($json->categoryId > 0);
+		$testInstance->assertNotNull($json->facebookName);
+		$testInstance->assertNotNull($json->prettyName);
+		$testInstance->assertNotNull($json->hasOrDoes);
+		$testInstance->assertNotNull($json->verb);
+	}
 }
 ?>

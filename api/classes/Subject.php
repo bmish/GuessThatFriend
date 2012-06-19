@@ -82,5 +82,11 @@ class Subject	{
 	public function nameIsLikelyASentence() {
 		return str_word_count($this->name) > Subject::MIN_WORDS_IN_TITLE_TO_BE_CONSIDERED_A_SENTENCE;
 	}
+	
+ 	public static function assert($testInstance, $json) {
+		$testInstance->assertNotNull($json);
+		$testInstance->assertTrue($json->facebookId > 0);
+		$testInstance->assertNotNull($json->name);
+	}
 }
 ?>

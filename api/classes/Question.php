@@ -239,5 +239,15 @@ abstract class Question	{
 		$row = mysql_fetch_array($result);
 		return $row["COUNT(*)"];
 	}
+	
+	public static function assert($testInstance, $json) {
+		$testInstance->assertNotNull($json);
+		$testInstance->assertTrue($json->questionId > 0);
+		
+		Category::assert($testInstance, $json->category);
+		$testInstance->assertNotNull($json->text);
+		Subject::assert($testInstance, $json->topicSubject);
+		Subject::assert($testInstance, $json->correctSubject);
+	}
 }
 ?>

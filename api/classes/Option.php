@@ -98,5 +98,11 @@ class Option	{
 		
 		return $obj;
 	}
+	
+	public static function assert($testInstance, $json) {
+		$testInstance->assertNotNull($json);
+		$testInstance->assertTrue($json->optionId > 0);
+		Subject::assert($testInstance, $json->topicSubject);
+	}
 }
 ?>

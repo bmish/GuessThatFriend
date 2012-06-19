@@ -109,5 +109,16 @@ class MCQuestion extends Question	{
 		
 		return true;
 	}
+	
+	public static function assert($testInstance, $json, $expectedOptionCount) {
+		parent::assert($testInstance, $json);
+		
+		$testInstance->assertNotNull($json->options);
+		$testInstance->assertTrue(count($json->options) == $expectedOptionCount);
+		
+		foreach ($json->options as $option) {
+			Option::assert($testInstance, $option);
+		}
+	} 
 }
 ?>
