@@ -150,7 +150,6 @@ INSERT INTO `categories` (`categoryId`, `facebookName`, `prettyName`, `hasOrDoes
 (141, 'Electronics', 'electronics', 'does', 'like'),
 (142, 'Music video', 'music videos', 'has', 'seen'),
 (143, 'Airport', 'airports', 'has', 'been to'),
-(144, '', '', 'does', 'like'),
 (145, 'Science', 'science items', 'does', 'like'),
 (146, 'Chef', 'chefs', 'does', 'like'),
 (147, 'Non-governmental organization (ngo)', 'non-governmental organizations (ngos)', 'does', 'like'),
