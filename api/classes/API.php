@@ -382,7 +382,7 @@ class API {
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Get existing unanswered questions if available.
-		$questionsExisting = Question::getUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount);
+		$questionsExisting = Question::getUnansweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount, $optionCount);
 		
 		// Build a list of questions depending upon the type of questions desired.
 		$questionsNeededCount = $questionCount - count($questionsExisting);

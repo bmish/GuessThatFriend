@@ -45,7 +45,7 @@ class IntegrationTests extends UnitTestCase {
 		$question = IntegrationTests::getAndTestOneQuestion();
 	}
 
-	/*function testGetQuestionsWithQuestionCountOneAndOptionCountTwo() {
+	function testGetQuestionsWithQuestionCountOneAndOptionCountTwo() {
 		$json = IntegrationTests::getJSONFromAPI("cmd=getQuestions&questionCount=1&optionCount=".OptionType::MC_2);
 		
 		$this->assertNotNull($json);
@@ -54,7 +54,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json->questions);
 		$this->assertTrue(count($json->questions) == 1);
 		MCQuestion::assert($this, $json->questions[0], OptionType::MC_2);
-	}*/
+	}
 	
 	function testGetQuestionsWithQuestionCountDefault() {
 		$json = IntegrationTests::getJSONFromAPI("cmd=getQuestions");
