@@ -58,5 +58,14 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json->questions);
 		$this->assertTrue(count($json->questions) == API::DEFAULT_QUESTION_COUNT);
 	}
+	
+	function testGetCategories() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=getCategories");
+		$this->assertNotNull($json);
+		
+		foreach ($json as $category) {
+			Category::assert($this, $category);
+		}
+	}
 }
 ?>
