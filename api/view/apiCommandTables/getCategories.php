@@ -10,6 +10,6 @@
 				<td>Get the list of question categories.</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getCategories">?cmd=getCategories</a> - Live database results.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getCategories">?cmd=getCategories</a> - Live database results</div>
 	</div>
 </div>

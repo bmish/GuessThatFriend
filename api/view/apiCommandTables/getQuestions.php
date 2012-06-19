@@ -45,6 +45,6 @@
 				<td>Should the questions focus on a particular category of likes like books or movies?</td>
 			</tr>-->
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getQuestions&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=<?php echo OptionType::MC_2; ?>&amp;categoryId=2">?cmd=getQuestions&amp;facebookAccessToken=xxx&amp;questionCount=1&amp;optionCount=<?php echo OptionType::MC_2; ?>&amp;categoryId=2</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=getQuestions&amp;questionCount=1&amp;optionCount=<?php echo OptionType::MC_2; ?>&amp;categoryId=2&amp;facebookAccessToken=xxx">?cmd=getQuestions&amp;questionCount=1&amp;optionCount=<?php echo OptionType::MC_2; ?>&amp;categoryId=2&amp;facebookAccessToken=xxx</a> - Hardcoded example</div>
 	</div>
 </div>

@@ -34,10 +34,10 @@
 				<td class="colParameter">skippedQuestionIds[]</td>
 				<td class="colType fontCode">int</td>
 				<td class="colValue">Skipped questionId</td>
-				<td class="colDefault"></td>
-				<td>The questions that the user chose to skip (one per parameter).</td>
+				<td class="colDefault">Default: none</td>
+				<td>The questions that the user chose to skip (include this parameter once for each question).</td>
 			</tr>
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skippedQuestionIds[]=12&amp;skippedQuestionIds[]=13">?cmd=submitQuestions&amp;facebookAccessToken=xxx&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skippedQuestionIds[]=12&amp;skippedQuestionIds[]=13</a> - Hardcoded example.</div>
+		<div class="apiCommandSectionExample"><a href="?cmd=submitQuestions&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skippedQuestionIds&#91;&#93;=12&amp;skippedQuestionIds&#91;&#93;=13&amp;facebookAccessToken=xxx">?cmd=submitQuestions&amp;facebookIdOfQuestion11=12&amp;responseTimeOfQuestion11=2500&amp;skippedQuestionIds[]=12&amp;skippedQuestionIds[]=13&amp;facebookAccessToken=xxx</a> - Hardcoded example</div>
 	</div>
 </div>

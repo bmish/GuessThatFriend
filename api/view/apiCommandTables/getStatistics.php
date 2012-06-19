@@ -24,7 +24,7 @@
 				<td>Type of statistics to generate.</td>
 			</tr>	
 		</table>
-		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::FRIENDS; ?>">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::FRIENDS; ?></a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::CATEGORIES; ?>">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::CATEGORIES; ?></a> - Hardcoded example.<br /><a href="?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::HISTORY; ?>">?cmd=getStatistics&amp;facebookAccessToken=xxx&amp;type=<?php echo StatisticType::HISTORY; ?></a> - Hardcoded example.
+		<div class="apiCommandSectionExample"><a href="?cmd=getStatistics&amp;type=<?php echo StatisticType::FRIENDS; ?>&amp;facebookAccessToken=xxx">?cmd=getStatistics&amp;type=<?php echo StatisticType::FRIENDS; ?>&amp;facebookAccessToken=xxx</a> - Hardcoded example<br /><a href="?cmd=getStatistics&amp;type=<?php echo StatisticType::CATEGORIES; ?>&amp;facebookAccessToken=xxx">?cmd=getStatistics&amp;type=<?php echo StatisticType::CATEGORIES; ?>&amp;facebookAccessToken=xxx</a> - Hardcoded example<br /><a href="?cmd=getStatistics&amp;type=<?php echo StatisticType::HISTORY; ?>&amp;facebookAccessToken=xxx">?cmd=getStatistics&amp;type=<?php echo StatisticType::HISTORY; ?>&amp;facebookAccessToken=xxx</a> - Hardcoded example
   </div>
 	</div>
 </div>
