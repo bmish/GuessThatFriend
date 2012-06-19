@@ -246,6 +246,7 @@ abstract class Question	{
 		
 		Category::assert($testInstance, $json->category);
 		$testInstance->assertNotNull($json->text);
+		$testInstance->assertFalse(empty($json->text));
 		Subject::assert($testInstance, $json->topicSubject);
 		Subject::assert($testInstance, $json->correctSubject);
 	}

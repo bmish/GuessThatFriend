@@ -87,6 +87,7 @@ class Subject	{
 		$testInstance->assertNotNull($json);
 		$testInstance->assertTrue($json->facebookId > 0);
 		$testInstance->assertNotNull($json->name);
+		$testInstance->assertFalse(empty($json->name));
 	}
 }
 ?>

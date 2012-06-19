@@ -140,6 +140,11 @@ class Category	{
 		$testInstance->assertNotNull($json->prettyName);
 		$testInstance->assertNotNull($json->hasOrDoes);
 		$testInstance->assertNotNull($json->verb);
+		
+		$testInstance->assertFalse(empty($json->facebookName));
+		$testInstance->assertFalse(empty($json->prettyName));
+		$testInstance->assertFalse(empty($json->hasOrDoes));
+		$testInstance->assertFalse(empty($json->verb));
 	}
 }
 ?>
