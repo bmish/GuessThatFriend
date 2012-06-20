@@ -37,7 +37,6 @@ class MCQuestion extends Question	{
 	 * Makes question text based on the type of question.
 	 *
 	 * @see Question::makeQuestionText()
-	 * @todo Modify question to depend on subject type (person v.s. page)
 	 */
 	public function makeQuestionText() {
 		$this->text = "Which of the following ".$this->category->prettyName." ".$this->category->hasOrDoes." ".$this->topicSubject->name." ".$this->category->verb."?";

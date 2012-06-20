@@ -186,7 +186,6 @@ class FacebookAPI	{
 	 * @param string $facebookId Facebook ID of the person
 	 * @param Category $category Specific category to look for
 	 * @return Subject Random page
-	 * @todo May need to deal with insufficient data for requested category
 	 */
 	public function getRandomLikedPage($facebookId = "", $category = null)	{
 		$likes = $this->getLikesOfFriend($facebookId);
@@ -203,7 +202,6 @@ class FacebookAPI	{
 			return $like;
 		}	
 
-		// TODO: May need to deal with insufficient data for requested category.
 		$likesOfCategory = array();
 		foreach ($likes as $like)	{
 			if ($like->category->categoryId == $category->categoryId) {

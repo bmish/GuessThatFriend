@@ -8,8 +8,8 @@
 abstract class Question	{
 
 	protected $questionId;
-	protected $category; 			// Category of this Question (like books or movies). TODO: This will become redundant because it will be stored inside topicSubject.
-	protected $text; 				// Question text.
+	protected $category; 			// Category of this Question (like books or movies).
+	protected $text; 			// Question text.
 	protected $ownerSubject;		// The person who this question was generated for.
 	protected $topicSubject; 		// Person or page that this question is about.
 	protected $correctSubject; 		// The correct answer to this question.
