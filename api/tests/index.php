@@ -109,10 +109,9 @@ class IntegrationTests extends UnitTestCase {
 		// Get question.
 		$question = IntegrationTests::getAndTestOneQuestion();
 		$questionId = $question->questionId;
-		$correctSubjectFacebookId = $question->correctSubject->facebookId;
 		
 		// Submit answer to this question.
-		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&facebookIdOfQuestion".$questionId.'='.$correctSubjectFacebookId.'&responseTimeOfQuestion'.$questionId.'=100000');
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&facebookIdOfQuestion".$questionId.'='.IntegrationTests::SAMPLE_FACEBOOK_ID.'&responseTimeOfQuestion'.$questionId.'=100000');
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->savedQuestionIds);
@@ -128,7 +127,6 @@ class IntegrationTests extends UnitTestCase {
 		// Get question.
 		$question = IntegrationTests::getAndTestOneQuestion();
 		$questionId = $question->questionId;
-		$correctSubjectFacebookId = $question->correctSubject->facebookId;
 		
 		// Submit answer to this question.
 		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&responseTimeOfQuestion".$questionId.'=100000');
@@ -145,7 +143,6 @@ class IntegrationTests extends UnitTestCase {
 		// Get question.
 		$question = IntegrationTests::getAndTestOneQuestion();
 		$questionId = $question->questionId;
-		$correctSubjectFacebookId = $question->correctSubject->facebookId;
 		
 		// Skip question.
 		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&skippedQuestionIds[]=".$questionId);
