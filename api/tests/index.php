@@ -158,5 +158,32 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 	}
+	
+	function testGetStatisticsWithTypeFriends() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=friends");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		
+		$this->assertNotNull($json->friends);
+	}
+	
+	function testGetStatisticsWithTypeCategories() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=categories");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		
+		$this->assertNotNull($json->categories);
+	}
+	
+	function testGetStatisticsWithTypeHistory() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=history");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		
+		$this->assertNotNull($json->questions);
+	}
 }
 ?>
