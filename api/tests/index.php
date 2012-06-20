@@ -52,7 +52,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
-		$this->assertTrue(count($json->questions) == 1);
+		$this->assertEqual(count($json->questions), 1);
 		MCQuestion::assert($this, $json->questions[0], OptionType::DEFAULT_TYPE);
 		
 		return $json->questions[0];
@@ -69,7 +69,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
-		$this->assertTrue(count($json->questions) == 1);
+		$this->assertEqual(count($json->questions), 1);
 		MCQuestion::assert($this, $json->questions[0], OptionType::MC_2);
 	}
 	
@@ -79,7 +79,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
-		$this->assertTrue(count($json->questions) == API::DEFAULT_QUESTION_COUNT);
+		$this->assertEqual(count($json->questions), API::DEFAULT_QUESTION_COUNT);
 	}
 	
 	function testGetQuestionsWithQuestionCountTwo() {
@@ -89,7 +89,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
-		$this->assertTrue(count($json->questions) == 2);
+		$this->assertEqual(count($json->questions), 2);
 		MCQuestion::assert($this, $json->questions[0], OptionType::DEFAULT_TYPE);
 		MCQuestion::assert($this, $json->questions[1], OptionType::DEFAULT_TYPE);
 	}
@@ -99,9 +99,9 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->savedQuestionIds);
-		$this->assertTrue(count($json->savedQuestionIds) == 0);
+		$this->assertEqual(count($json->savedQuestionIds), 0);
 		$this->assertNotNull($json->skippedQuestionIds);
-		$this->assertTrue(count($json->skippedQuestionIds) == 0);
+		$this->assertEqual(count($json->skippedQuestionIds), 0);
 		$this->assertTrue($json->duration > 0);
 	}
 	
@@ -115,11 +115,11 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->savedQuestionIds);
-		$this->assertTrue(count($json->savedQuestionIds) == 1);
-		$this->assertTrue($json->savedQuestionIds[0] == $questionId);
+		$this->assertEqual(count($json->savedQuestionIds), 1);
+		$this->assertEqual($json->savedQuestionIds[0], $questionId);
 		
 		$this->assertNotNull($json->skippedQuestionIds);
-		$this->assertTrue(count($json->skippedQuestionIds) == 0);
+		$this->assertEqual(count($json->skippedQuestionIds), 0);
 		$this->assertTrue($json->duration > 0);
 	}
 	
@@ -133,9 +133,9 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->savedQuestionIds);
-		$this->assertTrue(count($json->savedQuestionIds) == 0);
+		$this->assertEqual(count($json->savedQuestionIds), 0);
 		$this->assertNotNull($json->skippedQuestionIds);
-		$this->assertTrue(count($json->skippedQuestionIds) == 0);
+		$this->assertEqual(count($json->skippedQuestionIds), 0);
 		$this->assertTrue($json->duration > 0);
 	}
 	
@@ -149,11 +149,11 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->savedQuestionIds);
-		$this->assertTrue(count($json->savedQuestionIds) == 0);
+		$this->assertEqual(count($json->savedQuestionIds), 0);
 		
 		$this->assertNotNull($json->skippedQuestionIds);
-		$this->assertTrue(count($json->skippedQuestionIds) == 1);
-		$this->assertTrue($json->skippedQuestionIds[0] == $questionId);
+		$this->assertEqual(count($json->skippedQuestionIds), 1);
+		$this->assertEqual($json->skippedQuestionIds[0], $questionId);
 		$this->assertTrue($json->duration > 0);
 	}
 	
@@ -201,8 +201,8 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->savedQuestionIds);
-		$this->assertTrue(count($json->savedQuestionIds) == 1);
-		$this->assertTrue($json->savedQuestionIds[0] == $questionId);
+		$this->assertEqual(count($json->savedQuestionIds), 1);
+		$this->assertEqual($json->savedQuestionIds[0], $questionId);
 		
 		// Get the most recent question from the history.
 		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=history");
@@ -233,8 +233,8 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertNotNull($json->skippedQuestionIds);
-		$this->assertTrue(count($json->skippedQuestionIds) == 1);
-		$this->assertTrue($json->skippedQuestionIds[0] == $questionId);
+		$this->assertEqual(count($json->skippedQuestionIds), 1);
+		$this->assertEqual($json->skippedQuestionIds[0], $questionId);
 		
 		// Get the most recent question from the history.
 		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=history");
