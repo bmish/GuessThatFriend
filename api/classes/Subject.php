@@ -85,7 +85,8 @@ class Subject	{
 	
  	public static function assert($testInstance, $json) {
 		$testInstance->assertNotNull($json);
-		$testInstance->assertTrue($json->facebookId > 0);
+		$testInstance->assertNotNull($json->facebookId);
+		$testInstance->assertFalse(empty($json->facebookId));
 		$testInstance->assertNotNull($json->name);
 		$testInstance->assertFalse(empty($json->name));
 	}

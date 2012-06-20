@@ -36,6 +36,8 @@ if (!$facebookAPI->authenticate($_GET['facebookAccessToken'])) {
 DB::close();
 
 class IntegrationTests extends UnitTestCase {
+	const SAMPLE_FACEBOOK_ID = "zuck";
+	
 	private static function getJSONFromAPI($url) {
 		$contents = file_get_contents(Util::parentDirectoryURL().'?facebookAccessToken='.$_GET['facebookAccessToken'].'&'.$url,true);
 		$json = json_decode($contents);
@@ -192,13 +194,63 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json->categories);
 	}
 	
-	function testGetStatisticsWithTypeHistory() {
+	function testGetStatisticsWithTypeHistoryBySubmittingAQuestion() {
+		// Get a question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		
+		// Answer the question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&facebookIdOfQuestion".$questionId."=".IntegrationTests::SAMPLE_FACEBOOK_ID."&responseTimeOfQuestion".$questionId.'=100000');
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertTrue(count($json->savedQuestionIds) == 1);
+		$this->assertTrue($json->savedQuestionIds[0] == $questionId);
+		
+		// Get the most recent question from the history.
 		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=history");
 		$this->assertNotNull($json);
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
-		
 		$this->assertNotNull($json->questions);
+		$this->assertTrue(count($json->questions) >= 1);
+		
+		// Check if this question matches the one we just submitted.
+		$mostRecentQuestion = $json->questions[0];
+		MCQuestion::assert($this, $mostRecentQuestion, OptionType::DEFAULT_TYPE);
+		$this->assertEqual($mostRecentQuestion->questionId, $questionId);
+		Subject::assert($this, $mostRecentQuestion->chosenSubject);
+		$this->assertEqual($mostRecentQuestion->chosenSubject->facebookId, IntegrationTests::SAMPLE_FACEBOOK_ID);
+		$this->assertEqual($mostRecentQuestion->responseTime, 100000);
+		$this->assertNotNull($mostRecentQuestion->answeredAt);
+		$this->assertFalse(empty($mostRecentQuestion->answeredAt));
+	}
+	
+	function testGetStatisticsWithTypeHistoryBySkippingAQuestion() {
+		// Get a question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		
+		// Skip the question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&skippedQuestionIds[]=".$questionId);
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->skippedQuestionIds);
+		$this->assertTrue(count($json->skippedQuestionIds) == 1);
+		$this->assertTrue($json->skippedQuestionIds[0] == $questionId);
+		
+		// Get the most recent question from the history.
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=history");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		$this->assertNotNull($json->questions);
+		$this->assertTrue(count($json->questions) >= 1);
+		
+		// The most recent question should not be the one we skipped.
+		$mostRecentQuestion = $json->questions[0];
+		MCQuestion::assert($this, $mostRecentQuestion, OptionType::DEFAULT_TYPE);
+		$this->assertNotEqual($mostRecentQuestion->questionId, $questionId);
 	}
 }
 ?>
