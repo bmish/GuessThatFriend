@@ -391,16 +391,15 @@ class API {
 		// Combine existing and new questions.
 		$questions = array_merge($questionsExisting, $questionsNew);
 		
-		// Check if we generated enough questions.
-		if (count($questions) < $questionCount * (1 - API::ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE)) {
-			JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
-		}
-		
 		return $questions;
 	}
 	
 	private static function generateQuestions($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
+		
+		// Only allow a certain number of errors.
+		$errorCount = 0;
+		$maxAcceptableErrorCount = round($questionCount * API::ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE);
 		
 		$questions = array();
 		for ($i = 0; $i < $questionCount; $i++) {
@@ -415,6 +414,15 @@ class API {
 				}
 			} catch (Exception $e) { // If we fail to generate a question, record the error, and continue.
 				Error::saveExceptionToDB($e);
+				
+				// Have we reached the error limit? 
+				if (++$errorCount >= $maxAcceptableErrorCount) {
+					JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
+				}
+				
+				// Repeat iteration.
+				$i--;
+				
 				continue;
 			}
 		}
