@@ -45,6 +45,40 @@ class IntegrationTests extends UnitTestCase {
 		return $json;
 	}
 	
+	private function checkFriendsStats($json) {
+		$this->checkStats($json);
+		Subject::assert($this, $json->subject);
+	}
+	
+	private function checkCategoriesStats($json) {
+		$this->checkStats($json);
+		Category::assert($this, $json->category);
+	}
+	
+	private function checkStats($json) {
+		$this->assertNotNull($json);
+		$this->assertNotNull($json->correctAnswerCount);
+		$this->assertTrue($json->correctAnswerCount >= 0);
+		$this->assertNotNull($json->totalAnswerCount);
+		$this->assertTrue($json->totalAnswerCount >= 0);
+		$this->assertNotNull($json->fastestCorrectResponseTime);
+		$this->assertTrue($json->fastestCorrectResponseTime >= -1);
+		$this->assertNotNull($json->averageResponseTime);
+		$this->assertTrue($json->averageResponseTime >= -1);
+	}
+	
+	private function checkAllFriendsStats($json) {
+		foreach ($json as $friend) {
+			$this->checkFriendsStats($friend);
+		}
+	}
+	
+	private function checkAllCategoriesStats($json) {
+		foreach ($json as $category) {
+			$this->checkCategoriesStats($category);
+		}
+	}
+	
 	private function getAndTestOneQuestion() {
 		$json = IntegrationTests::getJSONFromAPI("cmd=getQuestions&questionCount=1");
 		
@@ -248,6 +282,74 @@ class IntegrationTests extends UnitTestCase {
 		$mostRecentQuestion = $json->questions[0];
 		MCQuestion::assert($this, $mostRecentQuestion, OptionType::DEFAULT_TYPE);
 		$this->assertNotEqual($mostRecentQuestion->questionId, $questionId);
+	}
+	
+	function testGetStatisticsWithTypeFriendsBySubmittingAQuestion() {
+		// Get a question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		$topicSubjectFacebookId = $question->topicSubject->facebookId;
+		
+		// Answer the question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&facebookIdOfQuestion".$questionId."=".IntegrationTests::SAMPLE_FACEBOOK_ID."&responseTimeOfQuestion".$questionId.'=100000');
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertEqual(count($json->savedQuestionIds), 1);
+		$this->assertEqual($json->savedQuestionIds[0], $questionId);
+		
+		// Look through friends stats.
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=friends");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		$this->assertNotNull($json->friends);
+		$this->assertTrue(count($json->friends) >= 1);
+		$this->checkAllFriendsStats($json->friends);
+		
+		// The friend we answered a question about should be in the list of friends.
+		$foundFriend = false;
+		foreach ($json->friends as $friend) {
+			if ($friend->subject->facebookId == $topicSubjectFacebookId) {
+				$foundFriend = true;
+				break;
+			}
+		}
+		$this->assertTrue($foundFriend);
+	}
+	
+	function testGetStatisticsWithTypeCategoriesBySubmittingAQuestion() {
+		// Get a question.
+		$question = IntegrationTests::getAndTestOneQuestion();
+		$questionId = $question->questionId;
+		$categoryId = $question->category->categoryId;
+		
+		// Answer the question.
+		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions&facebookIdOfQuestion".$questionId."=".IntegrationTests::SAMPLE_FACEBOOK_ID."&responseTimeOfQuestion".$questionId.'=100000');
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertNotNull($json->savedQuestionIds);
+		$this->assertEqual(count($json->savedQuestionIds), 1);
+		$this->assertEqual($json->savedQuestionIds[0], $questionId);
+		
+		// Look through categories stats.
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=categories");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		$this->assertNotNull($json->categories);
+		$this->assertTrue(count($json->categories) >= 1);
+		$this->checkAllCategoriesStats($json->categories);
+		
+		// The category we answered a question about should be in the list of categories.
+		$foundCategory = false;
+		foreach ($json->categories as $category) {
+			if ($category->category->categoryId == $categoryId) {
+				$foundCategory = true;
+				break;
+			}
+		}
+		$this->assertTrue($foundCategory);
 	}
 }
 ?>
