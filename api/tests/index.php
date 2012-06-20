@@ -19,6 +19,22 @@ require_once('../classes/StatisticType.php');
 require_once('../classes/Subject.php');
 require_once('../classes/Util.php');
 
+require_once('../config/config.php');
+require_once('../libraries/facebook-php-sdk/src/facebook.php');
+
+// Connect to database.
+DB::connect();
+
+// Require a facebookAccessToken in the URL.
+$facebookAPI = FacebookAPI::singleton();
+if (!$facebookAPI->authenticate($_GET['facebookAccessToken'])) {
+	echo '<p>Error: URL must contain ?facebookAccessToken=xxx to run tests.</p>';
+	exit;
+}
+
+// Close database connection.
+DB::close();
+
 class IntegrationTests extends UnitTestCase {
 	private static function getJSONFromAPI($url) {
 		$contents = file_get_contents(Util::parentDirectoryURL().'?facebookAccessToken='.$_GET['facebookAccessToken'].'&'.$url,true);
