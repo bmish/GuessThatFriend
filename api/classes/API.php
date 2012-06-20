@@ -405,7 +405,7 @@ class API {
 		for ($i = 0; $i < $questionCount; $i++) {
 			try {
 				if ($optionCount == OptionType::FILL_IN_THE_BLANK) {
-					$questions[] = new FillBlankQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId);
+					// Not implemented.
 				} elseif ($optionCount == OptionType::RANDOM) {
 					$optionCountForQuestion = rand(OptionType::MC_MIN, OptionType::MC_MAX);
 					$questions[] = new MCQuestion($facebookAPI->getLoggedInUserId(), $topicFacebookId, $categoryId, $optionCountForQuestion);

@@ -3,7 +3,6 @@ require_once('../libraries/simpletest/autorun.php');
 
 // Question includes.
 require_once('../classes/Question.php');
-require_once('../classes/FillBlankQuestion.php');
 require_once('../classes/MCQuestion.php');
 
 // Misc includes.
