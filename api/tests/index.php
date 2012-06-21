@@ -32,9 +32,6 @@ if (!$facebookAPI->authenticate($_GET['facebookAccessToken'])) {
 	exit;
 }
 
-// Close database connection.
-DB::close();
-
 class IntegrationTests extends UnitTestCase {
 	const SAMPLE_FACEBOOK_ID = "zuck";
 	
@@ -155,6 +152,9 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertNotNull($json->skippedQuestionIds);
 		$this->assertEqual(count($json->skippedQuestionIds), 0);
 		$this->assertTrue($json->duration > 0);
+		
+		// Cleanup.
+		MCQuestion::removeFromDBById($questionId);
 	}
 	
 	function testSubmitQuestionsWithOneResponseTimeOnly() {
@@ -189,6 +189,9 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertEqual(count($json->skippedQuestionIds), 1);
 		$this->assertEqual($json->skippedQuestionIds[0], $questionId);
 		$this->assertTrue($json->duration > 0);
+		
+		// Cleanup.
+		MCQuestion::removeFromDBById($questionId);
 	}
 	
 	function testGetCategories() {
@@ -255,6 +258,9 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertEqual($mostRecentQuestion->responseTime, 100000);
 		$this->assertNotNull($mostRecentQuestion->answeredAt);
 		$this->assertFalse(empty($mostRecentQuestion->answeredAt));
+		
+		// Cleanup.
+		MCQuestion::removeFromDBById($questionId);
 	}
 	
 	function testGetStatisticsWithTypeHistoryBySkippingAQuestion() {
@@ -282,6 +288,9 @@ class IntegrationTests extends UnitTestCase {
 		$mostRecentQuestion = $json->questions[0];
 		MCQuestion::assert($this, $mostRecentQuestion, OptionType::DEFAULT_TYPE);
 		$this->assertNotEqual($mostRecentQuestion->questionId, $questionId);
+		
+		// Cleanup.
+		MCQuestion::removeFromDBById($questionId);
 	}
 	
 	function testGetStatisticsWithTypeFriendsBySubmittingAQuestion() {
@@ -316,6 +325,9 @@ class IntegrationTests extends UnitTestCase {
 			}
 		}
 		$this->assertTrue($foundFriend);
+		
+		// Cleanup.
+		MCQuestion::removeFromDBById($questionId);
 	}
 	
 	function testGetStatisticsWithTypeCategoriesBySubmittingAQuestion() {
@@ -350,6 +362,9 @@ class IntegrationTests extends UnitTestCase {
 			}
 		}
 		$this->assertTrue($foundCategory);
+		
+		// Cleanup.
+		MCQuestion::removeFromDBById($questionId);
 	}
 }
 ?>
