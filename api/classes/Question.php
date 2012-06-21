@@ -141,15 +141,19 @@ abstract class Question	{
 	}
 	
 	protected function removeFromDB() {
-		if ($this->questionId < 1) {
+		return Question::removeFromDBById($this->questionId);
+	}
+	
+	public static function removeFromDBById($questionId) {
+		if ($questionId < 1) {
 			return false;
 		}
 		
-		$deleteQuery = "DELETE FROM questions WHERE questionId = ".$this->questionId." LIMIT 1";
+		$deleteQuery = "DELETE FROM questions WHERE questionId = ".$questionId." LIMIT 1";
 		$result = mysql_query($deleteQuery);
 		
 		if (!$result) {
-			Error::saveErrorToDB("Unable to delete question #".$this->questionId." from database.");
+			Error::saveErrorToDB("Unable to delete question #".$questionId." from database.");
 			
 			return false;
 		}
