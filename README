@@ -1,5 +1,5 @@
 Description:
-A web API (back end) and an iPhone game app (front end) that let you find out which of your Facebook friends you know the best by quizzing you on their interests.
+A web API (back end) and an iPhone game (front end) that let you find out which of your Facebook friends you know the best by quizzing you on their interests.
 
 API setup requirements:
 1. Web server
@@ -7,7 +7,7 @@ API setup requirements:
 3. MySQL
 4. Sign up to develop apps on Facebook and create an app
 
-API setup:
+API setup instructions:
 1. Make a copy of /api/config/config.sample.php named config.php and fill in the variables
 2. Run the SQL files in /api/schema/ on the database
 3. Copy /api to the web server
