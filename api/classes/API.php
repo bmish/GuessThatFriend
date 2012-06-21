@@ -9,6 +9,7 @@ class API {
 	const ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
 	const DEFAULT_QUESTION_COUNT = 10;
 	const DEFAULT_STATS_HISTORY_QUESTION_COUNT = 20;
+	const MIN_ACCEPTABLE_FRIEND_COUNT = 5;
 	
 	/**
 	 * Gets a specified number of questions from the server. On success, prints JSON output containing the newly created questions.
@@ -403,6 +404,9 @@ class API {
 	private static function generateQuestions($questionCount, $optionCount, $topicFacebookId, $categoryId) {
 		$facebookAPI = FacebookAPI::singleton();
 		
+		// User must meet preconditions before we attempt to generate questions for them.
+		API::checkQuestionGenerationPreconditions();
+		
 		// Only allow a certain number of errors.
 		$errorCount = 0;
 		$maxAcceptableErrorCount = round($questionCount * API::ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE);
@@ -434,6 +438,14 @@ class API {
 		}
 		
 		return $questions;
+	}
+	
+	private static function checkQuestionGenerationPreconditions() {
+		$facebookAPI = FacebookAPI::singleton();
+		
+		if ($facebookAPI->countFriendsOf() < API::MIN_ACCEPTABLE_FRIEND_COUNT) {
+			JSON::outputFatalErrorAndExit("InsufficientFriends","You must have at least ".API::MIN_ACCEPTABLE_FRIEND_COUNT." Facebook friends in order to play.");
+		}
 	}
 	
 	/**

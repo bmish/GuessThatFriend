@@ -59,6 +59,17 @@ class FacebookAPI	{
 		return FacebookAPI::jsonToSubjects($friendsResponse['data']);
 	}
 	
+	public function countFriendsOf($facebookId = "") {
+		if ($facebookId == "")	{
+			$facebookId = $this->getLoggedInUserId();
+		}
+		
+		// Get API response.
+		$friendsResponse = Cache::requestFacebookAPIWithCaching('/'.$facebookId.'/friends');
+		
+		return count($friendsResponse["data"]);
+	}
+	
 	/**
 	 * Returns a random friend.
 	 *
