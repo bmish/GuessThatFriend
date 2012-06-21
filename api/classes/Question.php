@@ -168,8 +168,14 @@ abstract class Question	{
 	 * @return array Array of Questions
 	 *
 	 */
-	public static function getAnsweredQuestionsFromDB($ownerFacebookId) {
-		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId != '' ORDER BY questionId DESC";
+	public static function getAnsweredQuestionsFromDB($ownerFacebookId, $questionCount = 0) {
+		// May need to limit how many questions we retrieve.
+		$limitClause = "";
+		if ($questionCount > 0) {
+			$limitClause = " LIMIT ".$questionCount;
+		}
+		
+		$questionQuery = "SELECT * FROM questions WHERE ownerFacebookId = '$ownerFacebookId' AND skipped = false AND chosenFacebookId != '' ORDER BY questionId DESC".$limitClause;
 		$result = mysql_query($questionQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
 			return array();

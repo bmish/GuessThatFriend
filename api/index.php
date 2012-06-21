@@ -50,7 +50,8 @@ if ($cmd == 'getQuestions') {
 } else if ($cmd == 'getStatistics') {
 	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$type = $_GET['type'];
-	API::getStatistics($facebookAccessToken, $type);
+	$questionCount = intval($_GET['questionCount']);
+	API::getStatistics($facebookAccessToken, $type, $questionCount);
 } else {
 	// Display page that describes the API.
 	include_once("view/index.php");

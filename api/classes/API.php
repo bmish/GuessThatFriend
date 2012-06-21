@@ -8,6 +8,7 @@ class API {
 	const MIN_UNANSWERED_QUESTION_STOCKPILE_SIZE = 25;
 	const ACCEPTABLE_QUESTION_GENERATION_FAILURE_RATE = 0.50;
 	const DEFAULT_QUESTION_COUNT = 10;
+	const DEFAULT_STATS_HISTORY_QUESTION_COUNT = 20;
 	
 	/**
 	 * Gets a specified number of questions from the server. On success, prints JSON output containing the newly created questions.
@@ -156,7 +157,7 @@ class API {
 	 * @param int $type The type of statistics to generate.
 	 * @return void
 	 */	
-	public static function getStatistics($facebookAccessToken, $type){
+	public static function getStatistics($facebookAccessToken, $type, $questionCount){
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Start timing.
@@ -190,7 +191,7 @@ class API {
 		} elseif ($type == StatisticType::CATEGORIES) {
 			$output["categories"] = API::getCategoryStats();
 		} elseif ($type == StatisticType::HISTORY) {
-			$output["questions"] = API::getQuestionHistory();
+			$output["questions"] = API::getQuestionHistory($questionCount);
 		}
 		$output["duration"] = Util::calculateLoadingDuration($timeStart);
 
@@ -268,10 +269,15 @@ class API {
 	 *
 	 * @return array Array of Questions
 	 */
-	private static function getQuestionHistory() {
+	private static function getQuestionHistory($questionCount) {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		return JSON::jsonSerializeArray(Question::getAnsweredQuestionsFromDB($facebookAPI->getLoggedInUserId()));
+		// If user hasn't specified how many questions to retrieve, use the default count.
+		if ($questionCount == 0) {
+			$questionCount = API::DEFAULT_STATS_HISTORY_QUESTION_COUNT;
+		}
+		
+		return JSON::jsonSerializeArray(Question::getAnsweredQuestionsFromDB($facebookAPI->getLoggedInUserId(), $questionCount));
 	}
 
 	/**
