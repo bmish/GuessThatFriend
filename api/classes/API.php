@@ -140,7 +140,7 @@ class API {
 		$categoryQuery = "SELECT * FROM categories ORDER BY facebookName";
 		$result = mysql_query($categoryQuery);
 		if (!$result || mysql_num_rows($result) == 0) {
-			JSON::outputFatalErrorAndExit("No categories found in database.");
+			JSON::outputFatalErrorAndExit("SelectCategoriesFromDBFailed","No categories found in database.");
 			return false;
 		}
 
@@ -229,7 +229,7 @@ class API {
 		$totalCountResult = mysql_query($totalCountQuery);
 		
 		if (!$correctCountResult || !$totalCountResult) {
-			JSON::outputFatalErrorAndExit("Statistics database query failed.");
+			JSON::outputFatalErrorAndExit("SelectCategoryStatsFromDBFailed","Statistics database query failed.");
 			return array();
 		}
 
@@ -311,7 +311,7 @@ class API {
 		$totalResult = mysql_query($totalQuery);
 		
 		if (!$correctResult || !$averageQuery || !$totalResult) {
-			JSON::outputFatalErrorAndExit("Statistics database query failed.");
+			JSON::outputFatalErrorAndExit("SelectFriendsStatsFromDBFailed","Statistics database query failed.");
 			return array();
 		}
 
@@ -423,7 +423,7 @@ class API {
 				
 				// Have we reached the error limit? 
 				if (++$errorCount >= $maxAcceptableErrorCount) {
-					JSON::outputFatalErrorAndExit("Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
+					JSON::outputFatalErrorAndExit("GeneratingQuestionsReachedErrorLimit","Failed to generate enough questions. There may not be sufficient Facebook data to work with.");
 				}
 				
 				// Repeat iteration.

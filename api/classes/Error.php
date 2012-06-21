@@ -10,10 +10,10 @@ class Error {
 		mysql_query($errorQuery);
 	}
 	
-	public static function saveErrorToDB($message) {
+	public static function saveErrorToDB($type, $message) {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		$errorQuery = "INSERT INTO errors (message, occurredAt, facebookId) VALUES ('".DB::cleanInputForDatabase($message)."',UNIX_TIMESTAMP(),'".$facebookAPI->getLoggedInUserId()."')";
+		$errorQuery = "INSERT INTO errors (type, message, occurredAt, facebookId) VALUES ('".DB::cleanInputForDatabase($type)."','".DB::cleanInputForDatabase($message)."',UNIX_TIMESTAMP(),'".$facebookAPI->getLoggedInUserId()."')";
 		mysql_query($errorQuery);
 	}
 }

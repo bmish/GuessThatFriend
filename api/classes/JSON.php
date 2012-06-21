@@ -50,15 +50,15 @@ class JSON {
 	 * @param string $message Failure message
 	 * @return void
 	 */
-	public static function outputFatalErrorAndExit($message = "") {
+	public static function outputFatalErrorAndExit($errorType, $friendlyMessage = "") {
 		$output = array();
-		if (!empty($message)) {
-			$output["message"] = $message;
+		if (!empty($friendlyMessage)) {
+			$output["message"] = $friendlyMessage;
 		}
 		$output["success"] = false;
 		
 		// Record error in database.
-		Error::saveErrorToDB($message);
+		Error::saveErrorToDB($errorType, $friendlyMessage);
 
 		header('Content-type: application/json');
 		echo json_encode($output);

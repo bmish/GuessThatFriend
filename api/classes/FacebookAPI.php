@@ -343,7 +343,7 @@ class FacebookAPI	{
 		$updateQuery = "UPDATE users SET lastVisitedAt = UNIX_TIMESTAMP() WHERE facebookId = '".$this->getLoggedInUserId()."' LIMIT 1";
 		$result = mysql_query($updateQuery);
 		if (!$result)	{
-			JSON::outputFatalErrorAndExit("Unable to update logged in user's database record.");
+			JSON::outputFatalErrorAndExit("UpdateLastVisitedAtInDBFailed","Unable to update logged in user's database record.");
 			return false;
 		}
 		return true;
@@ -360,23 +360,6 @@ class FacebookAPI	{
 		}
 		
 		return $this->facebookId;
-	}
-	
-	/**
-	 * Saves page to database.
-	 *
-	 * @param Subject $subject Page to be saved
-	 * @return bool True on successful query, false otherwise
-	 */
-	public function insertPageIntoDatabase($subject)	{
-		$replaceQuery = "REPLACE INTO pages SET id = '".$subject->facebookId."', name = '".DB::cleanInputForDatabase($subject->name)."', category = '".DB::cleanInputForDatabase($subject->category->facebookName)."';";
-		$result = mysql_query($replaceQuery);
-		
-		if (!$result) {
-			JSON::outputFatalErrorAndExit("Unable to save page to database.");
-			return false;
-		}
-		return true;
 	}
 	
 	public function api($requestString) {
