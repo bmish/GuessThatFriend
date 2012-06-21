@@ -248,6 +248,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
 		$this->assertTrue(count($json->questions) >= 1);
+		$this->assertTrue(count($json->questions) <= API::DEFAULT_STATS_HISTORY_QUESTION_COUNT);
 		
 		// Check if this question matches the one we just submitted.
 		$mostRecentQuestion = $json->questions[0];
@@ -282,6 +283,7 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
+		$this->assertTrue(count($json->questions) <= API::DEFAULT_STATS_HISTORY_QUESTION_COUNT);		
 		if (count($json->questions) == 0) { // If there's nothing in the history, test is over.
 			MCQuestion::removeFromDBById($questionId);
 			return;
@@ -294,6 +296,15 @@ class IntegrationTests extends UnitTestCase {
 		
 		// Cleanup.
 		MCQuestion::removeFromDBById($questionId);
+	}
+	
+	function testGetStatisticsWithTypeHistoryAndQuestionCountOne() {
+		$json = IntegrationTests::getJSONFromAPI("cmd=getStatistics&type=history&questionCount=1");
+		$this->assertNotNull($json);
+		$this->assertTrue($json->success);
+		$this->assertTrue($json->duration > 0);
+		$this->assertNotNull($json->questions);
+		$this->assertTrue(count($json->questions) <= 1);
 	}
 	
 	function testGetStatisticsWithTypeFriendsBySubmittingAQuestion() {
