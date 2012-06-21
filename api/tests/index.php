@@ -282,7 +282,10 @@ class IntegrationTests extends UnitTestCase {
 		$this->assertTrue($json->success);
 		$this->assertTrue($json->duration > 0);
 		$this->assertNotNull($json->questions);
-		$this->assertTrue(count($json->questions) >= 1);
+		if (count($json->questions) == 0) { // If there's nothing in the history, test is over.
+			MCQuestion::removeFromDBById($questionId);
+			return;
+		}
 		
 		// The most recent question should not be the one we skipped.
 		$mostRecentQuestion = $json->questions[0];
