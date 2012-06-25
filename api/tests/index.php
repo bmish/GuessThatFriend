@@ -125,6 +125,14 @@ class IntegrationTests extends UnitTestCase {
 		MCQuestion::assert($this, $json->questions[1], OptionType::DEFAULT_TYPE);
 	}
 	
+	function testGetQuestionsWithDuplicateRequestThusExpectingSameQuestion() {
+		$question1 = IntegrationTests::getAndTestOneQuestion();
+		$question2 = IntegrationTests::getAndTestOneQuestion();
+		
+		// Should receive the same question twice because we never answered the first.
+		$this->assertEqual($question1->questionId, $question2->questionId);
+	}
+	
 	function testSubmitQuestionsWithNoParameters() {
 		$json = IntegrationTests::getJSONFromAPI("cmd=submitQuestions");
 		$this->assertNotNull($json);
