@@ -11,83 +11,110 @@
 #import "MCQuestion.h"
 #import "JSONKit.h"
 #import "Option.h"
+#import "GuessThatFriendAppDelegate.h"
 
-#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
-#define SAMPLE_GET_QUESTIONS_ADDR   "http://guessthatfriend.jasonsze.com/api/examples/json/getQuestions.json"
+#define BASE_URL_ADDR "http://guessthatfriend.jasonsze.com/api/"
 
 @implementation QuizManager
 
 @synthesize questionArray;
 @synthesize bufferedFBToken;
-@synthesize threadRunning;
 
-- (QuizManager *)initWithFBToken:(NSString *)paramFBToken andUseSampleData:(BOOL)paramUseSampleData {
+- (QuizManager *)initWithFBToken:(NSString *)paramFBToken {
+    isRequestInProgress = NO;
+    isQuestionNeeded = NO;
     
-    questionArrayLock = [[NSCondition alloc] init];
-    
-    [questionArrayLock lock];
     questionArray = [[NSMutableArray alloc] initWithCapacity:20];
-    [questionArrayLock unlock];
-    
-    useSampleData = paramUseSampleData;
     bufferedFBToken = paramFBToken;
     
-	[self requestQuestionsFromServer];
+    [self requestQuestionsFromServer];    
     
 	return [super init];
 }
 
-- (void)requestQuestionsFromServer {
-    // Keep requesting until success is true.
-    BOOL success = NO;
-    while (success == NO) {
-        // Create GET request.
-        NSMutableString *getRequest;
-        
-        if (useSampleData) { // Retrieve sample data.
-            getRequest = [NSMutableString stringWithString:@SAMPLE_GET_QUESTIONS_ADDR];
-        } else { // Make a real request.
-            QuizSettings *quizSettings = [QuizSettings quizSettingObject];
-            
-            getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-            [getRequest appendString:@"?cmd=getQuestions"];
-            [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
-            [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];
-            [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
-            [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
-        }
-                
-        // Send the GET request to the server.
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-        
-        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-                
-        // Initialize array of questions from the server's response.
-        success = [self createQuestionsFromServerResponse:responseString];
-        
-        [responseString release];
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [responseData release];
+    [connection release];
+    // Show error message
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // Use responseData.
+    NSMutableString *responseString = [[[NSMutableString alloc] initWithData:responseData
+                                                        encoding:NSASCIIStringEncoding] autorelease];
+    
+    // Release connection vars.
+    [responseData release];
+    [connection release];
+    
+    [self receivedQuestionResponse:responseString];
+}
+
+- (void)receivedQuestionResponse:(NSMutableString *)responseString {
+    // Create questions from the response.
+    [self createQuestionsFromServerResponse:responseString];
+    
+    // If a question is needed, deliver one.
+    if (isQuestionNeeded) {
+        isQuestionNeeded = NO;
+        Question *nextQuestion = [self getNextQuestionFromArray];
+        [[QuizManager sharedAppDelegate] setupNextQuestion:nextQuestion];
     }
+    
+    isRequestInProgress = NO;
+}
+
+- (NSMutableString *)createRequestString {
+    QuizSettings *quizSettings = [QuizSettings quizSettingObject];
+    
+    NSMutableString *getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    [getRequest appendString:@"?cmd=getQuestions"];
+    [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
+    [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];
+    [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
+    [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
+    
+    return getRequest;
+}
+
+- (void)requestQuestionsFromServer {
+    if (isRequestInProgress) { // Only one request allowed at a time.
+        return;
+    }
+    
+    isRequestInProgress = YES;
+    NSMutableString *getRequest = [self createRequestString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]
+                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                         timeoutInterval:60];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (BOOL)createQuestionsFromServerResponse:(NSString *)response {
-    
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
     // Check for valid JSON response.
     if (responseDictionary == nil) {
-        [self requestQuestionsFromServer];  // Just ask for more questions
         return NO;
     }
     
+    // Check the success field.
     BOOL success = [[responseDictionary objectForKey:@"success"] boolValue];
     if (success == false) {
         return NO;
     }
     
+    // Process the questions.
     NSArray *questionsArray = [responseDictionary objectForKey:@"questions"];
-    
     NSEnumerator *questionEnumerator = [questionsArray objectEnumerator];
     NSDictionary *curQuestion;
     int questionsCount = 0;
@@ -132,18 +159,14 @@
         
         [optionArray release];
         
-        [questionArrayLock lock];
         [questionArray addObject:question];
-        [questionArrayLock signal];
-        [questionArrayLock unlock];
         
         [question release];
         
         questionsCount++;
     }
     
-    // If server's response does not have any question, return NO so that
-    // client will request again.
+    // No questions retrieved?
     if (questionsCount == 0) {
         return NO;
     }
@@ -161,45 +184,43 @@
     return questionId > lastQuestion.questionId;
 }
 
-// getQuestionThread handles the getQuestion prior to running out of questions.
-// called in getNextQuestion.
-- (void)getQuestionThread {
-    [self requestQuestionsFromServer];
-    threadRunning = NO;
+- (void)requestNextQuestionAsync {
+    isQuestionNeeded = YES;
+    
+    // Use an existing question if possible.
+    Question *question = [self getNextQuestionFromArray];
+    if (question) {
+        isQuestionNeeded = NO;
+        [[QuizManager sharedAppDelegate] setupNextQuestion:question];
+    }
 }
 
-// Call should also free the returned object.
-- (Question *)getNextQuestion {
+- (Question *)getNextQuestionFromArray {
+    // Request more questions if we're running low.
+    if (questionArray.count < MIN_AVAILABLE_QUESTION_COUNT) {
+        [self requestQuestionsFromServer];
+    } 
     
-    if (questionArray.count < MIN_AVAILABLE_QUESTION_COUNT && threadRunning == NO) { // modified it into go fetch question on the 2nd last question
+    // Get one of the existing questions.
+    if (questionArray.count > 0) { 
+        Question *question = [[questionArray objectAtIndex:0] retain];
+        [questionArray removeObjectAtIndex:0];
         
-        threadRunning = YES;
-        
-        NSThread *getQuestionThread = [[NSThread alloc] initWithTarget:self selector:@selector(getQuestionThread) object:nil];
-        [getQuestionThread start];
+        return question;
     }
     
-    [questionArrayLock lock];
-    while (questionArray.count == 0) {
-        [questionArrayLock wait];
-    }
-    
-    // Remove the current question from the questions array.
-    Question *question = [questionArray objectAtIndex:0];
-    [question retain];
-    [questionArray removeObjectAtIndex:0];
-    
-    [questionArrayLock unlock];
-    
-	return question;
+    return NULL;
 }
 
 - (void)dealloc {
     [questionArray release];
     [bufferedFBToken release];
-    [questionArrayLock release];
     
 	[super dealloc];
+}
+
++ (GuessThatFriendAppDelegate*) sharedAppDelegate {
+    return (GuessThatFriendAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 @end

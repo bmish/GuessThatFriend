@@ -16,21 +16,18 @@
     NSMutableArray *questionArray;
     NSString *bufferedFBToken;
     
-    BOOL useSampleData;
+    NSMutableData *responseData;
     
-    // Lock for protecting questionArray.
-    NSCondition *questionArrayLock;
-    
-    BOOL threadRunning; // Used to ensure only one thread at a time.
+    BOOL isRequestInProgress;
+    BOOL isQuestionNeeded;
 }
 
 @property (nonatomic, retain) NSMutableArray *questionArray;
 @property (nonatomic, retain) NSString *bufferedFBToken;
-@property BOOL threadRunning;
 
-- (QuizManager *)initWithFBToken:(NSString *)token andUseSampleData:(BOOL)useSampleData;
-- (Question *)getNextQuestion;
-- (void)getQuestionThread;
+- (QuizManager *)initWithFBToken:(NSString *)token;
+- (Question *)getNextQuestionFromArray;
 - (void)requestQuestionsFromServer;
+- (void)requestNextQuestionAsync;
 
 @end

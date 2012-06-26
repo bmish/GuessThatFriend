@@ -33,18 +33,18 @@
 #pragma mark -
 #pragma mark QuizManager Tests
 
-- (void)testRetrieveSampleQuestionsFromAPI {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:YES];
+/*- (void)testRetrieveSampleQuestionsFromAPI {
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@""];
     STAssertTrue(quizManager.questionArray.count == 4, @"Number of sample questions was not four as expected.");
 }
 
 - (void)testRetrieveQuestionsFromAPIWithEmptyFBToken {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"" andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@""];
     STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
 }
 
 - (void)testRetrieveQuestionsFromAPIWithBadFBToken {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"badtoken" andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:@"badtoken"];
     STAssertTrue(quizManager.questionArray.count == 4, @"Number of questions was not four as expected.");
 }
 
@@ -55,11 +55,11 @@
         return;
     }
 
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken];
     
     // wait until prefetching is done.
-    while (quizManager.threadRunning) {
-    }
+    //while (quizManager.threadRunning) {
+    //}
     
     STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was %i, not %i as expected.", 
                  quizManager.questionArray.count, QUESTION_COUNT);
@@ -73,11 +73,11 @@
         return;
     }
     
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken];
     
     // wait until prefetching is done.
-    while (quizManager.threadRunning) {
-    }
+    //while (quizManager.threadRunning) {
+    //}
     
     STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT, @"Number of questions was %i, not %i as expected.", 
                  quizManager.questionArray.count, QUESTION_COUNT);
@@ -85,8 +85,8 @@
     [quizManager requestQuestionsFromServer];
     
     // wait until prefetching is done.
-    while (quizManager.threadRunning) {
-    }
+    //while (quizManager.threadRunning) {
+    //}
     
     STAssertTrue(quizManager.questionArray.count == QUESTION_COUNT * 2, @"Number of questions was %i, not %i as expected.", 
                  quizManager.questionArray.count, QUESTION_COUNT * 2);
@@ -94,18 +94,18 @@
 
 // IPhone app would request for more questions long before the questions run out, this test case tests that.
 - (void)testPrefetchingQuestions {
-    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken andUseSampleData:NO];
+    QuizManager *quizManager = [[QuizManager alloc] initWithFBToken:facebookToken];
     [quizManager requestQuestionsFromServer];
     
     // Now, there should be QUESTION_COUNT * 2 questions in the array, we take out (QUESTION_COUNT * 2) of them.
     for (int i = 0; i < QUESTION_COUNT * 2 - 1; i++) {
-        Question *question = [quizManager getNextQuestion];
+        Question *question = [quizManager getNextQuestionFromArray];
         STAssertTrue(question != nil, @"Question was not valid as expected");
     }
     
     // wait until prefetching is done.
-    while (quizManager.threadRunning) {
-    }
+    //while (quizManager.threadRunning) {
+    //}
     
     // there should be more than one questions in the question array due to prefetching.
     STAssertTrue(quizManager.questionArray.count > 1, @"Number of questions was not greater than 1 as expected.");
@@ -136,8 +136,8 @@
     [viewController requestStatisticsFromServer:YES];
     
     // wait until stats is returned.
-    while (viewController.threadIsRunning) {
-    }
+    //while (viewController.threadIsRunning) {
+    //}
     
     STAssertTrue(viewController.list.count == 1, @"Number of stats was %i, not 1 as expected.", viewController.list.count);
 }
@@ -150,8 +150,8 @@
     [viewController requestStatisticsFromServer:YES];
     
     // wait until stats is returned.
-    while (viewController.threadIsRunning) {
-    }
+    //while (viewController.threadIsRunning) {
+    //}
     
     STAssertTrue(viewController.list.count == 1, @"Number of stats was %i, not 1 as expected.", viewController.list.count);
 }
@@ -164,8 +164,8 @@
     [viewController requestStatisticsFromServer:NO];
     
     // wait until stats is returned.
-    while (viewController.threadIsRunning) {
-    }
+    //while (viewController.threadIsRunning) {
+    //}
     
     STAssertTrue(viewController.list.count >= 0, @"Number of stats was not >= 0 as expected.", viewController.list.count);
 }
@@ -178,8 +178,8 @@
     [viewController requestStatisticsFromServer:NO];
     
     // wait until stats is returned.
-    while (viewController.threadIsRunning) {
-    }
+    //while (viewController.threadIsRunning) {
+    //}
     
     STAssertTrue(viewController.list.count >= 0, @"Number of stats was not >= 0 as expected.", viewController.list.count);
 }
@@ -207,6 +207,6 @@
         
         STAssertTrue([delegate.facebook isSessionValid] == NO, @"Session is not invalid as expected.");
     }
-}
+}*/
 
 @end

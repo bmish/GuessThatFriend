@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
+#import "Question.h"
 
 @class QuizBaseViewController;
 @class QuizManager;
@@ -60,5 +61,7 @@
 - (UIImage *) getPicture:(NSString*)imageURL;
 
 - (void)fbLogout;
+
+- (void)setupNextQuestion:(Question *)nextQuestion;
 
 @end

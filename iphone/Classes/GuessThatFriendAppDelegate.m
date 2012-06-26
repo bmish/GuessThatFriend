@@ -18,7 +18,7 @@
 
 #define IMAGEPLISTPATH     @"imageCachePlist"
 #define IMAGEPLISTFULLPATH @"/imageCachePlist.plist"
-#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
+#define BASE_URL_ADDR       "http://guessthatfriend.jasonsze.com/api/"
 
 @implementation GuessThatFriendAppDelegate
 
@@ -38,22 +38,26 @@
 @synthesize plistImageDict;
 
 - (void)nextButtonPressed:(id)sender {
-    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
-    
     // If the current question was skipped by the user, let the API know.
     if ([self didUserSkipCurrentQuestion]) {
         [self notifyAPIThatCurrentQuestionWasSkipped];
     }
     
-	Question *nextQuestion = [quizManager getNextQuestion];
+    // Request the next question.
+	[quizManager requestNextQuestionAsync];
+}
+
+- (void)setupNextQuestion:(Question *)nextQuestion {
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    
     // Determine the type of this question.
-    if ([nextQuestion isKindOfClass:[MCQuestion class]]) {      // Multiple Choice Question.
+    if ([nextQuestion isKindOfClass:[MCQuestion class]]) { // Multiple Choice Question.
         [quizViewController.friendsTable setScrollEnabled:YES];
         
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
-
+        
         UIImage *topicImage = [self getPicture:mcQuestion.topicImage];        
         quizViewController.topicImage.image = topicImage;
         
@@ -63,15 +67,31 @@
         quizViewController.questionID = mcQuestion.questionId;
         quizViewController.isQuestionAnswered = false;
         [quizViewController.questionLabel setText: quizViewController.questionString];
-                
-    } else {                                                    // Fill in blank Question.
         
+        quizViewController.questionLabel.hidden = false;
+        quizViewController.friendsTable.hidden = false;
+        self.nextButton.hidden = false;
+        quizViewController.topicImage.hidden = false;
+    } else { // No question so hide question text.
+        quizViewController.questionLabel.hidden = true;
+        quizViewController.friendsTable.hidden = true;
+        self.nextButton.hidden = false;
+        quizViewController.topicImage.hidden = true;
+        
+        [self questionRetrievalFailed];
     }
     
     // Start timer for this question.
     [responseTimer release];
     responseTimer = [NSDate date];
     [responseTimer retain];
+}
+
+
+- (void)questionRetrievalFailed {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Downloading Content Failed" message:@"Please try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 - (bool) didUserSkipCurrentQuestion {
@@ -149,6 +169,12 @@
     [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
     
+    // Hide everything until the first question is ready.
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    quizViewController.questionLabel.hidden = true;
+    quizViewController.friendsTable.hidden = true;
+    self.nextButton.hidden = true;
+    
     // Setup for Facebook login.
     [self fbLogin];
     
@@ -183,9 +209,10 @@
     
     if(facebook.accessToken != nil){
         // Now we have facebook token, use it to initialize the quiz manager.
-        quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
+        quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken];
         
-        [self nextButtonPressed:nil];
+        // Request the first question.
+        [quizManager requestNextQuestionAsync];
     }
 }
 
@@ -217,9 +244,10 @@
     [defaults synchronize];
     
     // Now we have facebook token, use it to initialize the quiz manager.
-    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken andUseSampleData:NO];
+    quizManager = [[QuizManager alloc] initWithFBToken:facebook.accessToken];
     
-    [self nextButtonPressed:nil];
+    // Request the first question.
+	[quizManager requestNextQuestionAsync];
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
