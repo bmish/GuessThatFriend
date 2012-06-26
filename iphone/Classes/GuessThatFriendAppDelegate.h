@@ -38,6 +38,8 @@
     BOOL statsFriendsNeedsUpdate;
     BOOL statsCategoriesNeedsUpdate;
     BOOL statsHistoryNeedsUpdate;
+    
+    UIActivityIndicatorView *spinner;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -57,6 +59,8 @@
 @property BOOL statsFriendsNeedsUpdate;
 @property BOOL statsCategoriesNeedsUpdate;
 @property BOOL statsHistoryNeedsUpdate;
+
+@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 - (UIImage *) getPicture:(NSString*)imageURL;
 

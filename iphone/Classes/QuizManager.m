@@ -12,6 +12,7 @@
 #import "JSONKit.h"
 #import "Option.h"
 #import "GuessThatFriendAppDelegate.h"
+#import "MultipleChoiceQuizViewController.h"
 
 #define BASE_URL_ADDR "http://guessthatfriend.jasonsze.com/api/"
 
@@ -43,7 +44,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [responseData release];
     [connection release];
-    // Show error message
+    [[QuizManager sharedAppDelegate].spinner stopAnimating];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -54,6 +55,7 @@
     // Release connection vars.
     [responseData release];
     [connection release];
+    [[QuizManager sharedAppDelegate].spinner stopAnimating];
     
     [self receivedQuestionResponse:responseString];
 }
@@ -96,6 +98,18 @@
                                              cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                          timeoutInterval:60];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    
+    // Start animating the spinner if no question is showing right now.
+    if (![self isQuestionShowing]) {
+        [[QuizManager sharedAppDelegate].spinner startAnimating];
+    }
+}
+        
+- (BOOL)isQuestionShowing {
+    MultipleChoiceQuizViewController *viewController = (MultipleChoiceQuizViewController *)([QuizManager sharedAppDelegate].viewController);
+    
+    return !viewController.friendsTable.hidden;
 }
 
 - (BOOL)createQuestionsFromServerResponse:(NSString *)response {

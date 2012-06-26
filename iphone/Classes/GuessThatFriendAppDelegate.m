@@ -36,6 +36,7 @@
 @synthesize statsCategoriesNeedsUpdate;
 @synthesize statsHistoryNeedsUpdate;
 @synthesize plistImageDict;
+@synthesize spinner;
 
 - (void)nextButtonPressed:(id)sender {
     // If the current question was skipped by the user, let the API know.
@@ -168,6 +169,14 @@
     
     [self.window addSubview:navController.view];
     [self.window makeKeyAndVisible];
+    
+    // Setup the spinner.
+    spinner = [[UIActivityIndicatorView alloc] 
+               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = self.window.center;
+    spinner.hidesWhenStopped = YES;
+    [self.window addSubview:spinner];
+    [spinner release];
     
     // Hide everything until the first question is ready.
     MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
