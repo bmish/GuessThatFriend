@@ -70,39 +70,35 @@
 }
 
 - (void)requestStatisticsFromServer:(BOOL)useSampleData {
+ 
+    // Create GET request.
+    NSMutableString *getRequest;
     
-    BOOL success = NO;
-    
-    while (success == NO) {
-        // Create GET request.
-        NSMutableString *getRequest;
+    if (useSampleData) {    // Retrieve sample data.
+        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_FRIENDS_ADDR];
+    } else { 
+        // Make a real request.
         
-        if (useSampleData) {    // Retrieve sample data.
-            getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_FRIENDS_ADDR];
-        } else { 
-            // Make a real request.
-            
-            getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-            [getRequest appendString:@"?cmd=getStatistics"];
-            
-            GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
-            [[UIApplication sharedApplication] delegate];
-            
-            [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-            [getRequest appendFormat:@"&type=friends"];
-        }
-                
-        // Send the GET request to the server.
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+        [getRequest appendString:@"?cmd=getStatistics"];
         
-        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-                
-        // Initialize array of questions from the server's response.
-        success = [self createStatsFromServerResponse:responseString];
+        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
+        [[UIApplication sharedApplication] delegate];
         
-        [responseString release];
+        [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
+        [getRequest appendFormat:@"&type=friends"];
     }
+            
+    // Send the GET request to the server.
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+            
+    // Initialize array of questions from the server's response.
+    [self createStatsFromServerResponse:responseString];
+    
+    [responseString release];
 }
 
 - (void)getStatisticsThread {
