@@ -8,41 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* GuessThatFriendAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* GuessThatFriendAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		4D6479801543774800402CF7 /* GTFIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64797F1543774800402CF7 /* GTFIcon.png */; };
-		4D647982154377C200402CF7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D647981154377C200402CF7 /* Default.png */; };
-		4D6479841543780700402CF7 /* Graphic_GameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6479831543780700402CF7 /* Graphic_GameBackground.png */; };
-		4D64798815437CB800402CF7 /* Button_Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798615437CB800402CF7 /* Button_Next.png */; };
-		4D64798915437CB800402CF7 /* Button_NextPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798715437CB800402CF7 /* Button_NextPressed.png */; };
-		4D64798D1543842D00402CF7 /* NavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64798C1543842D00402CF7 /* NavBar.png */; };
-		4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797914EB91FA00CAA606 /* whiteButton.png */; };
-		4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D797B14EB91FE00CAA606 /* blueButton.png */; };
 		4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */; };
-		4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */; };
 		4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */; };
 		4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */; };
 		4D8D79ED14EBA47C00CAA606 /* QuizBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */; };
-		4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */; };
-		4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */; };
 		4D8D7A6114EBB8BC00CAA606 /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7A6014EBB8BC00CAA606 /* Option.m */; };
 		4D8D7AAD14EC5C9300CAA606 /* MCQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AAC14EC5C9300CAA606 /* MCQuestion.m */; };
 		4D8D7AB214EC5CF400CAA606 /* QuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7AB114EC5CF400CAA606 /* QuizManager.m */; };
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
-		4D922B51154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */; };
-		4D922B54154EF1D50092B5F4 /* StatsHistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */; };
 		4D922B57154EF24E0092B5F4 /* StatsCategoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */; };
 		4D922B5A154EF25E0092B5F4 /* StatsHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */; };
-		4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */; };
-		4D922B5E154EFABA0092B5F4 /* StatsHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
-		4DB4F5281541C5DB00106D78 /* tab1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F5261541C5DB00106D78 /* tab1.png */; };
-		4DB4F52C1541C5E300106D78 /* tab2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52A1541C5E300106D78 /* tab2.png */; };
-		4DB4F52D1541C5E300106D78 /* tab3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F52B1541C5E300106D78 /* tab3.png */; };
-		4DB708731541E2D400FD0517 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB708741541E2D400FD0517 /* MainWindow.xib */; };
 		4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */; };
 		4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27808154E776D00603D4A /* StatsHistoryViewController.m */; };
 		4DF2780C154E7AFF00603D4A /* CategoryStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2780B154E7AFF00603D4A /* CategoryStatsObject.m */; };
@@ -62,6 +42,27 @@
 		93318613159B98F700DF926D /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331860B159B98F700DF926D /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93318614159B98F700DF926D /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331860D159B98F700DF926D /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93318615159B98F700DF926D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331860F159B98F700DF926D /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9385CFFE159BAD0400A73FA5 /* GTFIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385CFFD159BAD0400A73FA5 /* GTFIcon.png */; };
+		9385D006159BAD3C00A73FA5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D000159BAD3C00A73FA5 /* MainWindow.xib */; };
+		9385D007159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D001159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib */; };
+		9385D008159BAD3C00A73FA5 /* StatsCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D002159BAD3C00A73FA5 /* StatsCategoryViewController.xib */; };
+		9385D009159BAD3C00A73FA5 /* StatsFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D003159BAD3C00A73FA5 /* StatsFriendCustomCell.xib */; };
+		9385D00A159BAD3C00A73FA5 /* StatsHistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D004159BAD3C00A73FA5 /* StatsHistoryCustomCell.xib */; };
+		9385D00B159BAD3C00A73FA5 /* StatsHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D005159BAD3C00A73FA5 /* StatsHistoryViewController.xib */; };
+		9385D00F159BAD5300A73FA5 /* FBFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D00C159BAD5300A73FA5 /* FBFriendCustomCell.xib */; };
+		9385D010159BAD5300A73FA5 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D00D159BAD5300A73FA5 /* FillInBlankQuizViewController.xib */; };
+		9385D011159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D00E159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib */; };
+		9385D015159BAD6D00A73FA5 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D012159BAD6D00A73FA5 /* blueButton.png */; };
+		9385D016159BAD6D00A73FA5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D013159BAD6D00A73FA5 /* Default.png */; };
+		9385D017159BAD6D00A73FA5 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D014159BAD6D00A73FA5 /* whiteButton.png */; };
+		9385D01A159BAD8500A73FA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9385D019159BAD8500A73FA5 /* main.m */; };
+		9385D01E159BAE5C00A73FA5 /* tab1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D01B159BAE5C00A73FA5 /* tab1.png */; };
+		9385D01F159BAE5C00A73FA5 /* tab2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D01C159BAE5C00A73FA5 /* tab2.png */; };
+		9385D020159BAE5C00A73FA5 /* tab3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D01D159BAE5C00A73FA5 /* tab3.png */; };
+		9385D025159BAE7300A73FA5 /* Button_Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D021159BAE7300A73FA5 /* Button_Next.png */; };
+		9385D026159BAE7300A73FA5 /* Button_NextPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D022159BAE7300A73FA5 /* Button_NextPressed.png */; };
+		9385D027159BAE7300A73FA5 /* Graphic_GameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D023159BAE7300A73FA5 /* Graphic_GameBackground.png */; };
+		9385D028159BAE7300A73FA5 /* NavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D024159BAE7300A73FA5 /* NavBar.png */; };
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
 		93BA120914F9B10100248763 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120814F9B10100248763 /* Category.m */; };
 		93BA120C14F9BAF000248763 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120B14F9BAF000248763 /* Subject.m */; };
@@ -74,7 +75,6 @@
 		BA6F95961533DE3600C875F1 /* StatsFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6F95941533DE3600C875F1 /* StatsFriendsViewController.m */; };
 		BA6F95971533DE3600C875F1 /* StatsFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */; };
 		BA8F71A71535063F000C7458 /* StatsFriendCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */; };
-		BA8F71A91535079C000C7458 /* StatsFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */; };
 		BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA983F751548C2EC001D59B0 /* imageCachePlist.plist */; };
 /* End PBXBuildFile section */
 
@@ -95,27 +95,14 @@
 		1D6058910D05DD3D006BFB54 /* GuessThatFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessThatFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessThatFriend_Prefix.pch; sourceTree = "<group>"; };
-		4D64797F1543774800402CF7 /* GTFIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GTFIcon.png; sourceTree = "<group>"; };
-		4D647981154377C200402CF7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4D6479831543780700402CF7 /* Graphic_GameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Graphic_GameBackground.png; sourceTree = "<group>"; };
-		4D64798615437CB800402CF7 /* Button_Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Next.png; sourceTree = "<group>"; };
-		4D64798715437CB800402CF7 /* Button_NextPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_NextPressed.png; sourceTree = "<group>"; };
-		4D64798C1543842D00402CF7 /* NavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBar.png; sourceTree = "<group>"; };
-		4D8D797914EB91FA00CAA606 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
-		4D8D797B14EB91FE00CAA606 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
 		4D8D79B814EB992300CAA606 /* FBFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCustomCell.h; sourceTree = "<group>"; };
 		4D8D79B914EB992300CAA606 /* FBFriendCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCustomCell.m; sourceTree = "<group>"; };
-		4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FBFriendCustomCell.xib; sourceTree = "<group>"; };
 		4D8D79D414EBA10A00CAA606 /* MultipleChoiceQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleChoiceQuizViewController.h; sourceTree = "<group>"; };
 		4D8D79D514EBA10A00CAA606 /* MultipleChoiceQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleChoiceQuizViewController.m; sourceTree = "<group>"; };
 		4D8D79E314EBA35300CAA606 /* FillInBlankQuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillInBlankQuizViewController.h; sourceTree = "<group>"; };
 		4D8D79E414EBA35300CAA606 /* FillInBlankQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillInBlankQuizViewController.m; sourceTree = "<group>"; };
 		4D8D79EB14EBA47C00CAA606 /* QuizBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizBaseViewController.h; sourceTree = "<group>"; };
 		4D8D79EC14EBA47C00CAA606 /* QuizBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizBaseViewController.m; sourceTree = "<group>"; };
-		4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleChoiceQuizViewController.xib; sourceTree = "<group>"; };
-		4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
 		4D8D7A5F14EBB8BC00CAA606 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
 		4D8D7A6014EBB8BC00CAA606 /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
 		4D8D7AAB14EC5C9300CAA606 /* MCQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCQuestion.h; sourceTree = "<group>"; };
@@ -124,21 +111,13 @@
 		4D8D7AB114EC5CF400CAA606 /* QuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizManager.m; sourceTree = "<group>"; };
 		4D8D7ABC14EC606A00CAA606 /* QuizSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizSettings.h; sourceTree = "<group>"; };
 		4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizSettings.m; sourceTree = "<group>"; };
-		4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCategoryCustomCell.xib; sourceTree = "<group>"; };
-		4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsHistoryCustomCell.xib; sourceTree = "<group>"; };
 		4D922B55154EF24E0092B5F4 /* StatsCategoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCategoryCustomCell.h; sourceTree = "<group>"; };
 		4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoryCustomCell.m; sourceTree = "<group>"; };
 		4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryCustomCell.h; sourceTree = "<group>"; };
 		4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHistoryCustomCell.m; sourceTree = "<group>"; };
-		4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsCategoryViewController.xib; sourceTree = "<group>"; };
-		4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsHistoryViewController.xib; sourceTree = "<group>"; };
 		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
-		4DB4F5261541C5DB00106D78 /* tab1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1.png; sourceTree = "<group>"; };
-		4DB4F52A1541C5E300106D78 /* tab2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab2.png; sourceTree = "<group>"; };
-		4DB4F52B1541C5E300106D78 /* tab3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab3.png; sourceTree = "<group>"; };
-		4DB708741541E2D400FD0517 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4DF27804154E775D00603D4A /* StatsCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCategoriesViewController.h; sourceTree = "<group>"; };
 		4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoriesViewController.m; sourceTree = "<group>"; };
 		4DF27807154E776D00603D4A /* StatsHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryViewController.h; sourceTree = "<group>"; };
@@ -179,6 +158,28 @@
 		9331860D159B98F700DF926D /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = "libraries/facebook-ios-sdk/src/JSON/SBJsonParser.m"; sourceTree = "<group>"; };
 		9331860E159B98F700DF926D /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = "libraries/facebook-ios-sdk/src/JSON/SBJsonWriter.h"; sourceTree = "<group>"; };
 		9331860F159B98F700DF926D /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = "libraries/facebook-ios-sdk/src/JSON/SBJsonWriter.m"; sourceTree = "<group>"; };
+		9385CFFD159BAD0400A73FA5 /* GTFIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GTFIcon.png; path = images/GTFIcon.png; sourceTree = "<group>"; };
+		9385D000159BAD3C00A73FA5 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = xibs/MainWindow.xib; sourceTree = "<group>"; };
+		9385D001159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsCategoryCustomCell.xib; path = xibs/StatsCategoryCustomCell.xib; sourceTree = "<group>"; };
+		9385D002159BAD3C00A73FA5 /* StatsCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsCategoryViewController.xib; path = xibs/StatsCategoryViewController.xib; sourceTree = "<group>"; };
+		9385D003159BAD3C00A73FA5 /* StatsFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsFriendCustomCell.xib; path = xibs/StatsFriendCustomCell.xib; sourceTree = "<group>"; };
+		9385D004159BAD3C00A73FA5 /* StatsHistoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsHistoryCustomCell.xib; path = xibs/StatsHistoryCustomCell.xib; sourceTree = "<group>"; };
+		9385D005159BAD3C00A73FA5 /* StatsHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsHistoryViewController.xib; path = xibs/StatsHistoryViewController.xib; sourceTree = "<group>"; };
+		9385D00C159BAD5300A73FA5 /* FBFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FBFriendCustomCell.xib; path = xibs/FBFriendCustomCell.xib; sourceTree = "<group>"; };
+		9385D00D159BAD5300A73FA5 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FillInBlankQuizViewController.xib; path = xibs/FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
+		9385D00E159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MultipleChoiceQuizViewController.xib; path = xibs/MultipleChoiceQuizViewController.xib; sourceTree = "<group>"; };
+		9385D012159BAD6D00A73FA5 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueButton.png; path = images/blueButton.png; sourceTree = "<group>"; };
+		9385D013159BAD6D00A73FA5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
+		9385D014159BAD6D00A73FA5 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whiteButton.png; path = images/whiteButton.png; sourceTree = "<group>"; };
+		9385D019159BAD8500A73FA5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
+		9385D01B159BAE5C00A73FA5 /* tab1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab1.png; path = images/tab1.png; sourceTree = "<group>"; };
+		9385D01C159BAE5C00A73FA5 /* tab2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab2.png; path = images/tab2.png; sourceTree = "<group>"; };
+		9385D01D159BAE5C00A73FA5 /* tab3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab3.png; path = images/tab3.png; sourceTree = "<group>"; };
+		9385D021159BAE7300A73FA5 /* Button_Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button_Next.png; path = images/Button_Next.png; sourceTree = "<group>"; };
+		9385D022159BAE7300A73FA5 /* Button_NextPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button_NextPressed.png; path = images/Button_NextPressed.png; sourceTree = "<group>"; };
+		9385D023159BAE7300A73FA5 /* Graphic_GameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Graphic_GameBackground.png; path = images/Graphic_GameBackground.png; sourceTree = "<group>"; };
+		9385D024159BAE7300A73FA5 /* NavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NavBar.png; path = images/NavBar.png; sourceTree = "<group>"; };
+		9385D029159BAEE500A73FA5 /* GuessThatFriend_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessThatFriend_Prefix.pch; sourceTree = "<group>"; };
 		938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillBlankQuestion.h; sourceTree = "<group>"; };
 		938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillBlankQuestion.m; sourceTree = "<group>"; };
 		93BA120714F9B10100248763 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
@@ -199,7 +200,6 @@
 		BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsFriendViewController.xib; path = Classes/StatsFriendViewController.xib; sourceTree = "<group>"; };
 		BA8F71A51535063F000C7458 /* StatsFriendCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsFriendCustomCell.h; sourceTree = "<group>"; };
 		BA8F71A61535063F000C7458 /* StatsFriendCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsFriendCustomCell.m; sourceTree = "<group>"; };
-		BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsFriendCustomCell.xib; sourceTree = "<group>"; };
 		BA983F751548C2EC001D59B0 /* imageCachePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = imageCachePlist.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,8 +265,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* GuessThatFriend_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
+				9385D029159BAEE500A73FA5 /* GuessThatFriend_Prefix.pch */,
+				9385D019159BAD8500A73FA5 /* main.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -339,7 +339,7 @@
 		4D1A373114DB289F00BEB8B8 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				4D64797F1543774800402CF7 /* GTFIcon.png */,
+				9385CFFD159BAD0400A73FA5 /* GTFIcon.png */,
 			);
 			name = Icon;
 			sourceTree = "<group>";
@@ -356,10 +356,10 @@
 		4D64798515437CAA00402CF7 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				4D64798C1543842D00402CF7 /* NavBar.png */,
-				4D6479831543780700402CF7 /* Graphic_GameBackground.png */,
-				4D64798615437CB800402CF7 /* Button_Next.png */,
-				4D64798715437CB800402CF7 /* Button_NextPressed.png */,
+				9385D021159BAE7300A73FA5 /* Button_Next.png */,
+				9385D022159BAE7300A73FA5 /* Button_NextPressed.png */,
+				9385D023159BAE7300A73FA5 /* Graphic_GameBackground.png */,
+				9385D024159BAE7300A73FA5 /* NavBar.png */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -376,11 +376,11 @@
 		4D8D797314EB91C900CAA606 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9385D012159BAD6D00A73FA5 /* blueButton.png */,
+				9385D013159BAD6D00A73FA5 /* Default.png */,
+				9385D014159BAD6D00A73FA5 /* whiteButton.png */,
 				4D64798515437CAA00402CF7 /* GUI */,
 				4DB4F5241541C5CD00106D78 /* TabImages */,
-				4D8D797914EB91FA00CAA606 /* whiteButton.png */,
-				4D8D797B14EB91FE00CAA606 /* blueButton.png */,
-				4D647981154377C200402CF7 /* Default.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -420,14 +420,14 @@
 		4D8D7A1014EBA67700CAA606 /* Common Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				4DB708741541E2D400FD0517 /* MainWindow.xib */,
+				9385D000159BAD3C00A73FA5 /* MainWindow.xib */,
+				9385D001159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib */,
+				9385D002159BAD3C00A73FA5 /* StatsCategoryViewController.xib */,
+				9385D003159BAD3C00A73FA5 /* StatsFriendCustomCell.xib */,
+				9385D004159BAD3C00A73FA5 /* StatsHistoryCustomCell.xib */,
+				9385D005159BAD3C00A73FA5 /* StatsHistoryViewController.xib */,
 				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
 				BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */,
-				4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */,
-				4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */,
-				BA8F71A81535079C000C7458 /* StatsFriendCustomCell.xib */,
-				4D922B50154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib */,
-				4D922B53154EF1D50092B5F4 /* StatsHistoryCustomCell.xib */,
 			);
 			name = "Common Nibs";
 			sourceTree = "<group>";
@@ -435,9 +435,9 @@
 		4D8D7A1114EBA68800CAA606 /* Quiz Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				4D8D7A3714EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib */,
-				4D8D7A3914EBB1E600CAA606 /* FillInBlankQuizViewController.xib */,
-				4D8D79C614EB9B6600CAA606 /* FBFriendCustomCell.xib */,
+				9385D00C159BAD5300A73FA5 /* FBFriendCustomCell.xib */,
+				9385D00D159BAD5300A73FA5 /* FillInBlankQuizViewController.xib */,
+				9385D00E159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib */,
 			);
 			name = "Quiz Nibs";
 			sourceTree = "<group>";
@@ -445,9 +445,9 @@
 		4DB4F5241541C5CD00106D78 /* TabImages */ = {
 			isa = PBXGroup;
 			children = (
-				4DB4F5261541C5DB00106D78 /* tab1.png */,
-				4DB4F52A1541C5E300106D78 /* tab2.png */,
-				4DB4F52B1541C5E300106D78 /* tab3.png */,
+				9385D01B159BAE5C00A73FA5 /* tab1.png */,
+				9385D01C159BAE5C00A73FA5 /* tab2.png */,
+				9385D01D159BAE5C00A73FA5 /* tab3.png */,
 			);
 			name = TabImages;
 			sourceTree = "<group>";
@@ -627,30 +627,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB708731541E2D400FD0517 /* MainWindow.xib in Resources */,
 				4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */,
-				4D8D797A14EB91FA00CAA606 /* whiteButton.png in Resources */,
-				4D8D797C14EB91FE00CAA606 /* blueButton.png in Resources */,
-				4D8D79C714EB9B6600CAA606 /* FBFriendCustomCell.xib in Resources */,
-				4D8D7A3814EBB1D700CAA606 /* MultipleChoiceQuizViewController.xib in Resources */,
-				4D8D7A3A14EBB1E600CAA606 /* FillInBlankQuizViewController.xib in Resources */,
 				BA6F95971533DE3600C875F1 /* StatsFriendViewController.xib in Resources */,
-				BA8F71A91535079C000C7458 /* StatsFriendCustomCell.xib in Resources */,
-				4DB4F5281541C5DB00106D78 /* tab1.png in Resources */,
-				4DB4F52C1541C5E300106D78 /* tab2.png in Resources */,
-				4DB4F52D1541C5E300106D78 /* tab3.png in Resources */,
-				4D6479801543774800402CF7 /* GTFIcon.png in Resources */,
-				4D647982154377C200402CF7 /* Default.png in Resources */,
-				4D6479841543780700402CF7 /* Graphic_GameBackground.png in Resources */,
-				4D64798815437CB800402CF7 /* Button_Next.png in Resources */,
-				4D64798915437CB800402CF7 /* Button_NextPressed.png in Resources */,
-				4D64798D1543842D00402CF7 /* NavBar.png in Resources */,
 				BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */,
-				4D922B51154EF1BF0092B5F4 /* StatsCategoryCustomCell.xib in Resources */,
-				4D922B54154EF1D50092B5F4 /* StatsHistoryCustomCell.xib in Resources */,
-				4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */,
-				4D922B5E154EFABA0092B5F4 /* StatsHistoryViewController.xib in Resources */,
 				933185FC159B987700DF926D /* FBDialog.bundle in Resources */,
+				9385CFFE159BAD0400A73FA5 /* GTFIcon.png in Resources */,
+				9385D006159BAD3C00A73FA5 /* MainWindow.xib in Resources */,
+				9385D007159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib in Resources */,
+				9385D008159BAD3C00A73FA5 /* StatsCategoryViewController.xib in Resources */,
+				9385D009159BAD3C00A73FA5 /* StatsFriendCustomCell.xib in Resources */,
+				9385D00A159BAD3C00A73FA5 /* StatsHistoryCustomCell.xib in Resources */,
+				9385D00B159BAD3C00A73FA5 /* StatsHistoryViewController.xib in Resources */,
+				9385D00F159BAD5300A73FA5 /* FBFriendCustomCell.xib in Resources */,
+				9385D010159BAD5300A73FA5 /* FillInBlankQuizViewController.xib in Resources */,
+				9385D011159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib in Resources */,
+				9385D015159BAD6D00A73FA5 /* blueButton.png in Resources */,
+				9385D016159BAD6D00A73FA5 /* Default.png in Resources */,
+				9385D017159BAD6D00A73FA5 /* whiteButton.png in Resources */,
+				9385D01E159BAE5C00A73FA5 /* tab1.png in Resources */,
+				9385D01F159BAE5C00A73FA5 /* tab2.png in Resources */,
+				9385D020159BAE5C00A73FA5 /* tab3.png in Resources */,
+				9385D025159BAE7300A73FA5 /* Button_Next.png in Resources */,
+				9385D026159BAE7300A73FA5 /* Button_NextPressed.png in Resources */,
+				9385D027159BAE7300A73FA5 /* Graphic_GameBackground.png in Resources */,
+				9385D028159BAE7300A73FA5 /* NavBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +685,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* GuessThatFriendAppDelegate.m in Sources */,
 				4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */,
 				4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */,
@@ -722,6 +721,7 @@
 				93318613159B98F700DF926D /* SBJsonBase.m in Sources */,
 				93318614159B98F700DF926D /* SBJsonParser.m in Sources */,
 				93318615159B98F700DF926D /* SBJsonWriter.m in Sources */,
+				9385D01A159BAD8500A73FA5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
