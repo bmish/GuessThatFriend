@@ -33,6 +33,12 @@
     [self.navigationController pushViewController:delegate.tabController animated:YES];
 }
 
+- (IBAction)logoutButtonPressed:(id)sender {
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [delegate fbLogout];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     self.questionLabel.backgroundColor = [UIColor whiteColor];
     self.questionLabel.adjustsFontSizeToFitWidth = YES;
@@ -51,13 +57,9 @@
         delegate.navController.navigationBar.topItem.title = @"0 / 0";
     }
     
-    // About button.
-    UIButton *aboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-	[aboutButton addTarget:self
-                        action:@selector(settingsItemPressed:)
-              forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutButton];
-	self.navigationItem.leftBarButtonItem = aboutBarButtonItem;
+    // Logout button.
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonPressed:)];
+    self.navigationItem.leftBarButtonItem = logoutButton;
     
     // Statistics button.
     UIBarButtonItem *statsButton = [[UIBarButtonItem alloc] initWithTitle:@"Statistics" style:UIBarButtonItemStylePlain target:self action:@selector(viewStatsItemPressed:)];
