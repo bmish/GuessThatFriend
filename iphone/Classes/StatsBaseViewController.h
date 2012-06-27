@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSMutableArray *list;
 @property BOOL threadIsRunning;
 
++ (NSMutableString *)getRequestStringWithType:(NSString *)type;
 - (void)getStatisticsThread;
 - (void)requestStatisticsFromServer:(BOOL)useSampleData;
 

@@ -56,6 +56,22 @@
     [super dealloc];
 }
 
++ (NSMutableString *)getRequestStringWithType:(NSString *)type {
+    // Make a real request.
+    
+    NSMutableString *getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    [getRequest appendString:@"?cmd=getStatistics"];
+    
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
+    [[UIApplication sharedApplication] delegate];
+    
+    [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
+    [getRequest appendFormat:@"&type="];
+    [getRequest appendString:type];
+    
+    return getRequest;
+}
+
 #pragma mark -
 #pragma mark Table View Data Source Methods
 

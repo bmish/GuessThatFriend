@@ -9,6 +9,8 @@
 #import "StatsBaseViewController.h"
 
 @interface StatsFriendsViewController : StatsBaseViewController {
+    NSMutableData *responseData;
+    BOOL isRequestInProgress;
 }
 
 @end

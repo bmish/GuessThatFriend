@@ -17,6 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // Create the spinner (center it later).
+    spinner = [[UIActivityIndicatorView alloc] 
+               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.hidesWhenStopped = YES;
+    [self.view addSubview:spinner];
+    [spinner release];
+    
+    isRequestInProgress = NO;
 }
 
 - (void)viewDidUnload {
@@ -28,7 +37,6 @@
 }
 
 - (BOOL)createStatsFromServerResponse:(NSString *)response {
-    
     // Parse the JSON response.
     NSDictionary *responseDictionary = [response objectFromJSONString];
     
@@ -69,90 +77,68 @@
     return YES;
 }
 
-- (void)requestStatisticsFromServer:(BOOL)useSampleData {
- 
-    // Create GET request.
-    NSMutableString *getRequest;
-    
-    if (useSampleData) {    // Retrieve sample data.
-        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_FRIENDS_ADDR];
-    } else { 
-        // Make a real request.
-        
-        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-        [getRequest appendString:@"?cmd=getStatistics"];
-        
-        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
-        [[UIApplication sharedApplication] delegate];
-        
-        [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-        [getRequest appendFormat:@"&type=friends"];
-    }
-            
-    // Send the GET request to the server.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-            
-    // Initialize array of questions from the server's response.
-    [self createStatsFromServerResponse:responseString];
-    
-    [responseString release];
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    responseData = [[NSMutableData alloc] init];
 }
 
-- (void)getStatisticsThread {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [responseData release];
+    [connection release];
+    [spinner stopAnimating];
+    isRequestInProgress = NO;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // Use responseData.
+    NSMutableString *responseString = [[[NSMutableString alloc] initWithData:responseData
+                                                                    encoding:NSASCIIStringEncoding] autorelease];
+
+    // Release connection vars.
+    [responseData release];
+    [connection release];
+    [spinner stopAnimating];
+    isRequestInProgress = NO;
     
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // Only update the stats when we have to.
-    if (delegate.statsFriendsNeedsUpdate) {
-        [self requestStatisticsFromServer:NO];
-        delegate.statsFriendsNeedsUpdate = NO;
+    // Initialize array of questions from the server's response.
+    [self createStatsFromServerResponse:responseString];
+    [table reloadData];
+}
+
+- (void)requestStatisticsFromServerAsync {
+    if (isRequestInProgress) { // Only one request allowed at a time.
+        return;
     }
     
-    threadIsRunning = NO;
+    isRequestInProgress = YES;
+    [spinner startAnimating];
+    
+    // Send request.
+    NSMutableString *getRequest = [StatsBaseViewController getRequestStringWithType:@"friends"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]
+                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                         timeoutInterval:60];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    if (delegate.statsFriendsNeedsUpdate && threadIsRunning == NO) {
-        //SPINNER
-        spinner = [[UIActivityIndicatorView alloc] 
-                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        spinner.center = self.view.center;
-        spinner.hidesWhenStopped = YES;
-        [self.view addSubview:spinner];
-        [spinner startAnimating];
-        [spinner release];
-        //SPINNER
-        
-        threadIsRunning = YES;
-        
-        [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
+    if (delegate.statsFriendsNeedsUpdate) {
+        delegate.statsFriendsNeedsUpdate = NO;
+        [self requestStatisticsFromServerAsync];
     }
+    
+    // Center the spinner.
+    spinner.center = self.view.center;
     
     [super viewWillAppear:animated];
 }
 
-/* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewDidAppear:(BOOL)animated {
-    
-    while (threadIsRunning) {
-    }
-    [spinner stopAnimating];
-    [table reloadData];
-    
     [super viewDidAppear:animated];
-}
-
-- (oneway void)release {
-    if (![NSThread isMainThread]) {
-        [self performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
-    } else {
-        [super release];
-    }
 }
 
 #pragma mark -

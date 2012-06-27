@@ -45,6 +45,7 @@
     [responseData release];
     [connection release];
     [[QuizManager sharedAppDelegate].spinner stopAnimating];
+    isRequestInProgress = NO;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -56,6 +57,7 @@
     [responseData release];
     [connection release];
     [[QuizManager sharedAppDelegate].spinner stopAnimating];
+    isRequestInProgress = NO;
     
     [self receivedQuestionResponse:responseString];
 }
@@ -70,8 +72,6 @@
         Question *nextQuestion = [self getNextQuestionFromArray];
         [[QuizManager sharedAppDelegate] setupNextQuestion:nextQuestion];
     }
-    
-    isRequestInProgress = NO;
 }
 
 - (NSMutableString *)createRequestString {
