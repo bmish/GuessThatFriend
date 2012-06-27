@@ -32,14 +32,6 @@
     // Configure the view for the selected state
 }
 
-- (oneway void)release {
-    if (![NSThread isMainThread]) {
-        [self performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
-    } else {
-        [super release];
-    }
-}
-
 - (void)dealloc {
     [picture release];
     [percentageLabel release];

@@ -15,17 +15,8 @@
 @implementation StatsFriendsViewController
 
 - (void)viewDidLoad {
+    type = @"friends";
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    // Create the spinner (center it later).
-    spinner = [[UIActivityIndicatorView alloc] 
-               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.hidesWhenStopped = YES;
-    [self.view addSubview:spinner];
-    [spinner release];
-    
-    isRequestInProgress = NO;
 }
 
 - (void)viewDidUnload {
@@ -75,66 +66,6 @@
     }
     
     return YES;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    responseData = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [responseData release];
-    [connection release];
-    [spinner stopAnimating];
-    isRequestInProgress = NO;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // Use responseData.
-    NSMutableString *responseString = [[[NSMutableString alloc] initWithData:responseData
-                                                                    encoding:NSASCIIStringEncoding] autorelease];
-
-    // Release connection vars.
-    [responseData release];
-    [connection release];
-    [spinner stopAnimating];
-    isRequestInProgress = NO;
-    
-    // Initialize array of questions from the server's response.
-    [self createStatsFromServerResponse:responseString];
-    [table reloadData];
-}
-
-- (void)requestStatisticsFromServerAsync {
-    if (isRequestInProgress) { // Only one request allowed at a time.
-        return;
-    }
-    
-    isRequestInProgress = YES;
-    [spinner startAnimating];
-    
-    // Send request.
-    NSMutableString *getRequest = [StatsBaseViewController getRequestStringWithType:@"friends"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]
-                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                         timeoutInterval:60];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (delegate.statsFriendsNeedsUpdate) {
-        delegate.statsFriendsNeedsUpdate = NO;
-        [self requestStatisticsFromServerAsync];
-    }
-    
-    // Center the spinner.
-    spinner.center = self.view.center;
-    
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

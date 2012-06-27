@@ -15,6 +15,7 @@
 @implementation StatsCategoriesViewController
 
 - (void)viewDidLoad {
+    type = @"categories";
     [super viewDidLoad];
 }
 
@@ -68,89 +69,13 @@
     return YES;
 }
 
-- (void)requestStatisticsFromServer:(BOOL)useSampleData {
-    // Create GET request.
-    NSMutableString *getRequest;
-    
-    if (useSampleData) {    // Retrieve sample data.
-        getRequest = [NSMutableString stringWithString:@SAMPLE_GET_STATISTICS_CATEGORIES_ADDR];
-    } else {
-        // Make a real request.
-        
-        getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
-        [getRequest appendString:@"?cmd=getStatistics"];
-        
-        GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)
-        [[UIApplication sharedApplication] delegate];
-        
-        [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-        [getRequest appendFormat:@"&type=categories"];
-    }
-            
-    // Send the GET request to the server.
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *responseString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-            
-    // Initialize array of questions from the server's response.
-    [self createStatsFromServerResponse:responseString];
-    
-    [responseString release];
-}
-
-- (void)getStatisticsThread {
-    
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // Only update the stats when we have to.
-    if (delegate.statsCategoriesNeedsUpdate) {
-        [self requestStatisticsFromServer:NO];
-        delegate.statsCategoriesNeedsUpdate = NO;
-    }
-    
-    threadIsRunning = NO;    
-}
-
 - (void)viewWillAppear:(BOOL)animated {
-    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    if (delegate.statsCategoriesNeedsUpdate && threadIsRunning == NO) {
-        //SPINNER
-        spinner = [[UIActivityIndicatorView alloc] 
-                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        spinner.center = self.view.center;
-        spinner.hidesWhenStopped = YES;
-        [self.view addSubview:spinner];
-        [spinner startAnimating];
-        [spinner release];
-        //SPINNER
-        
-        threadIsRunning = YES;
-        
-        [NSThread detachNewThreadSelector:@selector(getStatisticsThread) toTarget:self withObject:nil];
-    }
-    
     [super viewWillAppear:animated];
 }
 
 /* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewDidAppear:(BOOL)animated {
-    
-    while (threadIsRunning) {
-    }
-    [spinner stopAnimating];
-    [table reloadData];
-    
     [super viewDidAppear:animated];
-}
-
-- (oneway void)release {
-    if (![NSThread isMainThread]) {
-        [self performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
-    } else {
-        [super release];
-    }
 }
 
 #pragma mark -

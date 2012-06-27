@@ -18,15 +18,17 @@
     NSMutableArray *list;
     
     UIActivityIndicatorView *spinner;
-    BOOL threadIsRunning;
+    
+    NSMutableData *responseData;
+    BOOL isRequestInProgress;
+    
+    NSString *type;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *table;
 @property (nonatomic, retain) NSMutableArray *list;
-@property BOOL threadIsRunning;
+@property (nonatomic, retain) NSString *type;
 
-+ (NSMutableString *)getRequestStringWithType:(NSString *)type;
-- (void)getStatisticsThread;
-- (void)requestStatisticsFromServer:(BOOL)useSampleData;
+- (NSMutableString *)getRequestString;
 
 @end
