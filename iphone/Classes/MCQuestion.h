@@ -14,7 +14,7 @@
 	NSArray *options;
 }
 
-@property (nonatomic, retain) NSArray *options;
+@property (nonatomic) NSArray *options;
 
 - (MCQuestion *)initQuestionWithOptions:(NSArray *)questionOptions;
 

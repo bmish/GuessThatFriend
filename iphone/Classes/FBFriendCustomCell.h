@@ -13,7 +13,7 @@
 	UILabel *name;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *picture;
-@property (nonatomic, retain) IBOutlet UILabel *name;
+@property (nonatomic) IBOutlet UIImageView *picture;
+@property (nonatomic) IBOutlet UILabel *name;
 
 @end

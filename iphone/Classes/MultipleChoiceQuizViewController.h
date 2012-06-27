@@ -20,10 +20,10 @@
     NSMutableArray *optionsList;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *friendsTable;
-@property (nonatomic, retain) NSString *questionString;
-@property (nonatomic, retain) NSString *correctFacebookId;
-@property (nonatomic, retain) NSArray *optionsList;
-@property (nonatomic, retain) NSMutableString *scoreLabelString;
+@property (nonatomic) IBOutlet UITableView *friendsTable;
+@property (nonatomic) NSString *questionString;
+@property (nonatomic) NSString *correctFacebookId;
+@property (nonatomic) NSArray *optionsList;
+@property (nonatomic) NSMutableString *scoreLabelString;
 
 @end

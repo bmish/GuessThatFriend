@@ -24,18 +24,18 @@
 		4D3F818914F98E9500245D4F /* strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815C14F98E9500245D4F /* strings */; };
 		4D3F818A14F98E9500245D4F /* subclasses.pbxbtree in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815D14F98E9500245D4F /* subclasses.pbxbtree */; };
 		4D3F818B14F98E9500245D4F /* symbols0.pbxsymbols in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F815E14F98E9500245D4F /* symbols0.pbxsymbols */; };
-		4D3F818C14F98E9500245D4F /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816314F98E9500245D4F /* Facebook.m */; };
+		4D3F818C14F98E9500245D4F /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816314F98E9500245D4F /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4D3F818D14F98E9500245D4F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F816614F98E9500245D4F /* FBDialog.bundle */; };
-		4D3F818E14F98E9500245D4F /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816814F98E9500245D4F /* FBDialog.m */; };
-		4D3F818F14F98E9500245D4F /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816A14F98E9500245D4F /* FBFrictionlessRequestSettings.m */; };
-		4D3F819014F98E9500245D4F /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816C14F98E9500245D4F /* FBLoginDialog.m */; };
-		4D3F819114F98E9500245D4F /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816E14F98E9500245D4F /* FBRequest.m */; };
-		4D3F819214F98E9500245D4F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817214F98E9500245D4F /* NSObject+SBJSON.m */; };
-		4D3F819314F98E9500245D4F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817414F98E9500245D4F /* NSString+SBJSON.m */; };
-		4D3F819414F98E9500245D4F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817614F98E9500245D4F /* SBJSON.m */; };
-		4D3F819514F98E9500245D4F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817814F98E9500245D4F /* SBJsonBase.m */; };
-		4D3F819614F98E9500245D4F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817A14F98E9500245D4F /* SBJsonParser.m */; };
-		4D3F819714F98E9500245D4F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817C14F98E9500245D4F /* SBJsonWriter.m */; };
+		4D3F818E14F98E9500245D4F /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816814F98E9500245D4F /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F818F14F98E9500245D4F /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816A14F98E9500245D4F /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819014F98E9500245D4F /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816C14F98E9500245D4F /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819114F98E9500245D4F /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F816E14F98E9500245D4F /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819214F98E9500245D4F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817214F98E9500245D4F /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819314F98E9500245D4F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817414F98E9500245D4F /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819414F98E9500245D4F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817614F98E9500245D4F /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819514F98E9500245D4F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817814F98E9500245D4F /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819614F98E9500245D4F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817A14F98E9500245D4F /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D3F819714F98E9500245D4F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F817C14F98E9500245D4F /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4D6479801543774800402CF7 /* GTFIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D64797F1543774800402CF7 /* GTFIcon.png */; };
 		4D647982154377C200402CF7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D647981154377C200402CF7 /* Default.png */; };
 		4D6479841543780700402CF7 /* Graphic_GameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D6479831543780700402CF7 /* Graphic_GameBackground.png */; };
@@ -61,7 +61,7 @@
 		4D922B5A154EF25E0092B5F4 /* StatsHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */; };
 		4D922B5C154EF7C80092B5F4 /* StatsCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5B154EF7C80092B5F4 /* StatsCategoryViewController.xib */; };
 		4D922B5E154EFABA0092B5F4 /* StatsHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D922B5D154EFABA0092B5F4 /* StatsHistoryViewController.xib */; };
-		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; };
+		4DA0E9D715074FEF002AFFBB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA0E9D615074FEF002AFFBB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
 		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
 		4DB4F5281541C5DB00106D78 /* tab1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB4F5261541C5DB00106D78 /* tab1.png */; };
@@ -832,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -848,6 +849,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;

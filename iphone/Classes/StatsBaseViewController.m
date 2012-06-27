@@ -35,7 +35,6 @@
                initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.hidesWhenStopped = YES;
     [self.view addSubview:spinner];
-    [spinner release];
     
     isRequestInProgress = NO;
 }
@@ -55,12 +54,6 @@
     [super viewDidAppear:animated];
 }
 
-- (void)dealloc {
-    [table release];
-    [list release];
-    
-    [super dealloc];
-}
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     responseData = [[NSMutableData alloc] init];
@@ -71,20 +64,16 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [responseData release];
-    [connection release];
     [spinner stopAnimating];
     isRequestInProgress = NO;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // Use responseData.
-    NSMutableString *responseString = [[[NSMutableString alloc] initWithData:responseData
-                                                                    encoding:NSASCIIStringEncoding] autorelease];
+    NSMutableString *responseString = [[NSMutableString alloc] initWithData:responseData
+                                                                    encoding:NSASCIIStringEncoding];
     
     // Release connection vars.
-    [responseData release];
-    [connection release];
     [spinner stopAnimating];
     isRequestInProgress = NO;
     
@@ -126,7 +115,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]
                                              cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                          timeoutInterval:60];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    (void)[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -28,14 +28,5 @@
     return [super init];
 }
 
-- (void)dealloc {
-    [question release];
-    [picture release];
-    [correctAnswer release];
-    [yourAnswer release];
-    [date release];
-    
-	[super dealloc];
-}
 
 @end

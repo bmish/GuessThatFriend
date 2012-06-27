@@ -33,14 +33,5 @@
     // Configure the view for the selected state
 }
 
-- (void)dealloc {
-    [text release];
-    [picture release];
-    [correctAnswer release];
-    [chosenAnswer release];
-    [date release];
-    
-    [super dealloc];
-}
 
 @end

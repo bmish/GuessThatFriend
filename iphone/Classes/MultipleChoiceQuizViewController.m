@@ -45,16 +45,6 @@
     self.scoreLabelString = nil;
 }
 
-- (void)dealloc {
-	[friendsTable release];
-	[questionString release];
-	[optionsList release];
-	[correctFacebookId release];
-    
-    [scoreLabelString release];
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Table View Data Source Methods

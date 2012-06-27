@@ -25,9 +25,9 @@
     NSString *type;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *table;
-@property (nonatomic, retain) NSMutableArray *list;
-@property (nonatomic, retain) NSString *type;
+@property (nonatomic) IBOutlet UITableView *table;
+@property (nonatomic) NSMutableArray *list;
+@property (nonatomic) NSString *type;
 
 - (NSMutableString *)getRequestString;
 

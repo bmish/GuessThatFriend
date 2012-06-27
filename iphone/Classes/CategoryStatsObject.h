@@ -15,7 +15,7 @@
     float averageResponseTime;
 }
 
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic) NSString *name;
 @property int correctCount;
 @property int totalCount;
 @property float fastestCorrectResponseTime;

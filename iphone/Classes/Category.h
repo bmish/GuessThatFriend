@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, assign) int categoryId;
-@property (nonatomic, retain) NSString *facebookName;
-@property (nonatomic, retain) NSString *prettyName;
+@property (nonatomic) NSString *facebookName;
+@property (nonatomic) NSString *prettyName;
 
 @end

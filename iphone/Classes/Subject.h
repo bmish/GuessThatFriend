@@ -15,10 +15,10 @@
     NSString *link;         // Link to profile.
 }
 
-@property (nonatomic, retain) NSString *facebookId;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) UIImage *picture;
-@property (nonatomic, retain) NSString *link;
+@property (nonatomic) NSString *facebookId;
+@property (nonatomic) NSString *name;
+@property (nonatomic) UIImage *picture;
+@property (nonatomic) NSString *link;
 
 - (Subject *)initWithName:(NSString *)friendName 
             andFacebookId:(NSString *)facebookId;

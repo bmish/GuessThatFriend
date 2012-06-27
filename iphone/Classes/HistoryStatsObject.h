@@ -17,11 +17,11 @@
     float responseTime;
 }
 
-@property (nonatomic, retain) NSString *question;
-@property (nonatomic, retain) UIImage *picture;
-@property (nonatomic, retain) NSString *correctAnswer;
-@property (nonatomic, retain) NSString *yourAnswer;
-@property (nonatomic, retain) NSString *date;
+@property (nonatomic) NSString *question;
+@property (nonatomic) UIImage *picture;
+@property (nonatomic) NSString *correctAnswer;
+@property (nonatomic) NSString *yourAnswer;
+@property (nonatomic) NSString *date;
 @property float responseTime;
 
 - (HistoryStatsObject *)initWithQuestion:(NSString *)text andSubject:(Subject *)subject andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt;

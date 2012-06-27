@@ -38,10 +38,5 @@ static QuizSettings *quizSettingsObject = nil;
     return self;
 }
 
-- (void)dealloc {
-    [friendFacebookID release];
-    
-	[super dealloc];
-}
 
 @end

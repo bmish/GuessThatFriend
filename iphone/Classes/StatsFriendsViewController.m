@@ -23,9 +23,6 @@
     [super viewDidUnload];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (BOOL)createStatsFromServerResponse:(NSString *)response {
     // Parse the JSON response.
@@ -56,13 +53,12 @@
         int fastestRT = [fastestRTStr intValue];
         int averageRT = [averageRTStr intValue];
         
-        Subject *subject = [[[Subject alloc] initWithName:[subjectDict objectForKey:@"name"] andFacebookId:[subjectDict objectForKey:@"facebookId"]] autorelease];
+        Subject *subject = [[Subject alloc] initWithName:[subjectDict objectForKey:@"name"] andFacebookId:[subjectDict objectForKey:@"facebookId"]];
         
         FriendStatsObject *statsObj = [[FriendStatsObject alloc] initWithSubject:subject andCorrectCount:correctCount andTotalCount:totalCount andFastestRT:fastestRT andAverageRT:averageRT];
         
         [list addObject:statsObj];
         
-        [statsObj release];
     }
     
     return YES;

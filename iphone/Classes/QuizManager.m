@@ -42,20 +42,16 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [responseData release];
-    [connection release];
     [[QuizManager sharedAppDelegate].spinner stopAnimating];
     isRequestInProgress = NO;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // Use responseData.
-    NSMutableString *responseString = [[[NSMutableString alloc] initWithData:responseData
-                                                        encoding:NSASCIIStringEncoding] autorelease];
+    NSMutableString *responseString = [[NSMutableString alloc] initWithData:responseData
+                                                        encoding:NSASCIIStringEncoding];
     
     // Release connection vars.
-    [responseData release];
-    [connection release];
     [[QuizManager sharedAppDelegate].spinner stopAnimating];
     isRequestInProgress = NO;
     
@@ -97,7 +93,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]
                                              cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                          timeoutInterval:60];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    (void)[[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     
     // Start animating the spinner if no question is showing right now.
@@ -159,7 +155,7 @@
             NSString *subjectName = [subjectDict objectForKey:@"name"];
             NSString *subjectFacebookId = [subjectDict objectForKey:@"facebookId"];
             
-            Option *option = [[[Option alloc] initWithName:subjectName andFacebookId:subjectFacebookId] autorelease];
+            Option *option = [[Option alloc] initWithName:subjectName andFacebookId:subjectFacebookId];
             [optionArray addObject:option];
         }
         
@@ -171,11 +167,9 @@
         question.questionId = questionId;
         question.topicImage = [Subject getPictureURLFromFacebookID:topicFacebookId];
         
-        [optionArray release];
         
         [questionArray addObject:question];
         
-        [question release];
         
         questionsCount++;
     }
@@ -217,7 +211,7 @@
     
     // Get one of the existing questions.
     if (questionArray.count > 0) { 
-        Question *question = [[questionArray objectAtIndex:0] retain];
+        Question *question = [questionArray objectAtIndex:0];
         [questionArray removeObjectAtIndex:0];
         
         return question;
@@ -226,12 +220,6 @@
     return NULL;
 }
 
-- (void)dealloc {
-    [questionArray release];
-    [bufferedFBToken release];
-    
-	[super dealloc];
-}
 
 + (GuessThatFriendAppDelegate*) sharedAppDelegate {
     return (GuessThatFriendAppDelegate*)[[UIApplication sharedApplication] delegate];

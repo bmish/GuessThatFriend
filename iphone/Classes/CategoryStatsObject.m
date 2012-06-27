@@ -28,10 +28,5 @@
     return [super init];
 }
 
-- (void)dealloc {
-    [name release];
-    
-	[super dealloc];
-}
 
 @end

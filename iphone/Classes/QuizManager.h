@@ -22,8 +22,8 @@
     BOOL isQuestionNeeded;
 }
 
-@property (nonatomic, retain) NSMutableArray *questionArray;
-@property (nonatomic, retain) NSString *bufferedFBToken;
+@property (nonatomic) NSMutableArray *questionArray;
+@property (nonatomic) NSString *bufferedFBToken;
 
 - (QuizManager *)initWithFBToken:(NSString *)token;
 - (Question *)getNextQuestionFromArray;

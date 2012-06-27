@@ -23,7 +23,7 @@
 @property int questionCount;
 @property int option;
 @property int categoryID;
-@property (nonatomic, retain) NSString *friendFacebookID;
+@property (nonatomic) NSString *friendFacebookID;
 
 + (id) quizSettingObject;
 

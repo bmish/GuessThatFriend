@@ -32,15 +32,5 @@
     // Configure the view for the selected state
 }
 
-- (void)dealloc {
-    [picture release];
-    [percentageLabel release];
-    [progressBar release];
-    [name release];
-    [fastestCorrectRT release];
-    [averageRT release];
-
-    [super dealloc];
-}
 
 @end

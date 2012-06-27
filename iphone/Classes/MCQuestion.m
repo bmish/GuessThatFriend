@@ -18,10 +18,5 @@
 	return [super init];
 }
 
-- (void)dealloc {
-	[options release];
-	
-	[super dealloc];
-}
 
 @end

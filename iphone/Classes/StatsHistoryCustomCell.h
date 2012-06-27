@@ -17,11 +17,11 @@
     UILabel *responseTime;
 }
 
-@property (nonatomic, retain) IBOutlet UITextView *text;
-@property (nonatomic, retain) IBOutlet UIImageView *picture;
-@property (nonatomic, retain) IBOutlet UILabel *correctAnswer;
-@property (nonatomic, retain) IBOutlet UILabel *chosenAnswer;
-@property (nonatomic, retain) IBOutlet UILabel *date;
-@property (nonatomic, retain) IBOutlet UILabel *responseTime;
+@property (nonatomic) IBOutlet UITextView *text;
+@property (nonatomic) IBOutlet UIImageView *picture;
+@property (nonatomic) IBOutlet UILabel *correctAnswer;
+@property (nonatomic) IBOutlet UILabel *chosenAnswer;
+@property (nonatomic) IBOutlet UILabel *date;
+@property (nonatomic) IBOutlet UILabel *responseTime;
 
 @end

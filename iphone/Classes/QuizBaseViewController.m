@@ -23,7 +23,6 @@
 		SettingsViewController *settingsController = [[SettingsViewController alloc] 
                                                       initWithNibName:@"SettingsViewController" bundle:nil];
 		self.settingsViewController = settingsController;
-		[settingsController release];
 	}
     
     [self.navigationController pushViewController:self.settingsViewController animated:YES];
@@ -59,12 +58,10 @@
               forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutButton];
 	self.navigationItem.leftBarButtonItem = aboutBarButtonItem;
-	[aboutBarButtonItem release];
     
     // Statistics button.
     UIBarButtonItem *statsButton = [[UIBarButtonItem alloc] initWithTitle:@"Statistics" style:UIBarButtonItemStylePlain target:self action:@selector(viewStatsItemPressed:)];
     self.navigationItem.rightBarButtonItem = statsButton;
-    [statsButton release];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -89,12 +86,5 @@
     self.settingsViewController = nil;
 }
 
-- (void)dealloc {
-	[questionLabel release];
-    [settingsViewController release];
-	[topicImage release];
-    
-    [super dealloc];
-}
 
 @end

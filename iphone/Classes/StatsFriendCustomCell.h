@@ -16,11 +16,11 @@
     UILabel *averageRT;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *picture;
-@property (nonatomic, retain) IBOutlet UILabel *name;
-@property (nonatomic, retain) IBOutlet UIProgressView *progressBar;
-@property (nonatomic, retain) IBOutlet UILabel *percentageLabel;
-@property (nonatomic, retain) IBOutlet UILabel *fastestCorrectRT;
-@property (nonatomic, retain) IBOutlet UILabel *averageRT;
+@property (nonatomic) IBOutlet UIImageView *picture;
+@property (nonatomic) IBOutlet UILabel *name;
+@property (nonatomic) IBOutlet UIProgressView *progressBar;
+@property (nonatomic) IBOutlet UILabel *percentageLabel;
+@property (nonatomic) IBOutlet UILabel *fastestCorrectRT;
+@property (nonatomic) IBOutlet UILabel *averageRT;
 
 @end

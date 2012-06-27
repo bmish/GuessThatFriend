@@ -38,13 +38,5 @@
     return [NSString stringWithFormat:@"%@%@", @"https://www.facebook.com/", facebookId];
 }
 
-- (void)dealloc {
-    [facebookId release];
-    [name release];
-    [picture release];
-    [link release];
-    
-	[super dealloc];
-}
 
 @end

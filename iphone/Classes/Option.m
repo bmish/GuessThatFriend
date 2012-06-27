@@ -16,7 +16,7 @@
 	self = [super init];
     
     if (self) {
-        self.subject = [[[Subject alloc] initWithName:friendName andFacebookId:facebookId] autorelease];
+        self.subject = [[Subject alloc] initWithName:friendName andFacebookId:facebookId];
     }
     
 	return self;
@@ -30,10 +30,5 @@
 	return friendCopy;
 }
 
-- (void)dealloc {
-    [question release];
-    [subject release];
-	[super dealloc];
-}
 
 @end

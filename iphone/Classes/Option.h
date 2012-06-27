@@ -19,8 +19,8 @@
 }
 
 @property (nonatomic, assign) int optionId;
-@property (nonatomic, retain) Question *question;
-@property (nonatomic, retain) Subject *subject;
+@property (nonatomic) Question *question;
+@property (nonatomic, strong) Subject *subject;
 
 - (Option *)initWithName:(NSString *)friendName
            andFacebookId:(NSString *)facebookId;

@@ -61,7 +61,6 @@
     
     [[UIApplication sharedApplication] openURL:url];
     
-    [url release];
 }
 
 - (void)facebookLogout {
@@ -92,11 +91,5 @@
     self.logoutButton = nil;
 }
 
-- (void)dealloc {
-    [shareButton release];
-    [logoutButton release];
-	
-    [super dealloc];
-}
 
 @end

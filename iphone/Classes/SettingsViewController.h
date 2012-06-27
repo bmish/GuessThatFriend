@@ -13,8 +13,8 @@
 	UIButton *logoutButton;
 }
 
-@property (nonatomic, retain) IBOutlet UIButton *shareButton;
-@property (nonatomic, retain) IBOutlet UIButton *logoutButton;
+@property (nonatomic) IBOutlet UIButton *shareButton;
+@property (nonatomic) IBOutlet UIButton *logoutButton;
 
 - (IBAction)switchViewToFBLogin:(id)sender;
 - (IBAction)shareOnFacebook:(id)sender;

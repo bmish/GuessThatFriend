@@ -27,10 +27,5 @@
 	self.answerTextField = nil;
 }
 
-- (void)dealloc {
-	[answerTextField release];
-	
-    [super dealloc];
-}
 
 @end

@@ -31,10 +31,5 @@
     return [super init];
 }
 
-- (void)dealloc {
-    [subject release];
-    
-	[super dealloc];
-}
 
 @end

@@ -83,16 +83,13 @@
     }
     
     // Start timer for this question.
-    [responseTimer release];
     responseTimer = [NSDate date];
-    [responseTimer retain];
 }
 
 
 - (void)questionRetrievalFailed {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Downloading Content Failed" message:@"Please try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 - (bool) didUserSkipCurrentQuestion {
@@ -138,7 +135,6 @@
     statsHistoryNeedsUpdate = YES;
         
     responseTimer = [NSDate date];
-    [responseTimer retain];
     
     // Set up the 'Next' button.
     nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -176,7 +172,6 @@
     spinner.center = self.window.center;
     spinner.hidesWhenStopped = YES;
     [self.window addSubview:spinner];
-    [spinner release];
     
     // Hide everything until the first question is ready.
     MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
@@ -213,7 +208,6 @@
                                 @"friends_likes",
                                 nil];
         [facebook authorize:permissions];
-        [permissions release];
     }
     
     if(facebook.accessToken != nil){
@@ -324,20 +318,6 @@
      */
 }
 
-- (void)dealloc {
-    [viewController release];
-    [navController release];
-    [tabController release];
-    [settingsItem release];
-    [doneItem release];
-    [window release];
-    [nextButton release];
-    [quizManager release];
-    [responseTimer release];
-    [plistImageDict release];
-    
-    [super dealloc];
-}
 
 - (UIImage *)getPicture:(NSString *)imageURL{
     
@@ -371,7 +351,6 @@
         returnImage = [UIImage imageWithContentsOfFile:imageLocalPath];
     }
     
-    [resourceDocPath release];
     
     return returnImage;
 }
@@ -390,7 +369,6 @@
         plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     }
     
-    [resourceDocPath release];
 }
 
 @end

@@ -16,7 +16,7 @@
     float averageRT;
 }
 
-@property (nonatomic, retain) Subject *subject;
+@property (nonatomic) Subject *subject;
 @property int correctCount;
 @property int totalCount;
 @property float fastestCorrectRT;

@@ -42,25 +42,25 @@
     UIActivityIndicatorView *spinner;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController *navController;
-@property (nonatomic, retain) IBOutlet UITabBarController *tabController;
+@property (nonatomic) IBOutlet UIWindow *window;
+@property (nonatomic) IBOutlet UINavigationController *navController;
+@property (nonatomic) IBOutlet UITabBarController *tabController;
 
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *settingsItem;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *doneItem;
+@property (nonatomic) IBOutlet UIBarButtonItem *settingsItem;
+@property (nonatomic) IBOutlet UIBarButtonItem *doneItem;
 
-@property (nonatomic, retain) IBOutlet QuizBaseViewController *viewController;
-@property (nonatomic, retain) Facebook *facebook;
-@property (nonatomic, retain) UIButton *nextButton;
-@property (nonatomic, retain) QuizManager *quizManager;
-@property (nonatomic, retain) NSDate *responseTimer;
-@property (nonatomic, retain) NSMutableDictionary* plistImageDict;
+@property (nonatomic) IBOutlet QuizBaseViewController *viewController;
+@property (nonatomic) Facebook *facebook;
+@property (nonatomic) UIButton *nextButton;
+@property (nonatomic) QuizManager *quizManager;
+@property (nonatomic) NSDate *responseTimer;
+@property (nonatomic) NSMutableDictionary* plistImageDict;
 
 @property BOOL statsFriendsNeedsUpdate;
 @property BOOL statsCategoriesNeedsUpdate;
 @property BOOL statsHistoryNeedsUpdate;
 
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
+@property (nonatomic) UIActivityIndicatorView *spinner;
 
 - (UIImage *) getPicture:(NSString*)imageURL;
 

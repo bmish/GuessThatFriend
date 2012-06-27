@@ -23,9 +23,6 @@
     [super viewDidUnload];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (BOOL)createStatsFromServerResponse:(NSString *)response {
     
@@ -63,7 +60,6 @@
         
         [list addObject:statsObj];
         
-        [statsObj release];
     }
     
     return YES;

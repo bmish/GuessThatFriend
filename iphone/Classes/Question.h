@@ -23,11 +23,11 @@
 }
 
 @property (nonatomic, assign) int questionId;
-@property (nonatomic, retain) Category *category;
-@property (nonatomic, retain) Subject *subject;
-@property (nonatomic, retain) NSString *text;
-@property (nonatomic, retain) NSString *topicImage;
-@property (nonatomic, retain) NSString *correctFacebookId;
-@property (nonatomic, retain) Option *chosenOption;
+@property (nonatomic) Category *category;
+@property (nonatomic) Subject *subject;
+@property (nonatomic) NSString *text;
+@property (nonatomic) NSString *topicImage;
+@property (nonatomic) NSString *correctFacebookId;
+@property (nonatomic) Option *chosenOption;
 
 @end
