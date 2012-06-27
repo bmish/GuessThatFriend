@@ -838,6 +838,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "GuessThatFriend-Info.plist";
 				PRODUCT_NAME = GuessThatFriend;
 			};
@@ -851,6 +852,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GuessThatFriend_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "GuessThatFriend-Info.plist";
 				PRODUCT_NAME = GuessThatFriend;
 				VALIDATE_PRODUCT = YES;

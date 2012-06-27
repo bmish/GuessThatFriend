@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Subject.h"
+#import "Question.h"
 
 @class Question;        // Forward class to avoid circular dependency between Question and Option.
 
