@@ -189,7 +189,7 @@
                initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = self.window.center;
     spinner.hidesWhenStopped = YES;
-    [self.window addSubview:spinner];
+    [self.viewController.view addSubview:spinner];
     
     // Hide everything until the first question is ready.
     MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
