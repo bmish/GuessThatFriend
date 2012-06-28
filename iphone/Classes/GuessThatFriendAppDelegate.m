@@ -59,7 +59,7 @@
         
         quizViewController.questionString = mcQuestion.text;
         
-        UIImage *topicImage = [self getPicture:mcQuestion.topicImage];        
+        UIImage *topicImage = [self getPicture:mcQuestion.topicImageURL];        
         quizViewController.topicImage.image = topicImage;
         
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;

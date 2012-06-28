@@ -165,7 +165,7 @@
         question.text = text;
         question.correctFacebookId = correctFbId;
         question.questionId = questionId;
-        question.topicImage = [Subject getPictureURLFromFacebookID:topicFacebookId];
+        question.topicImageURL = [Subject getPictureURLFromFacebookID:topicFacebookId];
         
         
         [questionArray addObject:question];

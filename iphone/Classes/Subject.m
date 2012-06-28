@@ -17,8 +17,8 @@
     
     if (self) {
         // Create the image path and download the subject's image.
-        NSString *imagePath = [Subject getPictureURLFromFacebookID:myfacebookId];
-        NSURL *url = [NSURL URLWithString:imagePath];
+        NSString *imageURL = [Subject getPictureURLFromFacebookID:myfacebookId];
+        NSURL *url = [NSURL URLWithString:imageURL];
         UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
         
         self.name = friendName;

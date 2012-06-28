@@ -10,7 +10,7 @@
 
 @implementation Question
 
-@synthesize questionId, category, subject, text, correctFacebookId, chosenOption, topicImage;
+@synthesize questionId, category, subject, text, correctFacebookId, chosenOption, topicImageURL;
 
 
 @end
