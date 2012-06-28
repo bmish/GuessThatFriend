@@ -16,8 +16,6 @@
 #import "MCQuestion.h"
 #import "FillBlankQuestion.h"
 
-#define IMAGEPLISTPATH     @"imageCachePlist"
-#define IMAGEPLISTFULLPATH @"/imageCachePlist.plist"
 #define BASE_URL_ADDR       "http://guessthatfriend.jasonsze.com/api/"
 
 #define IMAGE_CACHE_FILE_COUNT_LIMIT 1000
@@ -38,7 +36,6 @@
 @synthesize statsFriendsNeedsUpdate;
 @synthesize statsCategoriesNeedsUpdate;
 @synthesize statsHistoryNeedsUpdate;
-@synthesize plistImageDict;
 @synthesize spinner;
 @synthesize objMan;
 
@@ -151,7 +148,6 @@
     
     [self setNavBarBackground];
     
-    [self initImagePlist];
     statsFriendsNeedsUpdate = YES;
     statsCategoriesNeedsUpdate = YES;
     statsHistoryNeedsUpdate = YES;
@@ -338,59 +334,6 @@
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
-}
-
-
-/*- (UIImage *)getPicture:(NSString *)imageURL{
-    
-    NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
-    
-    // See if it exists in plist, if not then download
-    NSString *imageLocalPath = [plistImageDict objectForKey:imageURL];    
-    UIImage *returnImage;
-    NSString *path = [resourceDocPath stringByAppendingPathComponent:IMAGEPLISTFULLPATH];
-    
-    // value not found, need to download and save to plist
-    if (imageLocalPath == nil) {
-        // Generate image file local path to save image in.
-        NSArray *stringComps = [imageURL componentsSeparatedByString:@"/"];
-        NSString *filePath = [resourceDocPath stringByAppendingPathComponent:[stringComps objectAtIndex:3]];
-
-        // Download the image.
-        NSURL *url = [NSURL URLWithString:imageURL];
-        returnImage = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
-        
-        // Save image locally
-        NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(returnImage, 1.0f)];  // 1.0f = 100% quality
-        [data writeToFile:filePath atomically:YES];
-        
-        // now add to plist & save plist
-        [plistImageDict setObject:filePath forKey:imageURL];
-        [plistImageDict writeToFile:path atomically: YES];
-    }
-    else {
-        // Load UIImage from local path
-        returnImage = [UIImage imageWithContentsOfFile:imageLocalPath];
-    }
-    
-    
-    return returnImage;
-}*/
-
-- (void)initImagePlist {
-    NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
-    
-    NSString *plistPath = [resourceDocPath stringByAppendingPathComponent:IMAGEPLISTFULLPATH];
-    
-    if([[NSFileManager defaultManager] fileExistsAtPath:plistPath] == NO) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:IMAGEPLISTPATH ofType:@"plist"];
-        plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-        [plistImageDict writeToFile:plistPath atomically:YES];
-    }
-    else {
-        plistImageDict = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    }
-    
 }
 
 @end

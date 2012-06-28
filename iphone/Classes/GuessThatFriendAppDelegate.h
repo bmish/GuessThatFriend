@@ -34,7 +34,6 @@
     @public
     int correctAnswers;
     int totalNumOfQuestions;
-    NSMutableDictionary* plistImageDict;
     QuizManager *quizManager;
     
     BOOL statsFriendsNeedsUpdate;
@@ -58,7 +57,6 @@
 @property (nonatomic) UIButton *nextButton;
 @property (nonatomic) QuizManager *quizManager;
 @property (nonatomic) NSDate *responseTimer;
-@property (nonatomic) NSMutableDictionary* plistImageDict;
 
 @property BOOL statsFriendsNeedsUpdate;
 @property BOOL statsCategoriesNeedsUpdate;
