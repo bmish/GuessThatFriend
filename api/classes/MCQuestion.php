@@ -65,6 +65,10 @@ class MCQuestion extends Question	{
 			}
 		}
 		
+		// Check for problems with this question.
+		if (count($this->options) != $optionCount) {
+			Error::saveErrorToDB("GeneratedInsufficientOptions", "Failed to generate sufficient options for question #".$this->questionId);
+		}
 		if ($this->duplicateOptionsExist($this->options)) {
 			throw new Exception("Detected duplicate options.");
 		}
