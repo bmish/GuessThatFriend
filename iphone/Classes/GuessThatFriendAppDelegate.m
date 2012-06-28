@@ -20,6 +20,9 @@
 #define IMAGEPLISTFULLPATH @"/imageCachePlist.plist"
 #define BASE_URL_ADDR       "http://guessthatfriend.jasonsze.com/api/"
 
+#define IMAGE_CACHE_FILE_COUNT_LIMIT 1000
+#define IMAGE_CACHE_AGE_LIMIT_SECONDS 60*60*24*7*2; // Two weeks.
+
 @implementation GuessThatFriendAppDelegate
 
 @synthesize window;
@@ -142,8 +145,8 @@
     NSString* cacheDirectory = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/imgcache/facebookProfilePictures/"] ;
     HJMOFileCache* fileCache = [[HJMOFileCache alloc] initWithRootPath:cacheDirectory];
     objMan.fileCache = fileCache;
-    objMan.fileCache.fileCountLimit = 1000;
-	objMan.fileCache.fileAgeLimit = 60*60*24*7*2; // Two weeks.
+    objMan.fileCache.fileCountLimit = IMAGE_CACHE_FILE_COUNT_LIMIT;
+	objMan.fileCache.fileAgeLimit = IMAGE_CACHE_AGE_LIMIT_SECONDS;
 	[objMan.fileCache trimCacheUsingBackgroundThread];
     
     [self setNavBarBackground];
