@@ -16,7 +16,11 @@
 - (HistoryStatsObject *)initWithQuestion:(NSString *)text andSubject:(Subject *)subject andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt {
     
     self.question = text;
-    self.picture = subject.picture;
+    
+    self.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,13,50,50)];
+    self.picture.url = [subject getPictureURL];
+    [GuessThatFriendAppDelegate manageImage:self.picture];
+    
     self.correctAnswer = cAnswer;
     self.yourAnswer = yAnswer;
     self.date = theDate;

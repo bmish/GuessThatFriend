@@ -87,8 +87,12 @@
 	NSUInteger row = [indexPath row];
 	
     FriendStatsObject *obj = [list objectAtIndex:row];
-    cell.picture.image = obj.subject.picture;
-	
+    
+    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,2,50,50)];
+    cell.picture.url = [obj.subject getPictureURL];
+	[GuessThatFriendAppDelegate manageImage:cell.picture];
+    [cell addSubview:cell.picture];
+    
     // Make sure the name is valid.
     NSString *name = obj.subject.name;
     if (name == (id)[NSNull null] || name.length == 0) {

@@ -24,8 +24,6 @@
 
 - (id)copyWithZone:(NSZone *)zone {
 	Option *friendCopy = [[Option allocWithZone:zone] init];
-	friendCopy.subject.name = subject.name; // TODO
-	friendCopy.subject.picture = subject.picture; // TODO
     
 	return friendCopy;
 }

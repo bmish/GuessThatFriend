@@ -19,15 +19,17 @@
 	NSString *text;         // Question text.
     NSString *correctFacebookId;  // The correct answer to this question.
     Option *chosenOption;   // The answer that the user chose (if the question has been answered).
-    NSString *topicImageURL;
+    NSString *topicImageURLString;
 }
 
 @property (nonatomic, assign) int questionId;
 @property (nonatomic) Category *category;
 @property (nonatomic) Subject *subject;
 @property (nonatomic) NSString *text;
-@property (nonatomic) NSString *topicImageURL;
+@property (nonatomic) NSString *topicImageURLString;
 @property (nonatomic) NSString *correctFacebookId;
 @property (nonatomic) Option *chosenOption;
+
+- (NSURL *)getTopicImageURL;
 
 @end

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJManagedImageV.h"
 
 @interface StatsHistoryCustomCell : UITableViewCell {
     UITextView *text;
-    UIImageView *picture;
+    HJManagedImageV *picture;
     UILabel *correctAnswer;
     UILabel *chosenAnswer;
     UILabel *date;
@@ -18,7 +19,7 @@
 }
 
 @property (nonatomic) IBOutlet UITextView *text;
-@property (nonatomic) IBOutlet UIImageView *picture;
+@property (nonatomic) IBOutlet HJManagedImageV *picture;
 @property (nonatomic) IBOutlet UILabel *correctAnswer;
 @property (nonatomic) IBOutlet UILabel *chosenAnswer;
 @property (nonatomic) IBOutlet UILabel *date;

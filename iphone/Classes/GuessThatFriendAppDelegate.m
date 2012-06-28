@@ -37,6 +37,7 @@
 @synthesize statsHistoryNeedsUpdate;
 @synthesize plistImageDict;
 @synthesize spinner;
+@synthesize objMan;
 
 - (void)nextButtonPressed:(id)sender {
     // If the current question was skipped by the user, let the API know.
@@ -58,9 +59,13 @@
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
-        
-        UIImage *topicImage = [self getPicture:mcQuestion.topicImageURL];        
-        quizViewController.topicImage.image = topicImage;
+         
+        HJManagedImageV *topicImage = [[HJManagedImageV alloc] initWithFrame:CGRectMake(220,9,80,80)];
+        topicImage.url = [mcQuestion getTopicImageURL];
+        [GuessThatFriendAppDelegate manageImage:topicImage];
+        [quizViewController.view addSubview:topicImage];
+                
+        quizViewController.topicImage = topicImage;
         
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
@@ -114,6 +119,11 @@
     [NSURLConnection connectionWithRequest:request delegate:nil];
 }
 
++ (BOOL) manageImage:(HJManagedImageV *)image {
+    GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *) [[UIApplication sharedApplication] delegate];
+    return [delegate.objMan manage:image];
+}
+
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -126,6 +136,15 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Prepare image caching.
+    objMan = [[HJObjManager alloc] init];
+    NSString* cacheDirectory = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/imgcache/facebookProfilePictures/"] ;
+    HJMOFileCache* fileCache = [[HJMOFileCache alloc] initWithRootPath:cacheDirectory];
+    objMan.fileCache = fileCache;
+    objMan.fileCache.fileCountLimit = 1000;
+	objMan.fileCache.fileAgeLimit = 60*60*24*7*2; // Two weeks.
+	[objMan.fileCache trimCacheUsingBackgroundThread];
     
     [self setNavBarBackground];
     
@@ -319,7 +338,7 @@
 }
 
 
-- (UIImage *)getPicture:(NSString *)imageURL{
+/*- (UIImage *)getPicture:(NSString *)imageURL{
     
     NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];
     
@@ -353,7 +372,7 @@
     
     
     return returnImage;
-}
+}*/
 
 - (void)initImagePlist {
     NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle]  resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Documents"]];

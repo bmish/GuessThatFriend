@@ -6,9 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJManagedImageV.h"
 
 @interface StatsFriendCustomCell : UITableViewCell {
-	UIImageView *picture;
+	HJManagedImageV *picture;
 	UILabel *name;
     UIProgressView *progressBar;
     UILabel *percentageLabel;
@@ -16,7 +17,7 @@
     UILabel *averageRT;
 }
 
-@property (nonatomic) IBOutlet UIImageView *picture;
+@property (nonatomic, strong) IBOutlet HJManagedImageV *picture;
 @property (nonatomic) IBOutlet UILabel *name;
 @property (nonatomic) IBOutlet UIProgressView *progressBar;
 @property (nonatomic) IBOutlet UILabel *percentageLabel;

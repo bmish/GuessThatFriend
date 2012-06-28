@@ -7,10 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Subject.h"
+#import "HJManagedImageV.h"
 
 @interface HistoryStatsObject : NSObject {
     NSString *question;
-    UIImage *picture;
+    HJManagedImageV *picture;
     NSString *correctAnswer;
     NSString *yourAnswer;
     NSString *date;
@@ -18,7 +19,7 @@
 }
 
 @property (nonatomic) NSString *question;
-@property (nonatomic) UIImage *picture;
+@property (nonatomic, strong) HJManagedImageV *picture;
 @property (nonatomic) NSString *correctAnswer;
 @property (nonatomic) NSString *yourAnswer;
 @property (nonatomic) NSString *date;

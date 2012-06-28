@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 #import "Question.h"
+#import "HJObjManager.h"
+#import "HJManagedImageV.h"
 
 @class QuizBaseViewController;
 @class QuizManager;
@@ -40,6 +42,8 @@
     BOOL statsHistoryNeedsUpdate;
     
     UIActivityIndicatorView *spinner;
+    
+    HJObjManager* objMan;
 }
 
 @property (nonatomic) IBOutlet UIWindow *window;
@@ -62,12 +66,16 @@
 
 @property (nonatomic) UIActivityIndicatorView *spinner;
 
-- (UIImage *) getPicture:(NSString*)imageURL;
+@property (nonatomic) HJObjManager* objMan;
+
+//- (UIImage *) getPicture:(NSString*)imageURL;
 
 - (void)fbLogout;
 
 - (void)setupNextQuestion:(Question *)nextQuestion;
 
 + (void)downloadingContentFailed;
+
++ (BOOL) manageImage:(HJManagedImageV *)image;
 
 @end

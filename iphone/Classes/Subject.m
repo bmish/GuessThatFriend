@@ -10,31 +10,29 @@
 
 @implementation Subject
 
-@synthesize facebookId, name, picture, link;
+@synthesize facebookId, name;
 
 - (Subject *)initWithName:(NSString *)friendName andFacebookId:(NSString *)myfacebookId {
     self = [super init];
     
     if (self) {
-        // Create the image path and download the subject's image.
-        NSString *imageURL = [Subject getPictureURLFromFacebookID:myfacebookId];
-        NSURL *url = [NSURL URLWithString:imageURL];
-        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
-        
         self.name = friendName;
-        self.picture = image;
         self.facebookId = myfacebookId;
-        self.link = [Subject getProfileURLFromFacebookID:myfacebookId]; 
     }
     
 	return self;
 }
 
-+ (NSString *) getPictureURLFromFacebookID:(NSString *)facebookId {
+- (NSURL *) getPictureURL {
+    NSString *urlString = [Subject getPictureURLStringFromFacebookID:self.facebookId];
+    return [NSURL URLWithString:urlString];
+}
+
++ (NSString *) getPictureURLStringFromFacebookID:(NSString *)facebookId {
     return [NSString stringWithFormat:@"%@%@%@", @"https://graph.facebook.com/", facebookId, @"/picture"];
 }
 
-+ (NSString *) getProfileURLFromFacebookID:(NSString *)facebookId {
++ (NSString *) getProfileURLStringFromFacebookID:(NSString *)facebookId {
     return [NSString stringWithFormat:@"%@%@", @"https://www.facebook.com/", facebookId];
 }
 

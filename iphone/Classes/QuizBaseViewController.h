@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJManagedImageV.h"
 
 @class SettingsViewController;
 
@@ -14,14 +15,14 @@
 	int questionID;
     bool isQuestionAnswered;
 	UILabel *questionLabel;
-    UIImageView *topicImage;
+    HJManagedImageV *topicImage;
     SettingsViewController *settingsViewController;
 }
 
 @property int questionID;
 @property bool isQuestionAnswered;
 @property (nonatomic) IBOutlet UILabel *questionLabel;
-@property (nonatomic) IBOutlet UIImageView *topicImage;
+@property (nonatomic) IBOutlet HJManagedImageV *topicImage;
 @property (nonatomic) SettingsViewController *settingsViewController;
 
 @end

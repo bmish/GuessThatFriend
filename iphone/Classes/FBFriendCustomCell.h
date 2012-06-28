@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJManagedImageV.h"
 
 @interface FBFriendCustomCell : UITableViewCell {
-	UIImageView *picture;
+	//UIImageView *picture;
+    HJManagedImageV *picture;
 	UILabel *name;
 }
 
-@property (nonatomic) IBOutlet UIImageView *picture;
+@property (nonatomic, strong) IBOutlet HJManagedImageV *picture;
 @property (nonatomic) IBOutlet UILabel *name;
 
 @end

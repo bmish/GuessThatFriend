@@ -10,7 +10,10 @@
 
 @implementation Question
 
-@synthesize questionId, category, subject, text, correctFacebookId, chosenOption, topicImageURL;
+@synthesize questionId, category, subject, text, correctFacebookId, chosenOption, topicImageURLString;
 
+- (NSURL *)getTopicImageURL {
+    return [NSURL URLWithString:topicImageURLString];
+}
 
 @end
