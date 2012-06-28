@@ -109,7 +109,7 @@ class MCQuestion extends Question	{
 		$result = mysql_query($deleteQuery);
 		
 		if (!$result) {
-			Error::saveErrorToDB("Unable to delete options for question #".$questionId." from database.");
+			Error::saveErrorToDB("OptionDeletionFailed", "Unable to delete options for question #".$questionId." from database.");
 			
 			return false;
 		}

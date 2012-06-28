@@ -153,7 +153,7 @@ abstract class Question	{
 		$result = mysql_query($deleteQuery);
 		
 		if (!$result) {
-			Error::saveErrorToDB("Unable to delete question #".$questionId." from database.");
+			Error::saveErrorToDB("QuestionDeletionFailed", "Unable to delete question #".$questionId." from database.");
 			
 			return false;
 		}
