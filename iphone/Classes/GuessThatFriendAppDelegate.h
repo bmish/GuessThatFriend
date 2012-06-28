@@ -68,4 +68,6 @@
 
 - (void)setupNextQuestion:(Question *)nextQuestion;
 
++ (void)downloadingContentFailed;
+
 @end

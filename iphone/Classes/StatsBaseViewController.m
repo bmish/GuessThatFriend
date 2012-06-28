@@ -66,6 +66,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [spinner stopAnimating];
     isRequestInProgress = NO;
+    [GuessThatFriendAppDelegate downloadingContentFailed];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -78,8 +79,11 @@
     isRequestInProgress = NO;
     
     // Initialize array of questions from the server's response.
-    [self createStatsFromServerResponse:responseString];
-    [table reloadData];
+    if ([self createStatsFromServerResponse:responseString]) {
+        [table reloadData];
+    } else {
+        [GuessThatFriendAppDelegate downloadingContentFailed];
+    }
 }
 
 - (BOOL)createStatsFromServerResponse:(NSString *)response {

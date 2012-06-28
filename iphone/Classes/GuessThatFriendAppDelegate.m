@@ -79,7 +79,7 @@
         self.nextButton.hidden = false;
         quizViewController.topicImage.hidden = true;
         
-        [self questionRetrievalFailed];
+        [GuessThatFriendAppDelegate downloadingContentFailed];
     }
     
     // Start timer for this question.
@@ -87,7 +87,7 @@
 }
 
 
-- (void)questionRetrievalFailed {
++ (void)downloadingContentFailed {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Downloading Content Failed" message:@"Please try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
