@@ -66,6 +66,15 @@
 		938CE1B314F9C03700BE5698 /* FillBlankQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 938CE1B214F9C03700BE5698 /* FillBlankQuestion.m */; };
 		93BA120914F9B10100248763 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120814F9B10100248763 /* Category.m */; };
 		93BA120C14F9BAF000248763 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BA120B14F9BAF000248763 /* Subject.m */; };
+		93D85F5F159C1C7500B21301 /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F56159C1C7500B21301 /* HJCircularBuffer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F60159C1C7500B21301 /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F57159C1C7500B21301 /* HJManagedImageV.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F61159C1C7500B21301 /* HJMOBigFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F58159C1C7500B21301 /* HJMOBigFileCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F62159C1C7500B21301 /* HJMOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F59159C1C7500B21301 /* HJMOFileCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F63159C1C7500B21301 /* HJMOHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F5A159C1C7500B21301 /* HJMOHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F64159C1C7500B21301 /* HJMOPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F5B159C1C7500B21301 /* HJMOPolicy.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F65159C1C7500B21301 /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F5C159C1C7500B21301 /* HJMOUserBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F66159C1C7500B21301 /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F5D159C1C7500B21301 /* HJObjManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		93D85F67159C1C7500B21301 /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F5E159C1C7500B21301 /* HJWeakMutableArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93E21BFE150DBDD000A475DC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E21BFD150DBDD000A475DC /* SenTestingKit.framework */; };
 		93E21BFF150DBDD000A475DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		93E21C00150DBDD000A475DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -186,6 +195,26 @@
 		93BA120814F9B10100248763 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 		93BA120A14F9BAF000248763 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subject.h; sourceTree = "<group>"; };
 		93BA120B14F9BAF000248763 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subject.m; sourceTree = "<group>"; };
+		93D85F4B159C1C7500B21301 /* HJCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJCircularBuffer.h; path = libraries/HJCache/HJCacheClasses/HJCircularBuffer.h; sourceTree = "<group>"; };
+		93D85F4C159C1C7500B21301 /* HJManagedImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJManagedImageV.h; path = libraries/HJCache/HJCacheClasses/HJManagedImageV.h; sourceTree = "<group>"; };
+		93D85F4D159C1C7500B21301 /* HJManagedImageVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJManagedImageVDelegate.h; path = libraries/HJCache/HJCacheClasses/HJManagedImageVDelegate.h; sourceTree = "<group>"; };
+		93D85F4E159C1C7500B21301 /* HJMOBigFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOBigFileCache.h; path = libraries/HJCache/HJCacheClasses/HJMOBigFileCache.h; sourceTree = "<group>"; };
+		93D85F4F159C1C7500B21301 /* HJMOFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOFileCache.h; path = libraries/HJCache/HJCacheClasses/HJMOFileCache.h; sourceTree = "<group>"; };
+		93D85F50159C1C7500B21301 /* HJMOHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOHandler.h; path = libraries/HJCache/HJCacheClasses/HJMOHandler.h; sourceTree = "<group>"; };
+		93D85F51159C1C7500B21301 /* HJMOPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOPolicy.h; path = libraries/HJCache/HJCacheClasses/HJMOPolicy.h; sourceTree = "<group>"; };
+		93D85F52159C1C7500B21301 /* HJMOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOUser.h; path = libraries/HJCache/HJCacheClasses/HJMOUser.h; sourceTree = "<group>"; };
+		93D85F53159C1C7500B21301 /* HJMOUserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOUserBase.h; path = libraries/HJCache/HJCacheClasses/HJMOUserBase.h; sourceTree = "<group>"; };
+		93D85F54159C1C7500B21301 /* HJObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJObjManager.h; path = libraries/HJCache/HJCacheClasses/HJObjManager.h; sourceTree = "<group>"; };
+		93D85F55159C1C7500B21301 /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJWeakMutableArray.h; path = libraries/HJCache/HJCacheClasses/HJWeakMutableArray.h; sourceTree = "<group>"; };
+		93D85F56159C1C7500B21301 /* HJCircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJCircularBuffer.m; path = libraries/HJCache/HJCacheClasses/HJCircularBuffer.m; sourceTree = "<group>"; };
+		93D85F57159C1C7500B21301 /* HJManagedImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJManagedImageV.m; path = libraries/HJCache/HJCacheClasses/HJManagedImageV.m; sourceTree = "<group>"; };
+		93D85F58159C1C7500B21301 /* HJMOBigFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOBigFileCache.m; path = libraries/HJCache/HJCacheClasses/HJMOBigFileCache.m; sourceTree = "<group>"; };
+		93D85F59159C1C7500B21301 /* HJMOFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOFileCache.m; path = libraries/HJCache/HJCacheClasses/HJMOFileCache.m; sourceTree = "<group>"; };
+		93D85F5A159C1C7500B21301 /* HJMOHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOHandler.m; path = libraries/HJCache/HJCacheClasses/HJMOHandler.m; sourceTree = "<group>"; };
+		93D85F5B159C1C7500B21301 /* HJMOPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOPolicy.m; path = libraries/HJCache/HJCacheClasses/HJMOPolicy.m; sourceTree = "<group>"; };
+		93D85F5C159C1C7500B21301 /* HJMOUserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOUserBase.m; path = libraries/HJCache/HJCacheClasses/HJMOUserBase.m; sourceTree = "<group>"; };
+		93D85F5D159C1C7500B21301 /* HJObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJObjManager.m; path = libraries/HJCache/HJCacheClasses/HJObjManager.m; sourceTree = "<group>"; };
+		93D85F5E159C1C7500B21301 /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJWeakMutableArray.m; path = libraries/HJCache/HJCacheClasses/HJWeakMutableArray.m; sourceTree = "<group>"; };
 		93E21BFC150DBDD000A475DC /* UnitTesting.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTesting.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E21BFD150DBDD000A475DC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		93E21C03150DBDD000A475DC /* UnitTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTesting-Info.plist"; sourceTree = "<group>"; };
@@ -471,6 +500,7 @@
 		933185E7159B983D00DF926D /* libraries */ = {
 			isa = PBXGroup;
 			children = (
+				93D85F49159C1C5D00B21301 /* HJCache */,
 				933185EA159B984A00DF926D /* facebook-ios-sdk */,
 				933185E9159B984500DF926D /* JSONKit */,
 			);
@@ -524,6 +554,33 @@
 				9331860F159B98F700DF926D /* SBJsonWriter.m */,
 			);
 			name = JSON;
+			sourceTree = "<group>";
+		};
+		93D85F49159C1C5D00B21301 /* HJCache */ = {
+			isa = PBXGroup;
+			children = (
+				93D85F4B159C1C7500B21301 /* HJCircularBuffer.h */,
+				93D85F4C159C1C7500B21301 /* HJManagedImageV.h */,
+				93D85F4D159C1C7500B21301 /* HJManagedImageVDelegate.h */,
+				93D85F4E159C1C7500B21301 /* HJMOBigFileCache.h */,
+				93D85F4F159C1C7500B21301 /* HJMOFileCache.h */,
+				93D85F50159C1C7500B21301 /* HJMOHandler.h */,
+				93D85F51159C1C7500B21301 /* HJMOPolicy.h */,
+				93D85F52159C1C7500B21301 /* HJMOUser.h */,
+				93D85F53159C1C7500B21301 /* HJMOUserBase.h */,
+				93D85F54159C1C7500B21301 /* HJObjManager.h */,
+				93D85F55159C1C7500B21301 /* HJWeakMutableArray.h */,
+				93D85F56159C1C7500B21301 /* HJCircularBuffer.m */,
+				93D85F57159C1C7500B21301 /* HJManagedImageV.m */,
+				93D85F58159C1C7500B21301 /* HJMOBigFileCache.m */,
+				93D85F59159C1C7500B21301 /* HJMOFileCache.m */,
+				93D85F5A159C1C7500B21301 /* HJMOHandler.m */,
+				93D85F5B159C1C7500B21301 /* HJMOPolicy.m */,
+				93D85F5C159C1C7500B21301 /* HJMOUserBase.m */,
+				93D85F5D159C1C7500B21301 /* HJObjManager.m */,
+				93D85F5E159C1C7500B21301 /* HJWeakMutableArray.m */,
+			);
+			name = HJCache;
 			sourceTree = "<group>";
 		};
 		93E21C01150DBDD000A475DC /* UnitTesting */ = {
@@ -722,6 +779,15 @@
 				93318614159B98F700DF926D /* SBJsonParser.m in Sources */,
 				93318615159B98F700DF926D /* SBJsonWriter.m in Sources */,
 				9385D01A159BAD8500A73FA5 /* main.m in Sources */,
+				93D85F5F159C1C7500B21301 /* HJCircularBuffer.m in Sources */,
+				93D85F60159C1C7500B21301 /* HJManagedImageV.m in Sources */,
+				93D85F61159C1C7500B21301 /* HJMOBigFileCache.m in Sources */,
+				93D85F62159C1C7500B21301 /* HJMOFileCache.m in Sources */,
+				93D85F63159C1C7500B21301 /* HJMOHandler.m in Sources */,
+				93D85F64159C1C7500B21301 /* HJMOPolicy.m in Sources */,
+				93D85F65159C1C7500B21301 /* HJMOUserBase.m in Sources */,
+				93D85F66159C1C7500B21301 /* HJObjManager.m in Sources */,
+				93D85F67159C1C7500B21301 /* HJWeakMutableArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

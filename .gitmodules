@@ -4,3 +4,6 @@
 [submodule "iphone/libraries/JSONKit"]
 	path = iphone/libraries/JSONKit
 	url = git://github.com/johnezang/JSONKit.git
+[submodule "iphone/libraries/HJCache"]
+	path = iphone/libraries/HJCache
+	url = git://github.com/markofjohnson/HJCache.git
