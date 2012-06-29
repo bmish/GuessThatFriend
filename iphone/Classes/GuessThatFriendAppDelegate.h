@@ -66,8 +66,6 @@
 
 @property (nonatomic) HJObjManager* objMan;
 
-//- (UIImage *) getPicture:(NSString*)imageURL;
-
 - (void)fbLogout;
 
 - (void)setupNextQuestion:(Question *)nextQuestion;

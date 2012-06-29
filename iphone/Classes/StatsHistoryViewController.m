@@ -71,7 +71,6 @@
     [super viewWillAppear:animated];
 }
 
-/* Everytime this view will appear, we ask the server for stats jason */
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
