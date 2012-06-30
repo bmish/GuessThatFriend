@@ -51,11 +51,11 @@
     NSMutableString *responseString = [[NSMutableString alloc] initWithData:responseData
                                                         encoding:NSASCIIStringEncoding];
     
+    [self receivedQuestionResponse:responseString];
+    
     // Release connection vars.
     [[QuizManager sharedAppDelegate].spinner stopAnimating];
     isRequestInProgress = NO;
-    
-    [self receivedQuestionResponse:responseString];
 }
 
 - (void)receivedQuestionResponse:(NSMutableString *)responseString {
