@@ -17,7 +17,7 @@
     
     self.question = text;
     
-    self.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,13,50,50)];
+    self.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,13,54,54)];
     self.picture.url = [subject getPictureURL];
     [GuessThatFriendAppDelegate manageImage:self.picture];
     

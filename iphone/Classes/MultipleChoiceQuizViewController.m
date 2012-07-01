@@ -69,7 +69,7 @@
 	Option *option = [optionsList objectAtIndex:row];
     
 	//cell.picture.image = option.subject.picture;
-    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,7,50,50)];
+    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,0,64,64)];
     cell.picture.url = [option.subject getPictureURL];
     [GuessThatFriendAppDelegate manageImage:cell.picture];
     [cell addSubview:cell.picture];

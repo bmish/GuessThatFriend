@@ -88,7 +88,7 @@
 	
     FriendStatsObject *obj = [list objectAtIndex:row];
     
-    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,2,50,50)];
+    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,0,54,54)];
     cell.picture.url = [obj.subject getPictureURL];
 	[GuessThatFriendAppDelegate manageImage:cell.picture];
     [cell addSubview:cell.picture];
