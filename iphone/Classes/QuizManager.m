@@ -22,15 +22,17 @@
 @synthesize bufferedFBToken;
 
 - (QuizManager *)initWithFBToken:(NSString *)paramFBToken {
-    isRequestInProgress = NO;
-    isQuestionNeeded = NO;
+    if (self = [super init]) {
+        isRequestInProgress = NO;
+        isQuestionNeeded = NO;
     
-    questionArray = [[NSMutableArray alloc] initWithCapacity:20];
-    bufferedFBToken = paramFBToken;
+        questionArray = [[NSMutableArray alloc] initWithCapacity:20];
+        bufferedFBToken = paramFBToken;
     
-    [self requestQuestionsFromServer];    
+        [self requestQuestionsFromServer];
+    }
     
-	return [super init];
+	return self;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
