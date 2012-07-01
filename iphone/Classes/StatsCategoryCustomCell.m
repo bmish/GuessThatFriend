@@ -13,8 +13,8 @@
 @synthesize name;
 @synthesize progressBar;
 @synthesize percentageLabel;
-@synthesize fastestCorrectRT;
-@synthesize averageRT;
+@synthesize fastestCorrectResponseTime;
+@synthesize averageResponseTime;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

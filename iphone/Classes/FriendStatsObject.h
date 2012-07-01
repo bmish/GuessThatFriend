@@ -12,15 +12,15 @@
     Subject *subject;
     int correctCount;
     int totalCount;
-    float fastestCorrectRT;
-    float averageRT;
+    float fastestCorrectResponseTime;
+    float averageResponseTime;
 }
 
 @property (nonatomic) Subject *subject;
 @property int correctCount;
 @property int totalCount;
-@property float fastestCorrectRT;
-@property float averageRT;
+@property float fastestCorrectResponseTime;
+@property float averageResponseTime;
 
 - (FriendStatsObject *)initWithSubject:(Subject *)mySubject andCorrectCount:(int)cCount andTotalCount:(int)tCount andFastestRT:(int)fRT andAverageRT:(int)aRT;
 

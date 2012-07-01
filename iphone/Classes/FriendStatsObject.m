@@ -12,20 +12,20 @@
 @implementation FriendStatsObject
 
 @synthesize subject, correctCount, totalCount;
-@synthesize fastestCorrectRT, averageRT;
+@synthesize fastestCorrectResponseTime, averageResponseTime;
 
 - (FriendStatsObject *)initWithSubject:(Subject *)mySubject andCorrectCount:(int)cCount andTotalCount:(int)tCount andFastestRT:(int)fRT andAverageRT:(int)aRT {
     
     self.subject = mySubject;
     self.correctCount = cCount;
     self.totalCount = tCount;
-    self.fastestCorrectRT = ((float)fRT) / 1000.0;
-    if (self.fastestCorrectRT < 0) {
-        self.fastestCorrectRT *= -1;
+    self.fastestCorrectResponseTime = fRT == 0 ? 0.0 : ((float)fRT) / 1000.0;
+    if (self.fastestCorrectResponseTime < 0) {
+        self.fastestCorrectResponseTime *= -1;
     }
-    self.averageRT = ((float)aRT) / 1000.0;
-    if (self.averageRT < 0) {
-        self.averageRT *= -1;
+    self.averageResponseTime = aRT == 0 ? 0.0 : ((float)aRT) / 1000.0;
+    if (self.averageResponseTime < 0) {
+        self.averageResponseTime *= -1;
     }
     
     return [super init];

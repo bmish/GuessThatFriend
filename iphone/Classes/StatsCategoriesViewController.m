@@ -104,8 +104,8 @@
     cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 
 	[cell.progressBar setProgress:percentage animated:NO];
     
-    cell.fastestCorrectRT.text = [NSString stringWithFormat:@"%0.2fs", obj.fastestCorrectResponseTime];
-    cell.averageRT.text = [NSString stringWithFormat:@"%0.2fs", obj.averageResponseTime];
+    cell.fastestCorrectResponseTime.text = obj.fastestCorrectResponseTime < 0.01 ? @"none" : [NSString stringWithFormat:@"%0.2fs", obj.fastestCorrectResponseTime];
+    cell.averageResponseTime.text = [NSString stringWithFormat:@"%0.2fs", obj.averageResponseTime];
     
 	return cell;
 }

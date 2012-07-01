@@ -12,14 +12,14 @@
     UILabel *name;
     UIProgressView *progressBar;
     UILabel *percentageLabel;
-    UILabel *fastestCorrectRT;
-    UILabel *averageRT;
+    UILabel *fastestCorrectResponseTime;
+    UILabel *averageResponseTime;
 }
 
 @property (nonatomic) IBOutlet UILabel *name;
 @property (nonatomic) IBOutlet UIProgressView *progressBar;
 @property (nonatomic) IBOutlet UILabel *percentageLabel;
-@property (nonatomic) IBOutlet UILabel *fastestCorrectRT;
-@property (nonatomic) IBOutlet UILabel *averageRT;
+@property (nonatomic) IBOutlet UILabel *fastestCorrectResponseTime;
+@property (nonatomic) IBOutlet UILabel *averageResponseTime;
 
 @end
