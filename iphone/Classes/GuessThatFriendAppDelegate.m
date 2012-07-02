@@ -158,6 +158,7 @@
     nextButton.frame = buttonRect;
     [nextButton setTitle:@"" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    nextButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     
     // UIBUtton nextButton is enabled / disabled! @see code after alloc-ing QuizManager
     
