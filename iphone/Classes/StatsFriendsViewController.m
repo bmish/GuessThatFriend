@@ -79,19 +79,29 @@
 	
 	StatsFriendCustomCell *cell = (StatsFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"StatsFriendCustomCellIdentifier"];
 	
+    // Retrieve the image.
+    HJManagedImageV* mi;
 	if(cell == nil) {
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StatsFriendCustomCell" owner:self options:nil];
 		cell = [nib objectAtIndex:0];
-	}
+        
+        // Create a new image to use.
+        mi = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,0,54,54)];
+        mi.tag = 999;
+        [cell addSubview:mi];
+	} else {
+        // Get a reference to the managed image view that was already in the recycled cell, and clear it.
+        mi = (HJManagedImageV*)[cell viewWithTag:999];
+		[mi clear];
+    }
 	
 	NSUInteger row = [indexPath row];
 	
     FriendStatsObject *obj = [list objectAtIndex:row];
     
-    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,0,54,54)];
-    cell.picture.url = [obj.subject getPictureURL];
-	[GuessThatFriendAppDelegate manageImage:cell.picture];
-    [cell addSubview:cell.picture];
+    // Update the image.
+    mi.url = [obj.subject getPictureURL];
+    [GuessThatFriendAppDelegate manageImage:mi];
     
     // Make sure the name is valid.
     NSString *name = obj.subject.name;
@@ -99,6 +109,7 @@
         name = @"Something is wrong";
     }
     cell.name.text = name;
+    cell.picture = mi;
     
     float percentage = (float)obj.correctCount / obj.totalCount;
     cell.percentageLabel.text = [NSString stringWithFormat:@"%i/%i", obj.correctCount, obj.totalCount]; 

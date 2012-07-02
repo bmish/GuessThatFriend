@@ -86,17 +86,30 @@
     
 	StatsHistoryCustomCell *cell = (StatsHistoryCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"StatsHistoryCustomCellIdentifier"];
 	
+    // Retrieve the image.
+    HJManagedImageV* mi;
 	if(cell == nil) {
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StatsHistoryCustomCell" owner:self options:nil];
 		cell = [nib objectAtIndex:0];
-	}
+        
+        // Create a new image to use.
+        mi = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,13,54,54)];
+        mi.tag = 999;
+        [cell addSubview:mi];
+	} else {
+        // Get a reference to the managed image view that was already in the recycled cell, and clear it.
+        mi = (HJManagedImageV*)[cell viewWithTag:999];
+		[mi clear];
+    }
 	
 	NSUInteger row = [indexPath row];
-	
     HistoryStatsObject *obj = [list objectAtIndex:row];
     
-    cell.text.text = obj.question;
+    // Update the image.
+    mi.url = [obj.subject getPictureURL];
+    [GuessThatFriendAppDelegate manageImage:mi];
     
+    cell.text.text = obj.question;
     cell.correctAnswer.text = obj.correctAnswer;
     cell.chosenAnswer.text = obj.yourAnswer;
     if ([obj.correctAnswer isEqualToString:obj.yourAnswer]) {
@@ -104,10 +117,8 @@
     } else {
         cell.correctAnswer.textColor = [UIColor redColor];
     }
-    
     cell.date.text = obj.date;
-    cell.picture = obj.picture;
-    [cell addSubview:cell.picture];
+    cell.picture = mi;
     cell.responseTime.text = [NSString stringWithFormat:@"in %0.2fs", obj.responseTime];
     
 	return cell;

@@ -57,13 +57,20 @@
         MCQuestion *mcQuestion = (MCQuestion *)nextQuestion;
         
         quizViewController.questionString = mcQuestion.text;
-         
-        HJManagedImageV *topicImage = [[HJManagedImageV alloc] initWithFrame:CGRectMake(220,9,80,80)];
+        
+        // Retrieve the topic image.
+        HJManagedImageV *topicImage = [self findTopicImage];
+        if (topicImage) { // Clear and use the existing image.
+            [topicImage clear];
+        } else { // Create a new image to use.
+            topicImage = [[HJManagedImageV alloc] initWithFrame:CGRectMake(220,9,80,80)];
+            topicImage.tag = 999;
+            [quizViewController.view addSubview:topicImage];
+        }
+        
+        // Update the topic image.
         topicImage.url = [mcQuestion getTopicImageURL];
         [GuessThatFriendAppDelegate manageImage:topicImage];
-        [quizViewController.view addSubview:topicImage];
-                
-        quizViewController.topicImage = topicImage;
         
         quizViewController.correctFacebookId = mcQuestion.correctFacebookId;
         quizViewController.optionsList = [NSArray arrayWithArray:mcQuestion.options];
@@ -75,18 +82,30 @@
         quizViewController.questionLabel.hidden = false;
         quizViewController.friendsTable.hidden = false;
         self.nextButton.hidden = false;
-        quizViewController.topicImage.hidden = false;
     } else { // No question so hide question text.
         quizViewController.questionLabel.hidden = true;
         quizViewController.friendsTable.hidden = true;
         self.nextButton.hidden = false;
-        quizViewController.topicImage.hidden = true;
         
         [GuessThatFriendAppDelegate downloadingContentFailed];
     }
     
     // Start timer for this question.
     responseTimer = [NSDate date];
+}
+
+- (HJManagedImageV *)findTopicImage {
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    NSArray *subviews = quizViewController.view.subviews;
+
+    for (int i = 0; i < [subviews count]; i++) {
+        UIView *subview = [subviews objectAtIndex:i];
+        if (subview.tag == 999) {
+            return (HJManagedImageV*)subview;
+        }
+    }
+    
+    return NULL;
 }
 
 

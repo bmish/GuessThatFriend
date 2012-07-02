@@ -11,7 +11,7 @@
 
 @interface HistoryStatsObject : NSObject {
     NSString *question;
-    HJManagedImageV *picture;
+    Subject *subject;
     NSString *correctAnswer;
     NSString *yourAnswer;
     NSString *date;
@@ -19,12 +19,12 @@
 }
 
 @property (nonatomic) NSString *question;
-@property (nonatomic, strong) HJManagedImageV *picture;
+@property (nonatomic) Subject *subject;
 @property (nonatomic) NSString *correctAnswer;
 @property (nonatomic) NSString *yourAnswer;
 @property (nonatomic) NSString *date;
 @property float responseTime;
 
-- (HistoryStatsObject *)initWithQuestion:(NSString *)text andSubject:(Subject *)subject andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt;
+- (HistoryStatsObject *)initWithQuestion:(NSString *)text andSubject:(Subject *)theSubject andCorrectAnswer:(NSString *)cAnswer andYourAnswer:(NSString *)yAnswer andDate:(NSString *)theDate andResponseTime:(int)rt;
 
 @end

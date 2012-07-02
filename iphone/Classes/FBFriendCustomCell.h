@@ -10,7 +10,6 @@
 #import "HJManagedImageV.h"
 
 @interface FBFriendCustomCell : UITableViewCell {
-	//UIImageView *picture;
     HJManagedImageV *picture;
 	UILabel *name;
 }

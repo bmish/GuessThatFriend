@@ -59,24 +59,32 @@
     
 	FBFriendCustomCell *cell = (FBFriendCustomCell *)[tableView dequeueReusableCellWithIdentifier:@"FBFriendCustomCellIdentifier"];
 	
+    // Retrieve the image.
+    HJManagedImageV* mi;
 	if(cell == nil) {
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FBFriendCustomCell" owner:self options:nil];
 		cell = [nib objectAtIndex:0];
+        
+        // Create a new image to use.
+        mi = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,0,64,64)];
+        mi.tag = 999;
+        [cell addSubview:mi];
+	} else {
+		// Get a reference to the managed image view that was already in the recycled cell, and clear it.
+        mi = (HJManagedImageV*)[cell viewWithTag:999];
+		[mi clear];
 	}
 	
 	NSUInteger row = [indexPath row];
-	
 	Option *option = [optionsList objectAtIndex:row];
     
-    cell.picture = [[HJManagedImageV alloc] initWithFrame:CGRectMake(0,0,64,64)];
-    cell.picture.url = [option.subject getPictureURL];
-    [GuessThatFriendAppDelegate manageImage:cell.picture];
-    [cell addSubview:cell.picture];
+    // Update the image.
+    mi.url = [option.subject getPictureURL];
+    [GuessThatFriendAppDelegate manageImage:mi];
     
-	cell.name.text = option.subject.name;
-    
-    // disable the checkmark.
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.picture = mi;
+	cell.name.text = option.subject.name;    
+    cell.accessoryType = UITableViewCellAccessoryNone; // disable the checkmark.
     
 	return cell;
 }
