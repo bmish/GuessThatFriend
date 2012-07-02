@@ -50,9 +50,7 @@
 		9385D00F159BAD5300A73FA5 /* FBFriendCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D00C159BAD5300A73FA5 /* FBFriendCustomCell.xib */; };
 		9385D010159BAD5300A73FA5 /* FillInBlankQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D00D159BAD5300A73FA5 /* FillInBlankQuizViewController.xib */; };
 		9385D011159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D00E159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib */; };
-		9385D015159BAD6D00A73FA5 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D012159BAD6D00A73FA5 /* blueButton.png */; };
 		9385D016159BAD6D00A73FA5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D013159BAD6D00A73FA5 /* Default.png */; };
-		9385D017159BAD6D00A73FA5 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D014159BAD6D00A73FA5 /* whiteButton.png */; };
 		9385D01A159BAD8500A73FA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9385D019159BAD8500A73FA5 /* main.m */; };
 		9385D01E159BAE5C00A73FA5 /* tab1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D01B159BAE5C00A73FA5 /* tab1.png */; };
 		9385D01F159BAE5C00A73FA5 /* tab2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385D01C159BAE5C00A73FA5 /* tab2.png */; };
@@ -172,9 +170,7 @@
 		9385D00C159BAD5300A73FA5 /* FBFriendCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FBFriendCustomCell.xib; path = xibs/FBFriendCustomCell.xib; sourceTree = "<group>"; };
 		9385D00D159BAD5300A73FA5 /* FillInBlankQuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FillInBlankQuizViewController.xib; path = xibs/FillInBlankQuizViewController.xib; sourceTree = "<group>"; };
 		9385D00E159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MultipleChoiceQuizViewController.xib; path = xibs/MultipleChoiceQuizViewController.xib; sourceTree = "<group>"; };
-		9385D012159BAD6D00A73FA5 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueButton.png; path = images/blueButton.png; sourceTree = "<group>"; };
 		9385D013159BAD6D00A73FA5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
-		9385D014159BAD6D00A73FA5 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whiteButton.png; path = images/whiteButton.png; sourceTree = "<group>"; };
 		9385D019159BAD8500A73FA5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		9385D01B159BAE5C00A73FA5 /* tab1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab1.png; path = images/tab1.png; sourceTree = "<group>"; };
 		9385D01C159BAE5C00A73FA5 /* tab2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab2.png; path = images/tab2.png; sourceTree = "<group>"; };
@@ -400,9 +396,7 @@
 		4D8D797314EB91C900CAA606 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9385D012159BAD6D00A73FA5 /* blueButton.png */,
 				9385D013159BAD6D00A73FA5 /* Default.png */,
-				9385D014159BAD6D00A73FA5 /* whiteButton.png */,
 				4D64798515437CAA00402CF7 /* GUI */,
 				4DB4F5241541C5CD00106D78 /* TabImages */,
 			);
@@ -689,9 +683,7 @@
 				9385D00F159BAD5300A73FA5 /* FBFriendCustomCell.xib in Resources */,
 				9385D010159BAD5300A73FA5 /* FillInBlankQuizViewController.xib in Resources */,
 				9385D011159BAD5300A73FA5 /* MultipleChoiceQuizViewController.xib in Resources */,
-				9385D015159BAD6D00A73FA5 /* blueButton.png in Resources */,
 				9385D016159BAD6D00A73FA5 /* Default.png in Resources */,
-				9385D017159BAD6D00A73FA5 /* whiteButton.png in Resources */,
 				9385D01E159BAE5C00A73FA5 /* tab1.png in Resources */,
 				9385D01F159BAE5C00A73FA5 /* tab2.png in Resources */,
 				9385D020159BAE5C00A73FA5 /* tab3.png in Resources */,
