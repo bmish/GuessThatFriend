@@ -21,7 +21,6 @@
     UINavigationController *navController;
     UITabBarController *tabController;
     
-    UIBarButtonItem *settingsItem;
     UIBarButtonItem *doneItem;
     QuizBaseViewController *viewController;
     Facebook *facebook;
@@ -49,7 +48,6 @@
 @property (nonatomic) IBOutlet UINavigationController *navController;
 @property (nonatomic) IBOutlet UITabBarController *tabController;
 
-@property (nonatomic) IBOutlet UIBarButtonItem *settingsItem;
 @property (nonatomic) IBOutlet UIBarButtonItem *doneItem;
 
 @property (nonatomic) IBOutlet QuizBaseViewController *viewController;

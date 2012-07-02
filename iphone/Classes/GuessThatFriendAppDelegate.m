@@ -9,7 +9,6 @@
 #import "GuessThatFriendAppDelegate.h"
 #import "QuizBaseViewController.h"
 #import "MultipleChoiceQuizViewController.h"
-#import "SettingsViewController.h"
 #import "QuizManager.h"
 #import "QuizSettings.h"
 #import "Question.h"
@@ -26,7 +25,6 @@
 @synthesize window;
 @synthesize navController;
 @synthesize tabController;
-@synthesize settingsItem;
 @synthesize doneItem;
 @synthesize viewController;
 @synthesize facebook;

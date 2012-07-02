@@ -8,7 +8,6 @@
 
 #import "QuizBaseViewController.h"
 #import "GuessThatFriendAppDelegate.h"
-#import "SettingsViewController.h"
 
 @implementation QuizBaseViewController
 
@@ -16,17 +15,6 @@
 @synthesize isQuestionAnswered;
 @synthesize questionLabel;
 @synthesize topicImage;
-@synthesize settingsViewController;
-
-- (IBAction)settingsItemPressed:(id)sender {
-    if(settingsViewController == nil) {
-		SettingsViewController *settingsController = [[SettingsViewController alloc] 
-                                                      initWithNibName:@"SettingsViewController" bundle:nil];
-		self.settingsViewController = settingsController;
-	}
-    
-    [self.navigationController pushViewController:self.settingsViewController animated:YES];
-}
 
 - (IBAction)viewStatsItemPressed:(id)sender {
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -85,7 +73,6 @@
 	
 	self.questionLabel = nil;	
     self.topicImage = nil;
-    self.settingsViewController = nil;
 }
 
 

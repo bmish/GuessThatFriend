@@ -21,8 +21,6 @@
 		4D8D7ABE14EC606A00CAA606 /* QuizSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8D7ABD14EC606A00CAA606 /* QuizSettings.m */; };
 		4D922B57154EF24E0092B5F4 /* StatsCategoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */; };
 		4D922B5A154EF25E0092B5F4 /* StatsHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */; };
-		4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */; };
-		4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */; };
 		4DF27806154E775E00603D4A /* StatsCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */; };
 		4DF27809154E776D00603D4A /* StatsHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF27808154E776D00603D4A /* StatsHistoryViewController.m */; };
 		4DF2780C154E7AFF00603D4A /* CategoryStatsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2780B154E7AFF00603D4A /* CategoryStatsObject.m */; };
@@ -124,9 +122,6 @@
 		4D922B56154EF24E0092B5F4 /* StatsCategoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoryCustomCell.m; sourceTree = "<group>"; };
 		4D922B58154EF25E0092B5F4 /* StatsHistoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryCustomCell.h; sourceTree = "<group>"; };
 		4D922B59154EF25E0092B5F4 /* StatsHistoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsHistoryCustomCell.m; sourceTree = "<group>"; };
-		4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
 		4DF27804154E775D00603D4A /* StatsCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsCategoriesViewController.h; sourceTree = "<group>"; };
 		4DF27805154E775D00603D4A /* StatsCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsCategoriesViewController.m; sourceTree = "<group>"; };
 		4DF27807154E776D00603D4A /* StatsHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsHistoryViewController.h; sourceTree = "<group>"; };
@@ -440,8 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				4DFC3A9415400CEF00648D9A /* StatsViewControllers */,
-				4DB36ABF14E8E1CB00E2A563 /* SettingsViewController.h */,
-				4DB36AC014E8E1CB00E2A563 /* SettingsViewController.m */,
 			);
 			name = CommonViewControllers;
 			sourceTree = "<group>";
@@ -455,7 +448,6 @@
 				9385D003159BAD3C00A73FA5 /* StatsFriendCustomCell.xib */,
 				9385D004159BAD3C00A73FA5 /* StatsHistoryCustomCell.xib */,
 				9385D005159BAD3C00A73FA5 /* StatsHistoryViewController.xib */,
-				4DB36AC114E8E1CB00E2A563 /* SettingsViewController.xib */,
 				BA6F95951533DE3600C875F1 /* StatsFriendViewController.xib */,
 			);
 			name = "Common Nibs";
@@ -684,7 +676,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB36AC314E8E1CB00E2A563 /* SettingsViewController.xib in Resources */,
 				BA6F95971533DE3600C875F1 /* StatsFriendViewController.xib in Resources */,
 				BA983F761548C2EC001D59B0 /* imageCachePlist.plist in Resources */,
 				933185FC159B987700DF926D /* FBDialog.bundle in Resources */,
@@ -743,7 +734,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D3623260D0F684500981E51 /* GuessThatFriendAppDelegate.m in Sources */,
-				4DB36AC214E8E1CB00E2A563 /* SettingsViewController.m in Sources */,
 				4D8D79BA14EB992300CAA606 /* FBFriendCustomCell.m in Sources */,
 				4D8D79D614EBA10A00CAA606 /* MultipleChoiceQuizViewController.m in Sources */,
 				4D8D79E514EBA35300CAA606 /* FillInBlankQuizViewController.m in Sources */,

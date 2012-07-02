@@ -16,13 +16,11 @@
     bool isQuestionAnswered;
 	UILabel *questionLabel;
     HJManagedImageV *topicImage;
-    SettingsViewController *settingsViewController;
 }
 
 @property int questionID;
 @property bool isQuestionAnswered;
 @property (nonatomic) IBOutlet UILabel *questionLabel;
 @property (nonatomic) IBOutlet HJManagedImageV *topicImage;
-@property (nonatomic) SettingsViewController *settingsViewController;
 
 @end
