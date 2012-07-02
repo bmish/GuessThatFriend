@@ -82,10 +82,16 @@
         quizViewController.questionLabel.hidden = false;
         quizViewController.friendsTable.hidden = false;
         self.nextButton.hidden = false;
-    } else { // No question so hide question text.
+    } else { // No question so hide question text, question options, and topic image.
         quizViewController.questionLabel.hidden = true;
         quizViewController.friendsTable.hidden = true;
         self.nextButton.hidden = false;
+        
+        // Clear the topic image.
+        HJManagedImageV *topicImage = [self findTopicImage];
+        if (topicImage) {
+            [topicImage clear];
+        }
         
         [GuessThatFriendAppDelegate downloadingContentFailed];
     }
