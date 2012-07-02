@@ -15,6 +15,7 @@
 #import "MCQuestion.h"
 #import "FillBlankQuestion.h"
 
+#define FACEBOOK_APP_ID     "178461392264777"
 #define BASE_URL_ADDR       "http://guessthatfriend.jasonsze.com/api/"
 
 #define IMAGE_CACHE_FILE_COUNT_LIMIT 1000
@@ -233,7 +234,7 @@
 }
 
 - (void)fbLogin {
-    facebook = [[Facebook alloc] initWithAppId:@"178461392264777" andDelegate:self];
+    facebook = [[Facebook alloc] initWithAppId:@FACEBOOK_APP_ID andDelegate:self];
     
     // Check for previsouly saved access token.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
