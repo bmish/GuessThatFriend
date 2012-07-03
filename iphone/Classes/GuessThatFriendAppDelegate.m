@@ -121,6 +121,11 @@
     [alert show];
 }
 
++ (void)noInternetConnectivityAlert {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection" message:@"Please connect to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
 - (bool) didUserSkipCurrentQuestion {
     MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
     
@@ -230,7 +235,46 @@
     correctAnswers = 0;
     totalNumOfQuestions = 0;
     
+    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
+    // method "reachabilityChanged" will be called. 
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    
+    // Change the host name here to change the server your monitoring.
+	hostReach = [Reachability reachabilityWithHostName: @"www.apple.com"];
+	[hostReach startNotifier];
+
     return YES;
+}
+
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+	[self updateInterfaceWithReachability: curReach];
+}
+
+- (void) updateInterfaceWithReachability: (Reachability*) curReach
+{
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    if ([curReach currentReachabilityStatus] == NotReachable) { // Internet doesn't work.
+        nextButton.enabled = NO;
+        nextButton.userInteractionEnabled = NO;
+        quizViewController.friendsTable.allowsSelection = NO;
+        quizViewController.friendsTable.userInteractionEnabled = YES;
+        
+        [GuessThatFriendAppDelegate noInternetConnectivityAlert];
+    } else { // Internet works.
+        nextButton.enabled = YES;
+        nextButton.userInteractionEnabled = YES;
+        quizViewController.friendsTable.allowsSelection = YES;
+        quizViewController.friendsTable.userInteractionEnabled = YES;
+        
+        [quizManager requestNextQuestionAsync];
+        statsFriendsNeedsUpdate = YES;
+        statsCategoriesNeedsUpdate = YES;
+        statsHistoryNeedsUpdate = YES;
+    }	
 }
 
 - (void)fbLogin {

@@ -11,6 +11,7 @@
 #import "Question.h"
 #import "HJObjManager.h"
 #import "HJManagedImageV.h"
+#import "Reachability.h"
 
 @class QuizBaseViewController;
 @class QuizManager;
@@ -42,6 +43,8 @@
     UIActivityIndicatorView *spinner;
     
     HJObjManager* objMan;
+    
+    Reachability* hostReach;
 }
 
 @property (nonatomic) IBOutlet UIWindow *window;

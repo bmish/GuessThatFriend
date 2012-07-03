@@ -40,6 +40,7 @@
 		93318613159B98F700DF926D /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331860B159B98F700DF926D /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93318614159B98F700DF926D /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331860D159B98F700DF926D /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93318615159B98F700DF926D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331860F159B98F700DF926D /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9346111415A2710300411831 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9346111315A2710300411831 /* SystemConfiguration.framework */; };
 		9385CFFE159BAD0400A73FA5 /* GTFIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9385CFFD159BAD0400A73FA5 /* GTFIcon.png */; };
 		9385D006159BAD3C00A73FA5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D000159BAD3C00A73FA5 /* MainWindow.xib */; };
 		9385D007159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9385D001159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib */; };
@@ -70,6 +71,7 @@
 		93D85F67159C1C7500B21301 /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D85F5E159C1C7500B21301 /* HJWeakMutableArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93DED2BA15A25DF60081B359 /* 112-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 93DED2B915A25DF60081B359 /* 112-group.png */; };
 		93DED2BC15A261590081B359 /* 33-cabinet.png in Resources */ = {isa = PBXBuildFile; fileRef = 93DED2BB15A261590081B359 /* 33-cabinet.png */; };
+		93DED2C415A26D2C0081B359 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DED2C315A26D2C0081B359 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		93E21BFE150DBDD000A475DC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E21BFD150DBDD000A475DC /* SenTestingKit.framework */; };
 		93E21BFF150DBDD000A475DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		93E21C00150DBDD000A475DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -159,6 +161,7 @@
 		9331860D159B98F700DF926D /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = "libraries/facebook-ios-sdk/src/JSON/SBJsonParser.m"; sourceTree = "<group>"; };
 		9331860E159B98F700DF926D /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = "libraries/facebook-ios-sdk/src/JSON/SBJsonWriter.h"; sourceTree = "<group>"; };
 		9331860F159B98F700DF926D /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = "libraries/facebook-ios-sdk/src/JSON/SBJsonWriter.m"; sourceTree = "<group>"; };
+		9346111315A2710300411831 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9385CFFD159BAD0400A73FA5 /* GTFIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GTFIcon.png; path = images/GTFIcon.png; sourceTree = "<group>"; };
 		9385D000159BAD3C00A73FA5 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindow.xib; path = xibs/MainWindow.xib; sourceTree = "<group>"; };
 		9385D001159BAD3C00A73FA5 /* StatsCategoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsCategoryCustomCell.xib; path = xibs/StatsCategoryCustomCell.xib; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 		93D85F5E159C1C7500B21301 /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJWeakMutableArray.m; path = libraries/HJCache/HJCacheClasses/HJWeakMutableArray.m; sourceTree = "<group>"; };
 		93DED2B915A25DF60081B359 /* 112-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "112-group.png"; path = "images/glyphish/112-group.png"; sourceTree = "<group>"; };
 		93DED2BB15A261590081B359 /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet.png"; path = "images/glyphish/33-cabinet.png"; sourceTree = "<group>"; };
+		93DED2C215A26D2C0081B359 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		93DED2C315A26D2C0081B359 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		93E21BFC150DBDD000A475DC /* UnitTesting.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTesting.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E21BFD150DBDD000A475DC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		93E21C03150DBDD000A475DC /* UnitTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTesting-Info.plist"; sourceTree = "<group>"; };
@@ -226,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9346111415A2710300411831 /* SystemConfiguration.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -266,6 +272,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				9346111315A2710300411831 /* SystemConfiguration.framework */,
 				933185E7159B983D00DF926D /* libraries */,
 				4D8D79BB14EB993300CAA606 /* Documentation */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -328,6 +335,7 @@
 		4D12199814F5BB740051646B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93DED2C115A26D2C0081B359 /* Reachability */,
 				93BA120714F9B10100248763 /* Category.h */,
 				93BA120814F9B10100248763 /* Category.m */,
 				938CE1B114F9C03700BE5698 /* FillBlankQuestion.h */,
@@ -566,6 +574,15 @@
 			name = glyphish;
 			sourceTree = "<group>";
 		};
+		93DED2C115A26D2C0081B359 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				93DED2C215A26D2C0081B359 /* Reachability.h */,
+				93DED2C315A26D2C0081B359 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		93E21C01150DBDD000A475DC /* UnitTesting */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +783,7 @@
 				93D85F65159C1C7500B21301 /* HJMOUserBase.m in Sources */,
 				93D85F66159C1C7500B21301 /* HJObjManager.m in Sources */,
 				93D85F67159C1C7500B21301 /* HJWeakMutableArray.m in Sources */,
+				93DED2C415A26D2C0081B359 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
