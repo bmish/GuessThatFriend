@@ -144,6 +144,8 @@
 		4DFD9A9815352ECD00BB8F92 /* FriendStatsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendStatsObject.h; sourceTree = "<group>"; };
 		4DFD9A9915352ECD00BB8F92 /* FriendStatsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendStatsObject.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GuessThatFriend-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GuessThatFriend-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		93208B5515A3B8F500E9CD15 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = config/config.h; sourceTree = SOURCE_ROOT; };
+		93208B5615A3B8F500E9CD15 /* config.sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.sample.h; path = config/config.sample.h; sourceTree = SOURCE_ROOT; };
 		9322D7C015A2936300A9C142 /* 33-cabinet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet@2x.png"; path = "images/glyphish/33-cabinet@2x.png"; sourceTree = "<group>"; };
 		9322D7C115A2936300A9C142 /* 112-group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "112-group@2x.png"; path = "images/glyphish/112-group@2x.png"; sourceTree = "<group>"; };
 		9322D7C515A293E800A9C142 /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet.png"; path = "images/glyphish/33-cabinet.png"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				93208B5815A3B98600E9CD15 /* config */,
 				4D12199814F5BB740051646B /* Models */,
 				4D1A375414DB2A7900BEB8B8 /* ViewControllers */,
 			);
@@ -483,6 +486,15 @@
 				4DF27808154E776D00603D4A /* StatsHistoryViewController.m */,
 			);
 			name = StatsViewControllers;
+			sourceTree = "<group>";
+		};
+		93208B5815A3B98600E9CD15 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				93208B5515A3B8F500E9CD15 /* config.h */,
+				93208B5615A3B8F500E9CD15 /* config.sample.h */,
+			);
+			name = config;
 			sourceTree = "<group>";
 		};
 		933185E7159B983D00DF926D /* libraries */ = {

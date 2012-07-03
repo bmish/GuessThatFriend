@@ -73,7 +73,7 @@
 - (NSMutableString *)createRequestString {
     QuizSettings *quizSettings = [QuizSettings quizSettingObject];
     
-    NSMutableString *getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    NSMutableString *getRequest = [NSMutableString stringWithString:@API_URL_ADDRESS];
     [getRequest appendString:@"?cmd=getQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
     [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];

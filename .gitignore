@@ -1,4 +1,5 @@
 config.php
+config.h
 .DS_Store
 *.swp
 xcuserdata/

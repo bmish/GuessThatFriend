@@ -141,7 +141,7 @@
     // construct the request string
     NSMutableString *getRequest;
     
-    getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    getRequest = [NSMutableString stringWithString:@API_URL_ADDRESS];
     [getRequest appendString:@"?cmd=submitQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
     [getRequest appendFormat:@"&facebookIdOfQuestion%i=%@", questionID, option.subject.facebookId];

@@ -93,7 +93,7 @@
 - (NSMutableString *)getRequestString{
     // Make a real request.
     
-    NSMutableString *getRequest = [NSMutableString stringWithString:@BASE_URL_ADDR];
+    NSMutableString *getRequest = [NSMutableString stringWithString:@API_URL_ADDRESS];
     [getRequest appendString:@"?cmd=getStatistics"];
     
     GuessThatFriendAppDelegate *delegate = (GuessThatFriendAppDelegate *)

@@ -12,6 +12,14 @@ API setup instructions:
 2. Run the SQL files in /api/schema/ on the database
 3. Copy /api to the web server
 
+iPhone app setup requirements:
+1. Xcode (Mac only)
+
+iPhone app setup instructions:
+1. Make a copy of /iphone/config/config.sample.h named config.h and fill in the variables
+2. Open the project in Xcode
+3. Run the app on a device or simulator
+
 iPhone app usage instructions:
 1. Open the app (on device or simulator)
 2. Agree to authorize the app to use data from your Facebook account
