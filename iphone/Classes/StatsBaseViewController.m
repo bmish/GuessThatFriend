@@ -66,7 +66,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [spinner stopAnimating];
     isRequestInProgress = NO;
-    [GuessThatFriendAppDelegate downloadingContentFailed];
+    [GuessThatFriendAppDelegate alertDownloadingContentFailed];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -82,7 +82,7 @@
     if ([self createStatsFromServerResponse:responseString]) {
         [table reloadData];
     } else {
-        [GuessThatFriendAppDelegate downloadingContentFailed];
+        [GuessThatFriendAppDelegate alertDownloadingContentFailed];
     }
 }
 

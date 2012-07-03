@@ -94,7 +94,7 @@
             [topicImage clear];
         }
         
-        [GuessThatFriendAppDelegate downloadingContentFailed];
+        [GuessThatFriendAppDelegate alertDownloadingContentFailed];
     }
     
     // Start timer for this question.
@@ -116,12 +116,12 @@
 }
 
 
-+ (void)downloadingContentFailed {
++ (void)alertDownloadingContentFailed {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Downloading Content Failed" message:@"Please try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
 
-+ (void)noInternetConnectivityAlert {
++ (void)alertNoInternetConnectivity {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection" message:@"Please connect to the internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
@@ -266,7 +266,7 @@
         quizViewController.friendsTable.userInteractionEnabled = YES;
         
         if (!didDisplayAlert) {
-            [GuessThatFriendAppDelegate noInternetConnectivityAlert];
+            [GuessThatFriendAppDelegate alertNoInternetConnectivity];
         }
     } else { // Internet works.
         nextButton.enabled = YES;

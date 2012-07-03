@@ -71,7 +71,7 @@
 
 - (void)setupNextQuestion:(Question *)nextQuestion;
 
-+ (void)downloadingContentFailed;
++ (void)alertDownloadingContentFailed;
 
 + (BOOL) manageImage:(HJManagedImageV *)image;
 
