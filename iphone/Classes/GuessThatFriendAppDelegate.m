@@ -15,12 +15,6 @@
 #import "MCQuestion.h"
 #import "FillBlankQuestion.h"
 
-#define FACEBOOK_APP_ID     "178461392264777"
-#define BASE_URL_ADDR       "http://guessthatfriend.jasonsze.com/api/"
-
-#define IMAGE_CACHE_FILE_COUNT_LIMIT 1000
-#define IMAGE_CACHE_AGE_LIMIT_SECONDS 60*60*24*7*2; // Two weeks.
-
 @implementation GuessThatFriendAppDelegate
 
 @synthesize window;

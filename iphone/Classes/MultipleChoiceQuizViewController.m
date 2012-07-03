@@ -13,8 +13,6 @@
 #import "Option.h"
 #import "GuessThatFriendAppDelegate.h"
 
-#define BASE_URL_ADDR               "http://guessthatfriend.jasonsze.com/api/"
-
 @implementation MultipleChoiceQuizViewController
 
 @synthesize friendsTable;

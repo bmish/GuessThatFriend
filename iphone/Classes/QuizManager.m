@@ -14,8 +14,6 @@
 #import "GuessThatFriendAppDelegate.h"
 #import "MultipleChoiceQuizViewController.h"
 
-#define BASE_URL_ADDR "http://guessthatfriend.jasonsze.com/api/"
-
 @implementation QuizManager
 
 @synthesize questionArray;
