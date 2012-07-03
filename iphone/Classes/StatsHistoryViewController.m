@@ -113,9 +113,9 @@
     cell.correctAnswer.text = obj.correctAnswer;
     cell.chosenAnswer.text = obj.yourAnswer;
     if ([obj.correctAnswer isEqualToString:obj.yourAnswer]) {
-        cell.correctAnswer.textColor = [UIColor greenColor];
+        cell.chosenAnswer.textColor = [UIColor greenColor];
     } else {
-        cell.correctAnswer.textColor = [UIColor redColor];
+        cell.chosenAnswer.textColor = [UIColor redColor];
     }
     cell.date.text = obj.date;
     cell.picture = mi;
