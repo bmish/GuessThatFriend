@@ -30,4 +30,6 @@
 - (void)requestQuestionsFromServer;
 - (void)requestNextQuestionAsync;
 
++ (BOOL)isQuestionShowing;
+
 @end

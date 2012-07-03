@@ -99,12 +99,12 @@
     
     
     // Start animating the spinner if no question is showing right now.
-    if (![self isQuestionShowing]) {
+    if (![QuizManager isQuestionShowing]) {
         [[QuizManager sharedAppDelegate].spinner startAnimating];
     }
 }
         
-- (BOOL)isQuestionShowing {
++ (BOOL)isQuestionShowing {
     MultipleChoiceQuizViewController *viewController = (MultipleChoiceQuizViewController *)([QuizManager sharedAppDelegate].viewController);
     
     return !viewController.friendsTable.hidden;

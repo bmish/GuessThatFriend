@@ -270,7 +270,10 @@
         quizViewController.friendsTable.allowsSelection = YES;
         quizViewController.friendsTable.userInteractionEnabled = YES;
         
-        [quizManager requestNextQuestionAsync];
+        if (![QuizManager isQuestionShowing]) {
+            [quizManager requestNextQuestionAsync];
+        }
+        
         statsFriendsNeedsUpdate = YES;
         statsCategoriesNeedsUpdate = YES;
         statsHistoryNeedsUpdate = YES;
