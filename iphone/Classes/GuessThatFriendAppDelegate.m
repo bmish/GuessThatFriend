@@ -258,12 +258,16 @@
 {
     MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
     if ([curReach currentReachabilityStatus] == NotReachable) { // Internet doesn't work.
+        BOOL didDisplayAlert = !nextButton.enabled;
+        
         nextButton.enabled = NO;
         nextButton.userInteractionEnabled = NO;
         quizViewController.friendsTable.allowsSelection = NO;
         quizViewController.friendsTable.userInteractionEnabled = YES;
         
-        [GuessThatFriendAppDelegate noInternetConnectivityAlert];
+        if (!didDisplayAlert) {
+            [GuessThatFriendAppDelegate noInternetConnectivityAlert];
+        }
     } else { // Internet works.
         nextButton.enabled = YES;
         nextButton.userInteractionEnabled = YES;
