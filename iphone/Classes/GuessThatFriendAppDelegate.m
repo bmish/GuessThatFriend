@@ -160,7 +160,7 @@
     if([[UINavigationBar class] respondsToSelector:@selector(appearance)])  //iOS >= 5.0 
     {
         [[UINavigationBar appearance] setFrame:CGRectMake(0, 20, 320, 44)];
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"] forBarMetrics:UIBarMetricsDefault]; 
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar.png"] forBarMetrics:UIBarMetricsDefault]; 
     }
 }
 
@@ -185,7 +185,7 @@
     
     // Set up the 'Next' button.
     nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect buttonRect = CGRectMake(-5, 354, 330, 60);
+    CGRect buttonRect = CGRectMake(0, 354, 320, 60);
     nextButton.frame = buttonRect;
     [nextButton setTitle:@"" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -417,7 +417,7 @@
 // For setting up nav bar background image for iOS < 5.0
 @implementation UINavigationBar (CustomImage)
 - (void)drawRect:(CGRect)rect {
-    UIImage *image = [UIImage imageNamed: @"NavBar.png"];
+    UIImage *image = [UIImage imageNamed: @"navbar.png"];
     [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 @end
