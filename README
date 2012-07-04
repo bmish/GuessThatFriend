@@ -17,6 +17,7 @@ iPhone app setup requirements:
 
 iPhone app setup instructions:
 1. Make a copy of /iphone/config/config.sample.h named config.h and fill in the variables
+1a. Use "178461392264777" for FACEBOOK_APP_ID and "http://guessthatfriend.jasonsze.com/api/" for API_URL_ADDRESS for the original server
 2. Open the project in Xcode
 3. Run the app on a device or simulator
 
