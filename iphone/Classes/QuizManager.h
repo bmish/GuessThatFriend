@@ -20,6 +20,8 @@
     
     BOOL isRequestInProgress;
     BOOL isQuestionNeeded;
+    
+    int maxQuestionIdSeen;
 }
 
 @property (nonatomic) NSMutableArray *questionArray;

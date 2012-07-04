@@ -26,6 +26,8 @@
     
         questionArray = [[NSMutableArray alloc] initWithCapacity:20];
         bufferedFBToken = paramFBToken;
+        
+        maxQuestionIdSeen = 0;
     
         [self requestQuestionsFromServer];
     }
@@ -182,14 +184,8 @@
     return YES;
 }
 
-// True if new question has a greater ID than any existing question.
 - (BOOL)isNewlyFetchedQuestion:(int)questionId {
-    if (!questionArray || questionArray.count == 0) {
-        return true;
-    }
-    
-    Question *lastQuestion = [questionArray objectAtIndex:questionArray.count - 1];
-    return questionId > lastQuestion.questionId;
+    return questionId > maxQuestionIdSeen;
 }
 
 - (void)requestNextQuestionAsync {
@@ -203,16 +199,37 @@
     }
 }
 
+- (Question *)getNextUnseenQuestionFromArray {
+    if (!questionArray || [questionArray count] == 0) {
+        return NULL;
+    }
+    
+    // Pick out the next question that we haven't seen yet.
+    // (Duplicates can sometimes be found in our list because we request 
+    // new questions before all the current ones have been answered).
+    Question *question = NULL;
+    do {
+        question = [questionArray objectAtIndex:0];
+        [questionArray removeObjectAtIndex:0];
+    } while (![self isNewlyFetchedQuestion:question.questionId] && [questionArray count] > 0);
+    
+    // Update the max questionId that we have seen.
+    if (question) {
+        maxQuestionIdSeen = question.questionId;
+    }
+    
+    return question;
+}
+
 - (Question *)getNextQuestionFromArray {
     // Request more questions if we're running low.
     if (questionArray.count < MIN_AVAILABLE_QUESTION_COUNT) {
         [self requestQuestionsFromServer];
     } 
     
-    // Get one of the existing questions.
-    if (questionArray.count > 0) { 
-        Question *question = [questionArray objectAtIndex:0];
-        [questionArray removeObjectAtIndex:0];
+    // Get the next existing question from our list.
+    if (questionArray.count > 0) {
+        Question *question = [self getNextUnseenQuestionFromArray];
         
         return question;
     }
