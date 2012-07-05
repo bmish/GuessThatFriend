@@ -18,8 +18,8 @@ iPhone app setup requirements:
 iPhone app setup instructions:
 1. Make a copy of /iphone/config/config.sample.h named config.h and fill in the variables
 1a. To connect to the original server, use:
-- FACEBOOK_APP_ID = "178461392264777"
-- API_URL_ADDRESS = "http://50.18.123.188/api/"
+--- FACEBOOK_APP_ID = "178461392264777"
+--- API_URL_ADDRESS = "http://50.18.123.188/api/"
 2. Open the project in Xcode
 3. Run the app on a device or simulator
 
