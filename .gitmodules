@@ -1,6 +1,3 @@
-[submodule "iphone/libraries/facebook-ios-sdk"]
-	path = iphone/libraries/facebook-ios-sdk
-	url = git://github.com/facebook/facebook-ios-sdk.git
 [submodule "iphone/libraries/JSONKit"]
 	path = iphone/libraries/JSONKit
 	url = git://github.com/johnezang/JSONKit.git
