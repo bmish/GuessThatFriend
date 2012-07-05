@@ -221,9 +221,6 @@
     quizViewController.friendsTable.hidden = true;
     self.nextButton.hidden = true;
     
-    // Setup for Facebook login.
-    [self fbLogin];
-    
     // Initializing the values for the score keeping
     // @see MultipleChoiceQuestionViewController
     correctAnswers = 0;
@@ -279,7 +276,9 @@
 }
 
 - (void)fbLogin {
-    facebook = [[Facebook alloc] initWithAppId:@FACEBOOK_APP_ID andDelegate:self];
+    if (!facebook) {
+        facebook = [[Facebook alloc] initWithAppId:@FACEBOOK_APP_ID andDelegate:self];
+    }
     
     // Check for previsouly saved access token.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -385,6 +384,9 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    // Setup for Facebook login.
+    [self fbLogin];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
