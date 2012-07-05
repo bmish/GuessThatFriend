@@ -64,11 +64,11 @@ class Util {
 	public static function curPageURLWithoutGETParams() {
 	 	$pageURL = 'http';
 	
-	 	if ($_SERVER["HTTPS"] && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+	 	if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
 	
 	 	$pageURL .= "://".$_SERVER["SERVER_NAME"];
 	
-	 	if ($_SERVER["SERVER_PORT"] && $_SERVER["SERVER_PORT"] != "80") {
+	 	if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] != "80") {
 	  		$pageURL .= ":".$_SERVER["SERVER_PORT"];
 	 	}
 		
