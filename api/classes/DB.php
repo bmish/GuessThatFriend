@@ -11,14 +11,14 @@ class DB {
 	public static function connect() {
 		global $con;
 		
-		$con = mysql_connect(DB_HOST,DB_USER,DB_PASS);
+		$con = @mysql_connect(DB_HOST,DB_USER,DB_PASS);
 		if (!$con) {
-			echo 'Could not connect: '.mysql_error();
+			JSON::outputFatalErrorAndExit("DBConnectionFailed", 'Could not connect to MySQL.', false);
 		}
 		
-		$dbSelected = mysql_select_db(DB_NAME, $con);
+		$dbSelected = @mysql_select_db(DB_NAME, $con);
 		if (!$dbSelected) {
-		    echo 'Can\'t select database: '.mysql_error();
+			JSON::outputFatalErrorAndExit("DBSelectionFailed", 'Could not select database.', false);
 		}
 	}
 
