@@ -14,6 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>GTF_Icon_72.png</string>
+				<string>GTF_Icon_72@2x.png</string>
 				<string>GTF_Icon.png</string>
 				<string>GTF_Icon@2x.png</string>
 				<string>Default.png</string>
