@@ -79,8 +79,10 @@
     [getRequest appendString:@"?cmd=getQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", bufferedFBToken];
     [getRequest appendFormat:@"&questionCount=%i", quizSettings.questionCount];
-    [getRequest appendFormat:@"&optionCount=%i", quizSettings.option];
-    [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
+    [getRequest appendFormat:@"&optionCount=%i", quizSettings.optionCount];
+    if (quizSettings.categoryID > 0) {
+        [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
+    }
     
     return getRequest;
 }
@@ -136,7 +138,7 @@
         NSString *text = [curQuestion objectForKey:@"text"];
         NSArray *options = [curQuestion objectForKey:@"options"];
         NSDictionary *correctSubject = [curQuestion objectForKey:@"correctSubject"];
-        NSString *correctFbId = [correctSubject objectForKey:@"facebookId"];
+        NSString *correctFacebookId = [correctSubject objectForKey:@"facebookId"];
         NSDictionary *topicDict = [curQuestion objectForKey:@"topicSubject"];
         NSString *topicFacebookId = [topicDict objectForKey:@"facebookId"];
         
@@ -165,7 +167,7 @@
         
         Question *question = [[MCQuestion alloc] initQuestionWithOptions:optionArray];
         question.text = text;
-        question.correctFacebookId = correctFbId;
+        question.correctFacebookId = correctFacebookId;
         question.questionId = questionId;
         question.topicImageURLString = [Subject getPictureURLStringFromFacebookID:topicFacebookId];
         

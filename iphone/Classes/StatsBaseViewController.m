@@ -100,8 +100,7 @@
     [[UIApplication sharedApplication] delegate];
     
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
-    [getRequest appendFormat:@"&type="];
-    [getRequest appendString:type];
+    [getRequest appendFormat:@"&type=%@", type];
     
     return getRequest;
 }

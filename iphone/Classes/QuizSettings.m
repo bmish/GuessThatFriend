@@ -13,9 +13,9 @@ static QuizSettings *quizSettingsObject = nil;
 @implementation QuizSettings
 
 @synthesize questionCount;
-@synthesize option;
+@synthesize optionCount;
 @synthesize categoryID;
-@synthesize friendFacebookID;
+@synthesize topicFacebookId;
 
 + (id) quizSettingObject {
     @synchronized(self) {
@@ -29,11 +29,10 @@ static QuizSettings *quizSettingsObject = nil;
 - (id)init {
     if (self = [super init]) {
         // Initialize quiz settings
-        
-        questionCount = QUESTION_COUNT;
-        option = 4;
-        categoryID = 2;
-        friendFacebookID = nil;
+        self.questionCount = QUESTION_COUNT;
+        self.optionCount = 4;
+        self.categoryID = -1;
+        self.topicFacebookId = nil;
     }
     return self;
 }

@@ -15,15 +15,15 @@
 
 @interface QuizSettings : NSObject {
     int questionCount;
-    int option;
+    int optionCount;
     int categoryID;
-    NSString *friendFacebookID;
+    NSString *topicFacebookId;
 }
 
 @property int questionCount;
-@property int option;
+@property int optionCount;
 @property int categoryID;
-@property (nonatomic) NSString *friendFacebookID;
+@property (nonatomic) NSString *topicFacebookId;
 
 + (id) quizSettingObject;
 
