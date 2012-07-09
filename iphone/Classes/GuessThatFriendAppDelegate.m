@@ -77,22 +77,28 @@
         quizViewController.questionLabel.hidden = false;
         quizViewController.friendsTable.hidden = false;
         self.nextButton.hidden = false;
-    } else { // No question so hide question text, question options, and topic image.
-        quizViewController.questionLabel.hidden = true;
-        quizViewController.friendsTable.hidden = true;
+    } else { // No question so hide current question and show an error.
         self.nextButton.hidden = false;
-        
-        // Clear the topic image.
-        HJManagedImageV *topicImage = [self findTopicImage];
-        if (topicImage) {
-            [topicImage clear];
-        }
+        [self hideCurrentQuestion];
         
         [GuessThatFriendAppDelegate alertDownloadingContentFailed];
     }
     
     // Start timer for this question.
     responseTimer = [NSDate date];
+}
+
+- (void)hideCurrentQuestion {
+    MultipleChoiceQuizViewController *quizViewController = (MultipleChoiceQuizViewController *)viewController;
+    
+    quizViewController.questionLabel.hidden = true;
+    quizViewController.friendsTable.hidden = true;
+    
+    // Clear the topic image.
+    HJManagedImageV *topicImage = [self findTopicImage];
+    if (topicImage) {
+        [topicImage clear];
+    }
 }
 
 - (HJManagedImageV *)findTopicImage {
@@ -308,6 +314,9 @@
 
 - (void)fbLogout {
     [facebook logout:self];
+    
+    [self hideCurrentQuestion];
+    self.nextButton.hidden = true;
     
     NSHTTPCookieStorage *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
