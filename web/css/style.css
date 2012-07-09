@@ -1,0 +1,48 @@
+#pageTitle {
+	text-align: center;
+	font-size: 30px;
+	margin-top: 10px;
+	margin-bottom: 3px;
+	color: #4D4D4D;
+}
+
+#header {
+	width: 100%;
+	background-color: #DCF5FF;
+	padding-top:1px;
+	padding-bottom: 10px;
+}
+#wrapper {
+	font-family: "Helvetica Neue";
+	width: 100%;
+}
+#page {
+	margin-left:auto; 
+	margin-right:auto;
+	width: 1100px;
+	background-color: white;
+	padding-bottom: 20px;
+}
+
+body {
+	margin: 0;
+	background-color: #F0F1F2;
+}
+
+#body {
+	padding:10px;
+}
+
+.fontCode {
+	font-family: monospace;
+}
+
+#youtubeVideoEmbed {
+	float: right;
+	margin-top:5px;
+}
+
+.sectionHeader {
+	font-size: 26px;
+	margin-bottom:10px;
+}
