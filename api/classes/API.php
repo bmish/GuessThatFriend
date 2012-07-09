@@ -40,6 +40,9 @@ class API {
 		if (!OptionType::isValid($optionCount)) {
 			$optionCount = OptionType::DEFAULT_TYPE;
 		}
+		if (!Category::exists($categoryId)) {
+			$categoryId = null;
+		}
 		
 		// Create questions.
 		$questions = API::getQuestionsArray($questionCount, $optionCount, $topicFacebookId, $categoryId);

@@ -115,6 +115,17 @@ class Category	{
 		
 		return $obj;
 	}
+	
+	public static function exists($categoryId) {
+		if ($categoryId <= 0) {
+			return false;
+		}
+		
+		$query = "SELECT categoryId FROM categories WHERE categoryId = $categoryId LIMIT 1";
+		$result = mysql_query($query);
+		
+		return $result && mysql_num_rows($result) == 1;
+	}
 
 	/**
 	 * Checks if there are enough pages for this category.
