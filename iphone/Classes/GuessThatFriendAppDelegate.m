@@ -142,10 +142,20 @@
     [getRequest appendString:@"?cmd=submitQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
     [getRequest appendFormat:@"&skippedQuestionIds[]=%i", quizViewController.questionID];
+    [getRequest appendFormat:[GuessThatFriendAppDelegate getVersionParametersStringForRequestURL]];
     
     // Create an aSynchronousRequest so that the UI isn't hogged.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];
     [NSURLConnection connectionWithRequest:request delegate:nil];
+}
+
++ (NSMutableString *)getVersionParametersStringForRequestURL {
+    NSMutableString *getRequest;
+    getRequest = [NSMutableString string];
+    [getRequest appendFormat:@"&appVersion=%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
+    [getRequest appendFormat:@"&platform=iOS"];
+    
+    return getRequest;
 }
 
 + (BOOL) manageImage:(HJManagedImageV *)image {

@@ -83,6 +83,7 @@
     if (quizSettings.categoryID > 0) {
         [getRequest appendFormat:@"&categoryId=%i", quizSettings.categoryID];
     }
+    [getRequest appendFormat:[GuessThatFriendAppDelegate getVersionParametersStringForRequestURL]];
     
     return getRequest;
 }

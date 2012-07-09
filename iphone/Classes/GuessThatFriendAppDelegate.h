@@ -76,4 +76,6 @@
 
 + (BOOL) manageImage:(HJManagedImageV *)image;
 
++ (NSMutableString *)getVersionParametersStringForRequestURL;
+
 @end
