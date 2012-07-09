@@ -20,6 +20,26 @@ class DB {
 		if (!$dbSelected) {
 			JSON::outputFatalErrorAndExit("DBSelectionFailed", 'Could not select database.', false);
 		}
+		
+		if (DB::tableIsEmpty("randomPages")) {
+			JSON::outputFatalErrorAndExit("DBRandomPagesEmpty", 'Database is missing content.', false);
+		}
+		
+		if (DB::tableIsEmpty("categories")) {
+			JSON::outputFatalErrorAndExit("DBCategoriesEmpty", 'Database is missing content.', false);
+		}
+	}
+	
+	private static function tableIsEmpty ($tableName) {
+		$checkQuery = "SELECT COUNT(*) FROM $tableName";
+		$result = mysql_query($checkQuery);
+		if ($result && mysql_num_rows($result) == 1) {
+			$row = mysql_fetch_array($result);
+
+			return $row["COUNT(*)"] == 0;
+		}
+
+		return true;
 	}
 
 	/**
