@@ -33,8 +33,8 @@ if ($cmd == 'getQuestions') {
 	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
 	$questionCount = intval($_GET['questionCount']);
 	$optionCount = intval($_GET['optionCount']);
-	//$topicFacebookId = DB::cleanInputForDatabase($_GET['topicFacebookId']);
-	//$categoryId = intval($_GET['categoryId']);
+	$topicFacebookId = DB::cleanInputForDatabase($_GET['topicFacebookId']);
+	$categoryId = intval($_GET['categoryId']);
 	API::getQuestions($facebookAccessToken, $questionCount, $optionCount, $topicFacebookId, $categoryId);
 } else if ($cmd == 'refillUnansweredQuestions') {
 	$facebookAccessToken = DB::cleanInputForDatabase($_GET['facebookAccessToken']);
