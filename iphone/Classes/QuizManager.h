@@ -15,13 +15,11 @@
 @interface QuizManager : NSObject {
     NSMutableArray *questionArray;
     NSString *bufferedFBToken;
-    
+    int maxQuestionIdSeen;
     NSMutableData *responseData;
     
     BOOL isRequestInProgress;
     BOOL isQuestionNeeded;
-    
-    int maxQuestionIdSeen;
 }
 
 @property (nonatomic) NSMutableArray *questionArray;

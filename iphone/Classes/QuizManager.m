@@ -21,18 +21,27 @@
 
 - (QuizManager *)initWithFBToken:(NSString *)paramFBToken {
     if (self = [super init]) {
-        isRequestInProgress = NO;
-        isQuestionNeeded = NO;
-    
-        questionArray = [[NSMutableArray alloc] initWithCapacity:20];
+        [self reset];
         bufferedFBToken = paramFBToken;
-        
-        maxQuestionIdSeen = 0;
     
         [self requestQuestionsFromServer];
     }
     
 	return self;
+}
+
+- (void)reset {
+    bufferedFBToken = nil;
+    maxQuestionIdSeen = -1;
+    responseData = nil;
+    isRequestInProgress = NO;
+    isQuestionNeeded = NO;    
+    
+    if (questionArray) {
+        [questionArray removeAllObjects];
+    } else {
+        questionArray = [[NSMutableArray alloc] initWithCapacity:20];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
