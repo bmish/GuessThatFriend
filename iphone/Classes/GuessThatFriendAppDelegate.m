@@ -77,15 +77,15 @@
         quizViewController.questionLabel.hidden = false;
         quizViewController.friendsTable.hidden = false;
         self.nextButton.hidden = false;
+        
+        // Start timer for this question.
+        responseTimer = [NSDate date];
     } else { // No question so hide current question and show an error.
         self.nextButton.hidden = false;
         [self hideCurrentQuestion];
         
         [GuessThatFriendAppDelegate alertDownloadingContentFailed];
     }
-    
-    // Start timer for this question.
-    responseTimer = [NSDate date];
 }
 
 - (void)hideCurrentQuestion {
@@ -180,8 +180,6 @@
     statsFriendsNeedsUpdate = YES;
     statsCategoriesNeedsUpdate = YES;
     statsHistoryNeedsUpdate = YES;
-        
-    responseTimer = [NSDate date];
     
     // Set up the 'Next' button.
     nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -396,6 +394,9 @@
     
     // Setup for Facebook login.
     [self fbLogin];
+    
+    // Restart any existing timer.
+    responseTimer = [NSDate date];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
