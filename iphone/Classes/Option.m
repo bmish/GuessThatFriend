@@ -13,9 +13,7 @@
 @synthesize optionId, question, subject;
 
 - (Option *)initWithName:(NSString *)friendName andFacebookId:(NSString *)facebookId {
-	self = [super init];
-    
-    if (self) {
+    if (self = [super init]) {
         self.subject = [[Subject alloc] initWithName:friendName andFacebookId:facebookId];
     }
     

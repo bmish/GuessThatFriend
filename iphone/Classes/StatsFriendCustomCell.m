@@ -18,8 +18,7 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         // Initialization code
     }
     return self;

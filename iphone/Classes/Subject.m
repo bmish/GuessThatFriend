@@ -13,9 +13,7 @@
 @synthesize facebookId, name;
 
 - (Subject *)initWithName:(NSString *)friendName andFacebookId:(NSString *)myfacebookId {
-    self = [super init];
-    
-    if (self) {
+    if (self = [super init]) {
         self.name = friendName;
         self.facebookId = myfacebookId;
     }

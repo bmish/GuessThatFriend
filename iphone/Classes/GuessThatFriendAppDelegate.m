@@ -175,7 +175,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     // Prepare image caching.
     objMan = [[HJObjManager alloc] init];
     NSString* cacheDirectory = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/imgcache/facebookProfilePictures/"] ;
