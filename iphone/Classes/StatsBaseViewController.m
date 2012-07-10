@@ -142,6 +142,14 @@
     [super viewWillAppear:animated];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark -
 #pragma mark Table View Data Source Methods
 
