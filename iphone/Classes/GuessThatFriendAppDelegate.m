@@ -142,7 +142,7 @@
     [getRequest appendString:@"?cmd=submitQuestions"];
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
     [getRequest appendFormat:@"&skippedQuestionIds[]=%i", quizViewController.questionID];
-    [getRequest appendFormat:[GuessThatFriendAppDelegate getVersionParametersStringForRequestURL]];
+    [getRequest appendFormat:@"%@",[GuessThatFriendAppDelegate getVersionParametersStringForRequestURL]];
     
     // Create an aSynchronousRequest so that the UI isn't hogged.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:getRequest]];

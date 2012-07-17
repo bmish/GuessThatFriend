@@ -101,7 +101,7 @@
     
     [getRequest appendFormat:@"&facebookAccessToken=%@", delegate.facebook.accessToken];
     [getRequest appendFormat:@"&type=%@", type];
-    [getRequest appendFormat:[GuessThatFriendAppDelegate getVersionParametersStringForRequestURL]];
+    [getRequest appendFormat:@"%@",[GuessThatFriendAppDelegate getVersionParametersStringForRequestURL]];
     
     return getRequest;
 }
