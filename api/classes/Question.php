@@ -40,11 +40,8 @@ abstract class Question	{
 		$this->responseTime = -1;
 		
 		if ($this->questionId == -1) { // New question.
-			// Pick a topic.
-			$this->pickTopic();
-
-			// Pick a correct answer.
-			$this->pickAnswer();
+			// Pick a correct topic and answer.
+			$this->pickTopicAndAnswer();
 			
 			// Create question text.
 			$this->makeQuestionText();
@@ -64,35 +61,17 @@ abstract class Question	{
         return $this->$field;
 	}
 	
-	/**
-	 * Pick the question topic.
-	 */
-	protected function pickTopic()	{
+	protected function pickTopicAndAnswer() {
 		$facebookAPI = FacebookAPI::singleton();
 		
-		// Was the topic provided to us?
-		if (!$this->topicSubject) {
-			$this->topicSubject = $facebookAPI->getRandomSubject($this->category); // Generate a random topic of the desired category or a random friend.
-		}
+		do {
+			$friend = $facebookAPI->getRandomFriend(); // Only returns friends with enough likes.
+			$page = $facebookAPI->getRandomLikedPage($friend->facebookId); // Only returns pages with enough randomPages of the same category.
+		} while (!$page);
 		
-		// Store the category of the topic if we don't already know it.
-		if (!$this->category) {
-			$this->category = $this->topicSubject->category;
-		}
-	}
-	
-	/**
-	 * Pick a correct answer.
-	 */
-	protected function pickAnswer() {
-		$facebookAPI = FacebookAPI::singleton();
-		
-		if ($this->topicSubject->isPerson()) {
-			$this->correctSubject = $facebookAPI->getRandomLikedPage($this->topicSubject->facebookId, $this->category); // Generate a random page of the desired category.
-			$this->category = $this->correctSubject->category;
-		} else { // Topic is a page.
-			$this->correctSubject = $facebookAPI->getRandomFriendWhoLikes($this->topicSubject->facebookId, true); // Generate a random friend.
-		}
+		$this->topicSubject = $friend;
+		$this->correctSubject = $page;
+		$this->category = $this->correctSubject->category;
 	}
 	
 	/**

@@ -205,7 +205,7 @@ class FacebookAPI	{
 			$triesCount = 0;
 			do {
 				if (++$triesCount == FacebookAPI::MAX_SUBJECT_SEARCH_ATTEMPTS) {
-					throw new Exception("The randomPages database table may not contain a large enough variety of random pages.");
+					return null;
 				}
 				
 				$like = Util::getRandomElement($likes);
