@@ -52,7 +52,7 @@ class MCQuestion extends Question	{
 		$facebookAPI = FacebookAPI::singleton();
 		
 		// Build a list of random pages to use for our incorrect options.
-		$randomPages = $facebookAPI->getRandomPage($this->category, $optionCount - 1, $this->topicSubject->facebookId);
+		$randomPages = $facebookAPI->getRandomPages($this->category, $optionCount - 1, $this->topicSubject->facebookId);
 		$currentRandomPageIndex = 0;
 		
 		$this->options = array();

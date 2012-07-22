@@ -156,7 +156,7 @@ class FacebookAPI	{
 	 * @param string|null $facebookId Facebook ID of the friend to check for 'likes' condition; null if no check required
 	 * @return array Array of random pages
 	 */
-	public function getRandomPage($category = null, $count = 1, $facebookId = null) {
+	public function getRandomPages($category = null, $count = 1, $facebookId = null) {
 		if (!$category) {
 			$selectQuery = "SELECT * FROM randomPages";
 		} else {
@@ -231,7 +231,7 @@ class FacebookAPI	{
 	 */
 	public function getRandomSubject($category = null) {
 		if ($category) {
-			$randomPages = $this->getRandomPage($category);
+			$randomPages = $this->getRandomPages($category);
 			return $randomPages[0];
 		}
 		
